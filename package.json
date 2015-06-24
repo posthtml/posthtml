@@ -1,0 +1,32 @@
+{
+  "name": "posthtml",
+  "version": "0.0.0",
+  "description": "HTML post processor",
+  "keywords": [],
+  "dependencies": {
+    "bem-naming": "^0.5.1",
+    "bh": "git://github.com/theprotein/bh.git",
+    "bluebird": "^2.9.27",
+    "html2bemjson": "^1.0.1"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "jscs": "~1.4.5",
+    "jshint": "~2.5.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run jshint && npm run jscs",
+    "jshint": "node_modules/.bin/jshint .",
+    "jscs": "node_modules/.bin/jscs -c node_modules/enb-validate-code/jscs.json techs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/theprotein/posthtml.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theprotein/posthtml/issues"
+  },
+  "homepage": "https://github.com/theprotein/posthtml"
+}
