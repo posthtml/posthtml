@@ -5,9 +5,9 @@
   "keywords": [],
   "dependencies": {
     "bem-naming": "^0.5.1",
-    "bh": "git://github.com/theprotein/bh.git",
+    "bh": "git://github.com/bem/bh.git#f2e8c6dd7a2e5b57300ab9eea6710823cc38711c",
     "bluebird": "^2.9.27",
-    "html2bemjson": "^1.0.1"
+    "html2bemjson": "^1.1.0"
   },
   "peerDependencies": {},
   "devDependencies": {

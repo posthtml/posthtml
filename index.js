@@ -1,5 +1,11 @@
 var Promise = require('bluebird'),
+    bh = new (require('bh').BH),
     buildBemJson = require('html2bemjson');
+
+bh.setOptions({
+    // add SVG short tags
+    shortTags : ['rect']
+});
 
 module.exports = function posthtml() {
 
@@ -28,7 +34,9 @@ module.exports = function posthtml() {
                     tree = plugin(tree);
                 });
 
-                resolve(tree);
+                var bemjson = bh.processBemJson(tree);
+
+                resolve(bh.apply(bemjson));
             });
         }
     }
