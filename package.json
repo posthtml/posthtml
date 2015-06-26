@@ -4,15 +4,18 @@
   "description": "HTML post processor",
   "keywords": [],
   "dependencies": {
-    "bem-naming": "^0.5.1",
     "bh": "git://github.com/bem/bh.git#f2e8c6dd7a2e5b57300ab9eea6710823cc38711c",
     "bluebird": "^2.9.27",
     "html2bemjson": "^1.1.0"
   },
   "peerDependencies": {},
   "devDependencies": {
-    "jscs": "~1.4.5",
-    "jshint": "~2.5.1"
+    "chai": "^3.0.0",
+    "jscs": "^1.11.2",
+    "jscs-protein": "https://github.com/theprotein/jscs-protein.git",
+    "jshint": "2.6.0",
+    "jshint-groups": "0.7.0",
+    "mocha": "^2.2.5"
   },
   "main": "index.js",
   "scripts": {
@@ -22,11 +25,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/theprotein/posthtml.git"
+    "url": "git://github.com/posthtml/posthtml.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/theprotein/posthtml/issues"
+    "url": "https://github.com/posthtml/posthtml/issues"
   },
-  "homepage": "https://github.com/theprotein/posthtml"
+  "homepage": "https://github.com/posthtml/posthtml"
 }

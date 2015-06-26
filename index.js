@@ -1,5 +1,5 @@
 var Promise = require('bluebird'),
-    bh = new (require('bh').BH),
+    bh = new (require('bh').BH)(),
     buildBemJson = require('html2bemjson');
 
 bh.setOptions({
@@ -9,11 +9,11 @@ bh.setOptions({
 
 module.exports = function posthtml() {
 
-    return new function() {
+    return new (function() {
 
         this.parse = function(html) {
             return [buildBemJson.convert(html)];
-        }
+        };
 
         this.plugins = [];
 
@@ -21,7 +21,7 @@ module.exports = function posthtml() {
             this.plugins.push(plugin);
 
             return this;
-        }
+        };
 
         this.process = function(html) {
             var _this = this;
@@ -38,6 +38,6 @@ module.exports = function posthtml() {
 
                 resolve(bh.apply(bemjson));
             });
-        }
-    }
-}
+        };
+    })();
+};
