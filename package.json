@@ -11,17 +11,17 @@
   "peerDependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.14.0",
+    "gulp-mocha": "^2.1.2",
     "jscs": "^1.11.2",
     "jscs-protein": "https://github.com/theprotein/jscs-protein.git",
-    "jshint": "2.6.0",
-    "jshint-groups": "0.7.0",
     "mocha": "^2.2.5"
   },
   "main": "index.js",
   "scripts": {
-    "test": "npm run jshint && npm run jscs",
-    "jshint": "node_modules/.bin/jshint .",
-    "jscs": "node_modules/.bin/jscs -c node_modules/enb-validate-code/jscs.json techs"
+    "test": "gulp test",
+    "lint": "gulp lint && jscs ."
   },
   "repository": {
     "type": "git",

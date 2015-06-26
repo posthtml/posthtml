@@ -1,0 +1,20 @@
+{
+    "rules": {
+        "no-unused-expressions": [0],
+        "no-underscore-dangle":  [0],
+        "no-mixed-requires":     [0],
+        "no-reserved-keys":      [2],
+        "no-multi-spaces":       [0],
+        "no-extra-parens":       [0],
+        "no-unused-vars":        [2],
+        "no-loop-func":          [0],
+        "key-spacing":           [0],
+        "strict":                [0],
+        "indent":                [2],
+        "quotes":                [2, "single", "avoid-escape"],
+    },
+    "env": {
+        "mocha": true,
+        "node":  true
+    }
+}

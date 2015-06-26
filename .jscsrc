@@ -1,19 +1,7 @@
 {
     "plugins": ["jscs-protein"],
-    "preset": "bem",
-
     "excludeFiles": [
-        ".bem/cache/**",
-        ".enb/tmp/**",
         ".git/**",
-        "*.docs/**",
-        "*.examples/**",
-        "*.specs/**",
-        "*.tmpl-specs/**",
-        "*.tests/**",
-        "*.pages/**",
-        "**/*.i18n/**",
-        "libs/**",
         "node_modules/**"
     ],
     "fileExtensions": [".js", ".bemtree", ".bemhtml"]

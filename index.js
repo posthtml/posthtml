@@ -4,6 +4,8 @@ var Promise = require('bluebird'),
 
 bh.setOptions({
     // add SVG short tags
+
+    // FIXME(@voischev): @veribigman это что?
     shortTags : ['rect']
 });
 
@@ -26,7 +28,7 @@ module.exports = function posthtml() {
         this.process = function(html) {
             var _this = this;
 
-            return new Promise(function(resolve, reject) {
+            return new Promise(function(resolve) {
 
                 var tree = _this.parse(html);
 

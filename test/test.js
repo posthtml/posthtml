@@ -1,16 +1,15 @@
-var posthtml = require('../index.js');
-var expect = require('chai').expect;
+var posthtml = require('../index.js'),
+    expect = require('chai').expect,
+    beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
 
-var beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
-
-var test = function (html, done) {
+function test(html, done) {
     posthtml().process(html).then(function (result) {
         expect(beforeHTML).to.eql(result);
         done();
     }).catch(function (error) {
         done(error);
     });
-};
+}
 
 describe('Simple text', function () {
 
