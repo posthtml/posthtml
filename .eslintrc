@@ -1,4 +1,8 @@
 {
+    "ecmaFeatures": {
+        "modules": true,
+        "module":  true
+    },
     "rules": {
         "no-unused-expressions": [0],
         "no-underscore-dangle":  [0],
@@ -10,11 +14,13 @@
         "no-loop-func":          [0],
         "key-spacing":           [0],
         "strict":                [0],
+        "no-var":                [2],
         "indent":                [2],
         "quotes":                [2, "single", "avoid-escape"],
     },
     "env": {
         "mocha": true,
-        "node":  true
+        "node":  true,
+        "es6":   true
     }
 }
