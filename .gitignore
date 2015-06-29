@@ -25,3 +25,7 @@ npm-debug.log
 .idea/
 .project
 .svn
+
+### Project
+
+build/

@@ -4,5 +4,6 @@
         ".git/**",
         "node_modules/**"
     ],
-    "fileExtensions": [".js", ".bemtree", ".bemhtml"]
+    "fileExtensions": [".js"],
+    "esnext": true
 }
