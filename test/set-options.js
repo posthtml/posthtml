@@ -26,7 +26,20 @@ describe('Set options', () => {
         expect(posthtml().getOptions()).to.eql({});
         expect(posthtml({ op: 1 }).getOptions().op).to.eql(1);
         done();
-    })
+    });
 
 });
 
+describe('Skip html parsing & use tree from options.', () => {
+
+    let tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
+
+    it('Set use tree', done => {
+        expect(posthtml({ skipParse : true })
+            .process(tree)
+            .then(result => {
+                expect(beforeHTML).to.eql(result);
+                done();
+            }).catch(error => done(error)));
+    })
+});
