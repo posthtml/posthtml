@@ -3,9 +3,7 @@ import path from 'path';
 import fs   from 'fs-extra';
 
 gulp.task('clean', (done) => {
-    fs.remove(path.join(__dirname, 'poshtml.js'), () => {
-        fs.remove(path.join(__dirname, 'build'), done);
-    });
+    fs.remove(path.join(__dirname, 'build'), done);
 });
 
 // Build
