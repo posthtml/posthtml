@@ -6,8 +6,8 @@ var beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div
 
 
 function test(html, done) {
-    posthtml(options).process(html).then(result => {
-        expect(beforeHTML).to.eql(result);
+    posthtml().process(html, options).then(result => {
+        expect(beforeHTML).to.eql(result.html);
         done();
     }).catch(error => done(error));
 }
@@ -23,8 +23,21 @@ describe('Set options', () => {
     });
 
     it('Get options', done => {
-        expect(posthtml().getOptions()).to.eql({});
-        expect(posthtml({ op: 1 }).getOptions().op).to.eql(1);
+
+        expect(posthtml()
+            .process('')
+            .then(function(result) {
+                result.getOptions().to.eql({});
+            })
+        );
+
+        expect(posthtml()
+            .process('', { op: 1 })
+            .then(function(result) {
+                result.getOptions().op.to.eql(1);
+            })
+        );
+
         done();
     });
 
@@ -35,10 +48,10 @@ describe('Skip html parsing & use tree from options.', () => {
     let tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
 
     it('Set use tree', done => {
-        expect(posthtml({ skipParse : true })
-            .process(tree)
+        expect(posthtml()
+            .process(tree, { skipParse : true })
             .then(result => {
-                expect(beforeHTML).to.eql(result);
+                expect(beforeHTML).to.eql(result.html);
                 done();
             }).catch(error => done(error)));
     })
