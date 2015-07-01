@@ -2,8 +2,14 @@
   "name": "posthtml",
   "version": "0.0.1",
   "description": "HTML post processor",
-  "keywords": ["html", "postproccessor", "parser", "transform",
-                 "manipulation", "preprocess"],
+  "keywords": [
+    "html",
+    "postproccessor",
+    "parser",
+    "transform",
+    "manipulation",
+    "preprocess"
+  ],
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [
     {
@@ -27,6 +33,7 @@
   "peerDependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
+    "conventional-changelog": "0.0.17",
     "fs-extra": "^0.20.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
@@ -35,12 +42,16 @@
     "gulp-mocha": "^2.1.2",
     "jscs": "^1.11.2",
     "jscs-protein": "https://github.com/theprotein/jscs-protein.git",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "mversion": "^1.10.0"
   },
   "main": "index.js",
   "scripts": {
     "test": "gulp test",
-    "lint": "gulp lint && jscs ."
+    "lint": "gulp lint && jscs .",
+    "release-patch": "mversion patch",
+    "release-minor": "mversion minor",
+    "release-major": "mversion major"
   },
   "repository": {
     "type": "git",
