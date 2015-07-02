@@ -34,7 +34,6 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "conventional-changelog": "0.0.17",
-    "fs-extra": "^0.20.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-eslint": "^0.14.0",
@@ -49,6 +48,8 @@
   "main": "index.js",
   "scripts": {
     "test": "gulp test && npm run coverage",
+    "clean": "rm -rf build coverage",
+    "build": "npm run clean && npm run test && gulp build",
     "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html --report lcov node_modules/.bin/_mocha",
     "lint": "gulp lint && jscs .",
     "release-patch": "mversion patch",
