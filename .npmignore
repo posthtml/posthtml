@@ -2,6 +2,7 @@
 
 node_modules/
 
+coverage/
 build/
 
 test/
@@ -9,3 +10,6 @@ test/
 npm-debug.log
 
 gulpfile.babel.js
+
+posthtml.sublime-workspace
+posthtml.sublime-project
