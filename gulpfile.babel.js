@@ -38,9 +38,24 @@ gulp.task('build:package', ['clean'], () => {
 
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
+
+// -- used in NPM sripts
+
+// Changelog
+
+gulp.task('changelog', done => {
+    require('conventional-changelog')({
+        preset: 'angular'
+    }, function(err, log) {
+        require('fs').writeFileSync('CHANGELOG.md', log);
+        done();
+    });
+});
+
+
 // Lint
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
     let eslint = require('gulp-eslint');
 
     return gulp.src(['*.js', 'test/*.js'])
@@ -50,10 +65,13 @@ gulp.task('lint', function() {
 });
 
 
-gulp.task('test', function() {
+gulp.task('test', () => {
     let mocha = require('gulp-mocha');
     return gulp.src('test/*.js', { read : false }).pipe(mocha({ reporter: 'spec'}));
 });
+
+// -/-
+
 
 // Common
 gulp.task('default', ['test', 'lint']);

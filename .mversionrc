@@ -2,6 +2,6 @@
   "commitMessage": "chore(ver): v%s",
   "scripts": {
     "postcommit": "git push && git push --tags",
-    "precommit": "node changelog && git add CHANGELOG.md"
+    "precommit": "gulp changelog && git add CHANGELOG.md"
   }
 }
