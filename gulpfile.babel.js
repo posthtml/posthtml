@@ -47,6 +47,10 @@ gulp.task('changelog', done => {
     require('conventional-changelog')({
         preset: 'angular'
     }, function(err, log) {
+        if(err) {
+            return done(err);
+        }
+
         require('fs').writeFileSync('CHANGELOG.md', log);
         done();
     });
@@ -67,7 +71,7 @@ gulp.task('lint', () => {
 
 gulp.task('test', () => {
     let mocha = require('gulp-mocha');
-    return gulp.src('test/*.js', { read : false }).pipe(mocha({ reporter: 'spec'}));
+    return gulp.src('test/*.js', { read : false }).pipe(mocha());
 });
 
 // -/-

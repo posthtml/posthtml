@@ -1,0 +1,3 @@
+--inline-diffs
+--reporter spec
+--require babel/register

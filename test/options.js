@@ -45,7 +45,9 @@ describe('Set options', () => {
 
 describe('Skip html parsing & use tree from options.', () => {
 
+    /*eslint-disable */
     let tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
+    /*eslint-enable */
 
     it('Set use tree', done => {
         expect(posthtml()
@@ -54,5 +56,5 @@ describe('Skip html parsing & use tree from options.', () => {
                 expect(beforeHTML).to.eql(result.html);
                 done();
             }).catch(error => done(error)));
-    })
+    });
 });

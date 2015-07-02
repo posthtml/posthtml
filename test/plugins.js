@@ -2,7 +2,9 @@ import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const html = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+/*eslint-disable */
 const tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
+/*eslint-enable */
 
 function testPluginsArray(nodes, options, done) {
     expect(posthtml([ function(json) { return json; }, function(json) { return json; }])
@@ -46,7 +48,7 @@ describe('Plugins', () => {
 
         it('set options skipParse', done => {
             testPluginUse(html, { skipParse : true }, done);
-        })
+        });
 
     });
 

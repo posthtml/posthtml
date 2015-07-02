@@ -14,7 +14,6 @@
         "no-loop-func":          [0],
         "key-spacing":           [0],
         "strict":                [0],
-        "no-var":                [2],
         "indent":                [2],
         "quotes":                [2, "single", "avoid-escape"],
     },
