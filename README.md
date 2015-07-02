@@ -18,7 +18,7 @@ var html = '<div class="wow">OMG</div>';
 posthtml([ require('posthtml-to-svg-tags')(), require('posthtml-extend-attrs')() ])
     .process(html)
     .then(function(result) {
-        fs.writeFileSync('index.html', result);
+        fs.writeFileSync('index.html', result.html);
     });
 ```
 
