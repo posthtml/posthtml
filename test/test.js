@@ -1,7 +1,7 @@
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
-var beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
+const beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
 
 function test(html, done) {
     posthtml().process(html).then(result => {

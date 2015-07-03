@@ -1,8 +1,8 @@
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
-var beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>',
-    options = { tmplOptions : { shortTags : ['rect'] } };
+const beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+const options = { tmplOptions : { shortTags : ['rect'] } };
 
 
 function test(html, done) {

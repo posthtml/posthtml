@@ -15,6 +15,7 @@
         "key-spacing":           [0],
         "strict":                [0],
         "indent":                [2],
+        "no-var":                [2],
         "quotes":                [2, "single", "avoid-escape"],
     },
     "env": {
