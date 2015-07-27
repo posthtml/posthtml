@@ -19,6 +19,7 @@ function testPluginUse(nodes, options, done) {
     expect(posthtml()
         .use(function(json) { return json; })
         .use(function(json) { return json; })
+        .use(function(json) { })
         .process(nodes, options)
         .then(result => {
             expect(html).to.eql(result.html);
