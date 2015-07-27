@@ -24,13 +24,14 @@ posthtml([ require('posthtml-to-svg-tags')(), require('posthtml-extend-attrs')()
 
 ## Plugins
 
-- [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) - convert html tags to svg equals
-- [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) - extend html tags attributes with custom data and attributes
+- [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — extend html tags doctype
+- [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — convert html tags to svg equals
+- [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — extend html tags attributes with custom data and attributes
 
 ## Ideas for plugins
 
-- [textr](https://github.com/shuvalov-anton/textr) - typographic framework
+- [posthtml-classes](https://github.com/posthtml/posthtml-classes) — Configure node in classes
+- [textr](https://github.com/shuvalov-anton/textr) — Typographic framework
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
 
 Something more? ;)
-
