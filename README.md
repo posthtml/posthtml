@@ -10,15 +10,29 @@ All HTML transformations are made by plugins. And these plugins are just small p
 ## Usage
 
 ``` javascript
-var posthtml = require('posthtml'),
-    fs = require('fs');
+var posthtml = require('posthtml');
 
-var html = '<div class="wow">OMG</div>';
+var html = '<html><body><p class="wow">OMG</p></body></html>';
 
-posthtml([ require('posthtml-to-svg-tags')(), require('posthtml-extend-attrs')() ])
+posthtml([
+        require('posthtml-doctype')('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'),
+        require('posthtml-to-svg-tags')(),
+        require('posthtml-extend-attrs')({
+            attrsTree: { 
+                '.wow' : { 
+                    id: 'wow_id', 
+                    fill: '#4A83B4', 
+                    'fill-rule': 'evenodd' 
+                    'font-family': 'Verdana'
+                }
+            }
+        })
+    ])
     .process(html)
     .then(function(result) {
-        fs.writeFileSync('index.html', result.html);
+        console.log(result.html);
+        // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        // <svg xmlns="http://www.w3.org/2000/svg"><text class="wow" id="wow_id" fill="#4A83B4" fill-rule="evenodd" font-family="Verdana">OMG</text></svg>
     });
 ```
 
