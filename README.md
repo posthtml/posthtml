@@ -26,3 +26,11 @@ posthtml([ require('posthtml-to-svg-tags')(), require('posthtml-extend-attrs')()
 
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) - convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) - extend html tags attributes with custom data and attributes
+
+## Ideas for plugins
+
+- [textr](https://github.com/shuvalov-anton/textr) - typographic framework
+- [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
+
+Something more? ;)
+
