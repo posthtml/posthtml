@@ -1,3 +1,4 @@
+/* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
