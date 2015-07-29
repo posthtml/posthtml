@@ -1,0 +1,9 @@
+{
+    "eqeqeq": true,
+    "expr": true,
+    "maxlen": 120,
+    "undef": true,
+    "unused": true,
+    "esnext": true,
+    "node": true
+}

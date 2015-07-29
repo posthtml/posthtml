@@ -1,10 +1,8 @@
+/* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const html = '<div class="button"><rect/><div class="button__text">Text</div></div>';
-/*eslint-disable */
-const tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
-/*eslint-enable */
 
 function testPluginsArray(nodes, options, done) {
     expect(posthtml([ function(json) { return json; }, function(json) { return json; }])
@@ -19,7 +17,7 @@ function testPluginUse(nodes, options, done) {
     expect(posthtml()
         .use(function(json) { return json; })
         .use(function(json) { return json; })
-        .use(function(json) { })
+        .use(function(json) { }) // jshint ignore: line
         .process(nodes, options)
         .then(result => {
             expect(html).to.eql(result.html);

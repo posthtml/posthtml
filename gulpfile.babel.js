@@ -62,12 +62,6 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-
-gulp.task('test', () => {
-    let mocha = require('gulp-mocha');
-    return gulp.src('test/*.js', { read : false }).pipe(mocha());
-});
-
 // Common
 gulp.task('default', () => {
     console.log('WARNING: Use NPM Scripts');

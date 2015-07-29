@@ -1,9 +1,9 @@
+/* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>';
 const options = { tmplOptions : { shortTags : ['rect'] } };
-
 
 function test(html, done) {
     posthtml().process(html, options).then(result => {
@@ -45,9 +45,7 @@ describe('Set options', () => {
 
 describe('Skip html parsing & use tree from options.', () => {
 
-    /*eslint-disable */
     let tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
-    /*eslint-enable */
 
     it('Set use tree', done => {
         expect(posthtml()
