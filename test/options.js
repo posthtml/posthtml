@@ -26,14 +26,14 @@ describe('Set options', () => {
 
         expect(posthtml()
             .process('')
-            .then(function(result) {
+            .then(result => {
                 result.getOptions().to.eql({});
             })
         );
 
         expect(posthtml()
             .process('', { op: 1 })
-            .then(function(result) {
+            .then(result => {
                 result.getOptions().op.to.eql(1);
             })
         );

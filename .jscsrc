@@ -2,8 +2,12 @@
     "plugins": ["jscs-protein"],
     "excludeFiles": [
         ".git/**",
-        "node_modules/**"
+        "node_modules/**",
+        "coverage/**"
     ],
     "fileExtensions": [".js"],
-    "esnext": true
+    "esnext": true,
+    "requireArrowFunctions": true,
+    "requireShorthandArrowFunctions": true,
+    "requireTemplateStrings": true
 }

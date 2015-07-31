@@ -15,7 +15,7 @@ gulp.task('build:docs', () => {
     let ignore = require('fs').readFileSync('.npmignore').toString()
         .trim().split(/\n+/)
         .concat(['.npmignore', 'index.js', 'package.json'])
-        .map( i => '!' + i );
+        .map( i => `!${i}` );
     return gulp.src(['*'].concat(ignore))
         .pipe(gulp.dest('build'));
 });
@@ -40,7 +40,7 @@ gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 gulp.task('changelog', done => {
     require('conventional-changelog')({
         preset: 'angular'
-    }, function(err, log) {
+    }, (err, log) => {
         if(err) {
             return done(err);
         }
