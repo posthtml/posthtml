@@ -3,7 +3,8 @@
     "excludeFiles": [
         ".git/**",
         "node_modules/**",
-        "coverage/**"
+        "coverage/**",
+        "build/**"
     ],
     "fileExtensions": [".js"],
     "esnext": true,
