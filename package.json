@@ -1,6 +1,6 @@
 {
   "name": "posthtml",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "HTML post processor",
   "keywords": [
     "html",

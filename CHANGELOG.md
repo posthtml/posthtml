@@ -1,3 +1,13 @@
+<a name"0.0.3"></a>
+### 0.0.3 (2015-08-13)
+
+* ***:** upd dependencies ([b1f4f2664106034d6fd530962a4f9bd9c378d17a](https://github.com/posthtml/posthtml/commit/b1f4f2664106034d6fd530962a4f9bd9c378d17a))
+
+#### Features
+
+* **lint:** use jshint ([504f3c06](https://github.com/posthtml/posthtml/commit/504f3c06))
+
+
 <a name"0.0.2"></a>
 ### 0.0.2 (2015-07-02)
 
