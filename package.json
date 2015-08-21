@@ -28,7 +28,7 @@
   "dependencies": {
     "babel": "^5.8.21",
     "bh": "^4.1.1",
-    "html2bemjson": "^1.9.0"
+    "htmlparser2": "^3.8.3"
   },
   "peerDependencies": {},
   "devDependencies": {
