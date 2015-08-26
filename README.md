@@ -18,11 +18,11 @@ posthtml([
         require('posthtml-doctype')('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'),
         require('posthtml-to-svg-tags')(),
         require('posthtml-extend-attrs')({
-            attrsTree: { 
-                '.wow' : { 
-                    id: 'wow_id', 
-                    fill: '#4A83B4', 
-                    'fill-rule': 'evenodd' 
+            attrsTree: {
+                '.wow' : {
+                    id: 'wow_id',
+                    fill: '#4A83B4',
+                    'fill-rule': 'evenodd'
                     'font-family': 'Verdana'
                 }
             }
@@ -34,6 +34,34 @@ posthtml([
         // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         // <svg xmlns="http://www.w3.org/2000/svg"><text class="wow" id="wow_id" fill="#4A83B4" fill-rule="evenodd" font-family="Verdana">OMG</text></svg>
     });
+```
+
+## PostHTML JSON tree example
+
+__input HTML__
+```html
+<a class="animals" href="#">
+    <span class="animals__cat" style="background: url(cat.png)">Cat</span>
+</a>
+```
+
+__Tree in PostHTML__
+```js
+{
+    tag: 'a',
+    attrs: {
+        class: 'animals',
+        href: '#'
+    },
+    content: {
+        tag: 'span',
+        attrs: {
+            class: 'animals__cat',
+            style: 'background: url(cat.png)'
+        },
+        content: 'Cat'
+    }
+}
 ```
 
 ## Plugins
