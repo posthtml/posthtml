@@ -22,7 +22,7 @@ posthtml([
                 '.wow' : {
                     id: 'wow_id',
                     fill: '#4A83B4',
-                    'fill-rule': 'evenodd'
+                    'fill-rule': 'evenodd',
                     'font-family': 'Verdana'
                 }
             }
