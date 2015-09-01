@@ -22,25 +22,6 @@ describe('Set options', () => {
         test('<div class="button">\n<rect/>\n<div class="button__text">Text</div>\n</div>', done);
     });
 
-    it('Get options', done => {
-
-        expect(posthtml()
-            .process('')
-            .then(result => {
-                result.getOptions().to.eql({});
-            })
-        );
-
-        expect(posthtml()
-            .process('', { op: 1 })
-            .then(result => {
-                result.getOptions().op.to.eql(1);
-            })
-        );
-
-        done();
-    });
-
 });
 
 describe('Skip html parsing & use tree from options.', () => {
