@@ -1,9 +1,9 @@
 /* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
-import { minifer, file } from '../util/test.js';
+import { file } from '../util/test.js';
 
-const comments = minifer(file('templates/comments.html'));
+const comments = file('templates/comments.html');
 
 function test(html, reference, done) {
     posthtml().process(html).then(result => {
