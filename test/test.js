@@ -17,8 +17,4 @@ describe('Simple text', () => {
         test(beforeHTML, done);
     });
 
-    it('minifer \\n', done => {
-        test('<div class="button">\n<div class="button__text">Text</div>\n</div>', done);
-    });
-
 });

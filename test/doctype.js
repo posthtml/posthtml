@@ -1,10 +1,10 @@
 /* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
-import { minifer, file } from '../util/test.js';
+import { file } from '../util/test.js';
 
-const doctype = minifer(file('templates/doctype.html'));
-const html = minifer(file('templates/html.html'));
+const doctype = file('templates/doctype.html');
+const html = file('templates/html.html');
 
 function test(html, reference, done) {
     posthtml().process(html).then(result => {

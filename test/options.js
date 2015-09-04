@@ -18,10 +18,6 @@ describe('Set options', () => {
         test(beforeHTML, done);
     });
 
-    it('minifer \\n', done => {
-        test('<div class="button">\n<rect/>\n<div class="button__text">Text</div>\n</div>', done);
-    });
-
 });
 
 describe('Skip html parsing & use tree from options.', () => {
