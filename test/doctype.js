@@ -1,10 +1,10 @@
 /* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
-import { file } from '../util/test.js';
+import path from 'path';
+import fs from 'fs';
 
-const doctype = file('templates/doctype.html');
-const html = file('templates/html.html');
+const doctype = fs.readFileSync(path.resolve(__dirname, 'templates/doctype.html'), 'utf8').toString();
 
 function test(html, reference, done) {
     posthtml().process(html).then(result => {
@@ -17,10 +17,6 @@ describe('Parse Doctype', () => {
 
     it('doctype eqval', done => {
         test(doctype, doctype, done);
-    });
-
-    it('empty doctype', done => {
-        test(html, html, done);
     });
 
 });

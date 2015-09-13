@@ -1,9 +1,10 @@
 /* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
-import { file } from '../util/test.js';
+import path from 'path';
+import fs from 'fs';
 
-const comments = file('templates/comments.html');
+const comments = fs.readFileSync(path.resolve(__dirname, 'templates/comments.html'), 'utf8').toString();
 
 function test(html, reference, done) {
     posthtml().process(html).then(result => {

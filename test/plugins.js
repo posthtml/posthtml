@@ -3,6 +3,22 @@ import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const html = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+const tree = [{
+    attrs: {
+        class: 'button'
+    },
+    content: [
+        { tag: 'rect' },
+        {
+            attrs: {
+                class: 'button__text'
+            },
+            content: [
+                'Text'
+            ]
+        }
+    ]
+}];
 
 function testPluginsArray(nodes, options, done) {
     expect(posthtml([ json => json, json => json ])
@@ -16,8 +32,7 @@ function testPluginsArray(nodes, options, done) {
 function testPluginUse(nodes, options, done) {
     expect(posthtml()
         .use(json => json)
-        .use(json => json)
-        .use(json => { }) // jshint ignore: line
+        .use(json => {}) // jshint ignore: line
         .process(nodes, options)
         .then(result => {
             expect(html).to.eql(result.html);
@@ -34,7 +49,7 @@ describe('Plugins', () => {
         });
 
         it('set options skipParse', done => {
-            testPluginsArray(html, { skipParse : true }, done);
+            testPluginsArray(tree, { skipParse : true }, done);
         });
 
     });
@@ -46,7 +61,7 @@ describe('Plugins', () => {
         });
 
         it('set options skipParse', done => {
-            testPluginUse(html, { skipParse : true }, done);
+            testPluginUse(tree, { skipParse : true }, done);
         });
 
     });
