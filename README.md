@@ -98,7 +98,8 @@ tree.walk(function(node) {
     // do something for node
     let classes = node.attrs && node.attrs.class.split(' ') || [];
     if(classes.includes(className)) {
-        return cb(node);
+        // do something for node
+        return node;
     }
     return node;
 });
