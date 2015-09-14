@@ -1,3 +1,12 @@
+<a name"0.1.0"></a>
+## 0.1.0 (2015-09-14)
+
+
+#### Features
+
+* **api:** base API ([096654a6](https://github.com/posthtml/posthtml/commit/096654a6))
+
+
 <a name"0.0.4"></a>
 ### 0.0.4 (2015-09-13)
 
