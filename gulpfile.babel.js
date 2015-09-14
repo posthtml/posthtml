@@ -50,18 +50,6 @@ gulp.task('changelog', done => {
     });
 });
 
-
-// Lint
-
-gulp.task('lint', () => {
-    let eslint = require('gulp-eslint');
-
-    return gulp.src(['*.js', 'test/*.js'])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
-});
-
 // Common
 gulp.task('default', () => {
     console.log('WARNING: Use NPM Scripts');

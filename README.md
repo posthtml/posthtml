@@ -47,21 +47,85 @@ __input HTML__
 
 __Tree in PostHTML__
 ```js
-{
+[{
     tag: 'a',
     attrs: {
         class: 'animals',
         href: '#'
     },
-    content: {
+    content: [{
         tag: 'span',
         attrs: {
             class: 'animals__cat',
             style: 'background: url(cat.png)'
         },
-        content: 'Cat'
-    }
+        content: ['Cat']
+    }]
+}]
+```
+
+## Create PostHTML plugin
+
+This is a simple function with a single argument
+
+### Example plugin
+
+```javascript
+module.exports = function (tree) {
+
+    // do something for tree
+    tree.match({ tag: 'img' }, function(node) {
+        node = Object.assign(node, { attrs: { class: 'img-wrapped' } }});
+        return {
+            tag: 'span',
+            attrs: { class: 'img-wrapper' },
+            content: node
+        }
+    });
+
+    return tree;
 }
+```
+
+## API
+
+### Walk
+Walk for all nodes in tree, run callback.
+
+#### Example use
+```javascript
+tree.walk(function(node) {
+    // do something for node
+    let classes = node.attrs && node.attrs.class.split(' ') || [];
+    if(classes.includes(className)) {
+        return cb(node);
+    }
+    return node;
+});
+```
+
+### Match
+Find subtree in tree, run callback.
+
+#### Example use
+```javascript
+tree.match({ tag: 'custom-tag' }, function(node) {
+    // do something for node
+    var tag = node.tag;
+    node = Object.assign(node, { tag: 'div', attrs: { class: tag } }});
+    return node
+});
+```
+
+### eachClass
+For each found of class run callback
+
+#### Example use
+```javascript
+tree.eachClass('class-for-delete', function(node) {
+    // do something for node
+    return ''; // delete this node in tree
+});
 ```
 
 ## Plugins
@@ -75,5 +139,6 @@ __Tree in PostHTML__
 - [posthtml-classes](https://github.com/posthtml/posthtml-classes) — Configure node in classes
 - [textr](https://github.com/shuvalov-anton/textr) — Typographic framework
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
+- [mimic](http://peterchon.github.io/mimic/)
 
 Something more? ;)
