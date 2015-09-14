@@ -131,6 +131,7 @@ tree.eachClass('class-for-delete', function(node) {
 
 ## Plugins
 
+- [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — use custom elements now
 - [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — extend html tags doctype
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — extend html tags attributes with custom data and attributes
