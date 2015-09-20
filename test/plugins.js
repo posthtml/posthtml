@@ -2,14 +2,15 @@
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
-const html = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+const html = '<div class="button"><div class="button__text">Text</div></div>';
 const tree = [{
+    tag: 'div',
     attrs: {
         class: 'button'
     },
     content: [
-        { tag: 'rect' },
         {
+            tag: 'div',
             attrs: {
                 class: 'button__text'
             },
