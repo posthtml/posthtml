@@ -67,4 +67,23 @@ describe('Plugins', () => {
 
     });
 
+    it('set options in plugin', done => {
+        let html = '<div class="cls"><br><rect></div>';
+        let ref = '<div class="cls"><br/><rect/></div>';
+
+        function plugin (tree) {
+            tree.options.singleTags = ['rect'];
+            tree.options.closingSingleTag = 'slash';
+            return tree;
+        }
+
+        expect(posthtml()
+            .use(plugin)
+            .process(html)
+            .then(result => {
+                expect(ref).to.eql(result.html);
+                done();
+            }).catch(error => done(error)));
+    });
+
 });
