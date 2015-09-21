@@ -3,7 +3,7 @@ import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>';
-const options = { tmplOptions : { singleTags : ['rect'], closingSingleTag: 'slash' } };
+const options = { singleTags : ['rect'], closingSingleTag: 'slash' };
 
 function test(html, done) {
     posthtml().process(html, options).then(result => {
