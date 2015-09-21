@@ -1,14 +1,17 @@
 {
   "name": "posthtml",
   "version": "0.1.0",
-  "description": "HTML post processor",
+  "description": "HTML/XML post processor",
   "keywords": [
     "html",
+    "xml",
     "postproccessor",
     "parser",
     "transform",
+    "transformations",
     "manipulation",
-    "preprocess"
+    "preprocessor",
+    "processor"
   ],
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [

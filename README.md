@@ -3,11 +3,28 @@
 [![Build Status](https://travis-ci.org/posthtml/posthtml.svg?branch=master)](https://travis-ci.org/posthtml/posthtml)
 [![Coverage Status](https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master)](https://coveralls.io/r/posthtml/posthtml?branch=master)
 
-PostHTML is a tool for transforming HTML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
+PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
 All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
 
 ## Usage
+__Simple example__
+
+``` javascript
+var posthtml = require('posthtml');
+
+var html = '<myComponent><myTitle>Super Title</myTitle><myText>Awesome Text</myText></myComponent>';
+
+posthtml()
+    .use(require('posthtml-custom-elements')())
+    .process(html/*, options */)
+    .then(function(result) {
+        console.log(result.html);
+        // <div class="myComponent"><div class="myTitle">Super Title</div><div class="myText">Awesome Text</div></div>
+    });
+```
+
+__Сomplex example__
 
 ``` javascript
 var posthtml = require('posthtml');
@@ -28,13 +45,57 @@ posthtml([
             }
         })
     ])
-    .process(html)
+    .process(html/*, options */)
     .then(function(result) {
         console.log(result.html);
         // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         // <svg xmlns="http://www.w3.org/2000/svg"><text class="wow" id="wow_id" fill="#4A83B4" fill-rule="evenodd" font-family="Verdana">OMG</text></svg>
     });
 ```
+
+## Options
+
+#### `singleTags`
+Array tags for extend default list single tags
+
+__Default__: `[]`
+
+*Options* `{ singleTags: ['rect', 'custom'] }`
+
+```html
+...
+<div>
+    ...
+    <rect>
+    <custom>
+</div>
+```
+
+
+#### `closingSingleTag`
+Option to specify version closing single tags.
+Accepts values: `default`, `slash`, `tag`.
+
+__Default__: `default`
+
+*Options* `{ closingSingleTag: 'default' }`
+
+```html
+<singletag>
+```
+
+*Options* `{ closingSingleTag: 'slash' }`
+
+```html
+<singletag/>
+```
+
+*Options* `{ closingSingleTag: 'tag' }`
+
+```html
+<singletag></singletag>
+```
+
 
 ## PostHTML JSON tree example
 
@@ -95,7 +156,6 @@ Walk for all nodes in tree, run callback.
 #### Example use
 ```javascript
 tree.walk(function(node) {
-    // do something for node
     let classes = node.attrs && node.attrs.class.split(' ') || [];
     if(classes.includes(className)) {
         // do something for node
@@ -129,15 +189,19 @@ tree.eachClass('class-for-delete', function(node) {
 });
 ```
 
+
 ## Plugins
 
-- [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — use custom elements now
-- [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — extend html tags doctype
-- [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — convert html tags to svg equals
-- [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — extend html tags attributes with custom data and attributes
+- [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — Use custom elements now
+- [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
+- [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
+- [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
 
 ## Ideas for plugins
 
+- [posthtml-include](https://github.com/posthtml/posthtml-include) — Include html file
+- [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
+- [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
 - [posthtml-classes](https://github.com/posthtml/posthtml-classes) — Configure node in classes
 - [textr](https://github.com/shuvalov-anton/textr) — Typographic framework
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
