@@ -50,7 +50,7 @@ describe('Plugins', () => {
         });
 
         it('set options skipParse', done => {
-            testPluginsArray(tree, { skipParse : true }, done);
+            testPluginsArray(tree, { skipParse: true }, done);
         });
 
     });
@@ -62,7 +62,7 @@ describe('Plugins', () => {
         });
 
         it('set options skipParse', done => {
-            testPluginUse(tree, { skipParse : true }, done);
+            testPluginUse(tree, { skipParse: true }, done);
         });
 
     });
@@ -71,7 +71,7 @@ describe('Plugins', () => {
         let html = '<div class="cls"><br><rect></div>';
         let ref = '<div class="cls"><br/><rect/></div>';
 
-        function plugin (tree) {
+        function plugin(tree) {
             tree.options.singleTags = ['rect'];
             tree.options.closingSingleTag = 'slash';
             return tree;

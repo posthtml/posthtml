@@ -1,5 +1,4 @@
 {
-    "plugins": ["jscs-protein"],
     "excludeFiles": [
         ".git/**",
         "node_modules/**",
@@ -10,5 +9,24 @@
     "esnext": true,
     "requireArrowFunctions": true,
     "requireShorthandArrowFunctions": true,
-    "requireTemplateStrings": true
+    "requireTemplateStrings": true,
+    "disallowSpacesInCallExpression": true,
+    "disallowSpaceAfterObjectKeys": true,
+    "disallowNewlineBeforeBlockStatements": true,
+    "disallowMultipleLineBreaks": true,
+    "requireSemicolons": true,
+    "requireFunctionDeclarations": true,
+    "requireCommaBeforeLineBreak": true,
+    "disallowTrailingComma": true,
+    "disallowTrailingWhitespace": true,
+    "disallowSpacesInFunction": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireSpacesInFunction": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInConditionalExpression": {
+        "afterTest": true,
+        "afterConsequent": true
+    }
 }
