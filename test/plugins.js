@@ -2,14 +2,15 @@
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
-const html = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+const html = '<div class="button"><div class="button__text">Text</div></div>';
 const tree = [{
+    tag: 'div',
     attrs: {
         class: 'button'
     },
     content: [
-        { tag: 'rect' },
         {
+            tag: 'div',
             attrs: {
                 class: 'button__text'
             },
@@ -64,6 +65,25 @@ describe('Plugins', () => {
             testPluginUse(tree, { skipParse : true }, done);
         });
 
+    });
+
+    it('set options in plugin', done => {
+        let html = '<div class="cls"><br><rect></div>';
+        let ref = '<div class="cls"><br/><rect/></div>';
+
+        function plugin (tree) {
+            tree.options.singleTags = ['rect'];
+            tree.options.closingSingleTag = 'slash';
+            return tree;
+        }
+
+        expect(posthtml()
+            .use(plugin)
+            .process(html)
+            .then(result => {
+                expect(ref).to.eql(result.html);
+                done();
+            }).catch(error => done(error)));
     });
 
 });

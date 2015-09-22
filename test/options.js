@@ -3,7 +3,7 @@ import posthtml from '../index.js';
 import { expect } from 'chai';
 
 const beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>';
-const options = { tmplOptions : { shortTags : ['rect'] } };
+const options = { singleTags : ['rect'], closingSingleTag: 'slash' };
 
 function test(html, done) {
     posthtml().process(html, options).then(result => {
@@ -22,11 +22,22 @@ describe('Set options', () => {
 
 describe('Skip html parsing & use tree from options.', () => {
 
-    let tree = [{"block":"button","content":[{"tag":"rect"},{"block":"button","elem":"text","content":["Text"]}]}];
+    let tree = [{
+            tag: 'div',
+            attrs: { class: 'button' },
+            content:[
+                { tag: 'rect' },
+                {
+                    attrs: { class: 'button__text' },
+                    content: ['Text']
+                }
+            ]
+        }];
 
     it('Set use tree', done => {
+        options.skipParse = true;
         expect(posthtml()
-            .process(tree, { skipParse : true })
+            .process(tree, options)
             .then(result => {
                 expect(beforeHTML).to.eql(result.html);
                 done();
