@@ -178,12 +178,12 @@ tree.match({ tag: 'custom-tag' }, function(node) {
 });
 ```
 
-### eachClass
+### matchClass
 For each found of class run callback
 
 #### Example use
 ```javascript
-tree.eachClass('class-for-delete', function(node) {
+tree.matchClass('class-for-delete', function(node) {
     // do something for node
     return ''; // delete this node in tree
 });
