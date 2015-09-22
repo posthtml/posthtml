@@ -41,7 +41,6 @@
     "gulp-json-editor": "^2.2.1",
     "isparta": "^3.0.3",
     "jscs": "^2.0.0",
-    "jscs-protein": "git://github.com/theprotein/jscs-protein.git#1d22e08ca767958a95b79f3bad6449fb2fa9f496",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "mversion": "^1.10.0"

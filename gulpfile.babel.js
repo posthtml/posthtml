@@ -34,7 +34,6 @@ gulp.task('build:package', () => {
 
 gulp.task('build', ['build:lib', 'build:docs', 'build:package']);
 
-
 // Changelog
 
 gulp.task('changelog', done => {
