@@ -36,7 +36,7 @@ describe('API', () => {
         }
     });
 
-    it('eachClass', done => {
+    it('matchClass', done => {
         let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
         let referense = '<div class="cls"><header class="test" id="index1"><div class="cls test" id="index2">Text</div></header></div>';
 
@@ -44,7 +44,7 @@ describe('API', () => {
 
         function plugin(tree) {
             var num = 0;
-            tree.eachClass('test', (node) => {
+            tree.matchClass('test', (node) => {
                 num++;
                 let attrs = node.attrs;
                 node.attrs = Object.assign({}, attrs, {
