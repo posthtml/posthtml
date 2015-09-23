@@ -1,3 +1,24 @@
+<a name"0.2.0"></a>
+## 0.2.0 (2015-09-23)
+
+
+#### Bug Fixes
+
+* **test:** fix typo & cleanup ([e33ba7fa](https://github.com/posthtml/posthtml/commit/e33ba7fa))
+
+
+#### Features
+
+* **api:**
+  * rename eachClass to matchClass ([efc9b349](https://github.com/posthtml/posthtml/commit/efc9b349))
+  * use options in plugin ([0d8c4555](https://github.com/posthtml/posthtml/commit/0d8c4555))
+* **docs:** `options` docs write in readme ([d72c2741](https://github.com/posthtml/posthtml/commit/d72c2741))
+* **lint:** own jscs config ([74332ab8](https://github.com/posthtml/posthtml/commit/74332ab8))
+* **parser:**
+  * toHtml tests ([789ee545](https://github.com/posthtml/posthtml/commit/789ee545))
+  * own render html func ([1520e5ff](https://github.com/posthtml/posthtml/commit/1520e5ff))
+
+
 <a name"0.1.0"></a>
 ## 0.1.0 (2015-09-14)
 
