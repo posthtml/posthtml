@@ -4,22 +4,21 @@ import { toTree, toHtml } from '../lib/parser.js';
 import path from 'path';
 import fs from 'fs';
 
-const applecom = fs.readFileSync(path.resolve(__dirname, 'templates/applecom.html'), 'utf8').toString();
-const parserHtml = fs.readFileSync(path.resolve(__dirname, 'templates/parser.html'), 'utf8').toString();
-const parserTree = require('./templates/parser.js');
+const html = fs.readFileSync(path.resolve(__dirname, 'templates/parser.html'), 'utf8').toString();
+const tree = require('./templates/parser.js');
 
 describe('Parser', () => {
 
     describe('toTree', () => {
         it('html to tree', done => {
-            expect(parserTree).to.eql(toTree(parserHtml));
+            expect(tree).to.eql(toTree(html));
             done();
         });
     });
 
     describe('toHtml', () => {
         it('tree to html', done => {
-            expect(parserHtml).to.eql(toHtml(parserTree));
+            expect(html).to.eql(toHtml(tree));
             done();
         });
 
@@ -66,7 +65,7 @@ describe('Parser', () => {
 
                 it('slash', done => {
                     let tree = [{ tag: 'img' }];
-                    let html = '<img/>';
+                    let html = '<img />';
 
                     expect(html).to.eql(toHtml(tree, { closingSingleTag: 'slash'}));
                     done();
@@ -84,7 +83,7 @@ describe('Parser', () => {
     });
 
     it('toTree => toHtml', done => {
-        expect(applecom).to.eql(toHtml(toTree(applecom)));
+        expect(html).to.eql(toHtml(toTree(html)));
         done();
     });
 

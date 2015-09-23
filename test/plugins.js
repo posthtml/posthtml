@@ -69,7 +69,7 @@ describe('Plugins', () => {
 
     it('set options in plugin', done => {
         let html = '<div class="cls"><br><rect></div>';
-        let ref = '<div class="cls"><br/><rect/></div>';
+        let ref = '<div class="cls"><br /><rect /></div>';
 
         function plugin(tree) {
             tree.options.singleTags = ['rect'];
