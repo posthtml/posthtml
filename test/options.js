@@ -2,7 +2,7 @@
 import posthtml from '../index.js';
 import { expect } from 'chai';
 
-const beforeHTML = '<div class="button"><rect/><div class="button__text">Text</div></div>';
+const beforeHTML = '<div class="button"><rect /><div class="button__text">Text</div></div>';
 const options = { singleTags: ['rect'], closingSingleTag: 'slash' };
 
 function test(html, done) {
