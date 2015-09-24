@@ -192,8 +192,9 @@ tree.matchClass('class-for-delete', function(node) {
 
 ## Plugins
 
-- [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — Use custom elements now
-- [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
+- [posthtml-textr](https://npmjs.com/package/posthtml-textr) — Modular typographic framework
+- [posthtml-custom-elements](https://npmjs.com/package/posthtml-custom-elements) — Use custom elements now
+- [posthtml-doctype](https://npmjs.com/package/posthtml-doctype) — Extend html tags doctype
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
 
@@ -203,7 +204,6 @@ tree.matchClass('class-for-delete', function(node) {
 - [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
 - [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
 - [posthtml-classes](https://github.com/posthtml/posthtml-classes) — Configure node in classes
-- [textr](https://github.com/shuvalov-anton/textr) — Typographic framework
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
 - [mimic](http://peterchon.github.io/mimic/)
 
