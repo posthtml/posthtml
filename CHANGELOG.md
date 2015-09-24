@@ -1,3 +1,15 @@
+<a name"0.2.1"></a>
+### 0.2.1 (2015-09-24)
+
+
+#### Features
+
+* **api:** optimize matchClass func ([b0311cd7](https://github.com/posthtml/posthtml/commit/b0311cd7))
+* **docs:**
+  * Write example Gulp plugin for PostHTML in docs ([b9c8ceff](https://github.com/posthtml/posthtml/commit/b9c8ceff))
+  * Add Textr plugin to Readme ([bdd3270b](https://github.com/posthtml/posthtml/commit/bdd3270b))
+
+
 <a name"0.2.0"></a>
 ## 0.2.0 (2015-09-23)
 
