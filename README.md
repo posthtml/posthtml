@@ -8,9 +8,15 @@ PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is
 All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
 
 ## Usage
+
+#### Install PostHTML
+```
+npm install --save-dev posthtml
+```
+
 __Simple example__
 
-``` javascript
+```javascript
 var posthtml = require('posthtml');
 
 var html = '<myComponent><myTitle>Super Title</myTitle><myText>Awesome Text</myText></myComponent>';
@@ -26,7 +32,7 @@ posthtml()
 
 __Сomplex example__
 
-``` javascript
+```javascript
 var posthtml = require('posthtml');
 
 var html = '<html><body><p class="wow">OMG</p></body></html>';
@@ -51,6 +57,22 @@ posthtml([
         // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         // <svg xmlns="http://www.w3.org/2000/svg"><text class="wow" id="wow_id" fill="#4A83B4" fill-rule="evenodd" font-family="Verdana">OMG</text></svg>
     });
+```
+
+## Gulp plugin for PostHTML
+
+#### Install [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
+```
+npm install --save-dev gulp-posthtml
+```
+
+```javascript
+gulp.task('html', function () {
+    var posthtml = require('gulp-posthtml');
+    return gulp.src('src/**/*.html')
+        .pipe( posthtml([ require('posthtml-custom-elements')() ]/*, options */) )
+        .pipe( gulp.dest('build/') );
+});
 ```
 
 ## Options
