@@ -27,6 +27,11 @@ describe('Parser', () => {
             done();
         });
 
+        it('skip templates tag', done => {
+            expect('text').to.eql(toHtml({ tag: false, content: ['text'] }));
+            done();
+        });
+
         it('default single tags', done => {
             const TAGS = ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'menuitem', 'meta', 'param', 'source', 'track', 'wbr'];
             let tree = TAGS.map(tag => ({ tag: tag }));
