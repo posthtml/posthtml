@@ -216,6 +216,7 @@ tree.matchClass('class-for-delete', function(node) {
 
 - [posthtml-textr](https://npmjs.com/package/posthtml-textr) — Modular typographic framework
 - [posthtml-custom-elements](https://npmjs.com/package/posthtml-custom-elements) — Use custom elements now
+- [posthtml-style-to-file](https://npmjs.com/package/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
 - [posthtml-doctype](https://npmjs.com/package/posthtml-doctype) — Extend html tags doctype
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
