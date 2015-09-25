@@ -1,3 +1,12 @@
+<a name"0.3.0"></a>
+## 0.3.0 (2015-09-25)
+
+
+#### Features
+
+* **parser:** skip template if tag === false ([3cc9e59f](https://github.com/posthtml/posthtml/commit/3cc9e59f))
+
+
 <a name"0.2.1"></a>
 ### 0.2.1 (2015-09-24)
 
