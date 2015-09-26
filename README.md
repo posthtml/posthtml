@@ -224,6 +224,7 @@ tree.matchClass('class-for-delete', function(node) {
 
 ## Ideas for plugins
 
+- [retext](https://github.com/wooorm/retext) — Extensible system for analysing and manipulating natural language
 - [posthtml-include](https://github.com/posthtml/posthtml-include) — Include html file
 - [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
 - [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
