@@ -7,22 +7,34 @@
     ],
     "fileExtensions": [".js"],
     "esnext": true,
-    "requireArrowFunctions": true,
-    "requireShorthandArrowFunctions": true,
-    "requireTemplateStrings": true,
+    "validateParameterSeparator": ", ",
     "disallowSpacesInCallExpression": true,
     "disallowSpaceAfterObjectKeys": true,
     "disallowNewlineBeforeBlockStatements": true,
     "disallowMultipleLineBreaks": true,
+    "disallowTrailingComma": true,
+    "disallowTrailingWhitespace": true,
+    "disallowNamedUnassignedFunctions": true,
+    "disallowSpacesInFunctionDeclaration": {
+        "beforeOpeningRoundBrace": true
+    },
+    "disallowSpacesInFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "requireArrowFunctions": true,
+    "requireShorthandArrowFunctions": true,
+    "requireTemplateStrings": true,
     "requireSemicolons": true,
     "requireFunctionDeclarations": true,
     "requireCommaBeforeLineBreak": true,
-    "disallowTrailingComma": true,
-    "disallowTrailingWhitespace": true,
-    "disallowSpacesInFunction": {
-        "beforeOpeningRoundBrace": true
+    "requireSpacesInConditionalExpression": {
+        "afterTest": true,
+        "afterConsequent": true
     },
-    "requireSpacesInFunction": {
+    "requireSpacesInFunctionDeclaration": {
         "beforeOpeningCurlyBrace": true
+    },
+    "disallowSpacesInFunctionExpression": {
+        "beforeOpeningRoundBrace": true
     }
 }

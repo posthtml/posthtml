@@ -40,7 +40,7 @@
     "gulp-babel": "^5.1.0",
     "gulp-json-editor": "^2.2.1",
     "isparta": "^3.0.3",
-    "jscs": "^2.0.0",
+    "jscs": "^2.1.1",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "mversion": "^1.10.0"
