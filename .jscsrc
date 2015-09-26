@@ -24,9 +24,5 @@
     },
     "requireSpacesInFunction": {
         "beforeOpeningCurlyBrace": true
-    },
-    "disallowSpacesInConditionalExpression": {
-        "afterTest": true,
-        "afterConsequent": true
     }
 }
