@@ -109,7 +109,7 @@ __Default__: `default`
 *Options* `{ closingSingleTag: 'slash' }`
 
 ```html
-<singletag/>
+<singletag />
 ```
 
 *Options* `{ closingSingleTag: 'tag' }`
