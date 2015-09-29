@@ -21,7 +21,7 @@ describe('API', () => {
 
         function plugin(tree) {
             var num = 0;
-            tree.walk((node) => {
+            tree.walk(node => {
                 num++;
                 let classes = node.attrs && node.attrs.class.split(' ') || [];
                 if(classes.includes('test')) {
@@ -44,7 +44,7 @@ describe('API', () => {
 
         function plugin(tree) {
             var num = 0;
-            tree.matchClass('test', (node) => {
+            tree.matchClass('test', node => {
                 num++;
                 let attrs = node.attrs;
                 node.attrs = Object.assign({}, attrs, {
@@ -64,7 +64,7 @@ describe('API', () => {
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match({ tag: 'header' }, (node) => ({ tag: 'span', content: node }));
+                tree.match({ tag: 'header' }, node => ({ tag: 'span', content: node }));
                 return tree;
             }
         });
@@ -77,7 +77,7 @@ describe('API', () => {
 
             function plugin(tree) {
                 var num = 0;
-                tree.match({ tag: 'div' }, (node) => {
+                tree.match({ tag: 'div' }, node => {
                     num++;
                     let attrs = node.attrs;
                     node.attrs = Object.assign({}, attrs, {
@@ -103,12 +103,27 @@ describe('API', () => {
 
         it('Array', done => {
             let html = '<div><header><div>Text</div></header></div>';
+            let referense = '<span><span><span>Text</span></span></span>';
+
+            test(html, referense, plugin, {}, done);
+
+            function plugin(tree) {
+                tree.match([{ tag: 'div'}, { tag: 'header'}], node => {
+                    node.tag = 'span';
+                    return node;
+                });
+                return tree;
+            }
+        });
+
+        it('Content', done => {
+            let html = '<div><header><div>Text</div></header></div>';
             let referense = '<div><header><div>Other text</div></header></div>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match({ content: ['Text']}, (node) => {
+                tree.match({ content: ['Text']}, node => {
                     node.content = ['Other text'];
                     return node;
                 });
@@ -124,7 +139,7 @@ describe('API', () => {
                 test(html, referense, plugin, {}, done);
 
                 function plugin(tree) {
-                    tree.match({ content: true }, (node) => {
+                    tree.match({ content: true }, node => {
                         if(node.tag === 'header') {
                             node.content = ['Other text'];
                         }
