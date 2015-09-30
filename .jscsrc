@@ -3,7 +3,8 @@
         ".git/**",
         "node_modules/**",
         "coverage/**",
-        "build/**"
+        "build/**",
+        "test/templates/**"
     ],
     "fileExtensions": [".js"],
     "esnext": true,
