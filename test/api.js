@@ -24,7 +24,7 @@ describe('API', () => {
             tree.walk(node => {
                 num++;
                 let classes = node.attrs && node.attrs.class.split(' ') || [];
-                if(classes.includes('test')) {
+                if (classes.includes('test')) {
                     let attrs = node.attrs;
                     node.attrs = Object.assign({}, attrs, {
                         id: `index${num}`
@@ -140,7 +140,7 @@ describe('API', () => {
 
                 function plugin(tree) {
                     tree.match({ content: true }, node => {
-                        if(node.tag === 'header') {
+                        if (node.tag === 'header') {
                             node.content = ['Other text'];
                         }
                         return node;

@@ -40,7 +40,7 @@ gulp.task('changelog', done => {
     require('conventional-changelog')({
         preset: 'angular'
     }, (err, log) => {
-        if(err) {
+        if (err) {
             return done(err);
         }
 

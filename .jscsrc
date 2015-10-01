@@ -11,6 +11,8 @@
     "validateParameterSeparator": ", ",
     "disallowSpacesInCallExpression": true,
     "disallowSpaceAfterObjectKeys": true,
+    "disallowSpaceBeforeSemicolon": true,
+    "disallowSpaceBeforePostfixUnaryOperators": true,
     "disallowNewlineBeforeBlockStatements": true,
     "disallowMultipleLineBreaks": true,
     "disallowTrailingComma": true,
@@ -22,8 +24,27 @@
     "disallowSpacesInFunctionExpression": {
         "beforeOpeningRoundBrace": true
     },
+    "requireSpaceBeforeBlockStatements": 1,
+    "requireSpaceAfterKeywords": [
+        "do",
+        "for",
+        "if",
+        "else",
+        "switch",
+        "case",
+        "try",
+        "catch",
+        "void",
+        "while",
+        "with",
+        "return",
+        "typeof"
+    ],
+    "requireSpaceAfterBinaryOperators": true,
     "requireArrowFunctions": true,
     "requireShorthandArrowFunctions": true,
+    "requireSpacesInForStatement": true,
+    "requireSpaceBetweenArguments": true,
     "requireTemplateStrings": true,
     "requireSemicolons": true,
     "requireFunctionDeclarations": true,
@@ -35,7 +56,10 @@
     "requireSpacesInFunctionDeclaration": {
         "beforeOpeningCurlyBrace": true
     },
-    "disallowSpacesInFunctionExpression": {
-        "beforeOpeningRoundBrace": true
+    "requireSpacesInConditionalExpression": {
+        "afterTest": true,
+        "beforeConsequent": true,
+        "afterConsequent": true,
+        "beforeAlternate": true
     }
 }
