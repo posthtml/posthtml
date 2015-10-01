@@ -1,3 +1,4 @@
 --inline-diffs
 --reporter spec
 --require babel/register
+--require test/init.js
