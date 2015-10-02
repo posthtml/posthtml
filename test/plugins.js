@@ -107,6 +107,17 @@ describe('Plugins', () => {
                 .should.throw(/FooBar/);
         });
 
+        it('should have api methods after returning new root', () =>
+            posthtml()
+                .use(tree => ({ tag: 'new-root', content: tree }))
+                .use(tree => {
+                    tree.should.have.property('walk');
+                    tree.should.have.property('match');
+                    tree.should.have.property('matchClass');
+                    tree.walk.should.be.a('function');
+                })
+                .process('<div></div>', { sync: true }));
+
     });
 
     describe('async mode', () => {
@@ -146,6 +157,17 @@ describe('Plugins', () => {
                 .use(() => Promise.reject(new Error('FooBar')))
                 .process(tree, { skipParse: true })
                 .should.be.rejectedWith(Error, /FooBar/));
+
+        it('should have api methods after returning new root', () =>
+            posthtml()
+                .use(tree => Promise.resolve({ tag: 'new-root', content: tree }))
+                .use(tree => {
+                    tree.should.have.property('walk');
+                    tree.should.have.property('match');
+                    tree.should.have.property('matchClass');
+                    tree.walk.should.be.a('function');
+                })
+                .process('<div></div>'));
 
     });
 
