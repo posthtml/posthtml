@@ -177,7 +177,7 @@ export default tree => {
 
 ## class PostHTML
 
-### #parse ({String} html): {PostHTMLTree}
+### .parse ({String} html): {PostHTMLTree}
 Parses HTML string into a PostHTMLTree object.
 
 #### Example
