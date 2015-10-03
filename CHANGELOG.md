@@ -1,3 +1,26 @@
+<a name"0.4.0"></a>
+## 0.4.0 (2015-10-03)
+
+
+#### Bug Fixes
+
+* **lint:** fix jscsrc ([a534e0a0](https://github.com/posthtml/posthtml/commit/a534e0a0))
+* **posthtml:**
+  * extend new object with api methods on each plugin call ([82e096ea](https://github.com/posthtml/posthtml/commit/82e096ea))
+  * code style fix ([d1b3484d](https://github.com/posthtml/posthtml/commit/d1b3484d))
+  * code style fix ([26e6d7e3](https://github.com/posthtml/posthtml/commit/26e6d7e3))
+
+
+#### Features
+
+* **api:** handle array matchers ([335b5aac](https://github.com/posthtml/posthtml/commit/335b5aac))
+* **docs:**
+  * write array matchers example in jsdocs/readme ([a14b7675](https://github.com/posthtml/posthtml/commit/a14b7675))
+  * add logo to readme ([78740c34](https://github.com/posthtml/posthtml/commit/78740c34))
+* **lint:** upd jscs ([cef42d5d](https://github.com/posthtml/posthtml/commit/cef42d5d))
+* **posthtml:** implement truly sync and async modes, and tests for them ([337243f5](https://github.com/posthtml/posthtml/commit/337243f5))
+
+
 <a name"0.3.0"></a>
 ## 0.3.0 (2015-09-25)
 
