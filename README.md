@@ -113,7 +113,7 @@ This is a simple function with a single argument
 ### Synchronous plugin example
 
 ```javascript
-module.exports = function(tree) {
+module.exports = function pluginName(tree) {
     // do something for tree
     tree.match({ tag: 'img' }, function(node) {
         node = Object.assign(node, { attrs: { class: 'img-wrapped' } }});
@@ -130,7 +130,7 @@ module.exports = function(tree) {
 
 ```javascript
 var request = request('request');
-module.exports = function(tree, cb) {
+module.exports = function pluginName(tree, cb) {
     var tasks = 0;
     tree.match({ tag: 'a' }, function(node) {
         // skip local anchors
@@ -303,7 +303,7 @@ tree.walk(function(node) {
 });
 ```
 
-### .match ({Object}, {function(PostHTMLNode): PostHTMLNode})
+### .match ({Object|String}, {function(PostHTMLNode): PostHTMLNode|String})
 Find subtree in tree, run callback.
 
 #### Example
@@ -318,10 +318,27 @@ tree.match({ tag: 'custom-tag' }, function(node) {
 });
 ```
 
+Support Array matchers
+
+#### Example
+
+```javascript
+tree.match([{ tag: 'b' }, { tag: 'strong' }], function(node) {
+    var style = 'font-weight: bold;';
+    node.tag = 'span';
+    node.attrs ? (
+        node.attrs.style ? (
+            node.attrs.style += style
+        ) : node.attrs.style = style;
+    ) : node.attrs = { style: style };
+    return node
+});
+```
+
 ### .matchClass ({String}, {function(PostHTMLNode): PostHTMLNode})
 For each found of class run callback
 
-#### Example use
+#### Example
 
 ```javascript
 tree.matchClass('class-for-delete', function(node) {
