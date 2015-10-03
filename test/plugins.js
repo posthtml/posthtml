@@ -89,7 +89,7 @@ describe('Plugins', () => {
             let ph = posthtml();
             ph.use(foobarPlugin)
                 .process.bind(ph, tree, { skipParse: true, sync: true })
-                .should.throw(/Can't process synch.*plugin: foobar/);
+                .should.throw(/Can’t process synch.*plugin: foobarPlugin/);
         });
 
         it('should throw on async plugin with Promise', () => {
@@ -97,7 +97,7 @@ describe('Plugins', () => {
             let ph = posthtml();
             ph.use(foobarPlugin)
                 .process.bind(ph, tree, { skipParse: true, sync: true })
-                .should.throw(/Can't process synch.*plugin: foobar/);
+                .should.throw(/Can’t process synch.*plugin: foobarPlugin/);
         });
 
         it('should catch plugin runtime throws', () => {

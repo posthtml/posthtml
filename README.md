@@ -64,16 +64,17 @@ posthtml([
 ## Gulp plugin for PostHTML
 
 #### Install [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
+
 ```
 npm install --save-dev gulp-posthtml
 ```
 
 ```javascript
-gulp.task('html', function () {
+gulp.task('html', function() {
     var posthtml = require('gulp-posthtml');
     return gulp.src('src/**/*.html')
-        .pipe( posthtml([ require('posthtml-custom-elements')() ]/*, options */) )
-        .pipe( gulp.dest('build/') );
+        .pipe(posthtml([ require('posthtml-custom-elements')() ]/*, options */))
+        .pipe(gulp.dest('build/'));
 });
 ```
 
@@ -87,7 +88,7 @@ __input HTML__
 ```
 
 __Tree in PostHTML (PostHTMLTree)__
-```js
+```javascript
 [{
     tag: 'a',
     attrs: {
@@ -112,8 +113,7 @@ This is a simple function with a single argument
 ### Synchronous plugin example
 
 ```javascript
-module.exports = function (tree) {
-
+module.exports = function pluginName(tree) {
     // do something for tree
     tree.match({ tag: 'img' }, function(node) {
         node = Object.assign(node, { attrs: { class: 'img-wrapped' } }});
@@ -123,15 +123,14 @@ module.exports = function (tree) {
             content: node
         }
     });
-
-    return tree;
 };
 ```
+
 ### Classic asynchronous plugin example
 
-```
+```javascript
 var request = request('request');
-module.exports = function (tree, cb) {
+module.exports = function pluginName(tree, cb) {
     var tasks = 0;
     tree.match({ tag: 'a' }, function(node) {
         // skip local anchors
@@ -143,8 +142,8 @@ module.exports = function (tree, cb) {
             if (resp.statusCode >= 400) {
                 node.attrs.class += ' ' + 'Erroric';
             }
-            if (res.headers.contentType) {
-                node.attrs.class += ' content-type_' + res.headers.contentType;
+            if (resp.headers.contentType) {
+                node.attrs.class += ' content-type_' + resp.headers.contentType;
             }
             done();
         });
@@ -160,12 +159,12 @@ module.exports = function (tree, cb) {
 
 ### Promised asynchronous plugin example
 
-```
+```javascript
 import { PostHTML } from 'posthtml';
 import request from 'request';
 
-export default (tree) => {
-    return new Promise((resolve) => {
+export default tree => {
+    return new Promise(resolve => {
         tree.match({ tag: 'user-info' }, (node) => {
             request(`/api/user-info?${node.attrs.dataUserId}`, (err, resp, body) {
                 if (!err && body) node.content = PostHTML.parse(body);
@@ -182,7 +181,8 @@ export default (tree) => {
 Parses HTML string into a PostHTMLTree object.
 
 #### Example
-```js
+
+```javascript
 import { PostHTML } from 'posthtml';
 
 PostHTML.parse('<div></div>'); // [{ tag: 'div' }]
@@ -192,11 +192,12 @@ PostHTML.parse('<div></div>'); // [{ tag: 'div' }]
 Adds a plugin into the flow.
 
 ### Example
-```js
+
+```javascript
 var posthtml = require('posthtml');
 var ph = posthtml()
-    .use(function (json) {
-        return { tag: 'div', content: json };
+    .use(function(tree) {
+        return { tag: 'div', content: tree };
     });
 ```
 
@@ -206,9 +207,10 @@ Applies all plugins to the incoming `html` object.
 Returns (eventually) an Object with modified html and/or tree.
 
 #### Example
-```js
+
+```javascript
 var ph = posthtml()
-    .process('<div></div>', { /* options */ });
+    .process('<div></div>'/*, { options }*/);
 ```
 
 #### Options
@@ -260,12 +262,13 @@ Skips input html parsing process.
 
 __Default__: `null`
 
-```js
+```javascript
 posthtml()
-    .use(function (tree) { tree.tag = 'section'; })
+    .use(function(tree) { tree.tag = 'section'; })
     .process({ tag: 'div' }, { skipParse: true })
-    .then(function (res) {
-        res.tree; // 'section'
+    .then(function (result) {
+        result.tree; // { tag: 'section' }
+        result.html; // <section></section>
     });
 ```
 
@@ -274,11 +277,11 @@ Try to run plugins synchronously. Throws if some plugins are async.
 
 __Default__: `null`
 
-```js
+```javascript
 posthtml()
-    .use(function (tree) { tree.tag = 'section'; })
+    .use(function(tree) { tree.tag = 'section'; })
     .process('<div>foo</div>', { sync: true })
-    .tree; // 'section'
+    .html; // <section>foo</section>
 ```
 
 
@@ -288,6 +291,7 @@ posthtml()
 Walk for all nodes in tree, run callback.
 
 #### Example
+
 ```javascript
 tree.walk(function(node) {
     let classes = node.attrs && node.attrs.class.split(' ') || [];
@@ -299,10 +303,11 @@ tree.walk(function(node) {
 });
 ```
 
-### .match ({Object}, {function(PostHTMLNode): PostHTMLNode})
+### .match ({Object|String}, {function(PostHTMLNode): PostHTMLNode|String})
 Find subtree in tree, run callback.
 
 #### Example
+
 ```javascript
 tree.match({ tag: 'custom-tag' }, function(node) {
     // do something for node
@@ -313,10 +318,28 @@ tree.match({ tag: 'custom-tag' }, function(node) {
 });
 ```
 
+Support Array matchers
+
+#### Example
+
+```javascript
+tree.match([{ tag: 'b' }, { tag: 'strong' }], function(node) {
+    var style = 'font-weight: bold;';
+    node.tag = 'span';
+    node.attrs ? (
+        node.attrs.style ? (
+            node.attrs.style += style
+        ) : node.attrs.style = style;
+    ) : node.attrs = { style: style };
+    return node
+});
+```
+
 ### .matchClass ({String}, {function(PostHTMLNode): PostHTMLNode})
 For each found of class run callback
 
-#### Example use
+#### Example
+
 ```javascript
 tree.matchClass('class-for-delete', function(node) {
     // do something for node
