@@ -1,3 +1,12 @@
+<a name"0.4.1"></a>
+### 0.4.1 (2015-10-04)
+
+
+#### Bug Fixes
+
+* **posthtml:** fix build ES2015 ([829ba49c](https://github.com/posthtml/posthtml/commit/829ba49c))
+
+
 <a name"0.4.0"></a>
 ## 0.4.0 (2015-10-03)
 
