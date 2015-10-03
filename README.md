@@ -160,14 +160,14 @@ module.exports = function pluginName(tree, cb) {
 ### Promised asynchronous plugin example
 
 ```javascript
-import { PostHTML } from 'posthtml';
+import { toTree } from 'posthtml/lib/api';
 import request from 'request';
 
 export default tree => {
     return new Promise(resolve => {
         tree.match({ tag: 'user-info' }, (node) => {
             request(`/api/user-info?${node.attrs.dataUserId}`, (err, resp, body) {
-                if (!err && body) node.content = PostHTML.parse(body);
+                if (!err && body) node.content = toTree(body);
                 resolve(tree);
             });
         });
@@ -179,14 +179,6 @@ export default tree => {
 
 ### .parse ({String} html): {PostHTMLTree}
 Parses HTML string into a PostHTMLTree object.
-
-#### Example
-
-```javascript
-import { PostHTML } from 'posthtml';
-
-PostHTML.parse('<div></div>'); // [{ tag: 'div' }]
-```
 
 ### .use ({Function} plugin): {PostHTML}
 Adds a plugin into the flow.
