@@ -35,6 +35,8 @@
   "peerDependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "chai-subset": "^1.1.0",
     "conventional-changelog": "0.0.17",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
@@ -52,7 +54,7 @@
     "clean": "rm -rf build coverage",
     "build": "npm run clean && npm run test && gulp build",
     "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html --report lcov node_modules/.bin/_mocha",
-    "lint": "jshint . && jscs .",
+    "lint": "jshint . && jscs -v .",
     "release-patch": "mversion patch",
     "release-minor": "mversion minor",
     "release-major": "mversion major"
