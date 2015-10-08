@@ -318,7 +318,7 @@ tree.walk(function(node) {
 });
 ```
 
-### .match ({Object|String}, {function(PostHTMLNode): PostHTMLNode|String})
+### .match ({Object|String|RegExp}, {function(PostHTMLNode): PostHTMLNode|String})
 Find subtree in tree, run callback.
 
 #### Example

@@ -131,6 +131,18 @@ describe('API', () => {
             }
         });
 
+        it('RegExp', done => {
+            let html = '<div><!-- replace this --><header><div>Text</div></header></div>';
+            let referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
+
+            test(html, referense, plugin, {}, done);
+
+            function plugin(tree) {
+                tree.match(/<!--.*-->/g, () => 'RegExp cool!');
+                return tree;
+            }
+        });
+
         describe('Boolean', () => {
             it('true', done => {
                 let html = '<div><header><div>Text</div></header></div>';
