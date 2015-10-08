@@ -361,3 +361,7 @@ tree.matchClass('class-for-delete', function(node) {
     return ''; // delete this node in tree
 });
 ```
+
+## License
+
+MIT
