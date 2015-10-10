@@ -81,10 +81,11 @@ gulp.task('html', function() {
 ## Plugins
 
 - [posthtml-bem](https://github.com/rajdee/posthtml-bem) — Support BEM naming in html structure
-- [posthtml-textr](https://npmjs.com/package/posthtml-textr) — Modular typographic framework
-- [posthtml-custom-elements](https://npmjs.com/package/posthtml-custom-elements) — Use custom elements now
-- [posthtml-style-to-file](https://npmjs.com/package/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
-- [posthtml-doctype](https://npmjs.com/package/posthtml-doctype) — Extend html tags doctype
+- [posthtml-retext](https://github.com/voischev/posthtml-retext) — Extensible system for analysing and manipulating natural language
+- [posthtml-textr](https://github.com/voischev/posthtml-textr) — Modular typographic framework
+- [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — Use custom elements now
+- [posthtml-style-to-file](https://github.com/posthtml/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
+- [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
 - [posthtml-include](https://github.com/posthtml/posthtml-include) — Include html file
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
@@ -92,7 +93,6 @@ gulp.task('html', function() {
 
 ## Ideas for plugins
 
-- [retext](https://github.com/wooorm/retext) — Extensible system for analysing and manipulating natural language
 - [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
 - [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
