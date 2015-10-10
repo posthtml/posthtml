@@ -1,3 +1,17 @@
+<a name"0.5.0"></a>
+## 0.5.0 (2015-10-10)
+
+
+#### Features
+
+* **api:** support RegExp matchers ([783c5663](https://github.com/posthtml/posthtml/commit/783c5663))
+* **docs:**
+  * add project-stub link. Fix long titles. Upd PostHTMLTree example ([57f48334](https://github.com/posthtml/posthtml/commit/57f48334))
+  * add posthtml-retext info & upd links ([541dbc03](https://github.com/posthtml/posthtml/commit/541dbc03))
+  * add license info to readme ([32300239](https://github.com/posthtml/posthtml/commit/32300239))
+  * add posthtml-bem plugin in readme ([2eea4b19](https://github.com/posthtml/posthtml/commit/2eea4b19))
+
+
 <a name"0.4.1"></a>
 ### 0.4.1 (2015-10-04)
 
