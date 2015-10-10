@@ -78,6 +78,8 @@ gulp.task('html', function() {
 });
 ```
 
+Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
+
 ## Plugins
 
 - [posthtml-bem](https://github.com/rajdee/posthtml-bem) — Support BEM naming in html structure
@@ -103,14 +105,14 @@ Something more? ;)
 
 ## PostHTML JSON tree example
 
-__input HTML__
+#### input HTML
 ```html
 <a class="animals" href="#">
     <span class="animals__cat" style="background: url(cat.png)">Cat</span>
 </a>
 ```
 
-__Tree in PostHTML (PostHTMLTree)__
+#### Tree in PostHTML (PostHTMLTree)
 ```javascript
 [{
     tag: 'a',
@@ -118,14 +120,18 @@ __Tree in PostHTML (PostHTMLTree)__
         class: 'animals',
         href: '#'
     },
-    content: [{
-        tag: 'span',
-        attrs: {
-            class: 'animals__cat',
-            style: 'background: url(cat.png)'
+    content: [
+        '\n    ',
+            {
+            tag: 'span',
+            attrs: {
+                class: 'animals__cat',
+                style: 'background: url(cat.png)'
+            },
+            content: ['Cat']
         },
-        content: ['Cat']
-    }]
+        '\n'
+    ]
 }]
 ```
 
@@ -200,10 +206,12 @@ export default tree => {
 
 ## class PostHTML
 
-### .parse ({String} html): {PostHTMLTree}
+### .parse({String} html)
 Parses HTML string into a PostHTMLTree object.
 
-### .use ({Function} plugin): {PostHTML}
+__Returns__: `{PostHTMLTree}`
+
+### .use({Function} plugin)
 Adds a plugin into the flow.
 
 ### Example
@@ -216,10 +224,13 @@ var ph = posthtml()
     });
 ```
 
-### .process ({String|PostHTMLTree} html, {Object} options): {{tree: PostHTMLTree, html: String}}
+### .process({String|PostHTMLTree} html[, {Object} options])
 Applies all plugins to the incoming `html` object.
 
-Returns (eventually) an Object with modified html and/or tree.
+__Returns__: `{{tree: PostHTMLTree, html: String}}`
+
+(eventually) an Object with modified html and/or tree.
+
 
 #### Example
 
