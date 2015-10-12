@@ -40,7 +40,6 @@ var posthtml = require('posthtml');
 var html = '<html><body><p class="wow">OMG</p></body></html>';
 
 posthtml([
-        require('posthtml-doctype')('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'),
         require('posthtml-to-svg-tags')(),
         require('posthtml-extend-attrs')({
             attrsTree: {
@@ -56,7 +55,6 @@ posthtml([
     .process(html/*, options */)
     .then(function(result) {
         console.log(result.html);
-        // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         // <svg xmlns="http://www.w3.org/2000/svg"><text class="wow" id="wow_id" fill="#4A83B4" fill-rule="evenodd" font-family="Verdana">OMG</text></svg>
     });
 ```
@@ -211,15 +209,21 @@ export default tree => {
 
 ## class PostHTML
 
-### .parse({String} html)
+### .parse()
+
+__Arguments__: `{String} html`
+
 Parses HTML string into a PostHTMLTree object.
 
 __Returns__: `{PostHTMLTree}`
 
-### .use({Function} plugin)
+### .use()
+
+__Arguments__: `{Function} plugin`
+
 Adds a plugin into the flow.
 
-### Example
+#### Example
 
 ```javascript
 var posthtml = require('posthtml');
@@ -229,13 +233,15 @@ var ph = posthtml()
     });
 ```
 
-### .process({String|PostHTMLTree} html[, {Object} options])
+### .process()
+
+__Arguments__: `{String|PostHTMLTree} html[, {Object} options]`
+
 Applies all plugins to the incoming `html` object.
 
 __Returns__: `{{tree: PostHTMLTree, html: String}}`
 
 (eventually) an Object with modified html and/or tree.
-
 
 #### Example
 
@@ -244,9 +250,9 @@ var ph = posthtml()
     .process('<div></div>'/*, { options }*/);
 ```
 
-#### Options
+## Options
 
-##### `singleTags`
+### `singleTags`
 Array tags for extend default list single tags
 
 __Default__: `[]`
@@ -263,7 +269,7 @@ __Default__: `[]`
 ```
 
 
-##### `closingSingleTag`
+### `closingSingleTag`
 Option to specify version closing single tags.
 Accepts values: `default`, `slash`, `tag`.
 
@@ -288,7 +294,7 @@ __Default__: `default`
 ```
 
 
-##### `skipParse`
+### `skipParse`
 Skips input html parsing process.
 
 __Default__: `null`
@@ -303,7 +309,7 @@ posthtml()
     });
 ```
 
-##### `sync`
+### `sync`
 Try to run plugins synchronously. Throws if some plugins are async.
 
 __Default__: `null`
@@ -318,7 +324,10 @@ posthtml()
 
 ## class API
 
-### .walk ({function(PostHTMLNode): PostHTMLNode})
+### .walk()
+
+__Arguments__: `{function(PostHTMLNode|String): PostHTMLNode|String}`
+
 Walk for all nodes in tree, run callback.
 
 #### Example
@@ -334,7 +343,10 @@ tree.walk(function(node) {
 });
 ```
 
-### .match ({Object|String|RegExp}, {function(PostHTMLNode): PostHTMLNode|String})
+### .match()
+
+__Arguments__: `{Object|String|RegExp}, {function(PostHTMLNode|String): PostHTMLNode|String}`
+
 Find subtree in tree, run callback.
 
 #### Example
@@ -366,7 +378,10 @@ tree.match([{ tag: 'b' }, { tag: 'strong' }], function(node) {
 });
 ```
 
-### .matchClass ({String}, {function(PostHTMLNode): PostHTMLNode})
+### .matchClass()
+
+__Arguments__: `{String}, {function(PostHTMLNode): PostHTMLNode}`
+
 For each found of class run callback
 
 #### Example
