@@ -92,6 +92,7 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
+- [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 
 ## Ideas for plugins
 
