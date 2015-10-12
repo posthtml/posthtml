@@ -131,16 +131,33 @@ describe('API', () => {
             }
         });
 
-        it('RegExp', done => {
-            let html = '<div><!-- replace this --><header><div>Text</div></header></div>';
-            let referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
+        describe('RegExp', () => {
+            it('String', done => {
+                let html = '<div><!-- replace this --><header><div>Text</div></header></div>';
+                let referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
 
-            test(html, referense, plugin, {}, done);
+                test(html, referense, plugin, {}, done);
 
-            function plugin(tree) {
-                tree.match(/<!--.*-->/g, () => 'RegExp cool!');
-                return tree;
-            }
+                function plugin(tree) {
+                    tree.match(/<!--.*-->/g, () => 'RegExp cool!');
+                    return tree;
+                }
+            });
+
+            it('Object', done => {
+                let html = '<div><header style="color: red; border: 3px solid #000"><div>Text</div></header></div>';
+                let referense = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>';
+
+                test(html, referense, plugin, {}, done);
+
+                function plugin(tree) {
+                    tree.match({ attrs: { style: /border.+solid/gi }}, node => {
+                        node.attrs.style = node.attrs.style.replace('color: red; ', '');
+                        return node;
+                    });
+                    return tree;
+                }
+            });
         });
 
         describe('Boolean', () => {
