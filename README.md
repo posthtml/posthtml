@@ -103,6 +103,9 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 
 Something more? ;)
 
+## Helpers
+
+- [posthml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
 
 ## PostHTML JSON tree example
 
