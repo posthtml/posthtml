@@ -85,6 +85,7 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 - [posthtml-textr](https://github.com/voischev/posthtml-textr) — Modular typographic framework
 - [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — Use custom elements now
 - [posthtml-style-to-file](https://github.com/posthtml/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
+- [posthtml-classes](https://github.com/rajdee/posthtml-classes) — Get a list of classes from HTML
 - [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
 - [posthtml-include](https://github.com/posthtml/posthtml-include) — Include html file
 - [posthtml-to-svg-tags](https://github.com/theprotein/posthtml-to-svg-tags) — Convert html tags to svg equals
