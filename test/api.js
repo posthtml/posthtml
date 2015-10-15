@@ -13,29 +13,6 @@ function test(nodes, referense, fn, options, done) {
 
 describe('API', () => {
 
-    it('walk', done => {
-        let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
-        let referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
-
-        test(html, referense, plugin, {}, done);
-
-        function plugin(tree) {
-            var num = 0;
-            tree.walk(node => {
-                num++;
-                let classes = node.attrs && node.attrs.class.split(' ') || [];
-                if (classes.includes('test')) {
-                    let attrs = node.attrs;
-                    node.attrs = Object.assign({}, attrs, {
-                        id: `index${num}`
-                    });
-                }
-                return node;
-            });
-            return tree;
-        }
-    });
-
     it('matchClass', done => {
         let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
         let referense = '<div class="cls"><header class="test" id="index1"><div class="cls test" id="index2">Text</div></header></div>';
@@ -54,6 +31,89 @@ describe('API', () => {
             });
             return tree;
         }
+    });
+
+    describe('walk', () => {
+        it('node', done => {
+            let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
+            let referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
+
+            test(html, referense, plugin, {}, done);
+
+            function plugin(tree) {
+                var num = 0;
+                tree.walk(node => {
+                    num++;
+                    let classes = node.attrs && node.attrs.class.split(' ') || [];
+                    if (classes.includes('test')) {
+                        let attrs = node.attrs;
+                        node.attrs = Object.assign({}, attrs, {
+                            id: `index${num}`
+                        });
+                    }
+                    return node;
+                });
+                return tree;
+            }
+        });
+
+        it('parent', done => {
+            let html = [
+                    '<a>',
+                        '<b>',
+                            '<c>',
+                                'Test1',
+                            '</c>',
+                            '<c>',
+                                'Test2',
+                            '</c>',
+                            '<c>',
+                                'Test3',
+                            '</c>',
+                        '</b>',
+                    '</a>'
+                ].join(''),
+                res = '';
+
+            test(html, 'undefinedabcbcbc', plugin, {}, done);
+
+            function plugin(tree) {
+                tree.walk((node, parent) => {
+                    res += parent && parent.tag;
+                    return node;
+                });
+                return res;
+            }
+        });
+
+        it('index', done => {
+            let html = [
+                    '<a>',
+                        '<b>',
+                            '<c>',
+                                '<d></d>',
+                                '<d></d>',
+                                '<d></d>',
+                            '</c>',
+                            '<c></c>',
+                            '<c></c>',
+                            '<c></c>',
+                            '<c></c>',
+                        '</b>',
+                    '</a>'
+                ].join(''),
+                res = '';
+
+            test(html, '0000121234', plugin, {}, done);
+
+            function plugin(tree) {
+                tree.walk((node, parent, index) => {
+                    res += index;
+                    return node;
+                });
+                return res;
+            }
+        });
     });
 
     describe('match', () => {
@@ -128,6 +188,68 @@ describe('API', () => {
                     return node;
                 });
                 return tree;
+            }
+        });
+
+        it('parent', done => {
+            let html = [
+                    '<a>',
+                        '<b>',
+                            '<a>',
+                                '<a>',
+                                    'Test1',
+                                '</a>',
+                            '</a>',
+                            '<a>',
+                                'Test2',
+                            '</a>',
+                            '<a>',
+                                'Test3',
+                            '</a>',
+                        '</b>',
+                    '</a>'
+                ].join(''),
+                res = '';
+
+            test(html, 'undefinedbabb', plugin, {}, done);
+
+            function plugin(tree) {
+                tree.match({ tag: 'a' }, (node, parent) => {
+                    res += parent && parent.tag;
+                    return node;
+                });
+                return res;
+            }
+        });
+
+        it('index', done => {
+            let html = [
+                    '<a>',
+                        '<b></b>',
+                        '<c></c>',
+                        '<a></a>',
+                        '<a></a>',
+                        '<a>',
+                            '<b></b>',
+                            '<c></c>',
+                            '<a>',
+                                '<b></b>',
+                                '<a></a>',
+                            '</a>',
+                        '</a>',
+                        '<a></a>',
+                    '</a>'
+                ].join(''),
+                res = [];
+
+            test(html, '0234215', plugin, {}, done);
+
+            function plugin(tree) {
+                tree.match({ tag: 'a' }, (node, parent, index) => {
+                    res.push(index);
+                    return node;
+                });
+                return res.join('');
             }
         });
 
