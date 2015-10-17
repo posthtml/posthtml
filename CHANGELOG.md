@@ -1,3 +1,14 @@
+<a name"0.6.0"></a>
+## 0.6.0 (2015-10-17)
+
+
+#### Features
+
+* ***:** fix code style ([7a743f78](https://github.com/posthtml/posthtml/commit/7a743f78))
+* **api:** Support RegExp in matcher Object ([e3bd9918](https://github.com/posthtml/posthtml/commit/e3bd9918))
+* **docs:** add matchClass deprecated info ([14f1757e](https://github.com/posthtml/posthtml/commit/14f1757e))
+
+
 <a name"0.5.0"></a>
 ## 0.5.0 (2015-10-10)
 
