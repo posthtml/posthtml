@@ -381,6 +381,8 @@ tree.match([{ tag: 'b' }, { tag: 'strong' }], function(node) {
 
 ### .matchClass()
 
+*DEPRECATED*
+
 __Arguments__: `{String}, {function(PostHTMLNode): PostHTMLNode}`
 
 For each found of class run callback
