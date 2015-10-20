@@ -379,23 +379,6 @@ tree.match([{ tag: 'b' }, { tag: 'strong' }], function(node) {
 });
 ```
 
-### .matchClass()
-
-*DEPRECATED*
-
-__Arguments__: `{String}, {function(PostHTMLNode): PostHTMLNode}`
-
-For each found of class run callback
-
-#### Example
-
-```javascript
-tree.matchClass('class-for-delete', function(node) {
-    // do something for node
-    return ''; // delete this node in tree
-});
-```
-
 ## License
 
 MIT

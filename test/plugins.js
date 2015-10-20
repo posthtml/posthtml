@@ -113,7 +113,6 @@ describe('Plugins', () => {
                 .use(tree => {
                     tree.should.have.property('walk');
                     tree.should.have.property('match');
-                    tree.should.have.property('matchClass');
                     tree.walk.should.be.a('function');
                 })
                 .process('<div></div>', { sync: true }));
@@ -164,7 +163,6 @@ describe('Plugins', () => {
                 .use(tree => {
                     tree.should.have.property('walk');
                     tree.should.have.property('match');
-                    tree.should.have.property('matchClass');
                     tree.walk.should.be.a('function');
                 })
                 .process('<div></div>'));

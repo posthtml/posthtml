@@ -36,26 +36,6 @@ describe('API', () => {
         }
     });
 
-    it('matchClass', done => {
-        let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
-        let referense = '<div class="cls"><header class="test" id="index1"><div class="cls test" id="index2">Text</div></header></div>';
-
-        test(html, referense, plugin, {}, done);
-
-        function plugin(tree) {
-            var num = 0;
-            tree.matchClass('test', node => {
-                num++;
-                let attrs = node.attrs;
-                node.attrs = Object.assign({}, attrs, {
-                    id: `index${num}`
-                });
-                return node;
-            });
-            return tree;
-        }
-    });
-
     describe('match', () => {
         it('Wrap node', done => {
             let html = '<div><header><div>Text</div></header></div>';
