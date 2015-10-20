@@ -30,7 +30,8 @@
   ],
   "dependencies": {
     "babel": "^5.8.21",
-    "htmlparser2": "^3.8.3"
+    "posthtml-parser": "^0.1.0",
+    "posthtml-render": "^1.0.0"
   },
   "peerDependencies": {},
   "devDependencies": {
