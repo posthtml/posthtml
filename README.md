@@ -107,6 +107,11 @@ Something more? ;)
 
 - [posthml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
 
+## Dependency
+
+- [posthtml-parser](https://github.com/posthtml/posthtml-parser) — Parser HTML/XML to PostHTMLTree
+- [posthtml-render](https://github.com/posthtml/posthtml-render) — Render PostHTMLTree to HTML/XML
+
 ## PostHTML JSON tree example
 
 #### input HTML
