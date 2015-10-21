@@ -1,3 +1,14 @@
+<a name"0.7.0"></a>
+## 0.7.0 (2015-10-21)
+
+
+#### Features
+
+* ***:** new dependencies·for posthtml-parser posthtml-render ([a5bc312b](https://github.com/posthtml/posthtml/commit/a5bc312b))
+* **api:** delete matchClass method ([912f72ad](https://github.com/posthtml/posthtml/commit/912f72ad))
+* **docs:** add dependency info to readme ([6c3419cf](https://github.com/posthtml/posthtml/commit/6c3419cf))
+
+
 <a name"0.6.0"></a>
 ## 0.6.0 (2015-10-17)
 
