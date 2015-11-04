@@ -13,6 +13,20 @@ function test(nodes, referense, fn, options, done) {
 
 describe('API', () => {
 
+    it('chaining', done => {
+        test('<a></a><a></a><a></a>', '<c></c><c></c><c></c>', plugin, {}, done);
+
+        function plugin(tree) {
+            tree
+                .walk(node => node)
+                .walk(node => node)
+                .match({ tag: 'a' }, () => ({ tag: 'b' }))
+                .match({ tag: 'b' }, () => ({ tag: 'c' }));
+
+            return tree;
+        }
+    });
+
     it('walk', done => {
         let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
         let referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
