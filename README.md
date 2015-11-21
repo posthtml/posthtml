@@ -82,16 +82,16 @@ Also it's work with other view engine. Callback in `app.engine` is called by `re
 app.engine('jade', function (path, options, callback) {
     // PostHTML plugins
     var plugins = [
-        require('posthtml-bem')(),                  
+        require('posthtml-bem')(),
         require('posthtml-textr')({ locale: 'ru'}, [
-            require('typographic-ellipses'), 
+            require('typographic-ellipses'),
             require('typographic-single-spaces'),
             require('typographic-quotes')
         ])
     ];
-    
-    var html = require('jade').renderFile(path, options); 
-    
+
+    var html = require('jade').renderFile(path, options);
+
     posthtml(plugins)
         .process(html)
         .then(function (result) {
@@ -125,10 +125,10 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
+- [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 
 ## Ideas for plugins
 
-- [posthtml-inline-css](https://github.com/posthtml/posthtml-inline-css) — Inline CSS
 - [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
 - [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
