@@ -75,7 +75,39 @@ gulp.task('html', function() {
         .pipe(gulp.dest('build/'));
 });
 ```
+## PostHTML with Jade engine in Expressjs
 
+Also it's work with other view engine. Callback in `app.engine` is called by `res.render()` to render the template code.
+```javascript
+app.engine('jade', function (path, options, callback) {
+    // PostHTML plugins
+    var plugins = [
+        require('posthtml-bem')(),                  
+        require('posthtml-textr')({ locale: 'ru'}, [
+            require('typographic-ellipses'), 
+            require('typographic-single-spaces'),
+            require('typographic-quotes')
+        ])
+    ];
+    
+    var html = require('jade').renderFile(path, options); 
+    
+    posthtml(plugins)
+        .process(html)
+        .then(function (result) {
+            if (typeof callback === 'function') {
+                var res;
+                try {
+                    res = result.html;
+                } catch (ex) {
+                    return callback(ex);
+                }
+                return callback(null, res);
+            }
+        });
+})
+app.set('view engine', 'jade');
+```
 Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 
 ## Plugins
