@@ -92,10 +92,10 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 - [posthtml-extend-attrs](https://github.com/theprotein/posthtml-extend-attrs) — Extend html tags attributes with custom data and attributes
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
+- [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 
 ## Ideas for plugins
 
-- [posthtml-inline-css](https://github.com/posthtml/posthtml-inline-css) — Inline CSS
 - [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
 - [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
 - [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
