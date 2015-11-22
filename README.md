@@ -125,6 +125,7 @@ Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
+- [posthtml-web-component](https://github.com/island205/posthtml-web-component) — Web Component ServerSide Rending, Component as Service in Server
 - [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 
 ## Ideas for plugins
