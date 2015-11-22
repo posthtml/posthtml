@@ -249,14 +249,6 @@ export default tree => {
 
 ## class PostHTML
 
-### .parse()
-
-__Arguments__: `{String} html`
-
-Parses HTML string into a PostHTMLTree object.
-
-__Returns__: `{PostHTMLTree}`
-
 ### .use()
 
 __Arguments__: `{Function} plugin`
