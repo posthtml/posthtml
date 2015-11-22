@@ -70,6 +70,12 @@ describe('Plugins', () => {
                 .should.containSubset({ html, tree });
         });
 
+        it('should run plugins sync-ly, call processSync helper', () => {
+            posthtml([ json => json ])
+                .processSync(tree, { skipParse: true })
+                .should.containSubset({ html, tree });
+        });
+
         it('should flow sync-ly', () =>
             posthtml()
                 .use(() => ({ x: '1' }))

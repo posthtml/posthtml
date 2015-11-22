@@ -271,6 +271,27 @@ __Arguments__: `{String|PostHTMLTree} html[, {Object} options]`
 
 Applies all plugins to the incoming `html` object.
 
+if `options.sync = false`
+
+__Returns__: `Promise: {{tree: PostHTMLTree, html: String}}`
+
+if `options.sync = true`
+
+__Returns__: `{{tree: PostHTMLTree, html: String}}`
+
+(eventually) an Object with modified html and/or tree.
+
+### .processSync()
+
+Helper for call `process` in sync mode
+
+__Arguments__: `{String|PostHTMLTree} html[, {Object} options]`
+
+`options.sync = true` by default in options
+
+Try to run plugins synchronously. Throws if some plugins are async.
+Applies all plugins to the incoming `html` object.
+
 __Returns__: `{{tree: PostHTMLTree, html: String}}`
 
 (eventually) an Object with modified html and/or tree.
