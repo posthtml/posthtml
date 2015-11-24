@@ -1,3 +1,19 @@
+<a name"0.8.0"></a>
+## 0.8.0 (2015-11-24)
+
+
+#### Bug Fixes
+
+* **docs:** delete parse section ([16511096](https://github.com/posthtml/posthtml/commit/16511096))
+
+
+#### Features
+
+* ***:** upd nodejs deps in travis.yml ([481378db](https://github.com/posthtml/posthtml/commit/481378db))
+* **api:** chaining ([03080a6e](https://github.com/posthtml/posthtml/commit/03080a6e))
+* **docs:** upd plugin sections in Readme ([c69bc2b9](https://github.com/posthtml/posthtml/commit/c69bc2b9))
+
+
 <a name"0.7.0"></a>
 ## 0.7.0 (2015-10-21)
 
