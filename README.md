@@ -115,9 +115,12 @@ app.set('view engine', 'jade');
 ## Plugins
 
 - [posthtml-bem](https://github.com/rajdee/posthtml-bem) — Support BEM naming in html structure
+- [posthtml-postcss](https://github.com/posthtml/posthtml-postcss) — Use [PostCSS](https://github.com/postcss/postcss) in HTML document
 - [posthtml-retext](https://github.com/voischev/posthtml-retext) — Extensible system for analysing and manipulating natural language
 - [posthtml-textr](https://github.com/voischev/posthtml-textr) — Modular typographic framework
 - [posthtml-custom-elements](https://github.com/posthtml/posthtml-custom-elements) — Use custom elements now
+- [posthtml-web-component](https://github.com/island205/posthtml-web-component) — Web Component ServerSide Rending, Component as Service in Server
+- [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 - [posthtml-style-to-file](https://github.com/posthtml/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
 - [posthtml-classes](https://github.com/rajdee/posthtml-classes) — Get a list of classes from HTML
 - [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
@@ -127,8 +130,6 @@ app.set('view engine', 'jade');
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
-- [posthtml-web-component](https://github.com/island205/posthtml-web-component) — Web Component ServerSide Rending, Component as Service in Server
-- [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 
 ## Ideas for plugins
 
