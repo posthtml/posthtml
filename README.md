@@ -78,6 +78,41 @@ gulp.task('html', function() {
 
 Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 
+## Grunt plugin for PostHTML
+
+#### Install [grunt-posthtml](https://www.npmjs.com/package/grunt-posthtml)
+
+```
+npm install --save-dev grunt-posthtml
+```
+
+```javascript
+posthtml: {
+    options: {
+        use: [
+            require('posthtml-head-elements')({
+                headElements: 'test/config/head.json'
+            }),
+            require('posthtml-doctype')({
+                doctype: 'HTML 5'
+            }),
+            require('posthtml-include')({
+                encoding: 'utf-8'
+            })
+        ]
+    },
+    build: {
+        files: [{
+            expand: true,
+            dot: true,
+            cwd: 'test/html/',
+            src: ['*.html'],
+            dest: 'test/tmp/'
+        }]
+    }
+}
+```
+
 ## PostHTML with Jade engine in Expressjs
 
 Also it's work with other view engine. Callback in `app.engine` is called by `res.render()` to render the template code.
