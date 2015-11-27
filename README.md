@@ -165,6 +165,7 @@ app.set('view engine', 'jade');
 - [posthtml-modular-css](https://github.com/admdh/posthtml-modular-css) — Makes css modular
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
+- [posthtml-prefix-class](https://github.com/stevenbenisek/posthtml-prefix-class) — Prefix class names
 
 ## Ideas for plugins
 
