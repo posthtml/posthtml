@@ -166,6 +166,7 @@ app.set('view engine', 'jade');
 - [posthtml-static-react](https://github.com/rasmusfl0e/posthtml-static-react) — Render custom elements as static React components
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
 - [posthtml-prefix-class](https://github.com/stevenbenisek/posthtml-prefix-class) — Prefix class names
+- [posthtml-collect-inline-styles](https://github.com/totora0155/posthtml-collect-inline-styles) — Collect inline styles and insert to head tag
 
 ## Ideas for plugins
 
