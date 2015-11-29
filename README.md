@@ -272,14 +272,14 @@ module.exports = function pluginName(tree, cb) {
 ### Promised asynchronous plugin example
 
 ```javascript
-import { toTree } from 'posthtml/lib/api';
+import parser from 'posthtml-parser';
 import request from 'request';
 
 export default tree => {
     return new Promise(resolve => {
         tree.match({ tag: 'user-info' }, (node) => {
             request(`/api/user-info?${node.attrs.dataUserId}`, (err, resp, body) {
-                if (!err && body) node.content = toTree(body);
+                if (!err && body) node.content = parser(body);
                 resolve(tree);
             });
         });
