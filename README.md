@@ -179,7 +179,7 @@ Something more? ;)
 
 ## Helpers
 
-- [posthml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
+- [posthtml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
 
 ## Dependency
 
