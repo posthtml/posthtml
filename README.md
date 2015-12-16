@@ -167,6 +167,9 @@ app.set('view engine', 'jade');
 - [posthtml-head-elements](https://github.com/TCotton/posthtml-head-elements) — Store head elements (title, script, link, base and meta) in a JSON file and render them into the document during the build process
 - [posthtml-prefix-class](https://github.com/stevenbenisek/posthtml-prefix-class) — Prefix class names
 - [posthtml-collect-inline-styles](https://github.com/totora0155/posthtml-collect-inline-styles) — Collect inline styles and insert to head tag
+- [posthtml-transformer](https://github.com/flashlizi/posthtml-transformer) – process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.
+- [posthtml-inline-assets](https://github.com/jonathantneal/posthtml-inline-assets) – Inline external scripts, styles, and images in HTML
+- [posthtml-schemas](https://github.com/jonathantneal/posthtml-schemas) – Add schema.org microdata to your markup super easy
 
 ## Ideas for plugins
 
@@ -181,6 +184,7 @@ Something more? ;)
 
 - [posthtml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
 - [posthtml-attrs-parser](https://github.com/maltsev/posthtml-attrs-parser) - Better API to work with PostHTML attrs.
+- [posthtml-plugin-boilerplate](https://github.com/jonathantneal/posthtml-plugin-boilerplate) – PostHTML Plugin Boilerplate
 
 ## Dependency
 
@@ -221,7 +225,9 @@ Something more? ;)
 
 ## Create PostHTML plugin
 
-This is a simple function with a single argument
+This is a simple function with a single argument.
+
+> Use [posthtml-plugin-boilerplate](https://github.com/jonathantneal/posthtml-plugin-boilerplate) boilerplate for create new plugin.
 
 ### Synchronous plugin example
 
