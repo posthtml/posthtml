@@ -1,4 +1,6 @@
 # PostHTML
+
+[![Join the chat at https://gitter.im/posthtml/posthtml](https://badges.gitter.im/posthtml/posthtml.svg)](https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/posthtml.svg)](http://badge.fury.io/js/posthtml)
 [![Build Status](https://travis-ci.org/posthtml/posthtml.svg?branch=master)](https://travis-ci.org/posthtml/posthtml?branch=master)
 [![Coverage Status](https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master)](https://coveralls.io/r/posthtml/posthtml?branch=master)
