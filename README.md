@@ -172,6 +172,7 @@ app.set('view engine', 'jade');
 - [posthtml-transformer](https://github.com/flashlizi/posthtml-transformer) – process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.
 - [posthtml-inline-assets](https://github.com/jonathantneal/posthtml-inline-assets) – Inline external scripts, styles, and images in HTML
 - [posthtml-schemas](https://github.com/jonathantneal/posthtml-schemas) – Add schema.org microdata to your markup super easy
+- [posthtml-extend](https://github.com/maltsev/posthtml-extend) — Templates extending (Jade-like)
 
 ## Ideas for plugins
 
