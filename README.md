@@ -159,6 +159,7 @@ app.set('view engine', 'jade');
 - [posthtml-web-component](https://github.com/island205/posthtml-web-component) — Web Component ServerSide Rending, Component as Service in Server
 - [posthtml-inline-css](https://github.com/maltsev/posthtml-inline-css) — CSS Inliner
 - [posthtml-style-to-file](https://github.com/posthtml/posthtml-style-to-file) — Save HTML style nodes and attributes to CSS file
+- [posthtml-px2rem](https://github.com/weixin/posthtml-px2rem) — Change px to rem in HTML inline CSS
 - [posthtml-classes](https://github.com/rajdee/posthtml-classes) — Get a list of classes from HTML
 - [posthtml-doctype](https://github.com/posthtml/posthtml-doctype) — Extend html tags doctype
 - [posthtml-include](https://github.com/posthtml/posthtml-include) — Include html file
