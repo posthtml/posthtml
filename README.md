@@ -174,6 +174,7 @@ app.set('view engine', 'jade');
 - [posthtml-inline-assets](https://github.com/jonathantneal/posthtml-inline-assets) – Inline external scripts, styles, and images in HTML
 - [posthtml-schemas](https://github.com/jonathantneal/posthtml-schemas) – Add schema.org microdata to your markup super easy
 - [posthtml-extend](https://github.com/maltsev/posthtml-extend) — Templates extending (Jade-like)
+- [posthtml-img-autosize](https://github.com/maltsev/posthtml-img-autosize) — Auto setting the width and height of \<img\>
 
 ## Ideas for plugins
 
