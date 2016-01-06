@@ -175,6 +175,9 @@ app.set('view engine', 'jade');
 - [posthtml-schemas](https://github.com/jonathantneal/posthtml-schemas) – Add schema.org microdata to your markup super easy
 - [posthtml-extend](https://github.com/maltsev/posthtml-extend) — Templates extending (Jade-like)
 - [posthtml-img-autosize](https://github.com/maltsev/posthtml-img-autosize) — Auto setting the width and height of \<img\>
+- [posthtml-aria-tabs](https://github.com/jonathantneal/posthtml-aria-tabs) — Write accessible tabs with minimal markup
+- [posthtml-lorem](https://github.com/jonathantneal/posthtml-lorem) — Add lorem ipsum placeholder text to any document
+- [posthtml-md](https://github.com/jonathantneal/posthtml-md) — Easily use context-sensitive markdown within HTML
 
 ## Ideas for plugins
 
