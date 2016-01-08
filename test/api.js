@@ -1,6 +1,7 @@
 /* jshint mocha: true, maxlen: false */
 import posthtml from '../index.js';
 import { expect } from 'chai';
+import { walk, match } from '../lib/api';
 
 function test(nodes, referense, fn, options, done) {
     expect(posthtml([].concat(fn))
@@ -183,6 +184,20 @@ describe('API', () => {
                     return tree;
                 }
             });
+        });
+    });
+
+    describe('import API', () => {
+        it('walk', () => {
+            let tree = ['test', { tag: 'a', content: ['find'] }, { tag: 'a' }];
+            walk.bind(tree)(() => 'a');
+            expect(['a', 'a', 'a']).to.eql(tree);
+        });
+
+        it('match', () => {
+            let tree = [{ tag: 'a', content: ['find'] }, { tag: 'a' }];
+            match.bind(tree)({ tag: 'a', content: true }, () => 'a');
+            expect(['a', { tag: 'a' }]).to.eql(tree);
         });
     });
 
