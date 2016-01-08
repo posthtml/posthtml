@@ -1,3 +1,21 @@
+<a name"0.8.1"></a>
+### 0.8.1 (2016-01-08)
+
+
+#### Bug Fixes
+
+* **api:** fix binds tree for import API ([a8f25007](https://github.com/posthtml/posthtml/commit/a8f25007))
+* **docs:** fix readme ([cd61bc11](https://github.com/posthtml/posthtml/commit/cd61bc11))
+
+
+#### Features
+
+* **docs:**
+  * add more plugins in plugin list ([52bfcad2](https://github.com/posthtml/posthtml/commit/52bfcad2))
+  * add Gitter chat badge ([97ba9847](https://github.com/posthtml/posthtml/commit/97ba9847))
+  * add new plugins link & add plugin boilerplate link ([40644039](https://github.com/posthtml/posthtml/commit/40644039))
+
+
 <a name"0.8.0"></a>
 ## 0.8.0 (2015-11-24)
 
