@@ -151,7 +151,7 @@ app.set('view engine', 'jade');
 
 ## Plugins
 
-You can find all of the PostHTML plugins in the [searchable catalog](http://maltsev.github.io/posthtml-plugins/).
+We have also the [searchable catalog](http://maltsev.github.io/posthtml-plugins/) of the PostHTML plugins. 
 
 - [posthtml-bem](https://github.com/rajdee/posthtml-bem) — Support BEM naming in html structure
 - [posthtml-postcss](https://github.com/posthtml/posthtml-postcss) — Use [PostCSS](https://github.com/postcss/postcss) in HTML document
