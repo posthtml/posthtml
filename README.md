@@ -149,6 +149,9 @@ app.engine('jade', function (path, options, callback) {
 app.set('view engine', 'jade');
 ```
 
+## CLI
+- [postcss-cli](https://github.com/GitScrum/posthtml-cli)
+
 ## Plugins
 
 Take a look at the [searchable catalog](http://maltsev.github.io/posthtml-plugins/) of the PostHTML plugins. 
