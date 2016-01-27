@@ -150,7 +150,7 @@ app.set('view engine', 'jade');
 ```
 
 ## CLI
-- [postcss-cli](https://github.com/GitScrum/posthtml-cli)
+- [posthtml-cli](https://github.com/GitScrum/posthtml-cli)
 
 ## Plugins
 
