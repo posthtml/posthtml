@@ -3,11 +3,9 @@
         ".git/**",
         "node_modules/**",
         "coverage/**",
-        "build/**",
         "test/templates/**"
     ],
     "fileExtensions": [".js"],
-    "esnext": true,
     "validateParameterSeparator": ", ",
     "disallowSpacesInCallExpression": true,
     "disallowSpaceAfterObjectKeys": true,
@@ -41,11 +39,8 @@
         "typeof"
     ],
     "requireSpaceAfterBinaryOperators": true,
-    "requireArrowFunctions": true,
-    "requireShorthandArrowFunctions": true,
     "requireSpacesInForStatement": true,
     "requireSpaceBetweenArguments": true,
-    "requireTemplateStrings": true,
     "requireSemicolons": true,
     "requireFunctionDeclarations": true,
     "requireCommaBeforeLineBreak": true,

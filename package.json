@@ -13,6 +13,37 @@
     "preprocessor",
     "processor"
   ],
+  "main": "lib/posthtml.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "posthtml-parser": "^0.1.1",
+    "posthtml-render": "^1.0.5"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "chai-subset": "^1.1.0",
+    "conventional-changelog-cli": "^1.0.0",
+    "es6-promise": "^3.0.2",
+    "istanbul": "^0.4.2",
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
+    "mversion": "^1.10.0",
+    "object-assign": "^4.0.1",
+    "vow": "^0.4.12"
+  },
+  "scripts": {
+    "test": "npm run lint && mocha -R dot && npm run coverage",
+    "clean": "rm -rf coverage",
+    "coverage": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
+    "lint": "jshint . && jscs -v .",
+    "release-patch": "mversion patch",
+    "release-minor": "mversion minor",
+    "release-major": "mversion major"
+  },
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [
     {
@@ -28,45 +59,13 @@
       "email": "zxqfox@gmail.com"
     }
   ],
-  "dependencies": {
-    "babel": "^5.8.21",
-    "posthtml-parser": "^0.1.0",
-    "posthtml-render": "^1.0.0"
-  },
-  "peerDependencies": {},
-  "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-as-promised": "^5.1.0",
-    "chai-subset": "^1.1.0",
-    "conventional-changelog": "0.0.17",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.1.0",
-    "gulp-json-editor": "^2.2.1",
-    "isparta": "^3.0.3",
-    "jscs": "^2.1.1",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
-    "mversion": "^1.10.0"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run lint && npm run mocha && npm run coverage",
-    "mocha": "node_modules/.bin/_mocha",
-    "clean": "rm -rf build coverage",
-    "build": "npm run clean && npm run test && gulp build",
-    "coverage": "babel-node node_modules/.bin/isparta cover --report text --report html --report lcov node_modules/.bin/_mocha",
-    "lint": "jshint . && jscs -v .",
-    "release-patch": "mversion patch",
-    "release-minor": "mversion minor",
-    "release-major": "mversion major"
-  },
+  "homepage": "https://github.com/posthtml/posthtml",
   "repository": {
     "type": "git",
     "url": "git://github.com/posthtml/posthtml.git"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/posthtml/posthtml/issues"
   },
-  "homepage": "https://github.com/posthtml/posthtml"
+  "license": "MIT"
 }

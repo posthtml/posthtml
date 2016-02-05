@@ -1,6 +1,6 @@
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
-import chaiSubset from 'chai-subset';
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+var chaiSubset = require('chai-subset');
 
 chai.should();
 chai.use(chaiSubset);

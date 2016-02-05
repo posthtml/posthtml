@@ -1,82 +1,83 @@
 /* jshint mocha: true, maxlen: false */
-import posthtml from '../index.js';
-import { expect } from 'chai';
-import { walk, match } from '../lib/api';
+var expect = require('chai').expect;
+var objectAssign = require('object-assign');
+
+var posthtml = require('../lib/posthtml');
+var walk = require('../lib/api').walk;
+var match = require('../lib/api').match;
 
 function test(nodes, referense, fn, options, done) {
     expect(posthtml([].concat(fn))
         .process(nodes, options)
-        .then(result => {
+        .then(function(result) {
             expect(referense).to.eql(result.html);
             done();
-        }).catch(error => done(error)));
+        }).catch(function(error) { return done(error); }));
 }
 
-describe('API', () => {
+describe('API', function() {
 
-    it('chaining', done => {
+    it('chaining', function(done) {
         test('<a></a><a></a><a></a>', '<c></c><c></c><c></c>', plugin, {}, done);
 
         function plugin(tree) {
             tree
-                .walk(node => node)
-                .walk(node => node)
-                .match({ tag: 'a' }, () => ({ tag: 'b' }))
-                .match({ tag: 'b' }, () => ({ tag: 'c' }));
-
-            return tree;
+                .walk(function(node) { return node; })
+                .walk(function(node) { return node; })
+                .match({ tag: 'a' }, function() { return { tag: 'b' }; })
+                .match({ tag: 'b' }, function() { return { tag: 'c' }; });
         }
     });
 
-    it('walk', done => {
-        let html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
-        let referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
+    it('walk', function(done) {
+        var html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
+        var referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
 
         test(html, referense, plugin, {}, done);
 
         function plugin(tree) {
             var num = 0;
-            tree.walk(node => {
+            tree.walk(function(node) {
                 num++;
-                let classes = node.attrs && node.attrs.class.split(' ') || [];
-                if (classes.includes('test')) {
-                    let attrs = node.attrs;
-                    node.attrs = Object.assign({}, attrs, {
-                        id: `index${num}`
+                var classes = node.attrs && node.attrs.class.split(' ') || [];
+                if (classes.indexOf('test') > -1) {
+                    var attrs = node.attrs;
+                    node.attrs = objectAssign({}, attrs, {
+                        id: 'index' + num
                     });
                 }
                 return node;
             });
-            return tree;
         }
     });
 
-    describe('match', () => {
-        it('Wrap node', done => {
-            let html = '<div><header><div>Text</div></header></div>';
-            let referense = '<div><span><header><div>Text</div></header></span></div>';
+    describe('match', function() {
+        it('Wrap node', function(done) {
+            var html = '<div><header><div>Text</div></header></div>';
+            var referense = '<div><span><header><div>Text</div></header></span></div>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match({ tag: 'header' }, node => ({ tag: 'span', content: node }));
-                return tree;
+                tree.match({ tag: 'header' }, function(node) {
+                    return { tag: 'span', content: node };
+                });
             }
         });
 
-        it('Object', done => {
-            let html = '<div><header><div>Text</div></header></div>';
-            let referense = '<div id="index1"><header><div id="index2">Text</div></header></div>';
+        it('Object', function(done) {
+            var html = '<div><header><div>Text</div></header></div>';
+            var referense = '<div id="index1"><header><div id="index2">Text</div></header></div>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
                 var num = 0;
-                tree.match({ tag: 'div' }, node => {
+                tree.match({ tag: 'div' }, function(node) {
                     num++;
-                    let attrs = node.attrs;
-                    node.attrs = Object.assign({}, attrs, {
-                        id: `index${num}`
+                    var attrs = node.attrs;
+                    node.attrs = objectAssign({}, attrs, {
+                        id: 'index' + num
                     });
                     return node;
                 });
@@ -84,119 +85,115 @@ describe('API', () => {
             }
         });
 
-        it('String', done => {
-            let html = '<div><header><div>Text</div></header></div>';
-            let referense = '<div><header><div>Other text</div></header></div>';
+        it('String', function(done) {
+            var html = '<div><header><div>Text</div></header></div>';
+            var referense = '<div><header><div>Other text</div></header></div>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match('Text', () => 'Other text');
-                return tree;
+                tree.match('Text', function() { return 'Other text'; });
             }
         });
 
-        it('Array', done => {
-            let html = '<div><header><div>Text</div></header></div>';
-            let referense = '<span><span><span>Text</span></span></span>';
+        it('Array', function(done) {
+            var html = '<div><header><div>Text</div></header></div>';
+            var referense = '<span><span><span>Text</span></span></span>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match([{ tag: 'div'}, { tag: 'header'}], node => {
+                tree.match([{ tag: 'div'}, { tag: 'header'}], function(node) {
                     node.tag = 'span';
                     return node;
                 });
-                return tree;
             }
         });
 
-        it('Content', done => {
-            let html = '<div><header><div>Text</div></header></div>';
-            let referense = '<div><header><div>Other text</div></header></div>';
+        it('Content', function(done) {
+            var html = '<div><header><div>Text</div></header></div>';
+            var referense = '<div><header><div>Other text</div></header></div>';
 
             test(html, referense, plugin, {}, done);
 
             function plugin(tree) {
-                tree.match({ content: ['Text']}, node => {
+                tree.match({ content: ['Text']}, function(node) {
                     node.content = ['Other text'];
                     return node;
                 });
-                return tree;
             }
         });
 
-        describe('RegExp', () => {
-            it('String', done => {
-                let html = '<div><!-- replace this --><header><div>Text</div></header></div>';
-                let referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
+        describe('RegExp', function() {
+            it('String', function(done) {
+                var html = '<div><!-- replace this --><header><div>Text</div></header></div>';
+                var referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
 
                 test(html, referense, plugin, {}, done);
 
                 function plugin(tree) {
-                    tree.match(/<!--.*-->/g, () => 'RegExp cool!');
-                    return tree;
-                }
-            });
-
-            it('Object', done => {
-                let html = '<div><header style="color: red; border: 3px solid #000"><div>Text</div></header></div>';
-                let referense = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>';
-
-                test(html, referense, plugin, {}, done);
-
-                function plugin(tree) {
-                    tree.match({ attrs: { style: /border.+solid/gi }}, node => {
-                        node.attrs.style = node.attrs.style.replace('color: red; ', '');
-                        return node;
+                    tree.match(/<!--.*-->/g, function() {
+                        return 'RegExp cool!';
                     });
                     return tree;
                 }
             });
-        });
 
-        describe('Boolean', () => {
-            it('true', done => {
-                let html = '<div><header><div>Text</div></header></div>';
-                let referense = '<div><header>Other text</header></div>';
+            it('Object', function(done) {
+                var html = '<div><header style="color: red; border: 3px solid #000"><div>Text</div></header></div>';
+                var referense = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>';
 
                 test(html, referense, plugin, {}, done);
 
                 function plugin(tree) {
-                    tree.match({ content: true }, node => {
+                    tree.match({ attrs: { style: /border.+solid/gi }}, function(node) {
+                        node.attrs.style = node.attrs.style.replace('color: red; ', '');
+                        return node;
+                    });
+                }
+            });
+        });
+
+        describe('Boolean', function() {
+            it('true', function(done) {
+                var html = '<div><header><div>Text</div></header></div>';
+                var referense = '<div><header>Other text</header></div>';
+
+                test(html, referense, plugin, {}, done);
+
+                function plugin(tree) {
+                    tree.match({ content: true }, function(node) {
                         if (node.tag === 'header') {
                             node.content = ['Other text'];
                         }
                         return node;
                     });
-                    return tree;
                 }
             });
 
-            it('false', done => {
-                let html = '<div><img><header><div></div></header></div>';
-                let referense = '<div><header></header></div>';
+            it('false', function(done) {
+                var html = '<div><img><header><div></div></header></div>';
+                var referense = '<div><header></header></div>';
 
                 test(html, referense, plugin, {}, done);
 
                 function plugin(tree) {
-                    tree.match({ content: false }, () => '');
-                    return tree;
+                    tree.match({ content: false }, function() { return ''; });
                 }
             });
         });
     });
 
-    describe('import API', () => {
-        it('walk', () => {
-            let tree = ['test', { tag: 'a', content: ['find'] }, { tag: 'a' }];
-            walk.bind(tree)(() => 'a');
+    describe('import API', function() {
+        it('walk', function() {
+            var tree = ['test', { tag: 'a', content: ['find'] }, { tag: 'a' }];
+            walk.bind(tree)(function() { return 'a'; });
             expect(['a', 'a', 'a']).to.eql(tree);
         });
 
-        it('match', () => {
-            let tree = [{ tag: 'a', content: ['find'] }, { tag: 'a' }];
-            match.bind(tree)({ tag: 'a', content: true }, () => 'a');
+       it('match', function() {
+            var tree = [{ tag: 'a', content: ['find'] }, { tag: 'a' }];
+            match.bind(tree)({ tag: 'a', content: true }, function() { return 'a'; });
             expect(['a', { tag: 'a' }]).to.eql(tree);
         });
     });

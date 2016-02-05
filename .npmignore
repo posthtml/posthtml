@@ -1,16 +1,8 @@
-.gitignore
-
 node_modules/
-
 coverage/
-build/
-
 test/
+.gitignore
 .travis.yml
 npm-debug.log
 logo.svg
 
-gulpfile.babel.js
-
-posthtml.sublime-workspace
-posthtml.sublime-project

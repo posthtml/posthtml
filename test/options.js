@@ -1,46 +1,46 @@
 /* jshint mocha: true, maxlen: false */
-import posthtml from '../index.js';
-import { expect } from 'chai';
+var posthtml = require('../lib/posthtml');
+var expect = require('chai').expect;
 
-const beforeHTML = '<div class="button"><rect /><div class="button__text">Text</div></div>';
-const options = { singleTags: ['rect'], closingSingleTag: 'slash' };
+var beforeHTML = '<div class="button"><rect /><div class="button__text">Text</div></div>';
+var options = { singleTags: ['rect'], closingSingleTag: 'slash' };
 
 function test(html, done) {
-    posthtml().process(html, options).then(result => {
+    posthtml().process(html, options).then(function(result) {
         expect(beforeHTML).to.eql(result.html);
         done();
-    }).catch(error => done(error));
+    }).catch(function(error) { return done(error); });
 }
 
-describe('Set options', () => {
+describe('Set options', function() {
 
-    it('html eqval', done => {
+    it('html eqval', function(done) {
         test(beforeHTML, done);
     });
 
 });
 
-describe('Skip html parsing & use tree from options.', () => {
+describe('Skip html parsing & use tree from options.', function() {
 
-    let tree = [{
-            tag: 'div',
-            attrs: { class: 'button' },
-            content:[
-                { tag: 'rect' },
-                {
-                    attrs: { class: 'button__text' },
-                    content: ['Text']
-                }
-            ]
-        }];
+    var tree = [{
+        tag: 'div',
+        attrs: { class: 'button' },
+        content:[
+            { tag: 'rect' },
+            {
+                attrs: { class: 'button__text' },
+                content: ['Text']
+            }
+        ]
+    }];
 
-    it('Set use tree', done => {
+    it('Set use tree', function(done) {
         options.skipParse = true;
         expect(posthtml()
             .process(tree, options)
-            .then(result => {
+            .then(function(result) {
                 expect(beforeHTML).to.eql(result.html);
                 done();
-            }).catch(error => done(error)));
+            }).catch(function(error) { return done(error); }));
     });
 });
