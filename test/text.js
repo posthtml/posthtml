@@ -1,18 +1,18 @@
 /* jshint mocha: true, maxlen: false */
-import posthtml from '../index.js';
-import { expect } from 'chai';
+var posthtml = require('../lib/posthtml');
+var expect = require('chai').expect;
 
-const text = 'text';
+var text = 'text';
 
 function test(html, reference, done) {
-    posthtml().process(html).then(result => {
+    posthtml().process(html).then(function(result) {
         expect(reference).to.eql(result.html);
         done();
-    }).catch(error => done(error));
+    }).catch(function(error) { return done(error); });
 }
 
-describe('Parse text', () => {
-    it('Text eqval', done => {
+describe('Parse text', function() {
+    it('Text eqval', function(done) {
         test(text, text, done);
     });
 });

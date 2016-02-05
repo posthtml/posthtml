@@ -1,28 +1,28 @@
 /* jshint mocha: true, maxlen: false */
-import posthtml from '../index.js';
-import { expect } from 'chai';
+var posthtml = require('../lib/posthtml');
+var expect = require('chai').expect;
 
 function test(html, reference, done) {
-    posthtml().process(html).then(result => {
+    posthtml().process(html).then(function(result) {
         expect(reference).to.eql(result.html);
         done();
-    }).catch(error => done(error));
+    }).catch(function(error) { return done(error); });
 }
 
-describe('Parse classes', () => {
+describe('Parse classes', function() {
 
-    it('div', done => {
-        let html = '<div></div>';
+    it('div', function(done) {
+        var html = '<div></div>';
         test(html, html, done);
     });
 
-    it('block1', done => {
-        let html = '<div class="block1">text</div>';
+    it('block1', function(done) {
+        var html = '<div class="block1">text</div>';
         test(html, html, done);
     });
 
-    it('block1 block2', done => {
-        let html = '<div class="block1 block2">text</div>';
+    it('block1 block2', function(done) {
+        var html = '<div class="block1 block2">text</div>';
         test(html, html, done);
     });
 });

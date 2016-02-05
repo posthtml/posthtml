@@ -1,20 +1,18 @@
 /* jshint mocha: true, maxlen: false */
-import posthtml from '../index.js';
-import { expect } from 'chai';
+var posthtml = require('../lib/posthtml');
+var expect = require('chai').expect;
 
-const beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
+var beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
 
 function test(html, done) {
-    posthtml().process(html).then(result => {
+    posthtml().process(html).then(function(result) {
         expect(beforeHTML).to.eql(result.html);
         done();
-    }).catch(error => done(error));
+    }).catch(function(error) { return done(error); });
 }
 
-describe('Simple text', () => {
-
-    it('html eqval', done => {
+describe('Simple text', function() {
+    it('html eqval', function(done) {
         test(beforeHTML, done);
     });
-
 });

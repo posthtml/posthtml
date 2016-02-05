@@ -1,32 +1,4 @@
-### OSX ###
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-### Node ###
 node_modules
-
-### NPM ###
 npm-debug.log
 
-### SublimeText ###
-# workspace files are user-specific
-*.sublime-workspace
-*.sublime-project
-
-### PhpStorm ###
-### RubyMine ###
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
-
-## Directory-based project format
-.idea/
-.project
-.svn
-
-### Project
-
-build/
 coverage/
