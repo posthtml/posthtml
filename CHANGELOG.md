@@ -1,3 +1,13 @@
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/posthtml/posthtml/compare/v0.8.1...v0.8.2) (2016-02-05)
+
+
+### Features
+
+* remove compilations. Support for NodeJS v0.10 ([ac437b7](https://github.com/posthtml/posthtml/commit/ac437b7))
+
+
+
 <a name"0.8.1"></a>
 ### 0.8.1 (2016-01-08)
 
