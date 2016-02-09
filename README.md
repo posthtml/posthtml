@@ -250,7 +250,7 @@ This is a simple function with a single argument.
 module.exports = function pluginName(tree) {
     // do something for tree
     tree.match({ tag: 'img' }, function(node) {
-        node = Object.assign(node, { attrs: { class: 'img-wrapped' } }});
+        node = Object.assign(node, { attrs: { class: 'img-wrapped' } });
         return {
             tag: 'span',
             attrs: { class: 'img-wrapper' },
