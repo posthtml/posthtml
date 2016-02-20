@@ -185,6 +185,7 @@ Take a look at the [searchable catalog](http://maltsev.github.io/posthtml-plugin
 - [posthtml-md](https://github.com/jonathantneal/posthtml-md) — Easily use context-sensitive markdown within HTML
 - [posthtml-alt-always](https://github.com/ismamz/posthtml-alt-always) — Always add alt attribute for images that don't have it (accessibility reasons)
 - [posthtml-css-modules](https://github.com/maltsev/posthtml-css-modules) — Use CSS modules in HTML
+- [posthtml-attrs-sorter](https://github.com/mrmlnc/posthtml-attrs-sorter) — Sorting of the tag attributes in the specified order
 
 ## Ideas for plugins
 
