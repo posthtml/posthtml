@@ -1,3 +1,13 @@
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/posthtml/posthtml/compare/v0.8.2...v0.8.3) (2016-02-26)
+
+
+### Bug Fixes
+
+* promise check and tests ([0162f97](https://github.com/posthtml/posthtml/commit/0162f97))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/posthtml/posthtml/compare/v0.8.1...v0.8.2) (2016-02-05)
 
