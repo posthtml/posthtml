@@ -32,19 +32,19 @@ describe('Plugins', function() {
     describe('posthtml([plugins])', function() {
 
         it('options default', function() {
-             posthtml([ function(json) { return json; }])
+             return posthtml([ function(json) { return json; }])
                 .process(html, {})
                 .should.eventually.containSubset({ html: html });
         });
 
         it('should return original for resultless plugins', function() {
-            posthtml([ function(json) {} ]) // jshint ignore: line
+            return posthtml([ function(json) {} ]) // jshint ignore: line
                 .process(tree, { skipParse: true })
                 .should.eventually.containSubset({ tree: tree });
         });
 
         it('set options skipParse', function() {
-            posthtml([ function(json) { return json; }])
+            return posthtml([ function(json) { return json; }])
                 .process(tree, { skipParse: true })
                 .should.eventually.containSubset({ tree: tree, html: html });
         });
@@ -54,7 +54,7 @@ describe('Plugins', function() {
     describe('.use(plugin)', function() {
 
         it('options default', function() {
-            posthtml()
+            return posthtml()
                 .use(function(json) { return json; })
                 .use(function(json) {}) // jshint ignore: line
                 .process(html, {})
@@ -62,8 +62,7 @@ describe('Plugins', function() {
         });
 
         it('set options skipParse', function() {
-
-            posthtml()
+            return posthtml()
                 .use(function(json) { return json; })
                 .process(tree, { skipParse: true })
                 .should.eventually.containSubset({ html: html });
@@ -140,7 +139,7 @@ describe('Plugins', function() {
     describe('async mode', function() {
 
         it('should flow async-ly', function() {
-            posthtml()
+            return posthtml()
                 .use(function() { return { x: '1' }; })
                 .use(function(json, cb) { cb(null, { x: json.x + '2' }); })
                 .use(function(json) {
@@ -157,22 +156,22 @@ describe('Plugins', function() {
         });
 
         it('should flow the same object async-ly', function() {
-            posthtml()
-                .use(function(json) { return (json.x = '1'); })
+            return posthtml()
+                .use(function(json) { json.x = '1'; })
                 .use(function(json, cb) { json.x += '2'; cb(); })
                 .use(function(json) {
-                    json.x += 3;
+                    json.x += '3';
                     return Promise.resolve();
                 })
                 .use(function(json) {
                     var d = vow.defer();
-                    json.x += 4;
-                    d.resolve(json);
-                    return d.promise();
+                    json.x += '4';
+                    d.resolve();
+                    return d.promise().delay(50);
                 })
-                .use(function(json) { return (json.x += '5'); })
+                .use(function(json) { json.x += '5'; })
                 .process(tree, { skipParse: true })
-                .should.eventually.containSubset({ tree: { x: '12345' }});
+                .should.eventually.containSubset({ tree: { x: '12345' } });
         });
 
         it(
