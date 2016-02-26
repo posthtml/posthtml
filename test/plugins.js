@@ -157,21 +157,21 @@ describe('Plugins', function() {
 
         it('should flow the same object async-ly', function() {
             return posthtml()
-                .use(function(json) { return (json.x = '1'); })
+                .use(function(json) { json.x = '1'; })
                 .use(function(json, cb) { json.x += '2'; cb(); })
                 .use(function(json) {
-                    json.x += 3;
+                    json.x += '3';
                     return Promise.resolve();
                 })
                 .use(function(json) {
                     var d = vow.defer();
-                    json.x += 4;
-                    d.resolve(json);
-                    return d.promise();
+                    json.x += '4';
+                    d.resolve();
+                    return d.promise().delay(50);
                 })
-                .use(function(json) { return (json.x += '5'); })
+                .use(function(json) { json.x += '5'; })
                 .process(tree, { skipParse: true })
-                .should.eventually.containSubset({ tree: { x: '12345' }});
+                .should.eventually.containSubset({ tree: { x: '12345' } });
         });
 
         it(
