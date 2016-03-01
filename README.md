@@ -187,15 +187,6 @@ Take a look at the [searchable catalog](http://maltsev.github.io/posthtml-plugin
 - [posthtml-css-modules](https://github.com/maltsev/posthtml-css-modules) — Use CSS modules in HTML
 - [posthtml-attrs-sorter](https://github.com/mrmlnc/posthtml-attrs-sorter) — Sorting of the tag attributes in the specified order
 
-## Ideas for plugins
-
-- [posthtml-imports](https://github.com/posthtml/posthtml-imports) — Support W3C HTML imports
-- [posthtml-style](https://github.com/posthtml/posthtml-style) — Include css file in HTML. Save \<style\>, style attrs to CSS file
-- [beml](https://github.com/zenwalker/node-beml) — HTML preprocessor for BEM
-- [mimic](http://peterchon.github.io/mimic/)
-
-Something more? ;)
-
 ## Helpers
 
 - [posthtml-match-helper](https://github.com/rasmusfl0e/posthtml-match-helper) - Expand CSS selectors into PostHTML matcher objects.
