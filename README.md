@@ -12,8 +12,8 @@ All HTML transformations are made by plugins. And these plugins are just small p
 For more detailed information about PostHTML in general take a look at the [docs][docs].
 
 ## Dependencies
-- [posthtml-parser][parser] -- Parser HTML/XML to PostHTMLTree
-- [posthtml-render][render] -- Render PostHTMLTree to HTML/XML
+- [posthtml-parser][parser] — Parser HTML/XML to PostHTMLTree
+- [posthtml-render][render] — Render PostHTMLTree to HTML/XML
 
 ## Usage
 
@@ -50,12 +50,7 @@ posthtml()
 ```js
 const posthtml = require('posthtml');
 
-let html = `
-    <html>
-      <body>
-        <p class="wow">OMG</p>
-        </body>
-    </html>`;
+let html = '<html><body><p class="wow">OMG</p></body></html>';
 
 posthtml([
         require('posthtml-to-svg-tags')(),
@@ -266,7 +261,7 @@ app.set('view engine', 'jade');
 ## Plugins
 Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtml-plugins/) for PostHTML plugins.
 
-|Plugin|Status|Description|
+|Plugin|Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description|
 |:-----|:-----|:----------|
 |[posthtml-bem][bem]| [![npm][bem-1]][bem-2] |Support BEM naming in html structure|
 |[posthtml-postcss][css]|[![npm][css-1]][css-2]|Use [PostCSS][css-3] in HTML document|
