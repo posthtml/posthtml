@@ -242,7 +242,7 @@ app.set('view engine', 'jade');
 
 ## Middleware
 
-### [Koa](https://koajs.com) <img align="right" width="120" height="60" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
+### [Koa](http://koajs.com/) <img align="right" width="120" height="60" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
 
 ##### [koa-posthtml](https://github.com/michael-ciniawsky/koa-posthtml)
 
@@ -256,7 +256,7 @@ app.set('view engine', 'jade');
 
 ### [Electron](https://electron.atom.io) <img align="right" width="200" height="75" title="ElectronJS" src="https://worldvectorlogo.com/logos/electron-4.svg" />
 
-##### [electron-posthtml](github.com/michael-ciniawsky/electron-posthtml)
+##### [electron-posthtml](https://github.com/michael-ciniawsky/electron-posthtml)
 
 ## Plugins
 Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtml-plugins/) for PostHTML plugins.
