@@ -297,6 +297,7 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-hint][hint]|[![npm][hint-1]][hint-2]|Lint HTML with HTML Hint|
 |[posthtml-w3c][w3c]|[![npm][w3c-1]][w3c-2]|Validate HTML with W3C Validation|
 |[posthtml-load-plugins][load]|[![npm][load-1]][load-2]|Auto-load Plugins for PostHTML|
+|[posthtml-remove-attributes][remove]|[![npm][remove-1]][remove-2]|Remove attributes unconditionally or with content match|
 
 ## License
 MIT
@@ -454,3 +455,7 @@ MIT
 [load]: https://github.com/michal-ciniawsky/posthtml-load-plugins
 [load-1]: https://badge.fury.io/js/posthtml-load-plugins.svg
 [load-2]: https://badge.fury.io/js/posthtml-load-plugins
+
+[remove]: https://github.com/princed/posthtml-remove-attributes
+[remove-1]: https://badge.fury.io/js/posthtml-remove-attributes.svg
+[remove-2]: https://badge.fury.io/js/posthtml-remove-attributes
