@@ -20,7 +20,8 @@ For more detailed information about PostHTML in general take a look at the [docs
 ```
 npm i -D posthtml
 ```
-### API <img align="right" width="90" height="80" title="NodeJS" src="https://worldvectorlogo.com/logos/nodejs-icon.svg">
+<img align="right" width="91" height="80" title="NodeJS" src="https://worldvectorlogo.com/logos/nodejs-icon.svg">
+### API
 
 **Simple example**
 
@@ -79,7 +80,8 @@ posthtml([
     });
 ```
 
-## CLI <img align="right"  width="100" height="90" title="npm" src="https://worldvectorlogo.com/logos/npm.svg" />
+<img align="right"  width="100" height="90" title="npm" src="https://worldvectorlogo.com/logos/npm.svg" />
+## CLI
 
 ### Install [posthtml-cli](https://github.com/GitScrum/posthtml-cli)
 
@@ -101,7 +103,8 @@ or
 ```bash
 npm run html
 ```
-## Gulp <img align="right" width="80" height="80" title="GulpJS" src="https://worldvectorlogo.com/logos/gulp.svg" />
+<img align="right" width="80" height="80" title="GulpJS" src="https://worldvectorlogo.com/logos/gulp.svg" />
+## Gulp
 
 ### Install [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
 
@@ -120,7 +123,8 @@ gulp.task('html', function() {
 
 Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 
-## Grunt <img align="right" width="90" height="80" title="GruntJS" src="https://worldvectorlogo.com/logos/grunt.svg" />
+<img align="right" width="90" height="80" title="GruntJS" src="https://worldvectorlogo.com/logos/grunt.svg" />
+## Grunt
 
 ### Install [grunt-posthtml](https://www.npmjs.com/package/grunt-posthtml)
 
@@ -154,7 +158,8 @@ posthtml: {
     }
 }
 ```
-## Webpack <img align="right" width="90" height="90" title="Webpack" src="https://worldvectorlogo.com/logos/webpack.svg" />
+<img align="right" width="90" height="90" title="Webpack" src="https://worldvectorlogo.com/logos/webpack.svg" />
+## Webpack
 
 ### Install [posthtml-loader](https://www.npmjs.com/package/posthtml-loader)
 
@@ -242,19 +247,23 @@ app.set('view engine', 'jade');
 
 ## Middleware
 
-### [Koa](http://koajs.com/) <img align="right" width="120" height="60" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
+<img align="right" width="120" height="60" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
+### [Koa](http://koajs.com/)
 
 ##### [koa-posthtml](https://github.com/michael-ciniawsky/koa-posthtml)
 
-### [Hapi](https://hapijs.com) <img align="right" width="120" height="75" title="HapiJS" src="https://worldvectorlogo.com/logos/hapi.svg" />
+<img align="right" width="120" height="75" title="HapiJS" src="https://worldvectorlogo.com/logos/hapi.svg" />
+### [Hapi](https://hapijs.com)
 
 ##### [hapi-posthtml](https://github.com/michael-ciniawsky/hapi-posthtml)
 
-### [Express](https://expressjs.com) <img align="right" width="125" height="50" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
+<img align="right" width="125" height="50" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
+### [Express](https://expressjs.com)
 
 ##### [express-posthtml](https://github.com/michael-ciniawsky/express-posthtml)
 
-### [Electron](https://electron.atom.io) <img align="right" width="200" height="75" title="ElectronJS" src="https://worldvectorlogo.com/logos/electron-4.svg" />
+<img align="right" width="200" height="75" title="ElectronJS" src="https://worldvectorlogo.com/logos/electron-4.svg" />
+### [Electron](https://electron.atom.io)
 
 ##### [electron-posthtml](https://github.com/michael-ciniawsky/electron-posthtml)
 
@@ -284,7 +293,7 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-transformer][transform]|[![npm][transform-1]][transform-2]|process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[posthtml-inline-assets][assets]|[![npm][assets-1]][assets-2]|Inline external scripts, styles, and images in HTML|
 |[posthtml-schemas][schemas]|[![npm][schemas-1]][schemas-2]|Add schema.org microdata to your markup super easy|
-| [posthtml-extend][extend] |[![npm][extend-1]][extend-2]|Templates extending (Jade-like) |
+|[posthtml-extend][extend] |[![npm][extend-1]][extend-2]|Templates extending (Jade-like) |
 |[posthtml-img-autosize][img]|[![npm][img-1]][img-2]|Auto setting the width and height of \<img\>|
 |[posthtml-aria-tabs][aria]|[![npm][aria-1]][aria-2]|Write accessible tabs with minimal markup|
 |[posthtml-lorem][lorem]|[![npm][lorem-1]][lorem-2]|Add lorem ipsum placeholder text to any document|
@@ -338,7 +347,7 @@ MIT
 
 [web]: https://github.com/island205/posthtml-web-component
 [web-1]: https://badge.fury.io/js/posthtml-web-component.svg
-[web-2]: https://badge.fury.io/js/posthtml-web-components)
+[web-2]: https://badge.fury.io/js/posthtml-web-components
 
 [in]: https://github.com/maltsev/posthtml-inline-css
 [in-1]: https://badge.fury.io/js/posthtml-inline-css.svg
