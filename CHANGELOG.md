@@ -1,3 +1,17 @@
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/posthtml/posthtml/compare/v0.8.3...v0.8.4) (2016-03-30)
+
+
+### Bug Fixes
+
+* promise check and tests ([79bcff9](https://github.com/posthtml/posthtml/commit/79bcff9))
+
+### Features
+
+* **docs:** update README, add docs folder ([619a97c](https://github.com/posthtml/posthtml/commit/619a97c))
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/posthtml/posthtml/compare/v0.8.2...v0.8.3) (2016-02-26)
 
