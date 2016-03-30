@@ -69,4 +69,4 @@ export default tree => {
 };
 ```
 
-[plugin-boilerplate]: https://github.com/jonathantneal/posthtml-plugin-boilerplate)
+[plugin-boilerplate]: https://github.com/jonathantneal/posthtml-plugin-boilerplate
