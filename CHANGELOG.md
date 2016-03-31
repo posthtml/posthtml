@@ -1,3 +1,17 @@
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/posthtml/posthtml/compare/v0.8.4...v0.8.5) (2016-03-31)
+
+
+### Bug Fixes
+
+* **README:** fix style in Readme ([9944446](https://github.com/posthtml/posthtml/commit/9944446))
+
+### Performance Improvements
+
+* **api:** remove extra slice call ([8a3ff11](https://github.com/posthtml/posthtml/commit/8a3ff11))
+
+
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/posthtml/posthtml/compare/v0.8.3...v0.8.4) (2016-03-30)
 
