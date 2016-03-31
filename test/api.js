@@ -1,7 +1,5 @@
 /* jshint mocha: true, maxlen: false */
 var expect = require('chai').expect;
-var objectAssign = require('object-assign');
-
 var posthtml = require('../lib/posthtml');
 var walk = require('../lib/api').walk;
 var match = require('../lib/api').match;
@@ -42,7 +40,7 @@ describe('API', function() {
                 var classes = node.attrs && node.attrs.class.split(' ') || [];
                 if (classes.indexOf('test') > -1) {
                     var attrs = node.attrs;
-                    node.attrs = objectAssign({}, attrs, {
+                    node.attrs = Object.assign({}, attrs, {
                         id: 'index' + num
                     });
                 }
@@ -76,7 +74,7 @@ describe('API', function() {
                 tree.match({ tag: 'div' }, function(node) {
                     num++;
                     var attrs = node.attrs;
-                    node.attrs = objectAssign({}, attrs, {
+                    node.attrs = Object.assign({}, attrs, {
                         id: 'index' + num
                     });
                     return node;

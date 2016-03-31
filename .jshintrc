@@ -4,5 +4,6 @@
     "maxlen": 80,
     "undef": true,
     "unused": true,
-    "node": true
+    "node": true,
+    "esversion": 6
 }
