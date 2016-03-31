@@ -1,6 +1,4 @@
 /* jshint mocha: true, maxlen: false */
-require('es6-promise').polyfill();
-
 var posthtml = require('../lib/posthtml');
 var vow = require('vow');
 
