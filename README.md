@@ -449,7 +449,7 @@ MIT
 [tidy-1]: https://badge.fury.io/js/posthtml-tidy.svg
 [tidy-2]: https://badge.fury.io/js/posthtml-tidy
 
-[hint]: https://github.com//michael-ciniawsky/posthml-hint
+[hint]: https://github.com//michael-ciniawsky/posthtml-hint
 [hint-1]: https://badge.fury.io/js/posthtml-hint.svg
 [hint-2]: https://badge.fury.io/js/posthtml-hint
 
