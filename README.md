@@ -461,7 +461,7 @@ MIT
 [exp-1]: https://badge.fury.io/js/posthtml-exp.svg
 [exp-2]: https://badge.fury.io/js/posthtml-exp
 
-[load]: https://github.com/michal-ciniawsky/posthtml-load-plugins
+[load]: https://github.com/michael-ciniawsky/posthtml-load-plugins
 [load-1]: https://badge.fury.io/js/posthtml-load-plugins.svg
 [load-2]: https://badge.fury.io/js/posthtml-load-plugins
 
