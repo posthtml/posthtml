@@ -4,11 +4,11 @@ var posthtml = require('../lib/posthtml');
 var walk = require('../lib/api').walk;
 var match = require('../lib/api').match;
 
-function test(nodes, referense, fn, options, done) {
+function test(nodes, reference, fn, options, done) {
     expect(posthtml([].concat(fn))
         .process(nodes, options)
         .then(function(result) {
-            expect(referense).to.eql(result.html);
+            expect(reference).to.eql(result.html);
             done();
         }).catch(function(error) { return done(error); }));
 }
@@ -29,9 +29,9 @@ describe('API', function() {
 
     it('walk', function(done) {
         var html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>';
-        var referense = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
+        var reference = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>';
 
-        test(html, referense, plugin, {}, done);
+        test(html, reference, plugin, {}, done);
 
         function plugin(tree) {
             var num = 0;
@@ -52,9 +52,9 @@ describe('API', function() {
     describe('match', function() {
         it('Wrap node', function(done) {
             var html = '<div><header><div>Text</div></header></div>';
-            var referense = '<div><span><header><div>Text</div></header></span></div>';
+            var reference = '<div><span><header><div>Text</div></header></span></div>';
 
-            test(html, referense, plugin, {}, done);
+            test(html, reference, plugin, {}, done);
 
             function plugin(tree) {
                 tree.match({ tag: 'header' }, function(node) {
@@ -65,9 +65,9 @@ describe('API', function() {
 
         it('Object', function(done) {
             var html = '<div><header><div>Text</div></header></div>';
-            var referense = '<div id="index1"><header><div id="index2">Text</div></header></div>';
+            var reference = '<div id="index1"><header><div id="index2">Text</div></header></div>';
 
-            test(html, referense, plugin, {}, done);
+            test(html, reference, plugin, {}, done);
 
             function plugin(tree) {
                 var num = 0;
@@ -85,9 +85,9 @@ describe('API', function() {
 
         it('String', function(done) {
             var html = '<div><header><div>Text</div></header></div>';
-            var referense = '<div><header><div>Other text</div></header></div>';
+            var reference = '<div><header><div>Other text</div></header></div>';
 
-            test(html, referense, plugin, {}, done);
+            test(html, reference, plugin, {}, done);
 
             function plugin(tree) {
                 tree.match('Text', function() { return 'Other text'; });
@@ -96,9 +96,9 @@ describe('API', function() {
 
         it('Array', function(done) {
             var html = '<div><header><div>Text</div></header></div>';
-            var referense = '<span><span><span>Text</span></span></span>';
+            var reference = '<span><span><span>Text</span></span></span>';
 
-            test(html, referense, plugin, {}, done);
+            test(html, reference, plugin, {}, done);
 
             function plugin(tree) {
                 tree.match([{ tag: 'div'}, { tag: 'header'}], function(node) {
@@ -110,9 +110,9 @@ describe('API', function() {
 
         it('Content', function(done) {
             var html = '<div><header><div>Text</div></header></div>';
-            var referense = '<div><header><div>Other text</div></header></div>';
+            var reference = '<div><header><div>Other text</div></header></div>';
 
-            test(html, referense, plugin, {}, done);
+            test(html, reference, plugin, {}, done);
 
             function plugin(tree) {
                 tree.match({ content: ['Text']}, function(node) {
@@ -125,9 +125,9 @@ describe('API', function() {
         describe('RegExp', function() {
             it('String', function(done) {
                 var html = '<div><!-- replace this --><header><div>Text</div></header></div>';
-                var referense = '<div>RegExp cool!<header><div>Text</div></header></div>';
+                var reference = '<div>RegExp cool!<header><div>Text</div></header></div>';
 
-                test(html, referense, plugin, {}, done);
+                test(html, reference, plugin, {}, done);
 
                 function plugin(tree) {
                     tree.match(/<!--.*-->/g, function() {
@@ -139,13 +139,14 @@ describe('API', function() {
 
             it('Object', function(done) {
                 var html = '<div><header style="color: red; border: 3px solid #000"><div>Text</div></header></div>';
-                var referense = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>';
+                var reference = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>';
 
-                test(html, referense, plugin, {}, done);
+                test(html, reference, plugin, {}, done);
 
                 function plugin(tree) {
                     tree.match({ attrs: { style: /border.+solid/gi }}, function(node) {
-                        node.attrs.style = node.attrs.style.replace('color: red; ', '');
+                        var attrs = node.attrs;
+                        attrs.style = attrs.style.replace('color: red; ', '');
                         return node;
                     });
                 }
@@ -155,9 +156,9 @@ describe('API', function() {
         describe('Boolean', function() {
             it('true', function(done) {
                 var html = '<div><header><div>Text</div></header></div>';
-                var referense = '<div><header>Other text</header></div>';
+                var reference = '<div><header>Other text</header></div>';
 
-                test(html, referense, plugin, {}, done);
+                test(html, reference, plugin, {}, done);
 
                 function plugin(tree) {
                     tree.match({ content: true }, function(node) {
@@ -169,11 +170,46 @@ describe('API', function() {
                 }
             });
 
+            it('true with boolean attrs', function(done) {
+                var html = '<ol reversed></ol>';
+                var reference = '<ol></ol>';
+
+                test(html, reference, plugin, {}, done);
+
+                function plugin(tree) {
+                    tree.match({ attrs: { reversed: true }}, function(node) {
+                        delete node.attrs.reversed;
+                        return node;
+                    });
+                }
+            });
+
+            it('true with 0 value', function(done) {
+                var html = '<input type="number" value="1">';
+                var reference = '<input type="number" value="0" class="matched">';
+                var plugins = [
+                    function(tree) {
+                        tree.match({ tag: 'input' }, function(node) {
+                            node.attrs.value--;
+                            return node;
+                        });
+                    },
+                    function(tree) {
+                        tree.match({ attrs: { value: true }}, function(node) {
+                            node.attrs.class = 'matched';
+                            return node;
+                        });
+                    }
+                ];
+
+                test(html, reference, plugins, {}, done);
+            });
+
             it('false', function(done) {
                 var html = '<div><img><header><div></div></header></div>';
-                var referense = '<div><header></header></div>';
+                var reference = '<div><header></header></div>';
 
-                test(html, referense, plugin, {}, done);
+                test(html, reference, plugin, {}, done);
 
                 function plugin(tree) {
                     tree.match({ content: false }, function() { return ''; });
@@ -185,13 +221,13 @@ describe('API', function() {
     describe('import API', function() {
         it('walk', function() {
             var tree = ['test', { tag: 'a', content: ['find'] }, { tag: 'a' }];
-            walk.bind(tree)(function() { return 'a'; });
+            walk.call(tree, function() { return 'a'; });
             expect(['a', 'a', 'a']).to.eql(tree);
         });
 
-       it('match', function() {
+        it('match', function() {
             var tree = [{ tag: 'a', content: ['find'] }, { tag: 'a' }];
-            match.bind(tree)({ tag: 'a', content: true }, function() { return 'a'; });
+            match.call(tree, { tag: 'a', content: true }, function() { return 'a'; });
             expect(['a', { tag: 'a' }]).to.eql(tree);
         });
     });
