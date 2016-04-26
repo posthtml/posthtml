@@ -1,3 +1,14 @@
+<a name="0.8.6"></a>
+## [0.8.6](https://github.com/posthtml/posthtml/compare/v0.8.5...v0.8.6) (2016-04-26)
+
+
+### Bug Fixes
+
+* **api:** report true for boolean attrs ([70cec9d](https://github.com/posthtml/posthtml/commit/70cec9d))
+* **docs:** correct typo ([b5133f5](https://github.com/posthtml/posthtml/commit/b5133f5))
+
+
+
 <a name="0.8.5"></a>
 ## [0.8.5](https://github.com/posthtml/posthtml/compare/v0.8.4...v0.8.5) (2016-03-31)
 
