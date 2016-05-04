@@ -32,8 +32,7 @@
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "mversion": "^1.10.0",
-    "object.assign": "^4.0.3",
-    "vow": "^0.4.12"
+    "object.assign": "^4.0.3"
   },
   "scripts": {
     "test": "npm run lint && mocha -R dot && npm run coverage",

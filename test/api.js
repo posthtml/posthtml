@@ -148,7 +148,6 @@ describe('API', function() {
                     tree.match(/<!--.*-->/g, function() {
                         return 'RegExp cool!';
                     });
-                    return tree;
                 }
             });
 
