@@ -1,3 +1,13 @@
+<a name="0.8.7"></a>
+## [0.8.7](https://github.com/posthtml/posthtml/compare/v0.8.6...v0.8.7) (2016-05-04)
+
+
+### Performance Improvements
+
+* **lib:** on demand html rendering ([4ef0df9](https://github.com/posthtml/posthtml/commit/4ef0df9))
+
+
+
 <a name="0.8.6"></a>
 ## [0.8.6](https://github.com/posthtml/posthtml/compare/v0.8.5...v0.8.6) (2016-04-26)
 
