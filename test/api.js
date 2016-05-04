@@ -10,7 +10,7 @@ function test(nodes, reference, fn, options, done) {
         .then(function(result) {
             expect(reference).to.eql(result.html);
             done();
-        }).catch(function(error) { return done(error); }));
+        }).catch(done));
 }
 
 describe('API', function() {
@@ -39,8 +39,7 @@ describe('API', function() {
                 num++;
                 var classes = node.attrs && node.attrs.class.split(' ') || [];
                 if (classes.indexOf('test') > -1) {
-                    var attrs = node.attrs;
-                    node.attrs = Object.assign({}, attrs, {
+                    node.attrs = Object.assign({}, node.attrs, {
                         id: 'index' + num
                     });
                 }
@@ -73,8 +72,7 @@ describe('API', function() {
                 var num = 0;
                 tree.match({ tag: 'div' }, function(node) {
                     num++;
-                    var attrs = node.attrs;
-                    node.attrs = Object.assign({}, attrs, {
+                    node.attrs = Object.assign({}, node.attrs, {
                         id: 'index' + num
                     });
                     return node;
@@ -103,6 +101,23 @@ describe('API', function() {
             function plugin(tree) {
                 tree.match([{ tag: 'div'}, { tag: 'header'}], function(node) {
                     node.tag = 'span';
+                    return node;
+                });
+            }
+        });
+
+        it('Array with multiple matches', function(done) {
+            var html = '<div class="a b">0</div>';
+            var reference = '<div class="a b">1</div>';
+            var classes = [ /a/, /b/ ].map(function(name) {
+                return { attrs: { class: name }};
+            });
+
+            test(html, reference, plugin, {}, done);
+
+            function plugin(tree) {
+                tree.match(classes, function(node) {
+                    node.content++;
                     return node;
                 });
             }
