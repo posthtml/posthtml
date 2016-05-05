@@ -1,6 +1,6 @@
 /* jshint mocha: true, maxlen: false */
 var posthtml = require('../lib/posthtml');
-var vow = require('vow');
+var expect = require('chai').expect;
 
 describe('Plugins', function() {
 
@@ -12,17 +12,15 @@ describe('Plugins', function() {
             attrs: {
                 class: 'button'
             },
-            content: [
-                {
-                    tag: 'div',
-                    attrs: {
-                        class: 'button__text'
-                    },
-                    content: [
-                        'Text'
-                    ]
-                }
-            ]
+            content: [{
+                tag: 'div',
+                attrs: {
+                    class: 'button__text'
+                },
+                content: [
+                    'Text'
+                ]
+            }]
         }];
     });
 
@@ -63,6 +61,20 @@ describe('Plugins', function() {
                 .use(function(json) { return json; })
                 .process(tree, { skipParse: true })
                 .should.eventually.containSubset({ html: html });
+        });
+
+        it('is variadic method', function() {
+            return posthtml()
+                .use(function(json) { json.x++; }, function(json) { json.x += 2; })
+                .process({ x: 1 }, { skipParse: true })
+                .should.eventually.containSubset({ tree: { x: 4 } });
+        });
+
+        it('should not reassign plugins array', function() {
+            var ph = posthtml().use(function() {}, function() {});
+            var plugins = ph.plugins;
+            ph.use(function() {}, function() {});
+            expect(ph.plugins).to.eql(plugins);
         });
 
     });
@@ -143,9 +155,9 @@ describe('Plugins', function() {
                     return Promise.resolve({ x: json.x + '3' });
                 })
                 .use(function(json) {
-                    var d = vow.defer();
-                    d.resolve({ x: json.x + '4' });
-                    return d.promise();
+                    return new Promise(function(resolve) {
+                        setImmediate(resolve, { x: json.x + '4' });
+                    });
                 })
                 .use(function(json) { return { x: json.x + '5' }; })
                 .process(tree, { skipParse: true })
@@ -161,10 +173,12 @@ describe('Plugins', function() {
                     return Promise.resolve();
                 })
                 .use(function(json) {
-                    var d = vow.defer();
-                    json.x += '4';
-                    d.resolve();
-                    return d.promise().delay(50);
+                    return new Promise(function(resolve) {
+                        setTimeout(function() {
+                            json.x += '4';
+                            resolve();
+                        },  50);
+                    });
                 })
                 .use(function(json) { json.x += '5'; })
                 .process(tree, { skipParse: true })
