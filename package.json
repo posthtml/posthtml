@@ -38,7 +38,7 @@
     "test": "npm run lint && mocha -R dot && npm run coverage",
     "clean": "rm -rf coverage",
     "coverage": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
-    "lint": "jshint . && jscs -v .",
+    "lint": "jshint . && jscs .",
     "release-patch": "mversion patch",
     "release-minor": "mversion minor",
     "release-major": "mversion major"
