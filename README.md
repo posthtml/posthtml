@@ -311,6 +311,9 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-w3c][w3c]|[![npm][w3c-badge]][w3c-npm]|Validate HTML with W3C Validation|
 |[posthtml-load-plugins][load]|[![npm][load-badge]][load-npm]|Auto-load Plugins for PostHTML|
 |[posthtml-remove-attributes][remove]|[![npm][remove-badge]][remove-npm]|Remove attributes unconditionally or with content match|
+|[posthtml-minifier][minifier]|[![npm][minifier-badge]][minifier-npm]|Minify HTML|
+|[posthtml-shorten][shorten]|[![npm][shorten-badge]][shorten-npm]|Shorten URLs in HTML elements|
+|[posthtml-uglify][uglify]|[![npm][uglify-badge]][uglify-npm]|Rewrite CSS identifiers in HTML to be shortened|
 
 ## License
 MIT
@@ -472,3 +475,15 @@ MIT
 [remove]: https://github.com/princed/posthtml-remove-attributes
 [remove-badge]: https://img.shields.io/npm/v/posthtml-remove-attributes.svg
 [remove-npm]: https://npmjs.com/package/posthtml-remove-attributes
+
+[minifier]: https://github.com/Rebelmail/posthtml-minifier
+[minifier-badge]: https://img.shields.io/npm/v/posthtml-minifier.svg
+[minifier-npm]: https://npmjs.com/package/posthtml-minifier
+
+[shorten]: https://github.com/Rebelmail/posthtml-shorten
+[shorten-badge]: https://img.shields.io/npm/v/posthtml-shorten.svg
+[shorten-npm]: https://npmjs.com/package/posthtml-shorten
+
+[uglify]: https://github.com/Rebelmail/posthtml-uglify
+[uglify-badge]: https://img.shields.io/npm/v/posthtml-uglify.svg
+[uglify-npm]: https://npmjs.com/package/posthtml-uglify
