@@ -303,7 +303,7 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-lorem][lorem]|[![npm][lorem-badge]][lorem-npm]|Add lorem ipsum placeholder text to any document|
 |[posthtml-md][md]|[![npm][md-badge]][md-npm]|Easily use context-sensitive markdown within HTML|
 |[posthtml-alt-always][alt]|[![npm][alt-badge]][alt-npm]|Always add alt attribute for images that don't have it (accessibility reasons)|
-|[posthtml-css-modules][modules]|[![npm][modules-badge]][modules-npm]|Use CSS modules in HTML|
+|[posthtml-css-modules][css-modules]|[![npm][css-modules-badge]][css-modules-npm]|Use CSS modules in HTML|
 |[posthtml-jade][jade]|[![npm][jade-badge]][jade-npm]|Jade templates/syntax support|
 |[posthtml-exp][exp]|[![npm][exp-badge]][exp-npm]|Add template expressions to your HTML|
 |[posthtml-tidy][tidy]|[![npm][tidy-badge]][tidy-npm]|Sanitize HTML with HTML Tidy on the fly|
@@ -314,6 +314,10 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-minifier][minifier]|[![npm][minifier-badge]][minifier-npm]|Minify HTML|
 |[posthtml-shorten][shorten]|[![npm][shorten-badge]][shorten-npm]|Shorten URLs in HTML elements|
 |[posthtml-uglify][uglify]|[![npm][uglify-badge]][uglify-npm]|Rewrite CSS identifiers in HTML to be shortened|
+|[posthtml-modules][modules]|[![npm][modules-badge]][modules-npm]|Posthtml modules processing|
+|[posthtml-postcss-modules][postcss-modules]|[![npm][postcss-modules-badge]][postcss-modules-npm]|CSS Modules in html|
+|[posthtml-collect-styles][collect-styles]|[![npm][collect-styles-badge]][collect-styles-npm]|Collect styles from html and put it in the head|
+|[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 
 ## License
 MIT
@@ -444,9 +448,9 @@ MIT
 [alt-badge]: https://img.shields.io/npm/v/posthtml-alt-always.svg
 [alt-npm]: https://npmjs.com/package/posthtml-alt-always
 
-[modules]: https://github.com/maltsev/posthtml-css-modules
-[modules-badge]: https://img.shields.io/npm/v/posthtml-css-modules.svg
-[modules-npm]: https://npmjs.com/package/posthtml-css-modules
+[css-modules]: https://github.com/maltsev/posthtml-css-modules
+[css-modules-badge]: https://img.shields.io/npm/v/posthtml-css-modules.svg
+[css-modules-npm]: https://npmjs.com/package/posthtml-css-modules
 
 [jade]: https://github.com/michael-ciniawsky/posthtml-jade
 [jade-badge]: https://img.shields.io/npm/v/posthtml-jade.svg
@@ -487,3 +491,19 @@ MIT
 [uglify]: https://github.com/Rebelmail/posthtml-uglify
 [uglify-badge]: https://img.shields.io/npm/v/posthtml-uglify.svg
 [uglify-npm]: https://npmjs.com/package/posthtml-uglify
+
+[modules]: https://github.com/canvaskisa/posthtml-modules
+[modules-badge]: https://img.shields.io/npm/v/posthtml-modules.svg
+[modules-npm]: https://npmjs.com/package/posthtml-modules
+
+[postcss-modules]: https://github.com/canvaskisa/posthtml-postcss-modules
+[postcss-modules-badge]: https://img.shields.io/npm/v/posthtml-postcss-modules.svg
+[postcss-modules-npm]: https://npmjs.com/package/posthtml-postcss-modules
+
+[collect-styles]: https://github.com/canvaskisa/posthtml-collect-styles
+[collect-styles-badge]: https://img.shields.io/npm/v/posthtml-collect-styles.svg
+[collect-styles-npm]: https://npmjs.com/package/posthtml-collect-styles
+
+[remove-duplicates]: https://github.com/canvaskisa/posthtml-remove-duplicates
+[remove-duplicates-badge]: https://img.shields.io/npm/v/posthtml-remove-duplicates.svg
+[remove-duplicates-npm]: https://npmjs.com/package/posthtml-remove-duplicates
