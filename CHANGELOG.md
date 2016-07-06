@@ -1,3 +1,19 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/posthtml/posthtml/compare/v0.8.7...v0.9.0) (2016-07-06)
+
+
+### Bug Fixes
+
+* fix run jscs after version update ([124f857](https://github.com/posthtml/posthtml/commit/124f857))
+
+
+### Features
+
+* make parser configurable ([bfa3e6d](https://github.com/posthtml/posthtml/commit/bfa3e6d))
+* **lib:** make use method variadic ([43d6a6b](https://github.com/posthtml/posthtml/commit/43d6a6b))
+
+
+
 <a name="0.8.7"></a>
 ## [0.8.7](https://github.com/posthtml/posthtml/compare/v0.8.6...v0.8.7) (2016-05-04)
 
