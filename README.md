@@ -74,11 +74,13 @@ posthtml({ plugins: [svgTags(), extendAttrs(attrArgs)] })
 
 ### Options
 
+None of the options are required, any of them may be skipped.
+
 | Option | Description | Default |
 | ------ | ----------- | ------- |
 | **plugins** | Either a single plugin or an array of plugins to be used | `[]`
-| **parser** | _(optional)_ Override the default parser |
-| **generator** | _(optional)_ Override the default code generator |
+| **parser** | _(optional)_ Override the default parser | [posthtml-parser](https://github.com/posthtml/posthtml-parser)
+| **generator** | _(optional)_ Override the default code generator | [posthtml-render](https://github.com/posthtml/posthtml-render)
 | **parserOptions** | _(optional)_ Options to be passed to the parser |
 | **generatorOptions** | _(optional)_ Options to be passed to the code generator |
 
