@@ -1,0 +1,13 @@
+const test = require('ava')
+const path = require('path')
+const posthtml = require('..')
+const fixtures = path.join(__dirname, 'fixtures')
+
+test.todo('basic')
+test.todo('custom parser')
+test.todo('custom generator')
+test.todo('parser options')
+test.todo('generator options')
+test.todo('options override to process method')
+test.todo('single plugin')
+test.todo('multi plugin')

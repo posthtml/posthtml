@@ -1,275 +1,115 @@
+# PostHTML <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+
 [![npm][npm]][npm-badge]
 [![Build][build]][build-badge]
 [![Coverage][cover]][cover-badge]
 [![Chat][chat]][chat-badge]
 
-# PostHTML <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
-
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
 All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
 
-For more detailed information about PostHTML in general take a look at the [docs][docs].
+## Installation
 
-## Dependencies
-- [posthtml-parser][parser] — Parser HTML/XML to PostHTMLTree
-- [posthtml-render][render] — Render PostHTMLTree to HTML/XML
+`npm i posthtml --save`
 
 ## Usage
 
-```
-npm i -D posthtml
-```
-<img align="right" width="91" height="80" title="NodeJS" src="https://worldvectorlogo.com/logos/nodejs-icon.svg">
-### API
-
-**Simple example**
+Initialize `posthtml` with an array of plugins you'd like to use and optional configuration options, then call `process` with the html you'd like to process. For example:
 
 ```js
-const posthtml = require('posthtml');
+const posthtml = require('posthtml')
+const customElements = require('posthtml-custom-elements')
 
 let html = `
     <myComponent>
       <myTitle>Super Title</myTitle>
       <myText>Awesome Text</myText>
-    </myComponent>`;
+    </myComponent>`
 
-posthtml()
-    .use(require('posthtml-custom-elements')())
-    .process(html/*, options */)
-    .then(function(result) {
-        console.log(result.html);
+posthtml({ plugins: customElements })
+    .process(html)
+    .then((result) => {
+        console.log(result.output)
         // <div class="myComponent">
         //  <div class="myTitle">Super Title</div>
         //  <div class="myText">Awesome Text</div>
         // </div>
-    });
+    })
 ```
 
-**Сomplex example**
+And a more complex example:
 
 ```js
-const posthtml = require('posthtml');
+const posthtml = require('posthtml')
+const svgTags = require('posthtml-to-svg-tags')
+const extendAttrs = require('posthtml-extend-attrs')
 
-let html = '<html><body><p class="wow">OMG</p></body></html>';
-
-posthtml([
-        require('posthtml-to-svg-tags')(),
-        require('posthtml-extend-attrs')({
-            attrsTree: {
-                '.wow' : {
-                    id: 'wow_id',
-                    fill: '#4A83B4',
-                    'fill-rule': 'evenodd',
-                    'font-family': 'Verdana'
-                }
-            }
-        })
-    ])
-    .process(html/*, options */)
-    .then(function(result) {
-        console.log(result.html);
-        // <svg xmlns="http://www.w3.org/2000/svg">
-        //  <text
-        //    class="wow"
-        //    id="wow_id" fill="#4A83B4"
-        //    fill-rule="evenodd" font-family="Verdana">
-        //     OMG
-        //  </text>
-        // </svg>
-    });
-```
-
-<img align="right"  width="100" height="90" title="npm" src="https://worldvectorlogo.com/logos/npm.svg" />
-## CLI
-
-### Install [posthtml-cli](https://github.com/GitScrum/posthtml-cli)
-
-```bash
-npm i posthtml-cli
-```
-
-```bash
-posthtml -o output.html -i input.html -c config.json
-```
-or
-
-```json
-"scripts": {
-  "html": "echo '=> Building HTML' && posthtml -o output.html -i input.html -c config.json"
-}
-```
-
-```bash
-npm run html
-```
-<img align="right" width="80" height="80" title="GulpJS" src="https://worldvectorlogo.com/logos/gulp.svg" />
-## Gulp
-
-### Install [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
-
-```bash
-npm i -D gulp-posthtml
-```
-
-```js
-gulp.task('html', function() {
-    let posthtml = require('gulp-posthtml');
-    return gulp.src('src/**/*.html')
-        .pipe(posthtml([ require('posthtml-custom-elements')() ]/*, options */))
-        .pipe(gulp.dest('build/'));
-});
-```
-
-Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
-
-<img align="right" width="90" height="80" title="GruntJS" src="https://worldvectorlogo.com/logos/grunt.svg" />
-## Grunt
-
-### Install [grunt-posthtml](https://www.npmjs.com/package/grunt-posthtml)
-
-```bash
-npm i -D grunt-posthtml
-```
-
-```js
-posthtml: {
-    options: {
-        use: [
-            require('posthtml-head-elements')({
-                headElements: 'test/config/head.json'
-            }),
-            require('posthtml-doctype')({
-                doctype: 'HTML 5'
-            }),
-            require('posthtml-include')({
-                encoding: 'utf-8'
-            })
-        ]
-    },
-    build: {
-        files: [{
-            expand: true,
-            dot: true,
-            cwd: 'test/html/',
-            src: ['*.html'],
-            dest: 'test/tmp/'
-        }]
-    }
-}
-```
-<img align="right" width="90" height="90" title="Webpack" src="https://worldvectorlogo.com/logos/webpack.svg" />
-## Webpack
-
-### Install [posthtml-loader](https://www.npmjs.com/package/posthtml-loader)
-
-```bash
-npm i -D posthtml-loader
-```
-```js
-
-const bem = require('posthtml-bem')()
-const each = require('posthtml-each')()
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml'
-      }
-    ]
-  }
-  posthtml: function () {
-    return {
-      defaults: [ bem, each ]
+const html = '<html><body><p class="wow">OMG</p></body></html>'
+const attrArgs = {
+  attrsTree: {
+    '.wow': {
+      id: 'wow_id',
+      fill: '#4A83B4',
+      'fill-rule': 'evenodd',
+      'font-family': 'Verdana'
     }
   }
 }
+
+posthtml({ plugins: [svgTags(), extendAttrs(attrArgs)] })
+  .process(html)
+  .then(function(result) {
+    console.log(result.output)
+    // <svg xmlns="http://www.w3.org/2000/svg">
+    //  <text
+    //    class="wow"
+    //    id="wow_id" fill="#4A83B4"
+    //    fill-rule="evenodd" font-family="Verdana">
+    //     OMG
+    //  </text>
+    // </svg>
+  })
 ```
-with custom package
+
+### Options
+
+| Option | Description | Default |
+| **plugins** | Either a single plugin or an array of plugins to be used | `[]`
+| **parser** | _(optional)_ Override the default parser |
+| **generator** | _(optional)_ Override the default code generator |
+| **parserOptions** | _(optional)_ Options to be passed to the parser |
+| **generatorOptions** | _(optional)_ Options to be passed to the code generator |
+
+A quick example, using [sugarml](https://github.com/posthtml/sugarml), a jade-like, whitespace-based custom parser:
 
 ```js
-const bem = require('posthtml-bem')()
-const each = require('posthtml-each')()
-const include = require('posthtml-include')()
+const posthtml = require('posthtml')
+const sugarml = require('sugarml')
 
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml?pack=html'
-      }
-    ]
-  }
-  posthtml: function () {
-    return {
-      defaults: [ bem, each ],
-      html: [ bem, each, include ]
-    }
-  }
-}
-```
-## PostHTML with Jade engine in Express
-Also it's work with other view engine. Callback in `app.engine` is called by `res.render()` to render the template code.
+const html = `
+  #main
+    p hello world!
+`
 
-```js
-app.engine('jade', function (path, options, callback) {
-    // PostHTML plugins
-    let plugins = [
-        require('posthtml-bem')(),
-        require('posthtml-textr')({ locale: 'ru'}, [
-            require('typographic-ellipses'),
-            require('typographic-single-spaces'),
-            require('typographic-quotes')
-        ])
-    ];
-
-    let html = require('jade').renderFile(path, options);
-
-    posthtml(plugins)
-        .process(html)
-        .then(function (result) {
-            if (typeof callback === 'function') {
-                var res;
-                try {
-                    res = result.html;
-                } catch (ex) {
-                    return callback(ex);
-                }
-                return callback(null, res);
-            }
-        });
-})
-app.set('view engine', 'jade');
+posthtml({ parser: sugarml })
+  .process(html)
+  .then((result) => {
+    console.log(result.output)
+    // <div id='main'><p>hello world!</p></div>
+  })
 ```
 
-## Middleware
+## Usage In Build Systems
 
-<img align="right" height="56" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
-
-### [Koa](http://koajs.com/)
-
-##### [koa-posthtml](https://github.com/michael-ciniawsky/koa-posthtml)
-
-<img align="right" height="56" title="HapiJS" src="https://worldvectorlogo.com/logos/hapi.svg" />
-
-### [Hapi](https://hapijs.com)
-
-##### [hapi-posthtml](https://github.com/michael-ciniawsky/hapi-posthtml)
-
-<img align="right" height="28" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
-
-### [Express](https://expressjs.com)
-
-##### [express-posthtml](https://github.com/michael-ciniawsky/express-posthtml)
-
-<img align="right" height="28" title="ElectronJS" src="https://worldvectorlogo.com/logos/electron-4.svg" />
-
-### [Electron](https://electron.atom.io)
-
-##### [electron-posthtml](https://github.com/michael-ciniawsky/electron-posthtml)
+- **Command Line**: [posthtml-cli](https://github.com/gitscrum/posthtml-cli)
+- **Gulp**: [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
+- **Grunt**: [grunt-posthtml](https://www.npmjs.com/package/grunt-posthtml)
+- **Webpack**: [posthtml-loader](https://www.npmjs.com/package/posthtml-loader)
+- **Koa**: [koa-posthtml](https://github.com/michael-ciniawsky/koa-posthtml)
+- **Hapi**: [hapi-posthtml](https://github.com/michael-ciniawsky/hapi-posthtml)
+- **Express**: [express-posthtml](https://github.com/michael-ciniawsky/express-posthtml)
+- **Electron**: [electron-posthtml](https://github.com/michael-ciniawsky/electron-posthtml)
 
 ## Plugins
 Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtml-plugins/) for PostHTML plugins.
