@@ -75,6 +75,7 @@ posthtml({ plugins: [svgTags(), extendAttrs(attrArgs)] })
 ### Options
 
 | Option | Description | Default |
+| ------ | ----------- | ------- |
 | **plugins** | Either a single plugin or an array of plugins to be used | `[]`
 | **parser** | _(optional)_ Override the default parser |
 | **generator** | _(optional)_ Override the default code generator |
