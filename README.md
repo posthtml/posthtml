@@ -114,6 +114,101 @@ ph.process(evenMoreHtml, { parser: someParser })
 
 Here, the default plugins will apply to all compiles, except for the second, in which we override them locally. All other options will be merged in and applied only to their individual compiles.
 
+## Posthtml AST
+
+Plugins act on an [abstract syntax tree](https://www.wikiwand.com/en/Abstract_syntax_tree) which represents the html structure, but is easier to search and modify than plain text. It is a very simple [recursive tree structure](https://www.wikiwand.com/en/Tree_(data_structure)). Each node in the tree is represented by an object, which is required to have a `type` property. The default code generator supports three data types:
+
+#### String
+
+A string of plain text. The `content` property contains the string.
+
+#### Tag
+
+An html tag. Can optionally have an `attributes` property, which is an object with the key being a `string`, and the value being either a `string` or `code` type, or an array of multiple. Can also optionally have a `content` property, which can contain a full AST.
+
+#### Code
+
+A piece of code to be evaluated at runtime. Code can access any locals that the user has passed in to the function through the `locals` argument, and any runtime functions through the runtime object, which should be available in any scope that a template function is executed in. The name of the runtime object is configurable and can be accessed via `this.options.runtimeName` within any plugin.
+
+Code should be expected to run in any javascript environment, from node to the browser, and in any version. As such, care should be taken to make code snippets as simple and widely-compatible as possible.
+
+---
+
+Additionally, all tree nodes should include information about their source, so that errors are clear, and source maps can be accurate. Each tree node must also have two additional properties:
+
+- `line`: the line in the original source
+- `col`: the column in the original source
+
+There is a strongly encouraged `filename` option available through the posthtml options. This in combination with the `line` and `col` information can provide accurate debugging. However, if the original source comes from a different file, you can also provide a `filename` property on the tree node so that it is accurate. For example, if using `posthtml-include` to include code from a different file, this would be necessary.
+
+#### Example
+
+For the following file:
+
+```html
+<div id='main'>
+  <p>Hello {{ planet }}</p>
+</div>
+```
+
+After processing by the `posthtml-expressions` plugin, you would get the following tree:
+
+```js
+[
+  {
+    type: 'tag',
+    attributes: {
+      id: {
+        type: 'string',
+        content: 'main',
+        line: 1,
+        col: 9
+      }
+    },
+    content: [
+      {
+        type: 'tag',
+        content: [
+          {
+            type: 'string',
+            content: 'Hello ',
+            line: 2,
+            col: 6
+          },
+          {
+            type: 'code',
+            content: 'locals.planet'
+          }
+        ],
+        line: 2,
+        col: 3
+      }
+    ],
+    line: 1
+    col: 1
+  }
+]
+```
+
+> NOTE: Expression parsing and the `code` node type are used entirely by plugins, posthtml does not parse any html as a `code` node by default.
+
+Which would then be parsed into this function by the code generator:
+
+```js
+;(function (locals) {
+  return "<div id=\"main\">\n  <p>Hello " + locals.planet + "</p>\n</div>"
+})
+```
+
+And finally, when executed, would turn out as such:
+
+```js
+templateFunction({ planet: 'world' })
+// <div id="main">
+//   <p>Hello world</p>
+// </div>
+```
+
 ## Usage In Build Systems
 
 - **Command Line**: [posthtml-cli](https://github.com/gitscrum/posthtml-cli)
