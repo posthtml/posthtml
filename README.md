@@ -157,6 +157,7 @@ After processing by the `posthtml-expressions` plugin, you would get the followi
 [
   {
     type: 'tag',
+    name: 'div',
     attributes: {
       id: {
         type: 'string',
@@ -168,6 +169,7 @@ After processing by the `posthtml-expressions` plugin, you would get the followi
     content: [
       {
         type: 'tag',
+        name: 'p',
         content: [
           {
             type: 'string',
@@ -208,6 +210,35 @@ templateFunction({ planet: 'world' })
 //   <p>Hello world</p>
 // </div>
 ```
+
+## Error Handling
+
+If you need to throw an error from a plugin, posthtml provides a convenient error class that you can utilize to provide the user with a consistent error message that makes it clear from where the error came. You can find it on `this.Error` inside any plugin function. A silly example:
+
+```js
+// myplugin.js
+module.exports = function (tree) {
+  if (tree[0] !== 'object') {
+    throw new this.Error({
+      message: 'First node must be an object!',
+      node: tree[0]
+    })
+  }
+}
+```
+
+If this error was hit, it would provide a nice clean message to the user, like this:
+
+```
+Error: First node must be an object!
+From: myplugin
+Location: `/Users/me/Desktop/test-project/index.html`, Line 1, Column 3
+
+<p>foo bar</p>
+   ^
+```
+
+While you can throw any type of error you'd like, we strongly recommend using the error helper for consistent and clear messaging for your users.
 
 ## Usage In Build Systems
 
