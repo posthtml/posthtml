@@ -19,7 +19,8 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "coveralls": "^2.11.11",
-    "nyc": "^7.0.0"
+    "nyc": "^7.0.0",
+    "posthtml-custom-elements": "^1.0.3"
   },
   "engines": {
     "node": ">=6"
