@@ -102,6 +102,18 @@ posthtml({ parser: sugarml })
   })
 ```
 
+Options can also be passed either to the `posthtml` constructor as above, or to the `process` method. Options passed to `posthtml` will persist between compiles, where options passed to `process` will only apply for that particular compile. Options passed to the `process` plugin will be deep-merged with existing options and take priority if there is a conflict. For example:
+
+```js
+const ph = posthtml({ plugins: [example(), anotherExample() ]})
+
+ph.process(someHtml, { filename: 'foo.html'})
+ph.process(otherHtml, { filename: 'bar.html', plugins: [alternatePlugin()] })
+ph.process(evenMoreHtml, { parser: someParser })
+```
+
+Here, the default plugins will apply to all compiles, except for the second, in which we override them locally. All other options will be merged in and applied only to their individual compiles.
+
 ## Usage In Build Systems
 
 - **Command Line**: [posthtml-cli](https://github.com/gitscrum/posthtml-cli)
