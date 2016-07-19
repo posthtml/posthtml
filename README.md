@@ -239,6 +239,7 @@ If you need to throw an error from a plugin, posthtml provides a convenient erro
 module.exports = function (tree) {
   if (tree[0] !== 'object') {
     throw new this.Error({
+      plugin: 'useless_plugin'
       message: 'First node must be an object!',
       node: tree[0]
     })
@@ -250,11 +251,13 @@ If this error was hit, it would provide a nice clean message to the user, like t
 
 ```
 Error: First node must be an object!
-From: myplugin
+From: useless_plugin
 Location: `/Users/me/Desktop/test-project/index.html`, Line 1, Column 3
 
 <p>foo bar</p>
    ^
+
+...rest of the error trace...
 ```
 
 While you can throw any type of error you'd like, we strongly recommend using the error helper for consistent and clear messaging for your users.
