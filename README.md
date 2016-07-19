@@ -5,9 +5,7 @@
 [![Coverage][cover]][cover-badge]
 [![Chat][chat]][chat-badge]
 
-PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
-
-All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
+Posthtml is a tool for transforming HTML with javascript plugins. Posthtml parses input html into an [abstract syntax tree](#posthtml-ast) (AST). Plugins receive the AST, can transform it as they wish, and return it to be passed to the next plugin. When all plugins have finished, posthtml transforms the AST into a javascript function which, when called, will produce a string of html.
 
 ## Installation
 
@@ -15,7 +13,7 @@ All HTML transformations are made by plugins. And these plugins are just small p
 
 ## Usage
 
-Initialize `posthtml` with an array of plugins you'd like to use and optional configuration options, then call `process` with the html you'd like to process. For example:
+Initialize `posthtml` with some plugins you'd like to use and [any other options](#options), then call `process` with the html you'd like to process. For example:
 
 ```js
 const posthtml = require('posthtml')
@@ -79,10 +77,11 @@ None of the options are required, any of them may be skipped.
 | Option | Description | Default |
 | ------ | ----------- | ------- |
 | **plugins** | Either a single plugin or an array of plugins to be used | `[]`
-| **parser** | _(optional)_ Override the default parser | [posthtml-parser](https://github.com/posthtml/posthtml-parser)
-| **generator** | _(optional)_ Override the default code generator | [posthtml-render](https://github.com/posthtml/posthtml-render)
-| **parserOptions** | _(optional)_ Options to be passed to the parser |
-| **generatorOptions** | _(optional)_ Options to be passed to the code generator |
+| **parser** | Override the default parser | [posthtml-parser](https://github.com/posthtml/posthtml-parser)
+| **generator** | Override the default code generator | [posthtml-render](https://github.com/posthtml/posthtml-render)
+| **parserOptions** | Options to be passed to the parser |
+| **generatorOptions** | Options to be passed to the code generator |
+| **filename** | Name of the file being processed, for debugging. |
 
 A quick example, using [sugarml](https://github.com/posthtml/sugarml), a jade-like, whitespace-based custom parser:
 
