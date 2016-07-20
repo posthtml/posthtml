@@ -266,7 +266,6 @@ If you are writing a plugin, it can sometimes be helpful to access posthtml's op
 For any plugin function, the first parameter passed is the [AST](#posthtml-ast), and the second is a `context` object, which includes the full options used to execute the current compilation. For example:
 
 ```js
-// myplugin.js
 module.exports = function (ast, ctx) {
   console.log(ctx.options)
   return ast
@@ -292,7 +291,7 @@ posthtml([/*...plugins.. */])
 
 In addition to the `options`, you might have noticed that there is a second property on the `ctx` object called `runtime`, and chances are it's an empty object. The runtime object is a place where functions can be stored that are utilized during runtime.
 
-For example, [posthtml-expressions](#) escapes html by default inside of its expression delimiters so that if you type in `You can make a tag bold with <strong>`, it actually outputs that text, instead of a literal `<strong>` html tag. But since expressions are passed in by the user at runtime, the escaping must happen then. While it would be possible for the plugin to include the code for escaping along with every single `code` node, that it returns, this would be a huge waste of space -- it would be much easier to just have one place that the escape function could be called from at runtime. This is the purpose of the runtime object.
+For example, [posthtml-expressions](#) escapes html by default inside of its expression delimiters so that if you type in `You can make a tag bold with <strong>`, it actually outputs that text, instead of a literal `<strong>` html tag. But since expressions are passed in by the user at runtime, the escaping must happen then. While it would be possible for the plugin to include the code for escaping along with every single `code` node, this would be a huge waste of space – it would be much easier to just have one place that the escape function could be called from at runtime. This is the purpose of the runtime object.
 
 Within a plugin, if you'd like to add a function to the runtime, you can do this directly using `ctx.runtime`. Be careful to choose a unique name and not overwrite other plugins' runtime functions. To use a runtime function within your code, you can use the `__runtime` property, which will be transformed by the code generator to the correct name so that it will work in whatever environment it's used in. For example:
 
@@ -316,26 +315,26 @@ This is pseudo-code and is just for demonstration purposes, but you can see what
 If you need to throw an error from a plugin, posthtml provides a convenient error class that you can utilize to provide the user with a consistent error message that makes it clear from where the error came. You can find it on `ctx.PluginError` inside any plugin function. A silly example:
 
 ```js
-// myplugin.js
-module.exports = function (tree, ctx) {
-  if (tree[0] !== 'object') {
+module.exports = function (ast, ctx) {
+  if (ast[0].attrs && ast[0].attrs.class === 'doge') {
     throw new ctx.PluginError({
       plugin: 'useless_plugin'
-      message: 'First node must be an object!',
-      node: tree[0]
+      message: 'First element has a \'doge\' class!',
+      node: ast[0]
     })
   }
+  return ast
 }
 ```
 
 If this error was hit, it would provide a nice clean message to the user, like this:
 
 ```
-Error: First node must be an object!
+Error: First element has a 'doge' class!
 From: useless_plugin
 Location: `/Users/me/Desktop/test-project/index.html`, Line 1, Column 3
 
-<p>foo bar</p>
+<p class='doge'>foo bar</p>
    ^
 
 ...rest of the error trace...
