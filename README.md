@@ -114,6 +114,22 @@ ph.process(evenMoreHtml, { parser: someParser })
 
 Here, the default plugins will apply to all compiles, except for the second, in which we override them locally. All other options will be merged in and applied only to their individual compiles.
 
+### Accessing Options from Plugins
+
+If you are writing a plugin, it can often be helpful to access posthtml's options. For example, if you were writing a plugin that allowed an `include` of a file from a different path, that file would also need to be parsed. You could get the parser directly from posthtml's options.
+
+For any plugin function, the first parameter passed is the [AST](#posthtml-ast), and the second is a `context` object, which includes the full options used to execute the current compilation. For example:
+
+```js
+// myplugin.js
+module.exports = function (ast, ctx) {
+  console.log(ctx.options)
+  return ast
+}
+```
+
+This plugin would do nothing except for logging out posthtml's options. While it is possible to modify the options, it is strongly discouraged, as it may interfere with other plugins and break your build.
+
 ## Posthtml AST
 
 Plugins act on an [abstract syntax tree](https://www.wikiwand.com/en/Abstract_syntax_tree) which represents the html structure, but is easier to search and modify than plain text. It is a very simple [recursive tree structure](https://www.wikiwand.com/en/Tree_(data_structure)). Each node in the tree is represented by an object, which is required to have a `type` property. The default code generator supports three data types:
