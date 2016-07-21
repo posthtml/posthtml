@@ -122,13 +122,45 @@ Plugins act on an [abstract syntax tree](https://www.wikiwand.com/en/Abstract_sy
 
 A string of plain text. The `content` property contains the string.
 
+```js
+{
+  type: 'string',
+  content: 'hello world!',
+  line: 1,
+  col: 1
+}
+```
+
 #### Tag
 
 An html tag. Can optionally have an `attributes` property, which is an object with the key being a `string`, and the value being either a `string` or `code` type, or an array of multiple. Can also optionally have a `content` property, which can contain a full AST.
 
+```js
+{
+  type: 'tag',
+  name: 'p',
+  attributes: {
+    class: { type: 'string', content: 'test', line: 1, col: 5 },
+    'data-foo': { type: 'string', content: 'bar', line: 1, col: 18 },
+  },
+  content: [/* full ast */],
+  line: 1,
+  col: 1
+}
+```
+
 #### Code
 
 A piece of code to be evaluated at runtime. Code can access any locals that the user has passed in to the function through the `locals` argument, and any runtime functions through the runtime object, which should be available in any scope that a template function is executed in. The name of the runtime object is configurable and can be accessed via `this.options.runtimeName` within any plugin. The code itself should be in the `content` attribute of the code node.
+
+```js
+{
+  type: 'code',
+  content: 'locals.foo',
+  line: 1,
+  col: 1
+}
+```
 
 Sometimes there's a situation where you want code to surround some html, in order to control or change its appearance, for example a conditional statement. When this is the case, a special helper can be used within your code so that you can avoid needing to manually run the code generator over the contained nodes. A quick example:
 
