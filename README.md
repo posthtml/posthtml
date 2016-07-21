@@ -81,6 +81,7 @@ None of the options are required, any of them may be skipped.
 | **generator** | Override the default code generator | [posthtml-render](https://github.com/posthtml/posthtml-render)
 | **parserOptions** | Options to be passed to the parser |
 | **generatorOptions** | Options to be passed to the code generator |
+| **runtime** | A place to store functions executed at runtime | `{}`
 | **filename** | Name of the file being processed, for debugging. |
 
 A quick example, using [sugarml](https://github.com/posthtml/sugarml), a jade-like, whitespace-based custom parser:
