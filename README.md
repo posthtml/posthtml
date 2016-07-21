@@ -133,7 +133,7 @@ A string of plain text. The `content` property contains the string.
 
 #### Tag
 
-An html tag. Can optionally have an `attributes` property, which is an object with the key being a `string`, and the value being either a `string` or `code` type, or an array of multiple. Can also optionally have a `content` property, which can contain a full AST.
+An html tag. Must have a `name` property with the tag name. Can optionally have an `attributes` property, which is an object with the key being a `string`, and the value being either a `string` or `code` type, or an array of multiple. Can also optionally have a `content` property, which can contain a full AST.
 
 ```js
 {
@@ -230,7 +230,9 @@ After processing by the `posthtml-expressions` plugin, you would get the followi
           },
           {
             type: 'code',
-            content: 'locals.planet'
+            content: 'locals.planet',
+            line: 2,
+            col: 13
           }
         ],
         line: 2,
