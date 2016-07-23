@@ -1,10 +1,10 @@
-# PostHTML Plugins
-## Create
-This is a simple function with a single argument.
+# Create PostHTML Plugin
+
+PostHTML plugin is a simple function with a single argument.
 
 > Use [posthtml-plugin-boilerplate][plugin-boilerplate] boilerplate for create new plugin.
 
-### Synchronous plugin example
+## Synchronous plugin example
 
 ```js
 module.exports = function pluginName(tree) {
@@ -20,7 +20,7 @@ module.exports = function pluginName(tree) {
 };
 ```
 
-### Classic asynchronous plugin example
+## Classic asynchronous plugin example
 
 ```js
 var request = request('request');
@@ -51,7 +51,7 @@ module.exports = function pluginName(tree, cb) {
 };
 ```
 
-### Promised asynchronous plugin example
+## Promised asynchronous plugin example
 
 ```js
 import parser from 'posthtml-parser';
@@ -69,4 +69,4 @@ export default tree => {
 };
 ```
 
-[plugin-boilerplate]: https://github.com/jonathantneal/posthtml-plugin-boilerplate
+[plugin-boilerplate]: https://github.com/posthtml/posthtml-plugin-boilerplate
