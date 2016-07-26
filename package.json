@@ -7,7 +7,10 @@
     "url": "https://github.com/posthtml/posthtml/issues"
   },
   "ava": {
-    "verbose": "true"
+    "verbose": "true",
+    "files": [
+      "test/index.js"
+    ]
   },
   "dependencies": {
     "joi": "^9.0.1",
@@ -20,9 +23,10 @@
     "ava": "^0.15.2",
     "coveralls": "^2.11.11",
     "nyc": "^7.0.0",
-    "posthtml-code-gen": "0.0.1",
+    "posthtml-code-gen": "static-dev/posthtml-code-gen",
     "posthtml-custom-elements": "^1.0.3",
     "posthtml-exp": "^0.9.0",
+    "posthtml-parser2": "static-dev/posthtml-parser2",
     "sugarml": "^0.1.0"
   },
   "engines": {
