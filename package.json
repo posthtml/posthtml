@@ -25,10 +25,10 @@
     "coveralls": "^2.11.11",
     "nyc": "^7.0.0",
     "posthtml-code-gen": "static-dev/posthtml-code-gen",
-    "posthtml-custom-elements": "^1.0.3",
-    "posthtml-exp": "^0.9.0",
+    "posthtml-custom-elements": "posthtml/posthtml-custom-elements#refactor",
+    "posthtml-exp": "posthtml/posthtml-exp#gen-function",
     "posthtml-parser2": "static-dev/posthtml-parser2",
-    "sugarml": "^0.1.0"
+    "sugarml": "posthtml/sugarml#refactor"
   },
   "engines": {
     "node": ">=6"

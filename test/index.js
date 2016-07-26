@@ -5,15 +5,15 @@ const posthtml = require('..')
 const customElements = require('posthtml-custom-elements')
 const exp = require('posthtml-exp')
 const sugarml = require('sugarml')
-const codegen = require('posthtml-code-gen')
-const parser2 = require('posthtml-parser2')
+const oldRender = require('posthtml-render')
+const oldParser = require('posthtml-parser')
 const errorPlugin = require('./error_plugin')
 const fixtures = path.join(__dirname, 'fixtures')
 const PostHtmlError = posthtml.PostHtmlError
 
 test('basic', (t) => {
   return process('basic.html', { plugins: [customElements()] }).then((res) => {
-    t.truthy(res.output === '<div class="custom">hi</div>\n')
+    t.truthy(res.output() === '<div class="custom">hi</div>\n')
     t.truthy(res.plugins)
     t.truthy(res.runtime)
   })
@@ -21,16 +21,16 @@ test('basic', (t) => {
 
 test('custom parser', (t) => {
   return process('sugarml.html', { parser: sugarml }).then((res) => {
-    t.truthy(res.output.trim() === '<p>hello world!</p>')
+    t.truthy(res.output().trim() === '<p>hello world!</p>')
   })
 })
 
 test('custom generator', (t) => {
   return process('basic.html', {
-    parser: parser2,
-    generator: codegen
+    parser: oldParser,
+    generator: oldRender
   }).then((res) => {
-    t.truthy(res.output().trim() === '<custom>hi</custom>')
+    t.truthy(res.output.trim() === '<custom>hi</custom>')
   })
 })
 
@@ -38,14 +38,12 @@ test('parser options', (t) => {
   return process('upcase.html', {
     parserOptions: { lowerCaseTags: true }
   }).then((res) => {
-    t.truthy(res.output.trim() === '<div>hi</div>')
+    t.truthy(res.output().trim() === '<div>hi</div>')
   })
 })
 
 test('generator options', (t) => {
   return process('selfclosing.html', {
-    parser: parser2,
-    generator: codegen,
     generatorOptions: { selfClosing: 'slash' }
   }).then((res) => {
     t.truthy(res.output().trim() === '<br />')
@@ -56,15 +54,15 @@ test('options override to process method', (t) => {
   return process('basic.html', { plugins: [customElements()] }, {
     plugins: [(x) => x]
   }).then((res) => {
-    t.truthy(res.output.trim() === '<custom>hi</custom>')
+    t.truthy(res.output().trim() === '<custom>hi</custom>')
   })
 })
 
 test('multi plugin', (t) => {
   return process('expression.html', {
-    plugins: [customElements(), exp({ locals: { foo: 'bar' } })]
+    plugins: [customElements(), exp()]
   }).then((res) => {
-    t.truthy(res.output.trim() === '<div class="custom">bar</div>')
+    t.truthy(res.output({ foo: 'bar' }).trim() === '<div class="custom">bar</div>')
   })
 })
 
@@ -95,7 +93,6 @@ test('plugin error', (t) => {
 test('plugin error within a plugin', (t) => {
   return process('basic.html', {
     filename: path.join(fixtures, 'basic.html'),
-    parser: parser2,
     plugins: [errorPlugin]
   }).then(() => {
     t.fail('plugin should throw an error and it doesn\'t')
