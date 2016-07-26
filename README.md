@@ -353,9 +353,9 @@ If you need to throw an error from a plugin, posthtml provides a convenient erro
 module.exports = function (ast, {PluginError}) {
   if (ast[0].attrs && ast[0].attrs.class === 'doge') {
     throw new PluginError({
-      plugin: 'useless_plugin'
+      plugin: 'NoDogePlugin'
       message: 'First element has a \'doge\' class!',
-      node: ast[0]
+      location: ast[0].location
     })
   }
   return ast
@@ -365,9 +365,9 @@ module.exports = function (ast, {PluginError}) {
 If this error was hit, it would provide a nice clean message to the user, like this:
 
 ```
-Error: First element has a 'doge' class!
-From: useless_plugin
-Location: `/Users/me/Desktop/test-project/index.html`, Line 1, Column 3
+PostHtmlPluginError: First element has a 'doge' class!
+From Plugin: NoDogePlugin
+Location: /Users/me/Desktop/test-project/index.html:1:3
 
 <p class='doge'>foo bar</p>
    ^
@@ -376,6 +376,8 @@ Location: `/Users/me/Desktop/test-project/index.html`, Line 1, Column 3
 ```
 
 While you can throw any type of error you'd like, we strongly recommend using the error helper for consistent and clear messaging for your users.
+
+By default, the source and filename will be set by the options passed to `posthtml({/* config */}).process(html)`. If you need to point the error to a different source/filename, you can do so by passing `src` and `filename` options to the `PluginError` constructor.
 
 ## Usage In Build Systems
 
