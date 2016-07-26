@@ -76,7 +76,7 @@ test('error', (t) => {
     message: 'invalid close delimiter',
     plugin: 'posthtml-expressions'
   }).toString()
-  t.truthy(err === 'PostHtmlError: invalid close delimiter\nFrom Plugin: posthtml-expressions\nLocation: /Sites/foo/index.html:1:10\n\n<p>{{ foo -}</p>\n         ^\n')
+  t.truthy(err === 'PostHtmlError: invalid close delimiter\nFrom Plugin: posthtml-expressions\nLocation: /Sites/foo/index.html:1:10\n\n> 1 | <p>{{ foo -}</p>\n    |          ^\n')
 })
 
 test('plugin error', (t) => {
@@ -89,7 +89,7 @@ test('plugin error', (t) => {
     plugin: 'testPlugin',
     message: 'test'
   }).toString()
-  t.truthy(err === 'PostHtmlPluginError: test\nFrom Plugin: testPlugin\nLocation: /foo/bar/wow:1:4\n\nfoo bar\n   ^\n')
+  t.truthy(err === 'PostHtmlPluginError: test\nFrom Plugin: testPlugin\nLocation: /foo/bar/wow:1:4\n\n> 1 | foo bar\n    |    ^\n')
 })
 
 test('plugin error within a plugin', (t) => {
@@ -100,7 +100,7 @@ test('plugin error within a plugin', (t) => {
   }).then(() => {
     t.fail('plugin should throw an error and it doesn\'t')
   }).catch((res) => {
-    t.truthy(res.toString() === 'PostHtmlPluginError: Greetings not permitted\nFrom Plugin: NoGreetingsPlugin\nLocation: /Users/jeff/Sites/posthtml/test/fixtures/basic.html:1:9\n\n<custom>hi</custom>\n        ^\n')
+    t.truthy(res.toString() === 'PostHtmlPluginError: Greetings not permitted\nFrom Plugin: NoGreetingsPlugin\nLocation: /Users/jeff/Sites/posthtml/test/fixtures/basic.html:1:9\n\n> 1 | <custom>hi</custom>\n    |         ^\n  2 | \n')
   })
 })
 

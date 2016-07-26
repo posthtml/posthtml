@@ -13,6 +13,7 @@
     ]
   },
   "dependencies": {
+    "babel-code-frame": "^6.11.0",
     "joi": "^9.0.1",
     "lodash.merge": "^4.4.0",
     "posthtml-parser": "^0.2.0",
