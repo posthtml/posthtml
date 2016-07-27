@@ -141,8 +141,8 @@ An html tag. Must have a `name` property with the tag name. Can optionally have 
   type: 'tag',
   name: 'p',
   attributes: {
-    class: { type: 'string', content: 'test', line: 1, col: 5 },
-    'data-foo': { type: 'string', content: 'bar', line: 1, col: 18 },
+    class: [{ type: 'string', content: 'test', line: 1, col: 5 }],
+    'data-foo': [{ type: 'string', content: 'bar', line: 1, col: 18 }],
   },
   content: [/* full ast */],
   line: 1,
@@ -211,12 +211,12 @@ After processing by the `posthtml-expressions` plugin, you would get the followi
     type: 'tag',
     name: 'div',
     attributes: {
-      id: {
+      id: [{
         type: 'string',
         content: 'main',
         line: 1,
         col: 9
-      }
+      }]
     },
     content: [
       {
@@ -282,7 +282,7 @@ Now let's say we wanted to make a plugin that removes any tag with a `removeme` 
 module.exports = function walk (ast) {
   ast.reduce((m, v, k) => {
     // return without adding to the memo object if we have the 'removeme' class
-    if (v.attrs && v.attrs.class === 'removeme') { return m }
+    if (v.attrs && v.attrs.class[0].content === 'removeme') { return m }
     // if we have contents, recurse
     if (v.contents) { v.contents = walk(v.contents) }
     // otherwise add the node to the memo and return
@@ -351,7 +351,7 @@ If you need to throw an error from a plugin, posthtml provides a convenient erro
 
 ```js
 module.exports = function (ast, {PluginError}) {
-  if (ast[0].attrs && ast[0].attrs.class === 'doge') {
+  if (ast[0].attrs && ast[0].attrs.class[0].content === 'doge') {
     throw new PluginError({
       plugin: 'NoDogePlugin'
       message: 'First element has a \'doge\' class!',
