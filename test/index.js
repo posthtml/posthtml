@@ -97,7 +97,7 @@ test('plugin error within a plugin', (t) => {
   }).then(() => {
     t.fail('plugin should throw an error and it doesn\'t')
   }).catch((res) => {
-    t.truthy(res.toString() === 'PostHtmlPluginError: Greetings not permitted\nFrom Plugin: NoGreetingsPlugin\nLocation: /Users/jeff/Sites/posthtml/test/fixtures/basic.html:1:9\n\n> 1 | <custom>hi</custom>\n    |         ^\n  2 | \n')
+    t.truthy(res.toString().match(/PostHtmlPluginError:\sGreetings\snot\spermitted\nFrom\sPlugin:\sNoGreetingsPlugin\nLocation:\n.*posthtml\/test\/fixtures\/basic\.html:1:9\n\n>\s1\s|\s<custom>hi<\/custom>\n\s{4}|\s{9}\^\n\s\s2 | \n/))
   })
 })
 
