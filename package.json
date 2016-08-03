@@ -49,6 +49,7 @@
     "url": "git://github.com/posthtml/posthtml.git"
   },
   "scripts": {
+    "coverage": "nyc ava && nyc report --reporter=html",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard",
     "test": "npm run lint && nyc ava"

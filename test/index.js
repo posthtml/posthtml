@@ -90,6 +90,15 @@ test('plugin error', (t) => {
   t.truthy(err === 'PostHtmlPluginError: test\nFrom Plugin: testPlugin\nLocation: /foo/bar/wow:1:4\n\n> 1 | foo bar\n    |    ^\n')
 })
 
+test('plugin error, no plugin name, filename, source', (t) => {
+  const PluginError = PostHtmlError.generatePluginError()
+  const err = new PluginError({
+    location: { line: 1, col: 4 },
+    message: 'test'
+  }).toString()
+  t.truthy(err === 'PostHtmlPluginError: test\nLocation: [no filename]:1:4')
+})
+
 test('plugin error within a plugin', (t) => {
   return process('basic.html', {
     filename: path.join(fixtures, 'basic.html'),
