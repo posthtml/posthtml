@@ -12,7 +12,7 @@ const fixtures = path.join(__dirname, 'fixtures')
 const PostHtmlError = posthtml.PostHtmlError
 
 test('basic', (t) => {
-  return process('basic.html', { plugins: [customElements()] }).then((res) => {
+  return process('basic.html', { plugins: customElements() }).then((res) => {
     t.truthy(res.output() === '<div class="custom">hi</div>\n')
     t.truthy(res.plugins)
     t.truthy(res.runtime)
