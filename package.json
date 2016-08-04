@@ -30,7 +30,7 @@
     "istanbul": "^0.4.2",
     "jscs": "^3.0.3",
     "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
+    "mocha": "^3.0.1",
     "mversion": "^1.10.0",
     "object.assign": "^4.0.3"
   },
