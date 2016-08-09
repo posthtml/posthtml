@@ -1,9 +1,9 @@
 # Reshape
 
-[![npm][https://img.shields.io/npm/v/reshape.svg]][https://npmjs.com/package/reshape]
-[![tests][https://travis-ci.org/reshape/reshape.svg?branch=master]][https://travis-ci.org/reshape/reshape?branch=master]
-[![coverage][https://coveralls.io/repos/reshape/reshape/badge.svg?branch=master]][https://coveralls.io/r/reshape/reshape?branch=master]
-[![gitter][https://badges.gitter.im/reshape/reshape.svg]][https://gitter.im/reshape/reshape?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
+[![npm](https://img.shields.io/npm/v/reshape.svg)](https://npmjs.com/package/reshape)
+[![tests](https://travis-ci.org/reshape/reshape.svg?branch=master)](https://travis-ci.org/reshape/reshape?branch=master)
+[![coverage](https://coveralls.io/repos/reshape/reshape/badge.svg?branch=master)](https://coveralls.io/r/reshape/reshape?branch=master)
+[![gitter](https://badges.gitter.im/reshape/reshape.svg)](https://gitter.im/reshape/reshape?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge")
 
 Reshape is a tool for transforming HTML with javascript plugins. Reshape parses input html into an [abstract syntax tree](#reshape-ast) (AST). Plugins receive the AST, can transform it as they wish, and return it to be passed to the next plugin. When all plugins have finished, reshape transforms the AST into a javascript function which, when called, will produce a string of html.
 
