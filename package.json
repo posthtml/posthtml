@@ -1,70 +1,54 @@
 {
-  "name": "posthtml",
-  "version": "0.9.0",
-  "description": "HTML/XML processor",
-  "keywords": [
-    "html",
-    "xml",
-    "postproccessor",
-    "parser",
-    "transform",
-    "transformations",
-    "manipulation",
-    "preprocessor",
-    "processor"
-  ],
-  "main": "lib/posthtml.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "dependencies": {
-    "posthtml-parser": "^0.2.0",
-    "posthtml-render": "^1.0.5"
-  },
-  "devDependencies": {
-    "chai": "^3.0.0",
-    "chai-as-promised": "^5.1.0",
-    "chai-subset": "^1.1.0",
-    "conventional-changelog-cli": "^1.0.0",
-    "es6-promise": "^3.0.2",
-    "istanbul": "^0.4.2",
-    "jscs": "^3.0.3",
-    "jshint": "^2.8.0",
-    "mocha": "^2.2.5",
-    "mversion": "^1.10.0",
-    "object.assign": "^4.0.3"
-  },
-  "scripts": {
-    "test": "npm run lint && mocha -R dot && npm run coverage",
-    "clean": "rm -rf coverage",
-    "coverage": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
-    "lint": "jshint . && jscs .",
-    "release-patch": "mversion patch",
-    "release-minor": "mversion minor",
-    "release-major": "mversion major"
-  },
-  "author": "Anton Winogradov <winogradovaa@gmail.com>",
-  "contributors": [
-    {
-      "name": "Ivan Voischev",
-      "email": "voischev.ivan@ya.ru"
-    },
-    {
-      "name": "Anton Winogradov",
-      "email": "winogradovaa@gmail.com"
-    },
-    {
-      "name": "Alexej Yaroshevich",
-      "email": "zxqfox@gmail.com"
-    }
-  ],
-  "homepage": "https://github.com/posthtml/posthtml",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/posthtml/posthtml.git"
+  "name": "reshape",
+  "description": "A plugin-based html template engine",
+  "version": "0.0.0",
+  "author": "Jeff Escalante",
+  "ava": {
+    "verbose": "true",
+    "files": [
+      "test/index.js"
+    ]
   },
   "bugs": {
-    "url": "https://github.com/posthtml/posthtml/issues"
+    "url": "https://github.com/reshape/reshape/issues"
   },
-  "license": "MIT"
+  "dependencies": {
+    "babel-code-frame": "^6.11.0",
+    "joi": "^9.0.1",
+    "lodash.merge": "^4.4.0",
+    "reshape-code-gen": "reshape/code-gen",
+    "reshape-parser2": "reshape/parser",
+    "when": "^3.7.7"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "coveralls": "^2.11.11",
+    "nyc": "^7.0.0",
+    "reshape-custom-elements": "reshape/custom-elements",
+    "reshape-expressions": "reshape/expressions",
+    "posthtml-parser": "^0.2.0",
+    "posthtml-render": "^1.0.5",
+    "standard": "^7.1.2",
+    "sugarml": "reshape/sugarml"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "homepage": "https://github.com/reshape/reshape",
+  "keywords": [
+    "html",
+    "parser",
+    "postproccessor",
+    "processor",
+    "transform"
+  ],
+  "license": "MIT",
+  "main": "lib",
+  "repository": "https://github.com/reshape/reshape",
+  "scripts": {
+    "coverage": "nyc ava && nyc report --reporter=html",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard",
+    "test": "npm run lint && nyc ava"
+  }
 }

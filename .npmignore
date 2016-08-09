@@ -4,5 +4,5 @@ test/
 .gitignore
 .travis.yml
 npm-debug.log
+.nyc_output
 logo.svg
-
