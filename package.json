@@ -1,5 +1,5 @@
 {
-  "name": "posthtml",
+  "name": "reshape",
   "description": "A plugin-based html template engine",
   "version": "0.0.0",
   "author": "Jeff Escalante",
@@ -10,31 +10,31 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/posthtml/posthtml/issues"
+    "url": "https://github.com/reshape/reshape/issues"
   },
   "dependencies": {
     "babel-code-frame": "^6.11.0",
     "joi": "^9.0.1",
     "lodash.merge": "^4.4.0",
-    "posthtml-code-gen": "static-dev/posthtml-code-gen",
-    "posthtml-parser2": "static-dev/posthtml-parser2",
+    "reshape-code-gen": "reshape/code-gen",
+    "reshape-parser2": "reshape/parser",
     "when": "^3.7.7"
   },
   "devDependencies": {
     "ava": "^0.15.2",
     "coveralls": "^2.11.11",
     "nyc": "^7.0.0",
-    "posthtml-custom-elements": "posthtml/posthtml-custom-elements#refactor",
-    "posthtml-exp": "posthtml/posthtml-exp#gen-function",
+    "reshape-custom-elements": "reshape/custom-elements",
+    "reshape-expressions": "reshape/expressions",
     "posthtml-parser": "^0.2.0",
     "posthtml-render": "^1.0.5",
     "standard": "^7.1.2",
-    "sugarml": "posthtml/sugarml#refactor"
+    "sugarml": "reshape/sugarml"
   },
   "engines": {
     "node": ">=6"
   },
-  "homepage": "https://github.com/posthtml/posthtml",
+  "homepage": "https://github.com/reshape/reshape",
   "keywords": [
     "html",
     "parser",
@@ -44,10 +44,7 @@
   ],
   "license": "MIT",
   "main": "lib",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/posthtml/posthtml.git"
-  },
+  "repository": "https://github.com/reshape/reshape",
   "scripts": {
     "coverage": "nyc ava && nyc report --reporter=html",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
