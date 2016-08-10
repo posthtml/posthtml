@@ -1,10 +1,10 @@
-require('es6-promise').polyfill();
-require('object.assign').shim();
+require('es6-promise').polyfill()
+require('object.assign').shim()
 
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
-var chaiSubset = require('chai-subset');
+var chai = require('chai')
+var chaiSubset = require('chai-subset')
+var chaiAsPromised = require('chai-as-promised')
 
-chai.should();
-chai.use(chaiSubset);
-chai.use(chaiAsPromised);
+chai.should()
+chai.use(chaiSubset)
+chai.use(chaiAsPromised)
