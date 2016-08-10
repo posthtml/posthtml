@@ -1,8 +1,15 @@
 node_modules/
 coverage/
 test/
+docs/
 .gitignore
+.editorconfig
+.jscsrc
+.jshintignore
+.jshintrc
+.mversionrc
 .travis.yml
 npm-debug.log
 logo.svg
+MAINTAINERS
 
