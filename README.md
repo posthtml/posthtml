@@ -1,9 +1,11 @@
-[![npm][npm]][npm-badge]
-[![Build][build]][build-badge]
-[![Coverage][cover]][cover-badge]
-[![Chat][chat]][chat-badge]
+[![NPM][npm]][npm-url]
+[![Deps][deps]][deps-url]
+[![Tests][build]][build-url]
+[![Coverage][cover]][cover-url]
+[![Standard Code Style][style]][style-url]
+[![Chat][chat]][chat-url]
 
-# PostHTML <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+# PostHTML <img align="right" width="200" height="220" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
@@ -11,79 +13,86 @@ All HTML transformations are made by plugins. And these plugins are just small p
 
 For more detailed information about PostHTML in general take a look at the [docs][docs].
 
-## Dependencies
+### Dependencies
+
 - [posthtml-parser][parser] — Parser HTML/XML to PostHTMLTree
 - [posthtml-render][render] — Render PostHTMLTree to HTML/XML
 
-## Usage
+## Install
 
-```
+```bash
 npm i -D posthtml
 ```
+
+## Usage
+
 <img align="right" width="91" height="80" title="NodeJS" src="https://worldvectorlogo.com/logos/nodejs-icon.svg">
 ### API
 
 **Simple example**
 
 ```js
-const posthtml = require('posthtml');
+import posthtml from 'posthtml'
 
-let html = `
-    <myComponent>
-      <myTitle>Super Title</myTitle>
-      <myText>Awesome Text</myText>
-    </myComponent>`;
+const html = `
+  <myComponent>
+    <myTitle>Super Title</myTitle>
+    <myText>Awesome Text</myText>
+  </myComponent>
+`
 
 posthtml()
-    .use(require('posthtml-custom-elements')())
-    .process(html/*, options */)
-    .then(function(result) {
-        console.log(result.html);
-        // <div class="myComponent">
-        //  <div class="myTitle">Super Title</div>
-        //  <div class="myText">Awesome Text</div>
-        // </div>
-    });
+  .use(require('posthtml-custom-elements')())
+  .process(html, {/*options */})
+  .then((result) => console.log(result.html))
+```
+
+```html
+<div class="myComponent">
+  <div class="myTitle">Super Title</div>
+  <div class="myText">Awesome Text</div>
+</div>
 ```
 
 **Сomplex example**
 
 ```js
-const posthtml = require('posthtml');
+import posthtml from 'posthtml'
 
-let html = '<html><body><p class="wow">OMG</p></body></html>';
+const html = '<html><body><p class="wow">OMG</p></body></html>'
 
-posthtml([
-        require('posthtml-to-svg-tags')(),
-        require('posthtml-extend-attrs')({
-            attrsTree: {
-                '.wow' : {
-                    id: 'wow_id',
-                    fill: '#4A83B4',
-                    'fill-rule': 'evenodd',
-                    'font-family': 'Verdana'
-                }
-            }
-        })
-    ])
-    .process(html/*, options */)
-    .then(function(result) {
-        console.log(result.html);
-        // <svg xmlns="http://www.w3.org/2000/svg">
-        //  <text
-        //    class="wow"
-        //    id="wow_id" fill="#4A83B4"
-        //    fill-rule="evenodd" font-family="Verdana">
-        //     OMG
-        //  </text>
-        // </svg>
-    });
+posthtml(
+  [
+    require('posthtml-to-svg-tags')(),
+    require('posthtml-extend-attrs')({
+      attrsTree: {
+        '.wow' : {
+          id: 'wow_id',
+          fill: '#4A83B4',
+          'fill-rule': 'evenodd',
+          'font-family': 'Verdana'
+        }
+      }
+    })
+  ])
+  .process(html/*, options */)
+  .then((result) =>  console.log(result.html))
+```
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg">
+  <text
+    class="wow"
+    id="wow_id"
+    fill="#4A83B4"
+    fill-rule="evenodd" font-family="Verdana">
+      OMG
+  </text>
+</svg>
 ```
 
 <img align="right"  width="100" height="90" title="npm" src="https://worldvectorlogo.com/logos/npm.svg" />
-## CLI
-
-### Install [posthtml-cli](https://github.com/GitScrum/posthtml-cli)
+## [CLI](https://www.npmjs.com/package/posthtml-cli)
 
 ```bash
 npm i posthtml-cli
@@ -96,37 +105,41 @@ or
 
 ```json
 "scripts": {
-  "html": "echo '=> Building HTML' && posthtml -o output.html -i input.html -c config.json"
+  "html": "posthtml -o output.html -i input.html -c config.json"
 }
 ```
-
 ```bash
 npm run html
 ```
-<img align="right" width="80" height="80" title="GulpJS" src="https://worldvectorlogo.com/logos/gulp.svg" />
-## Gulp
 
-### Install [gulp-posthtml](https://www.npmjs.com/package/gulp-posthtml)
+<img align="right" width="80" height="80" title="Gulp" src="https://worldvectorlogo.com/logos/gulp.svg" />
+## [Gulp](https://www.npmjs.com/package/gulp-posthtml)
 
 ```bash
 npm i -D gulp-posthtml
 ```
 
 ```js
-gulp.task('html', function() {
-    let posthtml = require('gulp-posthtml');
-    return gulp.src('src/**/*.html')
-        .pipe(posthtml([ require('posthtml-custom-elements')() ]/*, options */))
-        .pipe(gulp.dest('build/'));
+import tap from 'gulp-tap'
+import posthtml from 'gulp-posthtml'
+import { task, src, dest } from 'gulp'
+
+task('html', () => {
+  let path
+  const plugins = [ require('posthtml-include')(root: `${path}`) ]
+  const options = {}
+
+  src('src/**/*.html')
+    .pipe(tap((file) => path = file.path))
+    .pipe(posthtml(plugins, options))
+    .pipe(dest('build/'))
 });
 ```
 
 Check [project-stub](https://github.com/posthtml/project-stub) example with Gulp
 
 <img align="right" width="90" height="80" title="GruntJS" src="https://worldvectorlogo.com/logos/grunt.svg" />
-## Grunt
-
-### Install [grunt-posthtml](https://www.npmjs.com/package/grunt-posthtml)
+## [Grunt](https://www.npmjs.com/package/grunt-posthtml)
 
 ```bash
 npm i -D grunt-posthtml
@@ -134,43 +147,42 @@ npm i -D grunt-posthtml
 
 ```js
 posthtml: {
-    options: {
-        use: [
-            require('posthtml-head-elements')({
-                headElements: 'test/config/head.json'
-            }),
-            require('posthtml-doctype')({
-                doctype: 'HTML 5'
-            }),
-            require('posthtml-include')({
-                encoding: 'utf-8'
-            })
-        ]
-    },
-    build: {
-        files: [{
-            expand: true,
-            dot: true,
-            cwd: 'test/html/',
-            src: ['*.html'],
-            dest: 'test/tmp/'
-        }]
-    }
+  options: {
+    use: [
+      require('posthtml-head-elements')({
+        headElements: 'test/config/head.json'
+      }),
+      require('posthtml-doctype')({
+        doctype: 'HTML 5'
+      }),
+      require('posthtml-include')({
+        encoding: 'utf-8'
+      })
+    ]
+  },
+  build: {
+    files: [
+      {
+        expand: true,
+        dot: true,
+        cwd: 'test/html/',
+        src: ['*.html'],
+        dest: 'test/tmp/'
+      }
+    ]
+  }
 }
 ```
-<img align="right" width="90" height="90" title="Webpack" src="https://worldvectorlogo.com/logos/webpack.svg" />
-## Webpack
 
-### Install [posthtml-loader](https://www.npmjs.com/package/posthtml-loader)
+<img align="right" width="90" height="90" title="Webpack" src="https://worldvectorlogo.com/logos/webpack.svg" />
+## [Webpack](https://www.npmjs.com/package/posthtml-loader)
 
 ```bash
 npm i -D posthtml-loader
 ```
+
+**webpack.confg.js**
 ```js
-
-const bem = require('posthtml-bem')()
-const each = require('posthtml-each')()
-
 module.exports = {
   module: {
     loaders: [
@@ -180,103 +192,67 @@ module.exports = {
       }
     ]
   }
-  posthtml: function () {
+  posthtml: (ctx) => {
     return {
-      defaults: [ bem, each ]
+      plugins: [require('posthtml-include')({ root: ctx.resourcePath })]
+      parser: require('sugarml')
     }
   }
 }
 ```
-with custom package
 
-```js
-const bem = require('posthtml-bem')()
-const each = require('posthtml-each')()
-const include = require('posthtml-include')()
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml?pack=html'
-      }
-    ]
-  }
-  posthtml: function () {
-    return {
-      defaults: [ bem, each ],
-      html: [ bem, each, include ]
-    }
-  }
-}
-```
 ## PostHTML with Jade engine in Express
 Also it's work with other view engine. Callback in `app.engine` is called by `res.render()` to render the template code.
 
 ```js
-app.engine('jade', function (path, options, callback) {
-    // PostHTML plugins
-    let plugins = [
-        require('posthtml-bem')(),
-        require('posthtml-textr')({ locale: 'ru'}, [
-            require('typographic-ellipses'),
-            require('typographic-single-spaces'),
-            require('typographic-quotes')
-        ])
-    ];
+app.engine('jade', (path, options, cb) => {
+  const plugins = [
+    require('posthtml-bem')(),
+    require('posthtml-textr')({ locale: 'ru'}, [
+      require('typographic-ellipses'),
+      require('typographic-single-spaces'),
+      require('typographic-quotes')
+    ])
+  ]
 
-    let html = require('jade').renderFile(path, options);
+  let html = require('jade').renderFile(path, options)
 
-    posthtml(plugins)
-        .process(html)
-        .then(function (result) {
-            if (typeof callback === 'function') {
-                var res;
-                try {
-                    res = result.html;
-                } catch (ex) {
-                    return callback(ex);
-                }
-                return callback(null, res);
-            }
-        });
+  posthtml(plugins)
+    .process(html)
+    .then((result) => {
+      if (typeof cb === 'function') {
+        let res
+
+        try {
+          res = result.html
+        } catch (ex) {
+          return cb(ex)
+        }
+          return cb(null, res)
+        }
+    })
 })
-app.set('view engine', 'jade');
+
+app.set('view engine', 'jade')
 ```
 
 ## Middleware
 
-<img align="right" height="56" title="KoaJS" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
+### [Koa](https://github.com/posthtml/koa-posthtml) <img align="right" height="56" title="Koa" src="http://t2.gstatic.com/images?q=tbn:ANd9GcRfnGHcTYGyMNcicU4N3nzV-5Rta9s_e5LzSI2HBjKMsLHundtmqAlQ" />
 
-### [Koa](http://koajs.com/)
+### [Hapi](https://github.com/posthtml/hapi-posthtml) <img align="right" height="56" title="Hapi" src="https://worldvectorlogo.com/logos/hapi.svg" />
 
-##### [koa-posthtml](https://github.com/michael-ciniawsky/koa-posthtml)
+### [Express](https://github.com/posthtml/express-posthtml) <img align="right" height="32" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg" />
 
-<img align="right" height="56" title="HapiJS" src="https://worldvectorlogo.com/logos/hapi.svg" />
+### [Electron](https://github.com/posthtml/electron-posthtml) <img align="right" height="28" title="Electron" src="https://worldvectorlogo.com/logos/electron-4.svg" />
 
-### [Hapi](https://hapijs.com)
+### [Metalsmith](https://github.com/posthtml/metalsmith-posthtml) <img align="right" height="28" title="Metalsmith" src="https://cdn.rawgit.com/metalsmith/metalsmith-logo/master/images/logo.svg" />
 
-##### [hapi-posthtml](https://github.com/michael-ciniawsky/hapi-posthtml)
+## [Plugins](http://maltsev.github.io/posthtml-plugins)
 
-<img align="right" height="28" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
-
-### [Express](https://expressjs.com)
-
-##### [express-posthtml](https://github.com/michael-ciniawsky/express-posthtml)
-
-<img align="right" height="28" title="ElectronJS" src="https://worldvectorlogo.com/logos/electron-4.svg" />
-
-### [Electron](https://electron.atom.io)
-
-##### [electron-posthtml](https://github.com/michael-ciniawsky/electron-posthtml)
-
-## Plugins
-Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtml-plugins/) for PostHTML plugins.
-
-|Plugin|Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Description|
-|:-----|:-----|:----------|
-|[posthtml-bem][bem]| [![npm][bem-badge]][bem-npm] |Support BEM naming in html structure|
+|Name|Status|Description|
+|:-----|:-----:|:----------|
+|[posthtml-bem][bem]|[![npm][bem-badge]][bem-npm]|Support BEM naming in html structure|
 |[posthtml-postcss][css]|[![npm][css-badge]][css-npm]|Use [PostCSS][css-gh] in HTML document|
 |[posthtml-retext][text]|[![npm][text-badge]][text-npm]|Extensible system for analysing and manipulating natural language|
 |[posthtml-custom-elements][elem]|[![npm][elem-badge]][elem-npm]| Use custom elements now |
@@ -319,25 +295,69 @@ Take a look at the searchable [Plugins Catalog](http://maltsev.github.io/posthtm
 |[posthtml-collect-styles][collect-styles]|[![npm][collect-styles-badge]][collect-styles-npm]|Collect styles from html and put it in the head|
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 
-## License
-MIT
+## Maintainers
+
+<table>
+  <tbody>
+   <tr>
+    <td align="center">
+      <img width="150 height="150"
+      src="https://avatars.githubusercontent.com/u/1510217?v=3&s=150">
+      <br />
+      <a href="https://github.com/voischev">Ivan Voischev</a>
+    </td>
+    <td align="center">
+      <img width="150 height="150"
+      src="https://avatars.githubusercontent.com/u/982072?v=3&s=150">
+      <br />
+      <a href="https://github.com/awinogradov">Anton Winogradov</a>
+    </td>
+    <td align="center">
+      <img width="150 height="150"
+      src="https://avatars.githubusercontent.com/u/677518?v=3&s=150">
+      <br />
+      <a href="https://github.com/zxqfox">Alexej Yaroshevich</a>
+    </td>
+    <td align="center">
+      <img width="150 height="150"
+      src="https://avatars.githubusercontent.com/u/1813468?v=3&s=150">
+      <br />
+      <a href="https://github.com/Yeti-or">Vasiliy</a>
+    </td>
+   </tr>
+  <tbody>
+</table>
+
+## Contributing
+
+See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [contribution guide](CONTRIBUTING.md).
+
+## LICENSE
+
+[MIT](LICENSE)
 
 [npm]: https://img.shields.io/npm/v/posthtml.svg
-[npm-badge]: https://npmjs.com/package/posthtml
+[npm-url]: https://npmjs.com/package/posthtml
 
-[chat]: https://badges.gitter.im/posthtml/posthtml.svg
-[chat-badge]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
+[deps]: https://david-dm.org/posthtml/posthtml.svg
+[deps-url]: https://david-dm.org/posthtml/posthtml
 
 [build]: https://travis-ci.org/posthtml/posthtml.svg?branch=master
-[build-badge]: https://travis-ci.org/posthtml/posthtml?branch=master
+[build-url]: https://travis-ci.org/posthtml/posthtml?branch=master
 
 [cover]: https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master
-[cover-badge]: https://coveralls.io/r/posthtml/posthtml?branch=master
+[cover-url]: https://coveralls.io/r/posthtml/posthtml?branch=master
+
+[style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
+[style-url]: http://standardjs.com/
+
+[chat]: https://badges.gitter.im/posthtml/posthtml.svg
+[chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
+
+[docs]: https://github.com/posthtml/posthtml/blob/master/docs
 
 [parser]: https://github.com/posthtml/posthtml-parser
 [render]: https://github.com/posthtml/posthtml-render
-
-[docs]: https://github.com/posthtml/posthtml/blob/master/docs
 
 [bem]: https://github.com/rajdee/posthtml-bem
 [bem-badge]: https://img.shields.io/npm/v/posthtml-bem.svg
@@ -360,7 +380,7 @@ MIT
 [web-badge]: https://img.shields.io/npm/v/posthtml-web-component.svg
 [web-npm]: https://npmjs.com/package/posthtml-web-components
 
-[in]: https://github.com/maltsev/posthtml-inline-css
+[in]: https://github.com/posthtml/posthtml-inline-css
 [in-badge]: https://img.shields.io/npm/v/posthtml-inline-css.svg
 [in-npm]: https://npmjs.com/package/posthtml-inline-css
 
@@ -424,11 +444,11 @@ MIT
 [schemas-badge]: https://img.shields.io/npm/v/posthtml-schemas.svg
 [schemas-npm]: https://npmjs.com/package/posthtml-schemas
 
-[extend]: https://github.com/maltsev/posthtml-extend
+[extend]: https://github.com/posthtml/posthtml-extend
 [extend-badge]: https://img.shields.io/npm/v/posthtml-extend.svg
 [extend-npm]: https://npmjs.com/package/posthtml-extend
 
-[img]: https://github.com/maltsev/posthtml-img-autosize
+[img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
 [img-npm]: https://npmjs.com/package/posthtml-img-autosize
 
@@ -448,31 +468,31 @@ MIT
 [alt-badge]: https://img.shields.io/npm/v/posthtml-alt-always.svg
 [alt-npm]: https://npmjs.com/package/posthtml-alt-always
 
-[css-modules]: https://github.com/maltsev/posthtml-css-modules
+[css-modules]: https://github.com/posthtml/posthtml-css-modules
 [css-modules-badge]: https://img.shields.io/npm/v/posthtml-css-modules.svg
 [css-modules-npm]: https://npmjs.com/package/posthtml-css-modules
 
-[jade]: https://github.com/michael-ciniawsky/posthtml-jade
+[jade]: https://github.com/posthtml/posthtml-jade
 [jade-badge]: https://img.shields.io/npm/v/posthtml-jade.svg
 [jade-npm]: https://npmjs.com/package/posthtml-jade
 
-[tidy]: https://github.com/michael-ciniawsky/posthtml-tidy
+[tidy]: https://github.com/posthtml/posthtml-tidy
 [tidy-badge]: https://img.shields.io/npm/v/posthtml-tidy.svg
 [tidy-npm]: https://npmjs.com/package/posthtml-tidy
 
-[hint]: https://github.com//michael-ciniawsky/posthtml-hint
+[hint]: https://github.com//posthtml/posthtml-hint
 [hint-badge]: https://img.shields.io/npm/v/posthtml-hint.svg
 [hint-npm]: https://npmjs.com/package/posthtml-hint
 
-[w3c]: https://github.com/michael-ciniawsky/posthtml-w3c
+[w3c]: https://github.com/posthtml/posthtml-w3c
 [w3c-badge]: https://img.shields.io/npm/v/posthtml-w3c.svg
 [w3c-npm]: https://npmjs.com/package/posthtml-w3c
 
-[exp]: https://github.com/michael-ciniawsky/posthtml-exp
+[exp]: https://github.com/posthtml/posthtml-exp
 [exp-badge]: https://img.shields.io/npm/v/posthtml-exp.svg
 [exp-npm]: https://npmjs.com/package/posthtml-exp
 
-[load]: https://github.com/michael-ciniawsky/posthtml-load-plugins
+[load]: https://github.com/posthtml/posthtml-load-plugins
 [load-badge]: https://img.shields.io/npm/v/posthtml-load-plugins.svg
 [load-npm]: https://npmjs.com/package/posthtml-load-plugins
 
@@ -492,11 +512,11 @@ MIT
 [uglify-badge]: https://img.shields.io/npm/v/posthtml-uglify.svg
 [uglify-npm]: https://npmjs.com/package/posthtml-uglify
 
-[modules]: https://github.com/canvaskisa/posthtml-modules
+[modules]: https://github.com/posthtml/posthtml-modules
 [modules-badge]: https://img.shields.io/npm/v/posthtml-modules.svg
 [modules-npm]: https://npmjs.com/package/posthtml-modules
 
-[postcss-modules]: https://github.com/canvaskisa/posthtml-postcss-modules
+[postcss-modules]: https://github.com/posthtml/posthtml-postcss-modules
 [postcss-modules-badge]: https://img.shields.io/npm/v/posthtml-postcss-modules.svg
 [postcss-modules-npm]: https://npmjs.com/package/posthtml-postcss-modules
 

@@ -28,6 +28,7 @@
     "conventional-changelog-cli": "^1.0.0",
     "es6-promise": "^3.0.2",
     "istanbul": "^0.4.2",
+    "jsdoc-to-markdown": "^1.3.7",
     "mocha": "^2.2.5",
     "mversion": "^1.10.0",
     "object.assign": "^4.0.3",
@@ -35,12 +36,14 @@
   },
   "scripts": {
     "lint": "standard",
-    "test": "npm run lint && mocha -R dot && npm run coverage",
-    "clean": "rm -rf coverage",
-    "coverage": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
-    "release-patch": "mversion patch",
-    "release-minor": "mversion minor",
-    "release-major": "mversion major"
+    "test": "npm run lint && mocha -R dot && npm run cover",
+    "clean": "rm -rf coverage jsdoc-api",
+    "cover": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
+    "docs:api": "jsdoc2md lib/api.js > docs/api.md",
+    "docs:core": "jsdoc2md lib/index.js > docs/core.md",
+    "release:patch": "mversion patch",
+    "release:minor": "mversion minor",
+    "release:major": "mversion major"
   },
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [
