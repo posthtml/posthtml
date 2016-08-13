@@ -1,4 +1,12 @@
-node_modules
+# OS
+.DS_Store
+._*
+
+# NodeJS
 npm-debug.log
 
-coverage/
+.nyc_output
+
+coverage
+jsdoc-api
+node_modules
