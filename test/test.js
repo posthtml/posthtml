@@ -1,18 +1,23 @@
-/* jshint mocha: true, maxlen: false */
-var posthtml = require('../lib/posthtml');
-var expect = require('chai').expect;
+var it = require('mocha').it
+var expect = require('chai').expect
+var describe = require('mocha').describe
 
-var beforeHTML = '<div class="button"><div class="button__text">Text</div></div>';
+var posthtml = require('../lib')
 
-function test(html, done) {
-    posthtml().process(html).then(function(result) {
-        expect(beforeHTML).to.eql(result.html);
-        done();
-    }).catch(function(error) { return done(error); });
+var input = '<div class="button"><div class="button__text">Text</div></div>'
+
+function test (html, done) {
+  posthtml()
+    .process(html)
+    .then(function (result) {
+      expect(input).to.eql(result.html)
+      done()
+    })
+    .catch(function (error) { return done(error) })
 }
 
-describe('Simple text', function() {
-    it('html eqval', function(done) {
-        test(beforeHTML, done);
-    });
-});
+describe('Simple text', function () {
+  it('html eqval', function (done) {
+    test(input, done)
+  })
+})

@@ -1,33 +1,37 @@
 # PostHTML Tree
-## Example (JSON tree)
+
+## Format
+
 ### HTML
 
 ```html
 <a class="animals" href="#">
-    <span class="animals__cat" style="background: url(cat.png)">Cat</span>
+  <span class="animals__cat" style="background: url(cat.png)">Cat</span>
 </a>
 ```
 
-### Tree in PostHTML (PostHTMLTree)
+### JSON
 
 ```js
-[{
+[
+  {
     tag: 'a',
     attrs: {
-        class: 'animals',
-        href: '#'
+      class: 'animals',
+      href: '#'
     },
     content: [
-        '\n    ',
-            {
-            tag: 'span',
-            attrs: {
-                class: 'animals__cat',
-                style: 'background: url(cat.png)'
-            },
-            content: ['Cat']
+      '\n    ',
+      {
+        tag: 'span',
+        attrs: {
+          class: 'animals__cat',
+          style: 'background: url(cat.png)'
         },
-        '\n'
+        content: ['Cat']
+      },
+      '\n'
     ]
-}]
+  }
+]
 ```

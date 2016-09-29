@@ -1,8 +1,17 @@
-node_modules/
-coverage/
-test/
+# FILES
+.editorconfig
 .gitignore
+.mversionrc
 .travis.yml
-npm-debug.log
-logo.svg
 
+npm-debug.log
+
+CHANGELOG.md
+CONTRIBUTING.md
+MAINTAINERS
+
+# DIRECTORIES
+docs
+test
+coverage
+node_modules

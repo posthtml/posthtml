@@ -1,22 +1,27 @@
-/* jshint mocha: true, maxlen: false */
-var posthtml = require('../lib/posthtml');
-var expect = require('chai').expect;
-var path = require('path');
-var fs = require('fs');
+var fs = require('fs')
+var path = require('path')
 
-var doctype = fs.readFileSync(path.resolve(__dirname, 'templates/doctype.html'), 'utf8').toString();
+var it = require('mocha').it
+var expect = require('chai').expect
+var describe = require('mocha').describe
 
-function test(html, reference, done) {
-    posthtml().process(html).then(function(result) {
-        expect(reference).to.eql(result.html);
-        done();
-    }).catch(function(error) { return done(error); });
+var posthtml = require('../lib')
+
+var doctype = fs.readFileSync(
+  path.resolve(__dirname, 'templates/doctype.html'), 'utf8'
+)
+
+function test (html, reference, done) {
+  posthtml().process(html)
+  .then(function (result) {
+    expect(reference).to.eql(result.html)
+    done()
+  })
+  .catch(function (error) { return done(error) })
 }
 
-describe('Parse Doctype', function() {
-
-    it('doctype eqval', function(done) {
-        test(doctype, doctype, done);
-    });
-
-});
+describe('Parse Doctype', function () {
+  it('doctype equal', function (done) {
+    test(doctype, doctype, done)
+  })
+})

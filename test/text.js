@@ -1,18 +1,23 @@
-/* jshint mocha: true, maxlen: false */
-var posthtml = require('../lib/posthtml');
-var expect = require('chai').expect;
+var it = require('mocha').it
+var expect = require('chai').expect
+var describe = require('mocha').describe
 
-var text = 'text';
+var posthtml = require('../lib')
 
-function test(html, reference, done) {
-    posthtml().process(html).then(function(result) {
-        expect(reference).to.eql(result.html);
-        done();
-    }).catch(function(error) { return done(error); });
+var text = 'text'
+
+function test (html, reference, done) {
+  posthtml()
+    .process(html)
+    .then(function (result) {
+      expect(reference).to.eql(result.html)
+      done()
+    })
+    .catch(function (error) { return done(error) })
 }
 
-describe('Parse text', function() {
-    it('Text eqval', function(done) {
-        test(text, text, done);
-    });
-});
+describe('Parse text', function () {
+  it('Text equal', function (done) {
+    test(text, text, done)
+  })
+})
