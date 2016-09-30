@@ -32,7 +32,7 @@
     "mocha": "^2.2.5",
     "mversion": "^1.10.0",
     "object.assign": "^4.0.3",
-    "standard": "^7.1.2"
+    "standard": "^8.3.0"
   },
   "scripts": {
     "lint": "standard",
