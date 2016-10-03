@@ -446,7 +446,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |:---|:-----|:----------|
 |[posthtml-img-autosize][img]|[![npm][img-badge]][img-npm]|Auto setting the width and height of \<img\>|
 |[posthtml-to-svg-tags][svg]|[![npm][svg-badge]][svg-npm]|Convert html tags to svg equals|
-
+|[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
@@ -455,6 +455,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [svg]: https://github.com/theprotein/posthtml-to-svg-tags
 [svg-badge]: https://img.shields.io/npm/v/posthtml-to-svg-tags.svg
 [svg-npm]: https://npmjs.com/package/posthtml-to-svg-tags
+
+[webp]: https://github.com/posthtml/posthtml-webp
+[webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
+[webp-npm]: https://npmjs.com/package/posthtml-webp
 
 #### Accessibility
 
