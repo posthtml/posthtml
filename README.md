@@ -456,7 +456,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [svg-badge]: https://img.shields.io/npm/v/posthtml-to-svg-tags.svg
 [svg-npm]: https://npmjs.com/package/posthtml-to-svg-tags
 
-[webp]: https://github.com/posthtml/posthtml-webp
+[webp]: https://github.com/seokirill/posthtml-webp
 [webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
 [webp-npm]: https://npmjs.com/package/posthtml-webp
 
