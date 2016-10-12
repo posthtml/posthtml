@@ -2,7 +2,7 @@
 [![Deps][deps]][deps-url]
 [![Tests][build]][build-url]
 [![Coverage][cover]][cover-url]
-[![Standard Code Style][style]][style-url]
+[![Standard Code Style][code-style]][code-style-url]
 [![Chat][chat]][chat-url]
 
 # PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
@@ -664,8 +664,8 @@ See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs)
 [cover]: https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master
 [cover-url]: https://coveralls.io/r/posthtml/posthtml?branch=master
 
-[style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
-[style-url]: http://standardjs.com/
+[code-style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
+[code-style-url]: http://standardjs.com/
 
 [chat]: https://badges.gitter.im/posthtml/posthtml.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
