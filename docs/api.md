@@ -8,10 +8,14 @@
         Anton Winogradov (@awinogradov),
         Alexej Yaroshevich (@zxqfox),
         Vasiliy (@Yeti-or)  
+**License**: MIT  
 
 * [tree](#tree) : <code>object</code>
     * [.walk(cb)](#tree.walk) ⇒ <code>function</code>
     * [.match(expression, cb)](#tree.match) ⇒ <code>function</code>
+    * [.error(plugin, message)](#tree.error) ⇒ <code>Object</code>
+    * [.warning(plugin, message)](#tree.warning) ⇒ <code>Object</code>
+    * [.dependency(file)](#tree.dependency) ⇒ <code>Object</code>
 
 <a name="tree.walk"></a>
 
@@ -19,9 +23,8 @@
 walk the tree and pass all nodes to callback
 
 **Kind**: static method of <code>[tree](#tree)</code>  
-**Returns**: <code>function</code> - - Node in callback
+**Returns**: <code>function</code> - Node
 
-**Usage**
 ```js
 export const walk = (tree) => {
   tree.walk((node) => {
@@ -43,9 +46,8 @@ export const walk = (tree) => {
 match expression to search nodes in the tree
 
 **Kind**: static method of <code>[tree](#tree)</code>  
-**Returns**: <code>function</code> - - Node in callback
+**Returns**: <code>function</code> - Node
 
-**Usage**
 ```js
 export const match = (tree) => {
   // Single matcher
@@ -76,6 +78,56 @@ export const match = (tree) => {
 
 | Param | Type | Description |
 | --- | --- | --- |
-| expression | <code>String</code> &#124; <code>RegExp</code> &#124; <code>Object</code> &#124; <code>Array</code> | Matcher(s) to search |
+| expression | <code>String</code> &#124; <code>RegExp</code> &#124; <code>Object</code> &#124; <code>Array</code> | Matcher(s) |
 | cb | <code>function</code> | Callback |
+
+<a name="tree.error"></a>
+
+### tree.error(plugin, message) ⇒ <code>Object</code>
+push plugin errors to result.messages for reporting
+
+**Kind**: static method of <code>[tree](#tree)</code>  
+**Returns**: <code>Object</code> - PostHTML Error Message
+
+```js
+tree.error('posthtml-plugin', 'Error')
+```  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| plugin | <code>String</code> | Name ('posthtml-plugin') |
+| message | <code>String</code> | Error |
+
+<a name="tree.warning"></a>
+
+### tree.warning(plugin, message) ⇒ <code>Object</code>
+push plugin warnings to result.messages for reporting
+
+**Kind**: static method of <code>[tree](#tree)</code>  
+**Returns**: <code>Object</code> - PostHTML Warning Message
+
+```js
+tree.warning('posthtml-plugin', 'Warning')
+```  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| plugin | <code>String</code> | Name ('posthtml-plugin') |
+| message | <code>String</code> | Warning |
+
+<a name="tree.dependency"></a>
+
+### tree.dependency(file) ⇒ <code>Object</code>
+push dependencies added by plugins to result.messages for reporting/watching
+
+**Kind**: static method of <code>[tree](#tree)</code>  
+**Returns**: <code>Object</code> - PostHTML Dependency Message
+
+```js
+tree.dependency('path/to/file.ext')
+```  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| file | <code>String</code> | File |
 

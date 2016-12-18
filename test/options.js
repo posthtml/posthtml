@@ -39,14 +39,6 @@ describe('Skip html parsing & use tree from options.', function () {
   ]
 
   it('Set use tree', function (done) {
-    options.skipParse = true
-    expect(posthtml()
-      .process(tree, options)
-      .then(function (result) {
-        expect(input).to.eql(result.html)
-        done()
-      })
-      .catch(function (error) { return done(error) })
-    )
+    test(tree, done)
   })
 })
