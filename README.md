@@ -263,17 +263,12 @@ posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
 | Name |Status|Description|
 |:-----|:-----|:----------|
 |[posthtml-pug][pug]|[![npm][pug-badge]][pug-npm]|Pug Parser|
-|[posthtml-hbs][hbs]|[![npm][hbs-badge]][hbs-npm]|Handlebars Parser|
 |[sugarml][sugar]|[![npm][sugar-badge]][sugar-npm]|SugarML Parser|
 
 
 [pug]: https://github.com/posthtml/posthtml-pug
 [pug-badge]: https://img.shields.io/npm/v/posthtml-pug.svg
 [pug-npm]: https://npmjs.com/package/posthtml-pug
-
-[hbs]: https://github.com/posthtml/posthtml-hbs
-[hbs-badge]: https://img.shields.io/npm/v/posthtml-hbs.svg
-[hbs-npm]: https://npmjs.com/package/posthtml-hbs
 
 [sugar]: https://github.com/posthtml/sugarml
 [sugar-badge]: https://img.shields.io/npm/v/sugarml.svg
@@ -556,28 +551,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [w3c]: https://github.com/posthtml/posthtml-w3c
 [w3c-badge]: https://img.shields.io/npm/v/posthtml-w3c.svg
 [w3c-npm]: https://npmjs.com/package/posthtml-w3c
-
-## Render
-
-```js
-import jsx from 'posthtml-jsx'
-
-posthtml().process(html, { render: jsx(options) }).then((result) => result.html)
-```
-
-|Name|Status|Description|
-|:---|:-----|:----------|
-|[posthtml-js][js]|[![npm][js-badge]][js-npm]|Render HTML to JS|
-|[posthtml-jsx][jsx]|[![npm][jsx-badge]][jsx-npm]|Render HTML to JSX|
-
-
-[js]: https://github.com/posthtml/posthtml-js
-[js-badge]: https://img.shields.io/npm/v/posthtml-js.svg
-[js-npm]: https://npmjs.com/package/posthtml-js
-
-[jsx]: https://github.com/posthtml/posthtml-jsx
-[jsx-badge]: https://img.shields.io/npm/v/posthtml-jsx.svg
-[jsx-npm]: https://npmjs.com/package/posthtml-jsx
 
 ## Middleware
 
