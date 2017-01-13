@@ -51,6 +51,14 @@ describe('Plugins', function () {
     })
   })
 
+  describe('posthtml(plugins)', function () {
+    it('options default', function () {
+      return posthtml(function (json) { return json })
+        .process(html, {})
+        .should.eventually.containSubset({ html: html })
+    })
+  })
+
   describe('.use(plugin)', function () {
     it('options default', function () {
       return posthtml()
