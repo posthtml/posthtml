@@ -384,6 +384,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-collect-styles][collect-styles]|[![npm][collect-styles-badge]][collect-styles-npm]|Collect styles from html and put it in the head|
 |[posthtml-collect-inline-styles][collect]|[![npm][collect-badge]][collect-npm]|Collect inline styles and insert to head tag|
 |[posthtml-style-to-file][style]|[![npm][style-badge]][style-npm]| Save HTML style nodes and attributes to CSS file|
+|[posthtml-color-shorthand-hex-to-six-digit][hex]|[![npm][hex-badge]][hex-npm]|Enforce all hex color codes to be 6-char long|
 
 
 [bem]: https://github.com/rajdee/posthtml-bem
@@ -435,7 +436,11 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [style-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
 [style-npm]: https://npmjs.com/package/posthtml-style-to-file
 
-#### IMG && SVG
+[hex]: https://github.com/code-and-send/posthtml-color-shorthand-hex-to-six-digit
+[hex-badge]: https://img.shields.io/npm/v/posthtml-color-shorthand-hex-to-six-digit.svg
+[hex-npm]: https://npmjs.com/package/posthtml-color-shorthand-hex-to-six-digit
+
+#### IMG & SVG
 
 |Name|Status|Description|
 |:---|:-----|:----------|
@@ -487,6 +492,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 |[posthtml-transformer][transform]|[![npm][transform-badge]][transform-npm]|Process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[htmlnano][nano]|[![npm][nano-badge]][nano-npm]|HTML Minifier|
+|[posthtml-email-remove-unused-css][unused]|[![npm][unused-badge]][unused-npm]|Remove unused CSS from email templates|
 
 
 [remove]: https://github.com/princed/posthtml-remove-attributes
@@ -512,6 +518,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [nano]: https://github.com/maltsev/htmlnano
 [nano-badge]: https://img.shields.io/npm/v/htmlnano.svg
 [nano-npm]: https://npmjs.com/package/htmlnano
+
+[unused]: https://github.com/code-and-send/posthtml-email-remove-unused-css
+[unused-badge]: https://img.shields.io/npm/v/posthtml-email-remove-unused-css.svg
+[unused-npm]: https://npmjs.com/package/posthtml-email-remove-unused-css
 
 [transform]: https://github.com/flashlizi/posthtml-transformer
 [transform-badge]: https://img.shields.io/npm/v/posthtml-transformer.svg
