@@ -247,7 +247,14 @@ describe('Plugins', function () {
           tree.options.closingSingleTag = 'slash'
         })
         .process(html)
-        .should.eventually.containSubset({ html: ref, tree: [{}] })
+        .should.eventually.containSubset({
+          html: ref,
+          tree: [{
+            tag: 'div',
+            attrs: { class: 'cls' },
+            content: [ { tag: 'br' }, { tag: 'rect' } ]
+          }]
+        })
     })
   })
 })
