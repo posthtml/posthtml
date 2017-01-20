@@ -1,3 +1,16 @@
+<a name="0.9.2"></a>
+## [0.9.2](https://github.com/posthtml/posthtml/compare/v0.9.1...v0.9.2) (2017-01-20)
+
+
+### Bug Fixes
+
+* Cannot read property 'length' of undefined ([03da01e](https://github.com/posthtml/posthtml/commit/03da01e))
+* **index:** trailing space ([3cd00b7](https://github.com/posthtml/posthtml/commit/3cd00b7))
+* **index:** typo in require method ([088c9e3](https://github.com/posthtml/posthtml/commit/088c9e3))
+* **test:** fix tree for test options set ([03286ea](https://github.com/posthtml/posthtml/commit/03286ea))
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/posthtml/posthtml/compare/v0.9.0...v0.9.1) (2016-09-29)
 
