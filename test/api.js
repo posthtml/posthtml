@@ -42,7 +42,7 @@ describe('API', function () {
       tree.walk(function (node) {
         num++
 
-        var classes = node.attrs && node.attrs.class.split(' ') || []
+        var classes = node.attrs && node.attrs.class.split(' ')
 
         if (classes.indexOf('test') > -1) {
           node.attrs = Object.assign({}, node.attrs, {
