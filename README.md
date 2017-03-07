@@ -229,8 +229,8 @@ const config = {
       {
         test: /\.html$/,
         use: [
-          { loader: 'html-loader', options: { minimize: true } }
-          'posthtml-loader'
+          { loader: 'html-loader', options: { minimize: true } },
+          { loader: 'posthtml-loader' }
         ]
       }
     ]
