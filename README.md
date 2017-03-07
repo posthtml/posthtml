@@ -241,7 +241,7 @@ const config = {
          posthtml (ctx) {
           parser: require('posthtml-pug')
           plugins: [
-            require('posthtml-include')({ root: ctx.resourcePath }) }
+            require('posthtml-include')({ root: ctx.resourcePath })
           ]
         }
       }
