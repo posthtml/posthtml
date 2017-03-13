@@ -239,12 +239,14 @@ const config = {
     new LoaderOptionsPlugin({
        options: {
          posthtml (ctx) {
-          parser: require('posthtml-pug')
-          plugins: [
-            require('posthtml-include')({ root: ctx.resourcePath }) }
-          ]
-        }
-      }
+           return {
+             parser: require('posthtml-pug'),
+             plugins: [
+               require('posthtml-include')({ root: ctx.resourcePath }) 
+             ]
+           }
+         }  
+       }
     })
   ]
 }
