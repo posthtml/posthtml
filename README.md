@@ -489,6 +489,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-uglify][uglify]|[![npm][uglify-badge]][uglify-npm]|Shorten CSS in HTML|
 |[posthtml-minifier][minifier]|[![npm][minifier-badge]][minifier-npm]|Minify HTML|
 |[posthtml-remove-attributes][remove]|[![npm][remove-badge]][remove-npm]|Remove attributes unconditionally or with content match|
+|[posthtml-remove-tags][remove-tags]|[![npm][remove-tags-badge]][remove-tags-npm]|Remove tags with content match|
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 |[posthtml-transformer][transform]|[![npm][transform-badge]][transform-npm]|Process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[htmlnano][nano]|[![npm][nano-badge]][nano-npm]|HTML Minifier|
@@ -498,6 +499,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [remove]: https://github.com/princed/posthtml-remove-attributes
 [remove-badge]: https://img.shields.io/npm/v/posthtml-remove-attributes.svg
 [remove-npm]: https://npmjs.com/package/posthtml-remove-attributes
+
+[remove-tags]: https://github.com/posthtml/posthtml-remove-tags
+[remove-tags-badge]: https://img.shields.io/npm/v/posthtml-remove-tags.svg
+[remove-tags-npm]: https://npmjs.com/package/posthtml-remove-tags
 
 [remove-duplicates]: https://github.com/canvaskisa/posthtml-remove-duplicates
 [remove-duplicates-badge]: https://img.shields.io/npm/v/posthtml-remove-duplicates.svg
