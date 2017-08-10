@@ -1,11 +1,13 @@
-[![NPM][npm]][npm-url]
-[![Deps][deps]][deps-url]
-[![Tests][build]][build-url]
-[![Coverage][cover]][cover-url]
-[![Standard Code Style][code-style]][code-style-url]
-[![Chat][chat]][chat-url]
+[![npm][npm]][npm-url]
+[![deps][deps]][deps-url]
+[![tests][tests]][tests-url]
+[![coverage][cover]][cover-url]
+[![code style][style]][style-url]
+[![chat][chat]][chat-url]
 
-# PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+<div align="center">
+  <img width="220" height="200" title="PostHTML"    src="http://posthtml.github.io/posthtml/logo.svg">
+</div>
 
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
@@ -13,7 +15,7 @@ All HTML transformations are made by plugins. And these plugins are just small p
 
 For more detailed information about PostHTML in general take a look at the [docs][docs].
 
-### Dependencies
+### `Dependencies`
 
 | Name | Status | Description |
 |:----:|:------:|:-----------:|
@@ -31,92 +33,43 @@ For more detailed information about PostHTML in general take a look at the [docs
 [render-badge]: https://img.shields.io/npm/v/posthtml-render.svg
 [render-npm]: https://npmjs.com/package/posthtml-render
 
-## Install
+<h2 align="center">Install</h2>
 
 ```bash
 npm i -D posthtml
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
 
-### API
-
-**Sync**
+### `API`
 
 ```js
 import posthtml from 'posthtml'
 
 const html = `
   <component>
-    <title>Super Title</title>
-    <text>Awesome Text</text>
+    <title>Title</title>
+    <text>Text</text>
   </component>
 `
 
-const result = posthtml()
+posthtml()
   .use(require('posthtml-custom-elements')())
-  .process(html, { sync: true })
-  .html
-
-console.log(result)
-```
-
-```html
-<div class="component">
-  <div class="title">Super Title</div>
-  <div class="text">Awesome Text</div>
-</div>
-```
-
-> :warning: Async Plugins can't be used in sync mode and will throw an Error. It's recommended to use PostHTML asynchronously whenever possible.
-
-**Async**
-
-```js
-import posthtml from 'posthtml'
-
-const html = `
-  <html>
-    <body>
-      <p class="wow">OMG</p>
-    </body>
-  </html>
-`
-
-posthtml(
-  [
-    require('posthtml-to-svg-tags')(),
-    require('posthtml-extend-attrs')({
-      attrsTree: {
-        '.wow' : {
-          id: 'wow_id',
-          fill: '#4A83B4',
-          'fill-rule': 'evenodd',
-          'font-family': 'Verdana'
-        }
-      }
-    })
-  ])
-  .process(html/*, options */)
+  .process(html, {...options})
   .then((result) =>  console.log(result.html))
 ```
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg">
-  <text
-    class="wow"
-    id="wow_id"
-    fill="#4A83B4"
-    fill-rule="evenodd" font-family="Verdana">
-      OMG
-  </text>
-</svg>
+<div class="component">
+  <div class="title">Title</div>
+  <div class="text">Text</div>
+</div>
 ```
 
-### [CLI](https://npmjs.com/package/posthtml-cli)
+### [`CLI`](https://github.com/posthtml/posthtml-cli)
 
 ```bash
-npm i posthtml-cli
+npm i -g|-D posthtml-cli
 ```
 
 ```json
@@ -129,33 +82,35 @@ npm i posthtml-cli
 npm run posthtml
 ```
 
-### [Gulp](https://gulpjs.com)
+### [`Gulp`](https://github.com/posthtml/gulp-posthtml)
 
 ```bash
 npm i -D gulp-posthtml
 ```
 
 ```js
-import tap from 'gulp-tap'
-import posthtml from 'gulp-posthtml'
 import { task, src, dest } from 'gulp'
 
+import tap from 'gulp-tap'
+import posthtml from 'gulp-posthtml'
+
 task('html', () => {
-  let path
+  const options = {
+    parser: require('posthtml-sugarml')()
+  }
 
-  const plugins = [ require('posthtml-include')({ root: `${path}` }) ]
-  const options = {}
+  const plugins = [
+    require('posthtml-include')({ root: options.from })
+  ]
 
-  src('src/**/*.html')
-    .pipe(tap((file) => path = file.path))
+  src('src/*.html')
+    .pipe(tap((file) => options.from = file.path))
     .pipe(posthtml(plugins, options))
-    .pipe(dest('build/'))
+    .pipe(dest('dest'))
 })
 ```
 
-Check [project-stub](https://github.com/posthtml/project-stub) for an example with Gulp
-
-### [Grunt](https://gruntjs.com)
+### [`Grunt`](https://gruntjs.com)
 
 ```bash
 npm i -D grunt-posthtml
@@ -183,54 +138,31 @@ posthtml: {
 }
 ```
 
-### [Webpack](https://webpack.js.org)
+### [`Webpack`](https://github.com/posthtml/posthtml-loader)
 
 ```bash
 npm i -D html-loader posthtml-loader
 ```
 
-#### v1.x
-
 **webpack.config.js**
-
 ```js
-const config = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml'
-      }
-    ]
-  }
-  posthtml: (ctx) => {
-    return {
-      parser: require('posthtml-pug')
-      plugins: [
-        require('posthtml-include')({ root: ctx.resourcePath })
-      ]
-    }
-  }
-}
-
-export default config
-```
-
-#### v2.x
-
-**webpack.config.js**
-
-```js
-import { LoaderOptionsPlugin } from 'webpack'
-
 const config = {
   module: {
     rules: [
       {
         test: /\.html$/,
         use: [
-          { loader: 'html-loader', options: { minimize: true } }
-          'posthtml-loader'
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          },
+          {
+            loader: 'posthtml-loader',
+            options: {
+              parser: require('posthtml-sugarml')()
+              plugins: () => [...plugins]
+            }
+          }
         ]
       }
     ]
@@ -252,18 +184,56 @@ const config = {
 export default config
 ```
 
-## Parser
+<h2 align="center">Options</h2>
+
+|Name|Default|Description|
+|:---|:-----:|:----------|
+|`to`|`undefined`|Path to file destination|
+|`from`|`undefined`|Path to file source|
+|`sync`|`false`|Process synchronously|
+|`parser`|`posthtml-parser`|Custom parser|
+|`render`|`posthtml-render`|Custom renderer|
+
+### `Sync`
 
 ```js
-import pug from 'posthtml-pug'
+import posthtml from 'posthtml'
 
-posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
+const html = `
+  <component>
+    <title>Title</title>
+    <text>Text</text>
+  </component>
+`
+
+const result = posthtml()
+  .use(require('posthtml-custom-elements')())
+  .process(html, { sync: true })
+
+console.log(result.html)
+```
+
+```html
+<div class="component">
+  <div class="title">Title</div>
+  <div class="text">Text</div>
+</div>
+```
+
+> :warning: Async Plugins can't be used in sync mode and will throw an Error. It's recommended to use PostHTML asynchronously whenever possible.
+
+### `Parser`
+
+```js
+import sml from 'posthtml-sugarml'
+
+posthtml().process(html, { parser: sml(options) }).then((result) => result.html)
 ```
 
 | Name |Status|Description|
 |:-----|:-----|:----------|
 |[posthtml-pug][pug]|[![npm][pug-badge]][pug-npm]|Pug Parser|
-|[sugarml][sugar]|[![npm][sugar-badge]][sugar-npm]|SugarML Parser|
+|[posthtml-sugarml][sugar]|[![npm][sugar-badge]][sugar-npm]|SugarML Parser|
 
 
 [pug]: https://github.com/posthtml/posthtml-pug
@@ -274,19 +244,20 @@ posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
 [sugar-badge]: https://img.shields.io/npm/v/sugarml.svg
 [sugar-npm]: https://npmjs.com/package/sugarml
 
-## [Plugins](http://maltsev.github.io/posthtml-plugins)
+### [`Plugins`](http://maltsev.github.io/posthtml-plugins)
 
 In case you want to develop your own plugin, we recommend using [posthtml-plugin-boilerplate][plugin] for getting started.
 
 [plugin]: https://github.com/posthtml/posthtml-plugin-boilerplate
 
-#### TEXT
+#### `TEXT`
 
 | Name |Status|Description|
 |:-----|:-----|:----------|
 |[posthtml-md][md]|[![npm][md-badge]][md-npm]|Easily use context-sensitive markdown within HTML|
 |[posthtml-lorem][lorem]|[![npm][lorem-badge]][lorem-npm]|Add lorem ipsum placeholder text to any document|
 |[posthtml-retext][text]|[![npm][text-badge]][text-npm]|Extensible system for analysing and manipulating natural language|
+
 
 [md]: https://github.com/jonathantneal/posthtml-md
 [md-badge]: https://img.shields.io/npm/v/posthtml-md.svg
@@ -300,7 +271,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [lorem-badge]: https://img.shields.io/npm/v/posthtml-lorem.svg
 [lorem-npm]: https://npmjs.com/package/posthtml-lorem
 
-#### HTML
+#### `HTML`
 
 |Name|Status|Description|
 |:---|:----:|:----------|
@@ -315,6 +286,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-static-react][react]|[![npm][react-badge]][react-npm]| Render custom elements as static React components|
 |[posthtml-custom-elements][elem]|[![npm][elem-badge]][elem-npm]|Use custom elements|
 |[posthtml-web-component][web]|[![npm][web-badge]][web-npm]|Web Component server-side rendering, Component as a Service (CaaS)|
+
 
 [doctype]: https://github.com/posthtml/posthtml-doctype
 [doctype-badge]: https://img.shields.io/npm/v/posthtml-doctype.svg
@@ -368,7 +340,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [react-badge]: https://img.shields.io/npm/v/posthtml-static-react.svg
 [react-npm]: https://npmjs.com/package/posthtml-static-react
 
-#### CSS
+#### `CSS`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
@@ -432,21 +404,22 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [in-badge]: https://img.shields.io/npm/v/posthtml-inline-css.svg
 [in-npm]: https://npmjs.com/package/posthtml-inline-css
 
-[style]: https://github.com/posthtml/posthtml-style-to-file
-[style-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
-[style-npm]: https://npmjs.com/package/posthtml-style-to-file
+[style-to]: https://github.com/posthtml/posthtml-style-to-file
+[style-to-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
+[style-to-npm]: https://npmjs.com/package/posthtml-style-to-file
 
 [hex]: https://github.com/code-and-send/posthtml-color-shorthand-hex-to-six-digit
 [hex-badge]: https://img.shields.io/npm/v/posthtml-color-shorthand-hex-to-six-digit.svg
 [hex-npm]: https://npmjs.com/package/posthtml-color-shorthand-hex-to-six-digit
 
-#### IMG & SVG
+#### `IMG & SVG`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
 |[posthtml-img-autosize][img]|[![npm][img-badge]][img-npm]|Auto setting the width and height of \<img\>|
 |[posthtml-to-svg-tags][svg]|[![npm][svg-badge]][svg-npm]|Convert html tags to svg equals|
 |[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
+
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
@@ -460,7 +433,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
 [webp-npm]: https://npmjs.com/package/posthtml-webp
 
-#### Accessibility
+#### `Accessibility`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
@@ -481,7 +454,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [schemas-badge]: https://img.shields.io/npm/v/posthtml-schemas.svg
 [schemas-npm]: https://npmjs.com/package/posthtml-schemas
 
-#### Optimization
+#### `Optimization`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
@@ -532,16 +505,18 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [transform-badge]: https://img.shields.io/npm/v/posthtml-transformer.svg
 [transform-npm]: https://npmjs.com/package/posthtml-transformer
 
-#### Workflow
+#### `Workflow`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
 |[posthtml-load-plugins][plugins]|[![npm][plugins-badge]][plugins-npm]|Autoload Plugins
-|[posthtml-load-options][options]|[![npm][options-badge]][options-npm]|Autoload Options (Parser && Render)|
+|[posthtml-load-options][options]|[![npm][options-badge]][options-npm]|Autoload Options|
 |[posthtml-load-config][config]|[![npm][config-badge]][config-npm]|Autoload Config (Plugins && Options)|
 |[posthtml-w3c][w3c]|[![npm][w3c-badge]][w3c-npm]|Validate HTML with W3C Validation|
 |[posthtml-hint][hint]|[![npm][hint-badge]][hint-npm]|Lint HTML with HTML Hint|
 |[posthtml-tidy][tidy]|[![npm][tidy-badge]][tidy-npm]|Sanitize HTML with HTML Tidy|
+|[posthtml-reporter][reporter]|[![npm][reporter-badge]][reporter-npm]|Messages Reporter (Errors)|
+
 
 [options]: https://github.com/posthtml/posthtml-load-options
 [options-badge]: https://img.shields.io/npm/v/posthtml-load-options.svg
@@ -567,7 +542,33 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [w3c-badge]: https://img.shields.io/npm/v/posthtml-w3c.svg
 [w3c-npm]: https://npmjs.com/package/posthtml-w3c
 
-## Middleware
+[reporter]: https://github.com/posthtml/posthtml-reporter
+[reporter-badge]: https://img.shields.io/npm/v/posthtml-reporter.svg
+[reporter-npm]: https://npmjs.com/package/posthtml-reporter
+
+### `Renderer`
+
+```js
+import jsx from 'posthtml-jsx'
+
+posthtml().process(html, { render: jsx(options) }).then((result) => result.html)
+```
+
+|Name|Status|Description|
+|:---|:-----|:----------|
+|[posthtml-js][js]|[![npm][js-badge]][js-npm]|Render HTML to JS|
+|[posthtml-jsx][jsx]|[![npm][jsx-badge]][jsx-npm]|Render HTML to JSX|
+
+
+[js]: https://github.com/posthtml/posthtml-js
+[js-badge]: https://img.shields.io/npm/v/posthtml-js.svg
+[js-npm]: https://npmjs.com/package/posthtml-js
+
+[jsx]: https://github.com/posthtml/posthtml-jsx
+[jsx-badge]: https://img.shields.io/npm/v/posthtml-jsx.svg
+[jsx-npm]: https://npmjs.com/package/posthtml-jsx
+
+### `Middleware`
 
 |Name|Status|Description|
 |:---|:-----|:----------|
@@ -598,7 +599,11 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [metalsmith-badge]: https://img.shields.io/npm/v/metalsmith-posthtml.svg
 [metalsmith-npm]: https://npmjs.com/package/metalsmith-posthtml
 
-## Maintainers
+<h2 align="center">Contributing</h2>
+
+See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [CONTRIBUTING](CONTRIBUTING.md).
+
+<h2 align="center">Maintainers</h2>
 
 <table>
   <tbody>
@@ -631,14 +636,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
   <tbody>
 </table>
 
-## Contributing
-
-See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [CONTRIBUTING](CONTRIBUTING.md).
-
-## LICENSE
-
-[MIT](LICENSE)
-
 
 [npm]: https://img.shields.io/npm/v/posthtml.svg
 [npm-url]: https://npmjs.com/package/posthtml
@@ -646,14 +643,14 @@ See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs)
 [deps]: https://david-dm.org/posthtml/posthtml.svg
 [deps-url]: https://david-dm.org/posthtml/posthtml
 
-[build]: https://travis-ci.org/posthtml/posthtml.svg?branch=master
-[build-url]: https://travis-ci.org/posthtml/posthtml?branch=master
+[tests]: https://travis-ci.org/posthtml/posthtml.svg
+[tests-url]: https://travis-ci.org/posthtml/posthtml
 
-[cover]: https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master
-[cover-url]: https://coveralls.io/r/posthtml/posthtml?branch=master
+[cover]: https://coveralls.io/repos/posthtml/posthtml/badge.svg
+[cover-url]: https://coveralls.io/r/posthtml
 
-[code-style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
-[code-style-url]: http://standardjs.com/
+[style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
+[style-url]: http://standardjs.com/
 
 [chat]: https://badges.gitter.im/posthtml/posthtml.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"

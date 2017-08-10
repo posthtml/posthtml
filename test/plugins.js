@@ -40,13 +40,13 @@ describe('Plugins', function () {
 
     it('should return original for resultless plugins', function () {
       return posthtml([ function (json) {} ])
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.eventually.containSubset({ tree: tree })
     })
 
     it('set options skipParse', function () {
       return posthtml([ function (json) { return json } ])
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.eventually.containSubset({ tree: tree, html: html })
     })
   })
@@ -71,14 +71,14 @@ describe('Plugins', function () {
     it('set options skipParse', function () {
       return posthtml()
         .use(function (json) { return json })
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.eventually.containSubset({ html: html })
     })
 
     it('is variadic method', function () {
       return posthtml()
         .use(function (json) { json.x++ }, function (json) { json.x += 2 })
-        .process({ x: 1 }, { skipParse: true })
+        .process({ x: 1 })
         .should.eventually.containSubset({ tree: { x: 4 } })
     })
 
@@ -94,7 +94,7 @@ describe('Plugins', function () {
   describe('sync mode', function () {
     it('should run plugins sync-ly', function () {
       posthtml([ function (json) { return json } ])
-        .process(tree, { skipParse: true, sync: true })
+        .process(tree, { sync: true })
         .should.containSubset({ html: html, tree: tree })
     })
 
@@ -102,7 +102,7 @@ describe('Plugins', function () {
       posthtml()
         .use(function () { return { x: '1' } })
         .use(function (json) { return { x: json.x + '2' } })
-        .process(tree, { skipParse: true, sync: true })
+        .process(tree, { sync: true })
         .should.containSubset({ tree: { x: '12' } })
     })
 
@@ -110,7 +110,7 @@ describe('Plugins', function () {
       posthtml()
         .use(function (json) { json.x = '1'; return json })
         .use(function (json) { json.x += '2'; return json })
-        .process(tree, { skipParse: true, sync: true })
+        .process(tree, { sync: true })
         .should.containSubset({ tree: { x: '12' } })
     })
 
@@ -120,7 +120,7 @@ describe('Plugins', function () {
       var ph = posthtml()
 
       ph.use(foobarPlugin)
-        .process.bind(ph, tree, { skipParse: true, sync: true })
+        .process.bind(ph, tree, { sync: true })
         .should.throw(/Can’t process contents in sync mode because of async plugin: foobarPlugin/)
     })
 
@@ -134,7 +134,7 @@ describe('Plugins', function () {
       var ph = posthtml()
 
       ph.use(foobarPlugin)
-        .process.bind(ph, tree, { skipParse: true, sync: true })
+        .process.bind(ph, tree, { sync: true })
         .should.throw(/Can’t process contents in sync mode because of async plugin: foobarPlugin/)
     })
 
@@ -142,7 +142,7 @@ describe('Plugins', function () {
       var ph = posthtml()
 
       ph.use(function () { throw new Error('FooBar') })
-        .process.bind(ph, tree, { skipParse: true, sync: true })
+        .process.bind(ph, tree, { sync: true })
         .should.throw(/FooBar/)
     })
 
@@ -154,7 +154,15 @@ describe('Plugins', function () {
         .use(function (tree) {
           tree.should.have.property('walk')
           tree.should.have.property('match')
+          tree.should.have.property('error')
+          tree.should.have.property('warning')
+          tree.should.have.property('dependency')
+
           tree.walk.should.be.a('function')
+          tree.match.should.be.a('function')
+          tree.error.should.be.a('function')
+          tree.warning.should.be.a('function')
+          tree.dependency.should.be.a('function')
         })
         .process('<div></div>', { sync: true })
     })
@@ -174,7 +182,7 @@ describe('Plugins', function () {
           })
         })
         .use(function (json) { return { x: json.x + '5' } })
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.eventually.containSubset({ tree: { x: '12345' } })
     })
 
@@ -195,7 +203,7 @@ describe('Plugins', function () {
           })
         })
         .use(function (json) { json.x += '5' })
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.eventually.containSubset({ tree: { x: '12345' } })
     })
 
@@ -203,7 +211,7 @@ describe('Plugins', function () {
       function () {
         posthtml()
           .use(function () { throw new Error('FooBar') })
-          .process(tree, { skipParse: true })
+          .process(tree)
           .should.be.rejectedWith(Error, /FooBar/)
       }
     )
@@ -211,14 +219,14 @@ describe('Plugins', function () {
     it('should transform callback errors to rejects', function () {
       posthtml()
         .use(function (_, cb) { cb(new Error('FooBar')) })
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.be.rejectedWith(Error, /FooBar/)
     })
 
     it('should pass other rejects', function () {
       posthtml()
         .use(function () { return Promise.reject(new Error('FooBar')) })
-        .process(tree, { skipParse: true })
+        .process(tree)
         .should.be.rejectedWith(Error, /FooBar/)
     })
 
@@ -230,7 +238,15 @@ describe('Plugins', function () {
         .use(function (tree) {
           tree.should.have.property('walk')
           tree.should.have.property('match')
+          tree.should.have.property('error')
+          tree.should.have.property('warning')
+          tree.should.have.property('dependency')
+
           tree.walk.should.be.a('function')
+          tree.match.should.be.a('function')
+          tree.error.should.be.a('function')
+          tree.warning.should.be.a('function')
+          tree.dependency.should.be.a('function')
         })
         .process('<div></div>')
     })
@@ -253,7 +269,8 @@ describe('Plugins', function () {
             tag: 'div',
             attrs: { class: 'cls' },
             content: [ { tag: 'br' }, { tag: 'rect' } ]
-          }]
+          }],
+          messages: []
         })
     })
   })
