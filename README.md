@@ -252,6 +252,38 @@ const config = {
 export default config
 ```
 
+### [Rollup](https://rollupjs.org/) 
+
+```bash
+$ npm i rollup-plugin-posthtml -D
+# or
+$ npm i rollup-plugin-posthtml-template -D
+```
+
+```js
+import { join } from 'path';
+
+import posthtml from 'rollup-plugin-posthtml-template';
+// or 
+// import posthtml from 'rollup-plugin-posthtml';
+
+import sugarml from 'posthtml-sugarml';  // npm i posthtml-sugarml -D
+import include from 'posthtml-include';  // npm i posthtml-include -D
+
+export default {
+  entry: join(__dirname, 'main.js'),
+  dest: join(__dirname, 'bundle.js'),
+  format: 'iife',
+  plugins: [
+    posthtml(
+      parser: sugarml(),
+      plugins: [include()],
+      template: true  // only rollup-plugin-posthtml-template
+    })
+  ]
+};
+```
+
 ## Parser
 
 ```js
