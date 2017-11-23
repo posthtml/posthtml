@@ -53,7 +53,7 @@ describe('Skip html parsing & use tree from options.', function () {
 
 describe('Set option', function () {
   var html = '<?php echo "Hello word"; ?>'
-  var multiHTML = `<!doctype><html><body>${html}</body></html>`
+  var multiHTML = '<!doctype><html><body>'+html'</body></html>'
 
   options.directives = [
     { name: '?php', start: '<', end: '>' }
@@ -74,7 +74,7 @@ describe('Set option', function () {
     expect(posthtml()
       .process(multiHTML, options)
       .then(function (result) {
-        expect(`<!doctype><html><body>${html}</body></html>`).to.eql(result.html)
+        expect(multiHTML).to.eql(result.html)
         done()
       })
       .catch(function (error) { return done(error) })
