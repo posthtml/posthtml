@@ -1,3 +1,8 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/posthtml/posthtml/compare/v0.9.2...v0.10.0) (2017-11-23)
+
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/posthtml/posthtml/compare/v0.9.1...v0.9.2) (2017-01-20)
 
