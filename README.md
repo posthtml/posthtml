@@ -113,6 +113,37 @@ posthtml(
 </svg>
 ```
 
+**Directives**
+
+```js
+import posthtml from 'posthtml'
+
+const php = `
+  <component>
+    <title><?php echo $title; ?></title>
+    <text><?php echo $article; ?></text>
+  </component>
+`
+
+const result = posthtml()
+  .use(require('posthtml-custom-elements')())
+  .process(html, {
+    directives: [
+      { name: '?php', start: '<', end: '>' }
+    ]
+  })
+  .html
+
+console.log(result)
+```
+
+```html
+<div class="component">
+  <div class="title"><?php echo $title; ?></div>
+  <div class="text"><?php echo $article; ?></div>
+</div>
+```
+
 ### [CLI](https://npmjs.com/package/posthtml-cli)
 
 ```bash
@@ -252,7 +283,7 @@ const config = {
 export default config
 ```
 
-### [Rollup](https://rollupjs.org/) 
+### [Rollup](https://rollupjs.org/)
 
 ```bash
 $ npm i rollup-plugin-posthtml -D
@@ -264,7 +295,7 @@ $ npm i rollup-plugin-posthtml-template -D
 import { join } from 'path';
 
 import posthtml from 'rollup-plugin-posthtml-template';
-// or 
+// or
 // import posthtml from 'rollup-plugin-posthtml';
 
 import sugarml from 'posthtml-sugarml';  // npm i posthtml-sugarml -D

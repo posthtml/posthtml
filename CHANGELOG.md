@@ -1,3 +1,13 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/posthtml/posthtml/compare/v0.9.2...v0.10.0) (2017-11-23)
+
+* **docs** add directives description ([876315e](https://github.com/posthtml/posthtml/pull/231/commits/876315e))
+* **chore** update posthtml-parser ([0e767d8](https://github.com/posthtml/posthtml/pull/231/commits/0e767d8))
+* **test** for option directives ([015433f](https://github.com/posthtml/posthtml/pull/231/commits/015433f))
+* **test** update title ([5ea4023](https://github.com/posthtml/posthtml/pull/231/commits/5ea4023))
+* **test** fix not support string template old nodes ([3f07e1c](https://github.com/posthtml/posthtml/pull/231/commits/3f07e1c))
+* **test** fix typo ([32e29e3](https://github.com/posthtml/posthtml/pull/231/commits/32e29e3))
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/posthtml/posthtml/compare/v0.9.1...v0.9.2) (2017-01-20)
 

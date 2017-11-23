@@ -50,3 +50,34 @@ describe('Skip html parsing & use tree from options.', function () {
     )
   })
 })
+
+describe('Set option', function () {
+  var html = '<?php echo "Hello word"; ?>'
+  var multiHTML = '<!doctype><html><body>' + html + '</body></html>'
+
+  options.directives = [
+    { name: '?php', start: '<', end: '>' }
+  ]
+
+  it('directive ?php', function (done) {
+    expect(posthtml()
+      .process(html, options)
+      .then(function (result) {
+        expect(html).to.eql(result.html)
+        done()
+      })
+      .catch(function (error) { return done(error) })
+    )
+  })
+
+  it('directive ?php with multi html', function (done) {
+    expect(posthtml()
+      .process(multiHTML, options)
+      .then(function (result) {
+        expect(multiHTML).to.eql(result.html)
+        done()
+      })
+      .catch(function (error) { return done(error) })
+    )
+  })
+})

@@ -1,6 +1,6 @@
 {
   "name": "posthtml",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "description": "HTML/XML processor",
   "keywords": [
     "html",
@@ -18,7 +18,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "posthtml-parser": "^0.2.0",
+    "posthtml-parser": "^0.3.0",
     "posthtml-render": "^1.0.5"
   },
   "devDependencies": {
