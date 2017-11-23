@@ -51,14 +51,15 @@ describe('Skip html parsing & use tree from options.', function () {
   })
 })
 
-describe('Set options directives.', function () {
+describe('Set option', function () {
   var html = '<?php echo "Hello word"; ?>'
   var multiHTML = `<!doctype><html><body>${html}</body></html>`
 
-  it('Set ?php', function (done) {
-    options.directives = [
-      { name: '?php', start: '<', end: '>' }
-    ]
+  options.directives = [
+    { name: '?php', start: '<', end: '>' }
+  ]
+
+  it('directive ?php', function (done) {
     expect(posthtml()
       .process(html, options)
       .then(function (result) {
@@ -69,10 +70,7 @@ describe('Set options directives.', function () {
     )
   })
 
-  it('Set multi directives', function (done) {
-    options.directives = [
-      { name: '?php', start: '<', end: '>' }
-    ]
+  it('directive ?php with multi html', function (done) {
     expect(posthtml()
       .process(multiHTML, options)
       .then(function (result) {
