@@ -53,7 +53,7 @@ describe('Skip html parsing & use tree from options.', function () {
 
 describe('Set option', function () {
   var html = '<?php echo "Hello word"; ?>'
-  var multiHTML = '<!doctype><html><body>'+html'</body></html>'
+  var multiHTML = '<!doctype><html><body>' + html + '</body></html>'
 
   options.directives = [
     { name: '?php', start: '<', end: '>' }
