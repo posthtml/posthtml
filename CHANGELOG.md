@@ -1,3 +1,13 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/posthtml/posthtml/compare/v0.10.0...v0.10.1) (2017-11-24)
+
+
+### Bug Fixes
+
+* **index:** did not pass options for parser ([b8cd535](https://github.com/posthtml/posthtml/commit/b8cd535))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/posthtml/posthtml/compare/v0.9.2...v0.10.0) (2017-11-23)
 
