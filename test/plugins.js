@@ -201,7 +201,7 @@ describe('Plugins', function () {
 
     it('should catch plugin runtime throws and transform it to rejects',
       function () {
-        posthtml()
+        return posthtml()
           .use(function () { throw new Error('FooBar') })
           .process(tree, { skipParse: true })
           .should.be.rejectedWith(Error, /FooBar/)
