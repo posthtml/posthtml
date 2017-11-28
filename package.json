@@ -22,7 +22,7 @@
     "posthtml-render": "^1.0.5"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
+    "chai": "^4.0.1",
     "chai-as-promised": "^6.0.0",
     "chai-subset": "^1.1.0",
     "conventional-changelog-cli": "^1.0.0",
