@@ -44,7 +44,7 @@ describe('API', function () {
 
         var classes = node.attrs && node.attrs.class.split(' ') || []
 
-        if (classes.indexOf('test') > -1) {
+        if (classes && classes.indexOf('test') > -1) {
           node.attrs = Object.assign({}, node.attrs, {
             id: 'index' + num
           })
