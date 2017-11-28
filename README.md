@@ -378,6 +378,11 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-static-react][react]|[![npm][react-badge]][react-npm]| Render custom elements as static React components|
 |[posthtml-custom-elements][elem]|[![npm][elem-badge]][elem-npm]|Use custom elements|
 |[posthtml-web-component][web]|[![npm][web-badge]][web-npm]|Web Component server-side rendering, Component as a Service (CaaS)|
+|[posthtml-spaceless][spaceless]|[![npm][spaceless-badge]][spaceless-npm]|Remove whitespace between HTML tags|
+
+[spaceless]: https://github.com/posthtml/posthtml-spaceless
+[spaceless-badge]: https://img.shields.io/npm/v/posthtml-spaceless.svg
+[spaceless-npm]: https://npmjs.com/package/posthtml-spaceless
 
 [doctype]: https://github.com/posthtml/posthtml-doctype
 [doctype-badge]: https://img.shields.io/npm/v/posthtml-doctype.svg
