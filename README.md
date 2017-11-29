@@ -233,15 +233,13 @@ const config = {
         loader: 'html!posthtml'
       }
     ]
-  }
-  posthtml: (ctx) => {
-    return {
-      parser: require('posthtml-pug')
+  },
+  posthtml: (ctx) => ({
+      parser: require('posthtml-pug'),
       plugins: [
-        require('posthtml-include')({ root: ctx.resourcePath })
+        require('posthtml-bem')()
       ]
-    }
-  }
+  })
 }
 
 export default config
@@ -260,20 +258,27 @@ const config = {
       {
         test: /\.html$/,
         use: [
-          { loader: 'html-loader', options: { minimize: true } }
-          'posthtml-loader'
+          { 
+            loader: 'html-loader', 
+            options: { minimize: true } 
+          },
+          {
+            loader: 'posthtml-loader'
+          }
         ]
       }
     ]
-  }
+  },
   plugins: [
     new LoaderOptionsPlugin({
        options: {
-         posthtml (ctx) {
-          parser: require('posthtml-pug')
-          plugins: [
-            require('posthtml-include')({ root: ctx.resourcePath })
-          ]
+         posthtml(ctx) {
+          return {
+            parser: require('posthtml-pug'),
+            plugins: [
+              require('posthtml-bem')()
+            ]
+          }
         }
       }
     })
