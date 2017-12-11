@@ -14,6 +14,9 @@
     "processor"
   ],
   "main": "lib",
+  "files": [
+    "lib"
+  ],
   "engines": {
     "node": ">=0.10.0"
   },
