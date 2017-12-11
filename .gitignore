@@ -1,6 +1,8 @@
 # OS
 .DS_Store
 ._*
+*.sublime-project
+*.sublime-workspace
 
 # NodeJS
 npm-debug.log
