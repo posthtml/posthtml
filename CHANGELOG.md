@@ -1,3 +1,18 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/posthtml/posthtml/compare/v0.10.1...v0.11.0) (2017-12-12)
+
+
+### Bug Fixes
+
+* **readme:** typo in webpack config, close [#222](https://github.com/posthtml/posthtml/issues/222) ([92b0261](https://github.com/posthtml/posthtml/commit/92b0261))
+
+
+### Features
+
+* **index:** add support for `messages` (`result.messages`) ([e38bb9b](https://github.com/posthtml/posthtml/commit/e38bb9b))
+
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/posthtml/posthtml/compare/v0.10.0...v0.10.1) (2017-11-24)
 
