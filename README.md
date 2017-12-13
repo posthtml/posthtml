@@ -384,6 +384,11 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-custom-elements][elem]|[![npm][elem-badge]][elem-npm]|Use custom elements|
 |[posthtml-web-component][web]|[![npm][web-badge]][web-npm]|Web Component server-side rendering, Component as a Service (CaaS)|
 |[posthtml-spaceless][spaceless]|[![npm][spaceless-badge]][spaceless-npm]|Remove whitespace between HTML tags|
+|[posthtml-cache][cache]|[![npm][cache-badge]][cache-npm]|Add a nanoid to links in you tags|
+
+[cache]: https://github.com/posthtml/posthtml-cache
+[cache-badge]: https://img.shields.io/npm/v/posthtml-cache.svg
+[cache-npm]: https://npmjs.com/package/posthtml-cache
 
 [spaceless]: https://github.com/posthtml/posthtml-spaceless
 [spaceless-badge]: https://img.shields.io/npm/v/posthtml-spaceless.svg
