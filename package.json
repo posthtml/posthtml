@@ -28,14 +28,14 @@
     "chai": "^3.0.0",
     "chai-as-promised": "^6.0.0",
     "chai-subset": "^1.1.0",
-    "conventional-changelog-cli": "^1.0.0",
     "es6-promise": "^4.0.5",
     "istanbul": "^0.4.2",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.4.0",
     "mversion": "^1.10.0",
     "object.assign": "^4.0.3",
-    "standard": "^10.0.2"
+    "standard": "^10.0.2",
+    "standard-version": "^4.2.0"
   },
   "scripts": {
     "lint": "standard",
@@ -44,9 +44,7 @@
     "cover": "istanbul cover --report text --report html --report lcov node_modules/mocha/bin/_mocha -- -R tap",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md",
-    "release:patch": "mversion patch",
-    "release:minor": "mversion minor",
-    "release:major": "mversion major"
+    "release": "standard-version"
   },
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [
@@ -64,12 +62,7 @@
     }
   ],
   "homepage": "https://github.com/posthtml/posthtml",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/posthtml/posthtml.git"
-  },
-  "bugs": {
-    "url": "https://github.com/posthtml/posthtml/issues"
-  },
+  "repository": "https://github.com/posthtml/posthtml.git",
+  "bugs": "https://github.com/posthtml/posthtml/issues",
   "license": "MIT"
 }
