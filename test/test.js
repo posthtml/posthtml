@@ -1,23 +1,26 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+'use strict'
 
-var posthtml = require('../lib')
+const it = require('mocha').it
+const expect = require('chai').expect
+const describe = require('mocha').describe
 
-var input = '<div class="button"><div class="button__text">Text</div></div>'
+const posthtml = require('../lib')
+
+const html = '<div class="button"><div class="button__text">Text</div></div>'
 
 function test (html, done) {
   posthtml()
     .process(html)
-    .then(function (result) {
-      expect(input).to.eql(result.html)
+    .then((result) => {
+      expect(html).to.eql(result.html)
+
       done()
     })
-    .catch(function (error) { return done(error) })
+    .catch((err) => done(err))
 }
 
-describe('Simple text', function () {
-  it('html eqval', function (done) {
-    test(input, done)
+describe('Text', function () {
+  it('Equal', function (done) {
+    test(html, done)
   })
 })

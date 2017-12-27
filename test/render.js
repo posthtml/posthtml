@@ -13,11 +13,11 @@ const html = fs.readFileSync(
   path.resolve(__dirname, 'templates/parser.html'), 'utf8'
 )
 
-describe('Parser', function () {
+describe('Render', function () {
   it('static', () => {
-    const tree = posthtml.parse(html, false)
+    const tree = posthtml.parse(html)
 
-    expect(tree).to.eql(posthtml.parse(html, false))
+    expect(posthtml.render(tree)).to.eql(html)
   })
 
   it('parser => render', function (done) {

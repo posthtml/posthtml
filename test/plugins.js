@@ -1,15 +1,18 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
-var beforeEach = require('mocha').beforeEach
+'use strict'
 
-var posthtml = require('../lib')
+const it = require('mocha').it
+const expect = require('chai').expect
+const describe = require('mocha').describe
+const beforeEach = require('mocha').beforeEach
+
+const posthtml = require('../lib')
 
 describe('Plugins', function () {
-  var html = '<div class="button"><div class="button__text">Text</div></div>'
-  var tree
+  const html = `<div class="button"><div class="button__text">Text</div></div>`
 
-  beforeEach(function () {
+  let tree
+
+  beforeEach(() => {
     tree = [
       {
         tag: 'div',
@@ -62,94 +65,103 @@ describe('Plugins', function () {
   describe('.use(plugin)', function () {
     it('options default', function () {
       return posthtml()
-        .use(function (json) { return json })
-        .use(function (json) {})
+        .use((json) => json)
+        .use((json) => {})
         .process(html, {})
         .should.eventually.containSubset({ html: html })
     })
 
     it('set options skipParse', function () {
       return posthtml()
-        .use(function (json) { return json })
+        .use((json) => json)
         .process(tree, { skipParse: true })
         .should.eventually.containSubset({ html: html })
     })
 
     it('is variadic method', function () {
       return posthtml()
-        .use(function (json) { json.x++ }, function (json) { json.x += 2 })
+        .use((json) => { json.x++ }, (json) => { json.x += 2 })
         .process({ x: 1 }, { skipParse: true })
         .should.eventually.containSubset({ tree: { x: 4 } })
     })
 
     it('should not reassign plugins array', function () {
-      var ph = posthtml().use(function () {}, function () {})
+      var ph = posthtml().use(() => {}, () => {})
+
       var plugins = ph.plugins
 
-      ph.use(function () {}, function () {})
+      ph.use(() => {}, () => {})
+
       expect(ph.plugins).to.eql(plugins)
     })
   })
 
   describe('sync mode', function () {
     it('should run plugins sync-ly', function () {
-      posthtml([ function (json) { return json } ])
+      posthtml([
+        function (json) { return json }
+      ])
         .process(tree, { skipParse: true, sync: true })
         .should.containSubset({ html: html, tree: tree })
     })
 
     it('should flow sync-ly', function () {
       posthtml()
-        .use(function () { return { x: '1' } })
-        .use(function (json) { return { x: json.x + '2' } })
+        .use(() => ({ x: '1' }))
+        .use((json) => ({ x: json.x + '2' }))
         .process(tree, { skipParse: true, sync: true })
         .should.containSubset({ tree: { x: '12' } })
     })
 
     it('should flow the same object sync-ly', function () {
       posthtml()
-        .use(function (json) { json.x = '1'; return json })
-        .use(function (json) { json.x += '2'; return json })
+        .use((json) => { json.x = '1'; return json })
+        .use((json) => { json.x += '2'; return json })
         .process(tree, { skipParse: true, sync: true })
         .should.containSubset({ tree: { x: '12' } })
     })
 
     it('should throw on async plugin with callback', function () {
-      function foobarPlugin (json, cb) { cb(null, json) }
+      function plugin (json, cb) {
+        cb(null, json)
+      }
 
-      var ph = posthtml()
+      const ph = posthtml()
 
-      ph.use(foobarPlugin)
+      ph.use(plugin)
         .process.bind(ph, tree, { skipParse: true, sync: true })
-        .should.throw(/Can’t process contents in sync mode because of async plugin: foobarPlugin/)
+        .should.throw(/Can’t process contents in sync mode because of async plugin: plugin/)
     })
 
     it('should throw on async plugin with Promise', function () {
-      function foobarPlugin (json) {
-        return new Promise(function (resolve) {
+      function plugin (json) {
+        return new Promise((resolve) => {
           return resolve(json)
         })
       }
 
-      var ph = posthtml()
+      const ph = posthtml()
 
-      ph.use(foobarPlugin)
+      ph.use(plugin)
         .process.bind(ph, tree, { skipParse: true, sync: true })
-        .should.throw(/Can’t process contents in sync mode because of async plugin: foobarPlugin/)
+        .should.throw(/Can’t process contents in sync mode because of async plugin: plugin/)
     })
 
     it('should catch plugin runtime throws', function () {
-      var ph = posthtml()
+      const ph = posthtml()
 
-      ph.use(function () { throw new Error('FooBar') })
+      ph.use(() => { throw new Error('PluginError') })
         .process.bind(ph, tree, { skipParse: true, sync: true })
-        .should.throw(/FooBar/)
+        .should.throw(/PluginError/)
     })
 
-    it('should have api methods after returning new root', function () {
+    it('should have API methods after returning new root', function () {
       posthtml()
-        .use(function (tree) {
-          return { tag: 'new-root', content: tree }
+        .use((tree) => {
+          return {
+            tag: 'new-root',
+            content: tree
+          }
         })
         .use(function (tree) {
           tree.should.have.property('walk')
@@ -163,38 +175,39 @@ describe('Plugins', function () {
   describe('async mode', function () {
     it('should flow async-ly', function () {
       return posthtml()
-        .use(function () { return { x: '1' } })
-        .use(function (json, cb) { cb(null, { x: json.x + '2' }) })
-        .use(function (json) {
+        .use(() => ({ x: '1' }))
+        .use((json, cb) => { cb(null, { x: json.x + '2' }) })
+        .use((json) => {
           return Promise.resolve({ x: json.x + '3' })
         })
-        .use(function (json) {
+        .use((json) => {
           return new Promise(function (resolve) {
             setImmediate(resolve, { x: json.x + '4' })
           })
         })
-        .use(function (json) { return { x: json.x + '5' } })
+        .use((json) => { return { x: json.x + '5' } })
         .process(tree, { skipParse: true })
         .should.eventually.containSubset({ tree: { x: '12345' } })
     })
 
     it('should flow the same object async-ly', function () {
       return posthtml()
-        .use(function (json) { json.x = '1' })
-        .use(function (json, cb) { json.x += '2'; cb() })
-        .use(function (json) {
+        .use((json) => { json.x = '1' })
+        .use((json, cb) => { json.x += '2'; cb() })
+        .use((json) => {
           json.x += '3'
+
           return Promise.resolve()
         })
-        .use(function (json) {
-          return new Promise(function (resolve) {
-            setTimeout(function () {
+        .use((json) => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
               json.x += '4'
               resolve()
             }, 50)
           })
         })
-        .use(function (json) { json.x += '5' })
+        .use((json) => { json.x += '5' })
         .process(tree, { skipParse: true })
         .should.eventually.containSubset({ tree: { x: '12345' } })
     })
@@ -202,32 +215,32 @@ describe('Plugins', function () {
     it('should catch plugin runtime throws and transform it to rejects',
       function () {
         return posthtml()
-          .use(function () { throw new Error('FooBar') })
+          .use(() => { throw new Error('PluginError') })
           .process(tree, { skipParse: true })
-          .should.be.rejectedWith(Error, /FooBar/)
+          .should.be.rejectedWith(Error, /PluginError/)
       }
     )
 
     it('should transform callback errors to rejects', function () {
       posthtml()
-        .use(function (_, cb) { cb(new Error('FooBar')) })
+        .use((_, cb) => { cb(new Error('PluginError')) })
         .process(tree, { skipParse: true })
-        .should.be.rejectedWith(Error, /FooBar/)
+        .should.be.rejectedWith(Error, /PluginError/)
     })
 
     it('should pass other rejects', function () {
       posthtml()
-        .use(function () { return Promise.reject(new Error('FooBar')) })
+        .use(() => { return Promise.reject(new Error('PluginError')) })
         .process(tree, { skipParse: true })
-        .should.be.rejectedWith(Error, /FooBar/)
+        .should.be.rejectedWith(Error, /PluginError/)
     })
 
     it('should have api methods after returning new root', function () {
       posthtml()
-        .use(function (tree) {
+        .use((tree) => {
           return Promise.resolve({ tag: 'new-root', content: tree })
         })
-        .use(function (tree) {
+        .use((tree) => {
           tree.should.have.property('walk')
           tree.should.have.property('match')
           tree.walk.should.be.a('function')
@@ -238,11 +251,11 @@ describe('Plugins', function () {
 
   describe('other options', function () {
     it('should modify options in plugin runtime', function () {
-      var html = '<div class="cls"><br><rect></div>'
-      var ref = '<div class="cls"><br /><rect /></div>'
+      const html = '<div class="cls"><br><rect></div>'
+      const ref = '<div class="cls"><br /><rect /></div>'
 
       return posthtml()
-        .use(function (tree) {
+        .use((tree) => {
           tree.options.singleTags = ['rect']
           tree.options.closingSingleTag = 'slash'
         })
@@ -252,7 +265,10 @@ describe('Plugins', function () {
           tree: [{
             tag: 'div',
             attrs: { class: 'cls' },
-            content: [ { tag: 'br' }, { tag: 'rect' } ]
+            content: [
+              { tag: 'br' },
+              { tag: 'rect' }
+            ]
           }]
         })
     })
