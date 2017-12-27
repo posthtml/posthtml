@@ -1,11 +1,13 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+'use strict'
 
-var posthtml = require('../lib')
+const it = require('mocha').it
+const expect = require('chai').expect
+const describe = require('mocha').describe
 
-var html = '<div class="messages">Messages</div>'
-var messages = [
+const posthtml = require('../lib')
+
+const html = '<div class="messages">Messages</div>'
+const messages = [
   {
     type: 'dependency',
     file: './path/to/1.html',
@@ -20,7 +22,7 @@ var messages = [
 
 function test (html, done) {
   posthtml()
-    .use(function (tree) {
+    .use((tree) => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/1.html',
@@ -29,7 +31,7 @@ function test (html, done) {
 
       return tree
     })
-    .use(function (tree) {
+    .use((tree) => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/2.html',
@@ -39,15 +41,13 @@ function test (html, done) {
       return tree
     })
     .process(html)
-    .then(function (result) {
+    .then((result) => {
       expect(html).to.eql(result.html)
       expect(messages).to.eql(result.messages)
 
       done()
     })
-    .catch(function (error) {
-      done(error)
-    })
+    .catch((err) => done(err))
 }
 
 describe('Messages', function () {

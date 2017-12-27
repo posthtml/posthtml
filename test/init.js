@@ -1,9 +1,8 @@
-require('es6-promise').polyfill()
-require('object.assign').shim()
+'use strict'
 
-var chai = require('chai')
-var chaiSubset = require('chai-subset')
-var chaiAsPromised = require('chai-as-promised')
+const chai = require('chai')
+const chaiSubset = require('chai-subset')
+const chaiAsPromised = require('chai-as-promised')
 
 chai.should()
 chai.use(chaiSubset)
