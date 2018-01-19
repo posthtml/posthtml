@@ -21,8 +21,8 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "posthtml-parser": "^0.3.0",
-    "posthtml-render": "^1.0.5"
+    "posthtml-parser": "^0.3.3",
+    "posthtml-render": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^3.0.0",
