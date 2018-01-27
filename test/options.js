@@ -5,9 +5,9 @@ var describe = require('mocha').describe
 var posthtml = require('../lib')
 
 var input = '<div class="button"><rect /><div class="button__text">Text</div></div>'
-var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
 
 function test (html, done) {
+  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   posthtml()
     .process(html, options)
     .then(function (result) {
@@ -24,6 +24,7 @@ describe('Set options', function () {
 })
 
 describe('Skip html parsing & use tree from options.', function () {
+  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   var tree = [
     {
       tag: 'div',
@@ -52,6 +53,7 @@ describe('Skip html parsing & use tree from options.', function () {
 })
 
 describe('Set option', function () {
+  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   var html = '<?php echo "Hello word"; ?>'
   var multiHTML = '<!doctype><html><body>' + html + '</body></html>'
 
