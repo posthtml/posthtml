@@ -4,11 +4,8 @@ var describe = require('mocha').describe
 
 var posthtml = require('../lib')
 
-var Api = require('../lib/api')
-var api = new Api()
-
-var walk = api.walk
-var match = api.match
+var walk = require('../lib/api').walk
+var match = require('../lib/api').match
 
 function test (nodes, reference, fn, options, done) {
   expect(posthtml([].concat(fn))
