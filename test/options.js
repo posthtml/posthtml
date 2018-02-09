@@ -23,6 +23,34 @@ describe('Set options', function () {
   })
 })
 
+describe('Skip html parsing & ', function () {
+  var options = { skipParse: true }
+
+  it('use number tree.', function (done) {
+    var tree = 123456789
+    expect(posthtml()
+      .process(tree, options)
+      .then(function (result) {
+        expect('123456789').to.eql(result.html)
+        done()
+      })
+      .catch(function (error) { return done(error) })
+    )
+  })
+
+  it('use string tree.', function (done) {
+    var tree = '123456789'
+    expect(posthtml()
+      .process(tree, options)
+      .then(function (result) {
+        expect('123456789').to.eql(result.html)
+        done()
+      })
+      .catch(function (error) { return done(error) })
+    )
+  })
+})
+
 describe('Skip html parsing & use tree from options.', function () {
   var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   var tree = [
