@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.3"></a>
+## [0.11.3](https://github.com/posthtml/posthtml/compare/v0.11.2...v0.11.3) (2018-01-26)
+
+
+### Bug Fixes
+
+* **index:** instance new api between files, close [#250](https://github.com/posthtml/posthtml/issues/250) ([25120a9](https://github.com/posthtml/posthtml/commit/25120a9))
+
+
+### Performance Improvements
+
+* **api:** rewrite to constructor, close [#258](https://github.com/posthtml/posthtml/issues/258) ([89238cb](https://github.com/posthtml/posthtml/commit/89238cb))
+
+
+
 <a name="0.11.2"></a>
 ## [0.11.2](https://github.com/posthtml/posthtml/compare/v0.11.1...v0.11.2) (2018-01-19)
 
