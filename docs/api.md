@@ -4,7 +4,7 @@
 # API
 
 **Kind**: global namespace  
-**Author:** Ivan Voischev (@voischev),
+**Author**: Ivan Voischev (@voischev),
         Anton Winogradov (@awinogradov),
         Alexej Yaroshevich (@zxqfox),
         Vasiliy (@Yeti-or)  
@@ -16,12 +16,16 @@
 <a name="tree.walk"></a>
 
 ### tree.walk(cb) ⇒ <code>function</code>
-walk the tree and pass all nodes to callback
+Walks the tree and passes all nodes via a callback
 
-**Kind**: static method of <code>[tree](#tree)</code>  
-**Returns**: <code>function</code> - - Node in callback
+**Kind**: static method of [<code>tree</code>](#tree)  
+**Returns**: <code>function</code> - Callback(node)  
 
-**Usage**
+| Param | Type | Description |
+| --- | --- | --- |
+| cb | <code>function</code> | Callback |
+
+**Example**  
 ```js
 export const walk = (tree) => {
   tree.walk((node) => {
@@ -31,21 +35,21 @@ export const walk = (tree) => {
       return node
   })
 }
-```  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| cb | <code>function</code> | Callback |
-
+```
 <a name="tree.match"></a>
 
 ### tree.match(expression, cb) ⇒ <code>function</code>
-match expression to search nodes in the tree
+Matches an expression to search for nodes in the tree
 
-**Kind**: static method of <code>[tree](#tree)</code>  
-**Returns**: <code>function</code> - - Node in callback
+**Kind**: static method of [<code>tree</code>](#tree)  
+**Returns**: <code>function</code> - Callback(node)  
 
-**Usage**
+| Param | Type | Description |
+| --- | --- | --- |
+| expression | <code>String</code> \| <code>RegExp</code> \| <code>Object</code> \| <code>Array</code> | Matcher(s) to search |
+| cb | <code>function</code> | Callback |
+
+**Example**  
 ```js
 export const match = (tree) => {
   // Single matcher
@@ -72,10 +76,4 @@ export const match = (tree) => {
     return node
   })
 }
-```  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| expression | <code>String</code> &#124; <code>RegExp</code> &#124; <code>Object</code> &#124; <code>Array</code> | Matcher(s) to search |
-| cb | <code>function</code> | Callback |
-
+```
