@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.4"></a>
+## [0.11.4](https://github.com/posthtml/posthtml/compare/v0.11.3...v0.11.4) (2018-02-16)
+
+
+### Bug Fixes
+
+* **index:** if tree not object ([3fd9548](https://github.com/posthtml/posthtml/commit/3fd9548))
+* **test/options:** incorrect transfer option for the process ([c5fd774](https://github.com/posthtml/posthtml/commit/c5fd774))
+
+
+### Performance Improvements
+
+* **api:** api is not a place for concatenation. ([f428425](https://github.com/posthtml/posthtml/commit/f428425))
+* **api:** inherit from the previous tree ([4e69577](https://github.com/posthtml/posthtml/commit/4e69577))
+* **api:** move message to posthtml constructor ([c51e40f](https://github.com/posthtml/posthtml/commit/c51e40f))
+* **api:** rename api to extendApi ([846e386](https://github.com/posthtml/posthtml/commit/846e386))
+* **index:** set the previous tree as the context value for api ([21170c7](https://github.com/posthtml/posthtml/commit/21170c7))
+* made a repetitive design in a private function ([fabeef4](https://github.com/posthtml/posthtml/commit/fabeef4))
+
+
+### Reverts
+
+* **api:** return export api methods ([90e3565](https://github.com/posthtml/posthtml/commit/90e3565))
+
+
+
 <a name="0.11.3"></a>
 ## [0.11.3](https://github.com/posthtml/posthtml/compare/v0.11.2...v0.11.3) (2018-01-26)
 
