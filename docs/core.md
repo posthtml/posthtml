@@ -12,6 +12,14 @@
 <dd></dd>
 </dl>
 
+## Members
+
+<dl>
+<dt><a href="#version">version</a></dt>
+<dd><p>PostHTML Instance</p>
+</dd>
+</dl>
+
 <a name="module_posthtml"></a>
 
 ## posthtml ⇒ <code>function</code>
@@ -34,8 +42,7 @@ const ph = posthtml([ plugin() ])
 ## PostHTML
 **Kind**: global class  
 **Requires**: <code>module:api</code>, <code>module:posthtml-parser</code>, <code>module:posthtml-render</code>  
-**Version**: 0.9.0  
-**Author:** Ivan Voischev (@voischev),
+**Author**: Ivan Voischev (@voischev),
         Anton Winogradov (@awinogradov),
         Alexej Yaroshevich (@zxqfox),
         Vasiliy (@Yeti-or)  
@@ -44,7 +51,7 @@ const ph = posthtml([ plugin() ])
     * [new PostHTML(plugins)](#new_PostHTML_new)
     * _instance_
         * [.use(plugin)](#PostHTML+use) ⇒ <code>Constructor</code>
-        * [.process(html, options)](#PostHTML+process) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> &#124; <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
+        * [.process(html, options)](#PostHTML+process) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> \| <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
             * [~options](#PostHTML+process..options) : <code>Object</code>
     * _static_
         * [.parser](#PostHTML.parser) ⇒ <code>Array</code>
@@ -61,7 +68,7 @@ const ph = posthtml([ plugin() ])
 <a name="PostHTML+use"></a>
 
 ### postHTML.use(plugin) ⇒ <code>Constructor</code>
-**Kind**: instance method of <code>[PostHTML](#PostHTML)</code>  
+**Kind**: instance method of [<code>PostHTML</code>](#PostHTML)  
 **Returns**: <code>Constructor</code> - - this(PostHTML)
 
 **Usage**
@@ -78,8 +85,8 @@ ph.use((tree) => { tag: 'div', content: tree })
 
 <a name="PostHTML+process"></a>
 
-### postHTML.process(html, options) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> &#124; <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
-**Kind**: instance method of <code>[PostHTML](#PostHTML)</code>  
+### postHTML.process(html, options) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> \| <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
+**Kind**: instance method of [<code>PostHTML</code>](#PostHTML)  
 **Returns**: <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> - - Sync Mode<code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code> - - Async Mode (default)
 
 **Usage**
@@ -104,7 +111,7 @@ ph.process('<html>..</html>', {}).then((result) => result))
 #### process~options : <code>Object</code>
 ## PostHTML Options
 
-**Kind**: inner property of <code>[process](#PostHTML+process)</code>  
+**Kind**: inner property of [<code>process</code>](#PostHTML+process)  
 **Properties**
 
 | Name | Type | Description |
@@ -117,7 +124,7 @@ ph.process('<html>..</html>', {}).then((result) => result))
 <a name="PostHTML.parser"></a>
 
 ### PostHTML.parser ⇒ <code>Array</code>
-**Kind**: static property of <code>[PostHTML](#PostHTML)</code>  
+**Kind**: static property of [<code>PostHTML</code>](#PostHTML)  
 **Returns**: <code>Array</code> - tree - PostHTMLTree (JSON)  
 **Requires**: <code>module:posthtml-parser</code>  
 
@@ -128,11 +135,24 @@ ph.process('<html>..</html>', {}).then((result) => result))
 <a name="PostHTML.render"></a>
 
 ### PostHTML.render ⇒ <code>String</code>
-**Kind**: static property of <code>[PostHTML](#PostHTML)</code>  
+**Kind**: static property of [<code>PostHTML</code>](#PostHTML)  
 **Returns**: <code>String</code> - html - HTML  
 **Requires**: <code>module:posthtml-render</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | tree | <code>Array</code> | PostHTMLTree (JSON) |
+
+<a name="version"></a>
+
+## version
+PostHTML Instance
+
+**Kind**: global variable  
+**Properties**
+
+| Name |
+| --- |
+| plugins | 
+| options | 
 
