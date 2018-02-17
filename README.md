@@ -311,7 +311,7 @@ export default {
   dest: join(__dirname, 'bundle.js'),
   format: 'iife',
   plugins: [
-    posthtml(
+    posthtml({
       parser: sugarml(),
       plugins: [include()],
       template: true  // only rollup-plugin-posthtml-template
