@@ -21,9 +21,8 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "object-assign": "^4.1.1",
-    "posthtml-parser": "^0.3.3",
-    "posthtml-render": "^1.1.0"
+    "htmlparser2": "^3.9.2",
+    "object-assign": "^4.1.1"
   },
   "devDependencies": {
     "chai": "^3.0.0",
@@ -34,7 +33,6 @@
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.4.0",
     "mversion": "^1.10.0",
-    "object.assign": "^4.0.3",
     "standard": "^10.0.2",
     "standard-version": "^4.2.0"
   },
