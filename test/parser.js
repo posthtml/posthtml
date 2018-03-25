@@ -5,8 +5,8 @@ var it = require('mocha').it
 var expect = require('chai').expect
 var describe = require('mocha').describe
 
-var parser = require('posthtml-parser')
-var render = require('posthtml-render')
+var parser = require('../lib/parser')
+var render = require('../lib/render')
 
 var html = fs.readFileSync(
   path.resolve(__dirname, 'templates/parser.html'), 'utf8'
