@@ -447,7 +447,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [react-badge]: https://img.shields.io/npm/v/posthtml-static-react.svg
 [react-npm]: https://npmjs.com/package/posthtml-static-react
 
-[highlight]: https://github.com/rasmusfl0e/posthtml-highlight
+[highlight]: https://github.com/caseyWebb/posthtml-highlight
 [highlight-badge]: https://img.shields.io/npm/v/posthtml-highlight.svg
 [highlight-npm]: https://npmjs.com/package/posthtml-highlight
 
