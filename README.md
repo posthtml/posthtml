@@ -385,6 +385,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-web-component][web]|[![npm][web-badge]][web-npm]|Web Component server-side rendering, Component as a Service (CaaS)|
 |[posthtml-spaceless][spaceless]|[![npm][spaceless-badge]][spaceless-npm]|Remove whitespace between HTML tags|
 |[posthtml-cache][cache]|[![npm][cache-badge]][cache-npm]|Add a nanoid to links in you tags|
+|[posthtml-highlight][highlight]|[![npm][highlight-badge]][highlight-npm]|Syntax highlight code elements|
 
 [cache]: https://github.com/posthtml/posthtml-cache
 [cache-badge]: https://img.shields.io/npm/v/posthtml-cache.svg
@@ -445,6 +446,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [react]: https://github.com/rasmusfl0e/posthtml-static-react
 [react-badge]: https://img.shields.io/npm/v/posthtml-static-react.svg
 [react-npm]: https://npmjs.com/package/posthtml-static-react
+
+[highlight]: https://github.com/rasmusfl0e/posthtml-highlight
+[highlight-badge]: https://img.shields.io/npm/v/posthtml-highlight.svg
+[highlight-npm]: https://npmjs.com/package/posthtml-highlight
 
 #### CSS
 
