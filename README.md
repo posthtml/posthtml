@@ -258,9 +258,9 @@ const config = {
       {
         test: /\.html$/,
         use: [
-          { 
-            loader: 'html-loader', 
-            options: { minimize: true } 
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
           },
           {
             loader: 'posthtml-loader'
@@ -355,6 +355,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-md][md]|[![npm][md-badge]][md-npm]|Easily use context-sensitive markdown within HTML|
 |[posthtml-lorem][lorem]|[![npm][lorem-badge]][lorem-npm]|Add lorem ipsum placeholder text to any document|
 |[posthtml-retext][text]|[![npm][text-badge]][text-npm]|Extensible system for analysing and manipulating natural language|
+|[prevent-widows][prevent-widows]|[![npm][prevent-widows-badge]][prevent-widows-npm]|Prevent widows from appearing at the end of paragraphs|
 
 [md]: https://github.com/jonathantneal/posthtml-md
 [md-badge]: https://img.shields.io/npm/v/posthtml-md.svg
@@ -367,6 +368,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [lorem]: https://github.com/jonathantneal/posthtml-lorem
 [lorem-badge]: https://img.shields.io/npm/v/posthtml-lorem.svg
 [lorem-npm]: https://npmjs.com/package/posthtml-lorem
+
+[prevent-widows]: https://github.com/bashaus/prevent-widows
+[prevent-widows-badge]: https://img.shields.io/npm/v/prevent-widows.svg
+[prevent-widows-npm]: https://npmjs.com/package/prevent-widows
 
 #### HTML
 
