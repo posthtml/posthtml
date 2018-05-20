@@ -535,6 +535,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-img-autosize][img]|[![npm][img-badge]][img-npm]|Auto setting the width and height of \<img\>|
 |[posthtml-to-svg-tags][svg]|[![npm][svg-badge]][svg-npm]|Convert html tags to svg equals|
 |[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
+|[posthtml-favicons][favicons]|[![npm][favicons-badge]][favicons-npm]|Generate Favicons and add related tags|
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
@@ -547,6 +548,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [webp]: https://github.com/seokirill/posthtml-webp
 [webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
 [webp-npm]: https://npmjs.com/package/posthtml-webp
+
+[favicons]: https://github.com/mohsen1/posthtml-favicons
+[favicons-badge]: https://img.shields.io/npm/v/posthtml-favicons.svg
+[favicons-npm]: https://www.npmjs.com/package/posthtml-favicons
 
 #### Accessibility
 
