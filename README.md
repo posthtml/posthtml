@@ -469,10 +469,8 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-prefix-class][prefix]|[![npm][prefix-badge]][prefix-npm]|Prefix class names
 |[posthtml-modular-css][modular]|[![npm][modular-badge]][modular-npm]|Make CSS modular|
 |[posthtml-inline-css][in]|[![npm][in-badge]][in-npm]|CSS Inliner|
-|[posthtml-collect-styles][collect-styles]|[![npm][collect-styles-badge]][collect-styles-npm]|Collect styles from html and put it in the head|
 |[posthtml-collect-inline-styles][collect]|[![npm][collect-badge]][collect-npm]|Collect inline styles and insert to head tag|
 |[posthtml-style-to-file][style]|[![npm][style-badge]][style-npm]| Save HTML style nodes and attributes to CSS file|
-|[posthtml-color-shorthand-hex-to-six-digit][hex]|[![npm][hex-badge]][hex-npm]|Enforce all hex color codes to be 6-char long|
 
 
 [bem]: https://github.com/rajdee/posthtml-bem
@@ -534,7 +532,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |:---|:-----|:----------|
 |[posthtml-img-autosize][img]|[![npm][img-badge]][img-npm]|Auto setting the width and height of \<img\>|
 |[posthtml-to-svg-tags][svg]|[![npm][svg-badge]][svg-npm]|Convert html tags to svg equals|
-|[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
 |[posthtml-favicons][favicons]|[![npm][favicons-badge]][favicons-npm]|Generate Favicons and add related tags|
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
@@ -586,7 +583,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 |[posthtml-transformer][transform]|[![npm][transform-badge]][transform-npm]|Process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[htmlnano][nano]|[![npm][nano-badge]][nano-npm]|HTML Minifier|
-|[posthtml-email-remove-unused-css][unused]|[![npm][unused-badge]][unused-npm]|Remove unused CSS from email templates|
 
 
 [remove]: https://github.com/princed/posthtml-remove-attributes
