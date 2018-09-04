@@ -471,6 +471,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-inline-css][in]|[![npm][in-badge]][in-npm]|CSS Inliner|
 |[posthtml-collect-inline-styles][collect]|[![npm][collect-badge]][collect-npm]|Collect inline styles and insert to head tag|
 |[posthtml-style-to-file][style]|[![npm][style-badge]][style-npm]| Save HTML style nodes and attributes to CSS file|
+|[posthtml-color-shorthand-hex-to-six-digit][hex]|[![npm][hex-badge]][hex-npm]|Enforce all hex color codes to be 6-char long|
 
 
 [bem]: https://github.com/rajdee/posthtml-bem
@@ -489,10 +490,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [css-modules]: https://github.com/posthtml/posthtml-css-modules
 [css-modules-badge]: https://img.shields.io/npm/v/posthtml-css-modules.svg
 [css-modules-npm]: https://npmjs.com/package/posthtml-css-modules
-
-[collect-styles]: https://github.com/posthtml/posthtml-collect-styles
-[collect-styles-badge]: https://img.shields.io/npm/v/posthtml-collect-styles.svg
-[collect-styles-npm]: https://npmjs.com/package/posthtml-collect-styles
 
 [collect]: https://github.com/totora0155/posthtml-collect-inline-styles
 [collect-badge]: https://img.shields.io/npm/v/posthtml-collect-inline-styles.svg
@@ -522,7 +519,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [style-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
 [style-npm]: https://npmjs.com/package/posthtml-style-to-file
 
-[hex]: https://github.com/code-and-send/posthtml-color-shorthand-hex-to-six-digit
+[hex]: https://github.com/posthtml/posthtml-color-shorthand-hex-to-six-digit
 [hex-badge]: https://img.shields.io/npm/v/posthtml-color-shorthand-hex-to-six-digit.svg
 [hex-npm]: https://npmjs.com/package/posthtml-color-shorthand-hex-to-six-digit
 
@@ -541,10 +538,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [svg]: https://github.com/theprotein/posthtml-to-svg-tags
 [svg-badge]: https://img.shields.io/npm/v/posthtml-to-svg-tags.svg
 [svg-npm]: https://npmjs.com/package/posthtml-to-svg-tags
-
-[webp]: https://github.com/seokirill/posthtml-webp
-[webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
-[webp-npm]: https://npmjs.com/package/posthtml-webp
 
 [favicons]: https://github.com/mohsen1/posthtml-favicons
 [favicons-badge]: https://img.shields.io/npm/v/posthtml-favicons.svg
@@ -612,10 +605,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [nano]: https://github.com/maltsev/htmlnano
 [nano-badge]: https://img.shields.io/npm/v/htmlnano.svg
 [nano-npm]: https://npmjs.com/package/htmlnano
-
-[unused]: https://github.com/code-and-send/posthtml-email-remove-unused-css
-[unused-badge]: https://img.shields.io/npm/v/posthtml-email-remove-unused-css.svg
-[unused-npm]: https://npmjs.com/package/posthtml-email-remove-unused-css
 
 [transform]: https://github.com/flashlizi/posthtml-transformer
 [transform-badge]: https://img.shields.io/npm/v/posthtml-transformer.svg
