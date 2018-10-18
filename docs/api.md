@@ -32,7 +32,8 @@ export const walk = (tree) => {
     let classes = node.attrs && node.attrs.class.split(' ') || []
 
     if (classes.includes(className)) return cb(node)
-      return node
+    
+    return node
   })
 }
 ```
