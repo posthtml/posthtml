@@ -189,7 +189,7 @@ Check [project-stub](https://github.com/posthtml/project-stub) for an example wi
 ### [Grunt](https://gruntjs.com)
 
 ```bash
-npm i -D grunt-posthtml
+npm i -D grunt-juwain-posthtml
 ```
 
 ```js
