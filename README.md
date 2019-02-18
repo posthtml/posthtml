@@ -524,7 +524,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [style-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
 [style-npm]: https://npmjs.com/package/posthtml-style-to-file
 
-[hex]: https://github.com/code-and-send/posthtml-color-shorthand-hex-to-six-digit
+[hex]: https://github.com/posthtml/posthtml-color-shorthand-hex-to-six-digit
 [hex-badge]: https://img.shields.io/npm/v/posthtml-color-shorthand-hex-to-six-digit.svg
 [hex-npm]: https://npmjs.com/package/posthtml-color-shorthand-hex-to-six-digit
 
@@ -545,7 +545,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [svg-badge]: https://img.shields.io/npm/v/posthtml-to-svg-tags.svg
 [svg-npm]: https://npmjs.com/package/posthtml-to-svg-tags
 
-[webp]: https://github.com/seokirill/posthtml-webp
+[webp]: https://github.com/posthtml/posthtml-webp
 [webp-badge]: https://img.shields.io/npm/v/posthtml-webp.svg
 [webp-npm]: https://npmjs.com/package/posthtml-webp
 
