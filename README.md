@@ -586,7 +586,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 |[posthtml-transformer][transform]|[![npm][transform-badge]][transform-npm]|Process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[htmlnano][nano]|[![npm][nano-badge]][nano-npm]|HTML Minifier|
-|[posthtml-email-remove-unused-css][unused]|[![npm][unused-badge]][unused-npm]|Remove unused CSS from email templates|
 
 
 [remove]: https://github.com/princed/posthtml-remove-attributes
@@ -616,10 +615,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [nano]: https://github.com/maltsev/htmlnano
 [nano-badge]: https://img.shields.io/npm/v/htmlnano.svg
 [nano-npm]: https://npmjs.com/package/htmlnano
-
-[unused]: https://github.com/code-and-send/posthtml-email-remove-unused-css
-[unused-badge]: https://img.shields.io/npm/v/posthtml-email-remove-unused-css.svg
-[unused-npm]: https://npmjs.com/package/posthtml-email-remove-unused-css
 
 [transform]: https://github.com/flashlizi/posthtml-transformer
 [transform-badge]: https://img.shields.io/npm/v/posthtml-transformer.svg
