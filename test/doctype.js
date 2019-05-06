@@ -13,11 +13,11 @@ var doctype = fs.readFileSync(
 
 function test (html, reference, done) {
   posthtml().process(html)
-  .then(function (result) {
-    expect(reference).to.eql(result.html)
-    done()
-  })
-  .catch(function (error) { return done(error) })
+    .then(function (result) {
+      expect(reference).to.eql(result.html)
+      done()
+    })
+    .catch(function (error) { return done(error) })
 }
 
 describe('Parse Doctype', function () {
