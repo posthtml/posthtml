@@ -1,6 +1,31 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.11.4](https://github.com/posthtml/posthtml/compare/v0.11.3...v0.11.4) (2019-05-06)
+
+
+### Bug Fixes
+
+* **index:** if tree not object ([3fd9548](https://github.com/posthtml/posthtml/commit/3fd9548))
+* **readme:** adds missing bracket ([ff3102f](https://github.com/posthtml/posthtml/commit/ff3102f))
+* **test/options:** incorrect transfer option for the process ([c5fd774](https://github.com/posthtml/posthtml/commit/c5fd774))
+
+
+### Build System
+
+* remove pkg lock ([5c9b45a](https://github.com/posthtml/posthtml/commit/5c9b45a))
+* update build system, close [#279](https://github.com/posthtml/posthtml/issues/279) ([ca77e4a](https://github.com/posthtml/posthtml/commit/ca77e4a))
+* update depDev ([c975225](https://github.com/posthtml/posthtml/commit/c975225))
+
+
+### Tests
+
+* update init for mocha ([be634f6](https://github.com/posthtml/posthtml/commit/be634f6))
+* **message:** add test for extending from prevent tree ([6cb238a](https://github.com/posthtml/posthtml/commit/6cb238a))
+* **options:** if tree not object ([dcdb3e7](https://github.com/posthtml/posthtml/commit/dcdb3e7))
+
+
 
 <a name="0.11.3"></a>
 ## [0.11.3](https://github.com/posthtml/posthtml/compare/v0.11.2...v0.11.3) (2018-02-16)

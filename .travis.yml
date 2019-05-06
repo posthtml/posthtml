@@ -4,14 +4,6 @@ node_js:
   - "stable"
   - "lts/*"
   - 6
-  - 4
-  - 0.12
-  - 0.10
-
-env:
-  global:
-    - ISTANBUL_COVERAGE: yes
 
 after_success:
-  - npm i coveralls
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run coverage
