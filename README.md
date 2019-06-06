@@ -473,6 +473,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-collect-inline-styles][collect]|[![npm][collect-badge]][collect-npm]|Collect inline styles and insert to head tag|
 |[posthtml-style-to-file][style]|[![npm][style-badge]][style-npm]| Save HTML style nodes and attributes to CSS file|
 |[posthtml-color-shorthand-hex-to-six-digit][hex]|[![npm][hex-badge]][hex-npm]|Enforce all hex color codes to be 6-char long|
+|[posthtml-minify-classnames][minify]|[![npm][minify-badge]][minify-npm]|Rewrites classnames and ids inside of html and css files to reduce file size.|
 
 
 [bem]: https://github.com/rajdee/posthtml-bem
@@ -527,6 +528,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [hex]: https://github.com/posthtml/posthtml-color-shorthand-hex-to-six-digit
 [hex-badge]: https://img.shields.io/npm/v/posthtml-color-shorthand-hex-to-six-digit.svg
 [hex-npm]: https://npmjs.com/package/posthtml-color-shorthand-hex-to-six-digit
+
+[minify]: https://github.com/simonlc/posthtml-minify-classnames
+[minify-badge]: https://img.shields.io/npm/v/posthtml-minify-classnames.svg
+[minify-npm]: https://npmjs.com/package/posthtml-minify-classnames
 
 #### IMG & SVG
 
