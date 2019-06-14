@@ -391,6 +391,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-spaceless][spaceless]|[![npm][spaceless-badge]][spaceless-npm]|Remove whitespace between HTML tags|
 |[posthtml-cache][cache]|[![npm][cache-badge]][cache-npm]|Add a nanoid to links in you tags|
 |[posthtml-highlight][highlight]|[![npm][highlight-badge]][highlight-npm]|Syntax highlight code elements|
+|[posthtml-pseudo][pseudo]|[![npm][pseudo-badge]][pseudo-npm]|Add pseudo selector class names to elements|
 
 [cache]: https://github.com/posthtml/posthtml-cache
 [cache-badge]: https://img.shields.io/npm/v/posthtml-cache.svg
@@ -455,6 +456,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [highlight]: https://github.com/caseyWebb/posthtml-highlight
 [highlight-badge]: https://img.shields.io/npm/v/posthtml-highlight.svg
 [highlight-npm]: https://npmjs.com/package/posthtml-highlight
+
+[pseudo]: https://github.com/kevinkace/posthtml-pseudo
+[pseudo-badge]: https://img.shields.io/npm/v/posthtml-pseudo.svg
+[pseudo-npm]: https://npmjs.com/package/posthtml-pseudo
 
 #### CSS
 
