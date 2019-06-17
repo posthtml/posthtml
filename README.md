@@ -703,6 +703,12 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
    <tr>
     <td align="center">
       <img width="150 height="150"
+      src="https://avatars0.githubusercontent.com/u/2789192?s=460&v=4">
+      <br />
+      <a href="https://github.com/scrum">Ivan Demidov</a>
+    </td>
+    <td align="center">
+      <img width="150 height="150"
       src="https://avatars.githubusercontent.com/u/1510217?v=3&s=150">
       <br />
       <a href="https://github.com/voischev">Ivan Voischev</a>
