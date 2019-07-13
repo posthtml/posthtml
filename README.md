@@ -596,7 +596,8 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-remove-duplicates][remove-duplicates]|[![npm][remove-duplicates-badge]][remove-duplicates-npm]|Remove duplicate elements from your html|
 |[posthtml-transformer][transform]|[![npm][transform-badge]][transform-npm]|Process HTML by directives in node attrs, such as inline scripts and styles, remove useless tags, concat scripts and styles etc.|
 |[htmlnano][nano]|[![npm][nano-badge]][nano-npm]|HTML Minifier|
-
+|[posthtml-link-noreferrer][noreferrer]|[![npm][noreferrer-badge]][noreferrer-npm]|Add `rel="noopener"` and `rel="noreferrer"` to all links that contain the attribute `target="_blank"` |
+|[posthtml-lazyload][lazyload]|[![npm][lazyload-badge]][lazyload-npm]|Add native lazyload attribute|
 
 [remove]: https://github.com/princed/posthtml-remove-attributes
 [remove-badge]: https://img.shields.io/npm/v/posthtml-remove-attributes.svg
@@ -629,6 +630,14 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [transform]: https://github.com/flashlizi/posthtml-transformer
 [transform-badge]: https://img.shields.io/npm/v/posthtml-transformer.svg
 [transform-npm]: https://npmjs.com/package/posthtml-transformer
+
+[noreferrer]: https://github.com/webistomin/posthtml-link-noreferrer
+[noreferrer-badge]: https://img.shields.io/npm/v/posthtml-link-noreferrer.svg
+[noreferrer-npm]: https://www.npmjs.com/package/posthtml-link-noreferrer
+
+[lazyload]: https://github.com/webistomin/posthtml-lazyload
+[lazyload-badge]: https://img.shields.io/npm/v/posthtml-link-noreferrer.svg
+[lazyload-npm]: https://www.npmjs.com/package/posthtml-lazyload
 
 #### Workflow
 
