@@ -14,7 +14,9 @@
     "processor"
   ],
   "main": "lib",
+  "types": "types/posthtml.d.ts",
   "files": [
+    "types",
     "lib"
   ],
   "engines": {
