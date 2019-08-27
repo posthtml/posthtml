@@ -120,7 +120,7 @@ describe('API', function () {
     it('Array with multiple matches', function (done) {
       var html = '<div class="a b">0</div>'
       var reference = '<div class="a b">1</div>'
-      var classes = [ /a/, /b/ ].map(function (name) {
+      var classes = [/a/, /b/].map(function (name) {
         return { attrs: { class: name } }
       })
 

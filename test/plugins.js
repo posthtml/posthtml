@@ -33,19 +33,19 @@ describe('Plugins', function () {
 
   describe('posthtml([plugins])', function () {
     it('options default', function () {
-      return posthtml([ function (json) { return json } ])
+      return posthtml([function (json) { return json }])
         .process(html, {})
         .should.eventually.containSubset({ html: html })
     })
 
     it('should return original for resultless plugins', function () {
-      return posthtml([ function (json) {} ])
+      return posthtml([function (json) {}])
         .process(tree, { skipParse: true })
         .should.eventually.containSubset({ tree: tree })
     })
 
     it('set options skipParse', function () {
-      return posthtml([ function (json) { return json } ])
+      return posthtml([function (json) { return json }])
         .process(tree, { skipParse: true })
         .should.eventually.containSubset({ tree: tree, html: html })
     })
@@ -93,7 +93,7 @@ describe('Plugins', function () {
 
   describe('sync mode', function () {
     it('should run plugins sync-ly', function () {
-      posthtml([ function (json) { return json } ])
+      posthtml([function (json) { return json }])
         .process(tree, { skipParse: true, sync: true })
         .should.containSubset({ html: html, tree: tree })
     })
@@ -252,7 +252,7 @@ describe('Plugins', function () {
           tree: [{
             tag: 'div',
             attrs: { class: 'cls' },
-            content: [ { tag: 'br' }, { tag: 'rect' } ]
+            content: [{ tag: 'br' }, { tag: 'rect' }]
           }]
         })
     })
