@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.5](https://github.com/posthtml/posthtml/compare/v0.11.4...v0.11.5) (2019-08-27)
+
+### Perf
+* **perf:** Add TypeScript typings ([89bf763](https://github.com/posthtml/posthtml/commit/89bf763q))
+
+### Plugins
+* **plugin:** Add posthtml-minify-classnames ([9844a08](https://github.com/posthtml/posthtml/commit/9844a08))
+* **plugin:** Add posthtml-pseudo ([8b86f58](https://github.com/posthtml/posthtml/commit/8b86f58))
+* **plugin:** Add posthtml-lazyload ([1009bff](https://github.com/posthtml/posthtml/commit/1009bff))
+* **plugin:** Add posthtml-link-noreferrer ([1009bff](https://github.com/posthtml/posthtml/commit/1009bff))
+
 ### [0.11.4](https://github.com/posthtml/posthtml/compare/v0.11.3...v0.11.4) (2019-05-06)
 
 
