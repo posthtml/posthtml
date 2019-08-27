@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### [0.11.5](https://github.com/posthtml/posthtml/compare/v0.11.4...v0.11.5) (2019-08-27)
 
 ### Perf
-* **perf:** Add TypeScript typings ([89bf763](https://github.com/posthtml/posthtml/commit/89bf763))
+* **perf:** Add TypeScript typings ([89bf763](https://github.com/posthtml/posthtml/commit/89bf763q))
 
 ### Plugins
 * **plugin:** Add posthtml-minify-classnames ([9844a08](https://github.com/posthtml/posthtml/commit/9844a08))
