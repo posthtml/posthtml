@@ -1,24 +1,23 @@
-export interface NodeAttributes {
+type MaybeArray<T> = T | T[]
+
+export interface PostHTMLNodeAttributes {
   [attribute: string]: string;
 }
 
-export type NodeContent = Array<Node | PostHTMLTree | PostHTMLTree[]>;
+export type PostHTMLNodeContent = string | PostHTMLNode;
+
+export type PostHTMLMatcher = string | RegExp | object;
+export type PostHTMLExpression = MaybeArray<PostHTMLMatcher>;
+export type PostHTMLNodeCallback = (node: PostHTMLNode) => MaybeArray<PostHTMLNode>;
 
 // T - Tag name
 // A - Attributes
-export interface Node<T = string, A = NodeAttributes> {
+export interface PostHTMLNode<T = string, A = PostHTMLNodeAttributes> {
+  walk: (cb: PostHTMLNodeCallback) => PostHTMLNode;
+  match: (expression: PostHTMLExpression, cb: PostHTMLNodeCallback) => PostHTMLNode[];
   tag?: T;
   attrs?: A;
-  content?: NodeContent;
-}
-
-type Matcher = string | RegExp | object;
-type Expression = Matcher | Matcher[];
-type CallbackNode = (node: Node) => Node | Node[];
-
-export interface PostHTMLTree {
-  walk: (cb: CallbackNode) => PostHTMLTree;
-  match: (expression: Expression, cb: CallbackNode) => CallbackNode;
+  content?: PostHTMLNodeContent[];
 }
 
 export interface PostHTMLOptions {
@@ -28,23 +27,22 @@ export interface PostHTMLOptions {
   skipParse?: boolean;
 }
 
-type Plugin<T> = (tree: PostHTMLTree) => void | PostHTMLTree | ThisType<T>;
+export type PostHTMLPlugin<T> = (tree: PostHTMLNode) => void | PostHTMLNode | ThisType<T>;
 
-interface Result<M> {
+export interface Result<M> {
   html: string;
-  tree: PostHTMLTree;
+  tree: PostHTMLNode;
   messages: M[];
 }
 
-declare class PostHTML<T, M> {
+export interface PostHTML<T, M> {
   version: string;
   name: 'posthtml';
-  plugins: Plugin<T>[];
+  plugins: PostHTMLPlugin<T>[];
   messages: M[];
-  use<T>(plugins: Plugin<T> | Plugin<T>[]): this;
+  use<T>(plugins: MaybeArray<PostHTMLPlugin<T>>): this;
   process(html: string, options?: PostHTMLOptions): Promise<Result<M>>;
 }
 
-declare function posthtml<T, M>(plugins?: Plugin<T>[]): PostHTML<T, M>;
+export default function posthtml<T, M>(plugins?: PostHTMLPlugin<T>[]): PostHTML<T, M>;
 
-export default posthtml;
