@@ -1,21 +1,76 @@
+type Maybe<T> = void | T;
 type MaybeArray<T> = T | T[];
 
 export namespace PostHTML {
-  export type Matcher = string | RegExp | object;
-  export type Expression = MaybeArray<Matcher>;
-  export type NodeCallback = (node: Node) => MaybeArray<Node>;
-  export type NodeAttributes<TTag = string> = Record<string, string>;
-  export type NodeContent = Array<string | Node>;
+  type StringMatcher = string | RegExp;
+  type AttrMatcher = Record<string, StringMatcher>;
+  type ContentMatcher =
+    | StringMatcher[]
+    | {
+        tag?: StringMatcher;
+        attrs?: AttrMatcher;
+        content?: ContentMatcher[];
+      };
+
+  export type Matcher<
+    TTag extends StringMatcher,
+    TAttrs extends Maybe<AttrMatcher>
+  > =
+    | StringMatcher
+    | {
+        tag?: TTag;
+        attrs?: TAttrs;
+        content?: ContentMatcher[];
+      };
+
+  export type Expression<
+    TTag extends StringMatcher,
+    TAttrs extends Maybe<AttrMatcher>
+  > = MaybeArray<Matcher<TTag, TAttrs>>;
+
+  export type NodeCallback<
+    TTag extends Maybe<string> = Maybe<string>,
+    TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>
+  > = (node: Node<TTag, TAttrs>) => MaybeArray<Node | RawNode>;
+
+  export type NodeAttributes = Record<string, Maybe<string>>;
+
+  interface NodeAPI {
+    walk: (cb: NodeCallback) => Node;
+    match: <
+      TTag extends StringMatcher,
+      TAttrs extends Maybe<AttrMatcher>,
+      TTagResult extends Maybe<string> = TTag extends string
+        ? TTag
+        : TTag extends void
+        ? Maybe<string>
+        : string,
+      TAttrResult extends Maybe<NodeAttributes> = TAttrs extends void
+        ? Maybe<NodeAttributes>
+        : {
+            [P in keyof TAttrs]: string;
+          } &
+            NodeAttributes
+    >(
+      expression: Expression<TTag, TAttrs>,
+      cb: NodeCallback<TTagResult, TAttrResult>
+    ) => Node<TTagResult, TAttrResult>[];
+  }
+
+  export interface RawNode<
+    TTag extends Maybe<string> = Maybe<string>,
+    TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>
+  > {
+    tag: TTag;
+    attrs: TAttrs;
+    content?: Array<string | RawNode>;
+  }
 
   export interface Node<
-    TTag extends string = string,
-    TAttrs extends NodeAttributes = Record<string, string>
-  > {
-    walk: (cb: NodeCallback) => Node;
-    match: (expression: Expression, cb: NodeCallback) => Node[];
-    tag?: TTag;
-    attrs?: TAttrs;
-    content?: NodeContent;
+    TTag extends Maybe<string> = Maybe<string>,
+    TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>
+  > extends NodeAPI, RawNode<TTag, TAttrs> {
+    content?: Array<string | Node>;
   }
 
   export interface Options {
@@ -25,7 +80,9 @@ export namespace PostHTML {
     skipParse?: boolean;
   }
 
-  export type Plugin<TThis> = (tree: Node) => void | Node | ThisType<TThis>;
+  export type Plugin<TThis> = (
+    tree: Node
+  ) => void | Node | RawNode | ThisType<TThis>;
 
   export interface Result<TMessage> {
     html: string;
