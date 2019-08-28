@@ -1,48 +1,48 @@
-type MaybeArray<T> = T | T[]
+type MaybeArray<T> = T | T[];
 
-export interface PostHTMLNodeAttributes {
-  [attribute: string]: string;
+export namespace PostHTML {
+  export type Matcher = string | RegExp | object;
+  export type Expression = MaybeArray<Matcher>;
+  export type NodeCallback = (node: Node) => MaybeArray<Node>;
+  export type NodeAttributes<TTag = string> = Record<string, string>;
+  export type NodeContent = Array<string | Node>;
+
+  export interface Node<
+    TTag extends string = string,
+    TAttrs extends NodeAttributes = Record<string, string>
+  > {
+    walk: (cb: NodeCallback) => Node;
+    match: (expression: Expression, cb: NodeCallback) => Node[];
+    tag?: TTag;
+    attrs?: TAttrs;
+    content?: NodeContent;
+  }
+
+  export interface Options {
+    sync?: boolean;
+    parser?: Function;
+    render?: Function;
+    skipParse?: boolean;
+  }
+
+  export type Plugin<TThis> = (tree: Node) => void | Node | ThisType<TThis>;
+
+  export interface Result<TMessage> {
+    html: string;
+    tree: Node;
+    messages: TMessage[];
+  }
+
+  export interface PostHTML<TThis, TMessage> {
+    version: string;
+    name: "";
+    plugins: Plugin<TThis>[];
+    messages: TMessage[];
+    use<TThis>(plugins: MaybeArray<Plugin<TThis>>): this;
+    process(html: string, options?: Options): Promise<Result<TMessage>>;
+  }
 }
 
-export type PostHTMLNodeContent = string | PostHTMLNode;
-
-export type PostHTMLMatcher = string | RegExp | object;
-export type PostHTMLExpression = MaybeArray<PostHTMLMatcher>;
-export type PostHTMLNodeCallback = (node: PostHTMLNode) => MaybeArray<PostHTMLNode>;
-
-// T - Tag name
-// A - Attributes
-export interface PostHTMLNode<T = string, A = PostHTMLNodeAttributes> {
-  walk: (cb: PostHTMLNodeCallback) => PostHTMLNode;
-  match: (expression: PostHTMLExpression, cb: PostHTMLNodeCallback) => PostHTMLNode[];
-  tag?: T;
-  attrs?: A;
-  content?: PostHTMLNodeContent[];
-}
-
-export interface PostHTMLOptions {
-  sync?: boolean;
-  parser?: Function;
-  render?: Function;
-  skipParse?: boolean;
-}
-
-export type PostHTMLPlugin<T> = (tree: PostHTMLNode) => void | PostHTMLNode | ThisType<T>;
-
-export interface Result<M> {
-  html: string;
-  tree: PostHTMLNode;
-  messages: M[];
-}
-
-export interface PostHTML<T, M> {
-  version: string;
-  name: 'posthtml';
-  plugins: PostHTMLPlugin<T>[];
-  messages: M[];
-  use<T>(plugins: MaybeArray<PostHTMLPlugin<T>>): this;
-  process(html: string, options?: PostHTMLOptions): Promise<Result<M>>;
-}
-
-export default function posthtml<T, M>(plugins?: PostHTMLPlugin<T>[]): PostHTML<T, M>;
-
+export default function posthtml<TThis, TMessage>(
+  plugins?: PostHTML.Plugin<TThis>[]
+): PostHTML.PostHTML<TThis, TMessage>;
