@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.6](https://github.com/posthtml/posthtml/compare/v0.11.5...v0.11.6) (2019-08-30)
+
+
+### Bug Fixes
+
+* typings ([97d89ad](https://github.com/posthtml/posthtml/commit/97d89ad))
+
+
+### Features
+
+* **typings:** Type-inference for node.prototype.match ([90d3c48](https://github.com/posthtml/posthtml/commit/90d3c48))
+
 ### [0.11.5](https://github.com/posthtml/posthtml/compare/v0.11.4...v0.11.5) (2019-08-27)
 
 ### Perf
