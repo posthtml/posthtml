@@ -34,7 +34,7 @@
     "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
-    "standard": "^14.0.2",
+    "standard": "^14.1.0",
     "standard-version": "^7.0.0"
   },
   "scripts": {
