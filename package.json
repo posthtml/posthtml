@@ -23,6 +23,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
+    "opencollective-postinstall": "^2.0.2",
     "posthtml-parser": "^0.4.1",
     "posthtml-render": "^1.1.5"
   },
@@ -43,7 +44,8 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md",
-    "release": "standard-version"
+    "release": "standard-version",
+    "postinstall": "opencollective-postinstall || true"
   },
   "author": "Anton Winogradov <winogradovaa@gmail.com>",
   "contributors": [
@@ -63,5 +65,9 @@
   "homepage": "https://github.com/posthtml/posthtml",
   "repository": "https://github.com/posthtml/posthtml.git",
   "bugs": "https://github.com/posthtml/posthtml/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/posthtml"
+  }
 }
