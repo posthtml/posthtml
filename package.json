@@ -63,5 +63,9 @@
   "homepage": "https://github.com/posthtml/posthtml",
   "repository": "https://github.com/posthtml/posthtml.git",
   "bugs": "https://github.com/posthtml/posthtml/issues",
-  "license": "MIT"
+  "license": "MIT",
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/posthtml"
+  }
 }

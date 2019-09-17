@@ -748,6 +748,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 
 See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [CONTRIBUTING](CONTRIBUTING.md).
 
+## Contributors
+
+<a href="https://github.com/posthtml/posthtml/graphs/contributors"><img src="https://opencollective.com/posthtml/contributors.svg?width=890&button=false" /></a>
+
 ## LICENSE
 
 [MIT](LICENSE)
