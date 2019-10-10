@@ -97,41 +97,35 @@ export default function plugin (options = {}) {
 }
 ```
 
-## fromString
+## parser
 > Tree method parsing string inside plugins.
 
 ```js
 export default function plugin (options = {}) {
   return function (tree) {
      tree.match({ tag: 'include' }, function(node) {
-         node.content = tree.parser(fs.readFileSync(node.attr.src))
-     })
-
-     return tree
+        var content = tree.parser(fs.readFileSync(node.attr.src))
+        node.content = content.match({ tag: 'import' }, function(node) {
+          node.content = tree.parser(fs.readFileSync(node.attr.src))
+          return node
+        })
+        return node
+      })
+      return tree
   }
 }
 ```
 
-## toString
+## render
 > Tree method rendering tree to string inside plugins.
 
 ```js
 export default function plugin (options = {}) {
-  return function (tree) {
-     function (tree) {
-        var outherTree = [
-          '\n', 
-          {tag: 'div', content: ['1']}, 
-          '\n\t', 
-          {tag: 'div', content: ['2']}, 
-          '\n'
-        ];
-        var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '');
-        return tree.parser(htmlWitchoutSpaceless)
-     }
-
-     return tree
-  }
+    return function (tree) {
+      var outherTree = ['\n', {tag: 'div', content: ['1']}, '\n\t', {tag: 'div', content: ['2']}, '\n'];
+      var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '');
+      return tree.parser(htmlWitchoutSpaceless)
+    }
 }
 ```
 
