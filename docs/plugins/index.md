@@ -104,7 +104,7 @@ export default function plugin (options = {}) {
 export default function plugin (options = {}) {
   return function (tree) {
      tree.match({ tag: 'include' }, function(node) {
-         node.content = tree.fromString(fs.readFileSync(node.attr.src))
+         node.content = tree.parser(fs.readFileSync(node.attr.src))
      })
 
      return tree
@@ -126,8 +126,8 @@ export default function plugin (options = {}) {
           {tag: 'div', content: ['2']}, 
           '\n'
         ];
-        var htmlWitchoutSpaceless = tree.toString(outherTree).replace(/[\n|\t]/g, '');
-        return tree.fromString(htmlWitchoutSpaceless)
+        var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '');
+        return tree.parser(htmlWitchoutSpaceless)
      }
 
      return tree
