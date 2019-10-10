@@ -45,19 +45,15 @@
     "docs:core": "jsdoc2md lib/index.js > docs/core.md",
     "release": "standard-version"
   },
-  "author": "Anton Winogradov <winogradovaa@gmail.com>",
+  "author": "Ivan Voischev <voischev.ivan@ya.ru>",
   "contributors": [
     {
       "name": "Ivan Voischev",
       "email": "voischev.ivan@ya.ru"
     },
     {
-      "name": "Anton Winogradov",
-      "email": "winogradovaa@gmail.com"
-    },
-    {
-      "name": "Alexej Yaroshevich",
-      "email": "zxqfox@gmail.com"
+      "name": "Ivan Demidov",
+      "email": "scrum@list.ru"
     }
   ],
   "homepage": "https://github.com/posthtml/posthtml",
