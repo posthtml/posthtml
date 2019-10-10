@@ -43,6 +43,7 @@ const ph = posthtml([ plugin() ])
 **Kind**: global class  
 **Requires**: <code>module:api</code>, <code>module:posthtml-parser</code>, <code>module:posthtml-render</code>  
 **Author**: Ivan Voischev (@voischev),
+        Ivan Demidov (@scrum)
         Anton Winogradov (@awinogradov),
         Alexej Yaroshevich (@zxqfox),
         Vasiliy (@Yeti-or)  
