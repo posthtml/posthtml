@@ -1,7 +1,7 @@
 var it = require('mocha').it
 var expect = require('chai').expect
 var describe = require('mocha').describe
-// var beforeEach = require('mocha').beforeEach
+var beforeEach = require('mocha').beforeEach
 
 var posthtml = require('../lib')
 
