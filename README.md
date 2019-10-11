@@ -722,24 +722,6 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
       <br />
       <a href="https://github.com/voischev">Ivan Voischev</a>
     </td>
-    <td align="center">
-      <img width="150 height="150"
-      src="https://avatars.githubusercontent.com/u/982072?v=3&s=150">
-      <br />
-      <a href="https://github.com/awinogradov">Anton Winogradov</a>
-    </td>
-    <td align="center">
-      <img width="150 height="150"
-      src="https://avatars.githubusercontent.com/u/677518?v=3&s=150">
-      <br />
-      <a href="https://github.com/zxqfox">Alexej Yaroshevich</a>
-    </td>
-    <td align="center">
-      <img width="150 height="150"
-      src="https://avatars.githubusercontent.com/u/1813468?v=3&s=150">
-      <br />
-      <a href="https://github.com/Yeti-or">Vasiliy</a>
-    </td>
    </tr>
   <tbody>
 </table>

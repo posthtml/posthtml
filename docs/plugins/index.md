@@ -80,4 +80,50 @@ export default (tree) => {
 }
 ```
 
+## Messages
+> Tree messages to store and pass metadata between plugins
+
+```js
+export default function plugin (options = {}) {
+  return function (tree) {
+     tree.messages.push({
+       type: 'dependency',
+       file: 'path/to/dependency.html',
+       from: tree.options.from
+     })
+
+     return tree
+  }
+}
+```
+
+## parser
+> Tree method parsing string inside plugins.
+
+```js
+export default function plugin (options = {}) {
+  return function (tree) {
+     tree.match({ tag: 'include' }, function(node) {
+        node.tag = false;
+        node.content = tree.parser(fs.readFileSync(node.attr.src))
+        return node
+      })
+      return tree
+  }
+}
+```
+
+## render
+> Tree method rendering tree to string inside plugins.
+
+```js
+export default function plugin (options = {}) {
+    return function (tree) {
+      var outherTree = ['\n', {tag: 'div', content: ['1']}, '\n\t', {tag: 'div', content: ['2']}, '\n'];
+      var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '');
+      return tree.parser(htmlWitchoutSpaceless)
+    }
+}
+```
+
 [plugin-boilerplate]: https://github.com/posthtml/posthtml-plugin-boilerplate

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/posthtml/posthtml/compare/v0.11.6...v0.12.0) (2019-10-11)
+
+
+### Features
+
+* **index:** tree fromString/toString, close [#242](https://github.com/posthtml/posthtml/issues/242) ([2647d53](https://github.com/posthtml/posthtml/commit/2647d53f07cbb850004b259b9272946b56fa434a))
+
+
+### Bug Fixes
+
+* **index:** example for parser/render ([d25743f](https://github.com/posthtml/posthtml/commit/d25743fbc383cdd867159703263a8b7ec5943e7b))
+* **index:** forgot change methods name ([72a8640](https://github.com/posthtml/posthtml/commit/72a8640ed0e28898601ea196c4908f55e3082fd0))
+* **index:** remove static method because not return class constructor ([7825559](https://github.com/posthtml/posthtml/commit/7825559cdec47d50788633031d56c0c6938b10d7))
+
 ### [0.11.6](https://github.com/posthtml/posthtml/compare/v0.11.5...v0.11.6) (2019-08-30)
 
 

@@ -43,19 +43,13 @@ const ph = posthtml([ plugin() ])
 **Kind**: global class  
 **Requires**: <code>module:api</code>, <code>module:posthtml-parser</code>, <code>module:posthtml-render</code>  
 **Author**: Ivan Voischev (@voischev),
-        Anton Winogradov (@awinogradov),
-        Alexej Yaroshevich (@zxqfox),
-        Vasiliy (@Yeti-or)  
+        Ivan Demidov (@scrum)  
 
 * [PostHTML](#PostHTML)
     * [new PostHTML(plugins)](#new_PostHTML_new)
-    * _instance_
-        * [.use(plugin)](#PostHTML+use) ⇒ <code>Constructor</code>
-        * [.process(html, options)](#PostHTML+process) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> \| <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
-            * [~options](#PostHTML+process..options) : <code>Object</code>
-    * _static_
-        * [.parser](#PostHTML.parser) ⇒ <code>Array</code>
-        * [.render](#PostHTML.render) ⇒ <code>String</code>
+    * [.use(plugin)](#PostHTML+use) ⇒ <code>Constructor</code>
+    * [.process(html, options)](#PostHTML+process) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> \| <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
+        * [~options](#PostHTML+process..options) : <code>Object</code>
 
 <a name="new_PostHTML_new"></a>
 
@@ -120,28 +114,6 @@ ph.process('<html>..</html>', {}).then((result) => result))
 | options.parser | <code>function</code> | use custom parser, replaces default (posthtml-parser) |
 | options.render | <code>function</code> | use custom render, replaces default (posthtml-render) |
 | options.skipParse | <code>Boolean</code> | disable parsing |
-
-<a name="PostHTML.parser"></a>
-
-### PostHTML.parser ⇒ <code>Array</code>
-**Kind**: static property of [<code>PostHTML</code>](#PostHTML)  
-**Returns**: <code>Array</code> - tree - PostHTMLTree (JSON)  
-**Requires**: <code>module:posthtml-parser</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| html | <code>String</code> | Input (HTML) |
-
-<a name="PostHTML.render"></a>
-
-### PostHTML.render ⇒ <code>String</code>
-**Kind**: static property of [<code>PostHTML</code>](#PostHTML)  
-**Returns**: <code>String</code> - html - HTML  
-**Requires**: <code>module:posthtml-render</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| tree | <code>Array</code> | PostHTMLTree (JSON) |
 
 <a name="version"></a>
 
