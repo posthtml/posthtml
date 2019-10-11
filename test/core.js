@@ -5,7 +5,6 @@ var describe = require('mocha').describe
 var posthtml = require('../lib')
 
 describe('core methods', function () {
-
   it('tree should have methods', function () {
     posthtml()
       .use(function (tree) {
