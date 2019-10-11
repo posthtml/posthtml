@@ -104,11 +104,8 @@ export default function plugin (options = {}) {
 export default function plugin (options = {}) {
   return function (tree) {
      tree.match({ tag: 'include' }, function(node) {
-        var content = tree.parser(fs.readFileSync(node.attr.src))
-        node.content = content.match({ tag: 'import' }, function(node) {
-          node.content = tree.parser(fs.readFileSync(node.attr.src))
-          return node
-        })
+        node.tag = false;
+        node.content = tree.parser(fs.readFileSync(node.attr.src))
         return node
       })
       return tree
