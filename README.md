@@ -476,6 +476,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-inline-css][in]|[![npm][in-badge]][in-npm]|CSS Inliner|
 |[posthtml-collect-styles][collect-styles]|[![npm][collect-styles-badge]][collect-styles-npm]|Collect styles from html and put it in the head|
 |[posthtml-collect-inline-styles][collect]|[![npm][collect-badge]][collect-npm]|Collect inline styles and insert to head tag|
+|[posthtml-style-expantion][style-expantion]|[![npm][style-expantion-badge]][style-expantion-npm]| PostHTML plugin expand link rel="stylesheet".|
 |[posthtml-style-to-file][style]|[![npm][style-badge]][style-npm]| Save HTML style nodes and attributes to CSS file|
 |[posthtml-color-shorthand-hex-to-six-digit][hex]|[![npm][hex-badge]][hex-npm]|Enforce all hex color codes to be 6-char long|
 |[posthtml-minify-classnames][minify]|[![npm][minify-badge]][minify-npm]|Rewrites classnames and ids inside of html and css files to reduce file size.|
@@ -525,6 +526,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [in]: https://github.com/posthtml/posthtml-inline-css
 [in-badge]: https://img.shields.io/npm/v/posthtml-inline-css.svg
 [in-npm]: https://npmjs.com/package/posthtml-inline-css
+
+[style-expantion]: https://github.com/renyamizuno/posthtml-style-expantion
+[style-expantion-badge]: https://img.shields.io/npm/v/posthtml-style-expansion.svg
+[style-expantion-npm]: https://npmjs.com/package/posthtml-style-expansion
 
 [style]: https://github.com/posthtml/posthtml-style-to-file
 [style-badge]: https://img.shields.io/npm/v/posthtml-style-to-file.svg
