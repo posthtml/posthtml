@@ -394,6 +394,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-pseudo][pseudo]|[![npm][pseudo-badge]][pseudo-npm]|Add pseudo selector class names to elements|
 |[posthtml-noopener][noopener]|[![npm][noopener-badge]][noopener-npm]|Add rel="noopener noreferrer" to links that open in new tab|
 |[posthtml-noscript][noscript]|[![npm][noscript-badge]][noscript-npm]|Insert noscript content when JavaScript is disabled|
+|[posthtml-hash][hash]|[![npm][hash-badge]][hash-npm]|Hash static CSS/JS assets|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -471,6 +472,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [noscript]: https://github.com/posthtml/posthtml-noscript
 [noscript-badge]: https://img.shields.io/npm/v/posthtml-noscript.svg
 [noscript-npm]: https://npmjs.com/package/posthtml-noscript
+
+[hash]: https://github.com/posthtml/posthtml-hash
+[hash-badge]: https://img.shields.io/npm/v/posthtml-hash.svg
+[hash-npm]: https://npmjs.com/package/posthtml-hash
 
 #### CSS
 
