@@ -563,6 +563,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
 |[posthtml-favicons][favicons]|[![npm][favicons-badge]][favicons-npm]|Generate Favicons and add related tags|
 |[posthtml-inline-svg][inline-svg]|[![npm][inline-svg-badge]][inline-svg-npm]|Inline svg icons in HTML|
+|[posthtml-inline-favicon][inline-favicon]|[![npm][inline-favicon-badge]][inline-svg-npm]|Inline favicons in HTML|
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
@@ -584,6 +585,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [inline-svg]: https://github.com/andrey-hohlov/posthtml-inline-svg
 [inline-svg-badge]: https://img.shields.io/npm/v/posthtml-inline-svg.svg
 [inline-svg-npm]: https://www.npmjs.com/package/posthtml-inline-svg
+
+[inline-favicon]: https://github.com/posthtml/posthtml-inline-favicon
+[inline-favicon-badge]: https://img.shields.io/npm/v/posthtml-inline-favicon.svg
+[inline-favicon-npm]: https://www.npmjs.com/package/posthtml-inline-favicon
 
 #### Accessibility
 
