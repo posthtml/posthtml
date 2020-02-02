@@ -392,6 +392,8 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-cache][cache]|[![npm][cache-badge]][cache-npm]|Add a nanoid to links in you tags|
 |[posthtml-highlight][highlight]|[![npm][highlight-badge]][highlight-npm]|Syntax highlight code elements|
 |[posthtml-pseudo][pseudo]|[![npm][pseudo-badge]][pseudo-npm]|Add pseudo selector class names to elements|
+|[posthtml-noopener][noopener]|[![npm][noopener-badge]][noopener-npm]|Add rel="noopener noreferrer" to links that open in new tab|
+
 
 [cache]: https://github.com/posthtml/posthtml-cache
 [cache-badge]: https://img.shields.io/npm/v/posthtml-cache.svg
@@ -460,6 +462,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [pseudo]: https://github.com/kevinkace/posthtml-pseudo
 [pseudo-badge]: https://img.shields.io/npm/v/posthtml-pseudo.svg
 [pseudo-npm]: https://npmjs.com/package/posthtml-pseudo
+
+[noopener]: https://github.com/posthtml/posthtml-noopener
+[noopener-badge]: https://img.shields.io/npm/v/posthtml-noopener.svg
+[noopener-npm]: https://npmjs.com/package/posthtml-noopener
 
 #### CSS
 
