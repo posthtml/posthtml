@@ -395,6 +395,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-noopener][noopener]|[![npm][noopener-badge]][noopener-npm]|Add rel="noopener noreferrer" to links that open in new tab|
 |[posthtml-noscript][noscript]|[![npm][noscript-badge]][noscript-npm]|Insert noscript content when JavaScript is disabled|
 |[posthtml-hash][hash]|[![npm][hash-badge]][hash-npm]|Hash static CSS/JS assets|
+|[posthtml-insert-at][insert-at]|[![npm][insert-at-badge]][insert-at-npm]|Append/prepend HTML to a selector|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -476,6 +477,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [hash]: https://github.com/posthtml/posthtml-hash
 [hash-badge]: https://img.shields.io/npm/v/posthtml-hash.svg
 [hash-npm]: https://npmjs.com/package/posthtml-hash
+
+[insert-at]: https://github.com/posthtml/posthtml-insert-at
+[insert-at-badge]: https://img.shields.io/npm/v/posthtml-insert-at.svg
+[insert-at-npm]: https://npmjs.com/package/posthtml-insert-at
 
 #### CSS
 
