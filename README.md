@@ -392,6 +392,11 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-cache][cache]|[![npm][cache-badge]][cache-npm]|Add a nanoid to links in you tags|
 |[posthtml-highlight][highlight]|[![npm][highlight-badge]][highlight-npm]|Syntax highlight code elements|
 |[posthtml-pseudo][pseudo]|[![npm][pseudo-badge]][pseudo-npm]|Add pseudo selector class names to elements|
+|[posthtml-noopener][noopener]|[![npm][noopener-badge]][noopener-npm]|Add rel="noopener noreferrer" to links that open in new tab|
+|[posthtml-noscript][noscript]|[![npm][noscript-badge]][noscript-npm]|Insert noscript content when JavaScript is disabled|
+|[posthtml-hash][hash]|[![npm][hash-badge]][hash-npm]|Hash static CSS/JS assets|
+|[posthtml-insert-at][insert-at]|[![npm][insert-at-badge]][insert-at-npm]|Append/prepend HTML to a selector|
+
 
 [cache]: https://github.com/posthtml/posthtml-cache
 [cache-badge]: https://img.shields.io/npm/v/posthtml-cache.svg
@@ -460,6 +465,22 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [pseudo]: https://github.com/kevinkace/posthtml-pseudo
 [pseudo-badge]: https://img.shields.io/npm/v/posthtml-pseudo.svg
 [pseudo-npm]: https://npmjs.com/package/posthtml-pseudo
+
+[noopener]: https://github.com/posthtml/posthtml-noopener
+[noopener-badge]: https://img.shields.io/npm/v/posthtml-noopener.svg
+[noopener-npm]: https://npmjs.com/package/posthtml-noopener
+
+[noscript]: https://github.com/posthtml/posthtml-noscript
+[noscript-badge]: https://img.shields.io/npm/v/posthtml-noscript.svg
+[noscript-npm]: https://npmjs.com/package/posthtml-noscript
+
+[hash]: https://github.com/posthtml/posthtml-hash
+[hash-badge]: https://img.shields.io/npm/v/posthtml-hash.svg
+[hash-npm]: https://npmjs.com/package/posthtml-hash
+
+[insert-at]: https://github.com/posthtml/posthtml-insert-at
+[insert-at-badge]: https://img.shields.io/npm/v/posthtml-insert-at.svg
+[insert-at-npm]: https://npmjs.com/package/posthtml-insert-at
 
 #### CSS
 
@@ -552,6 +573,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-webp][webp]|[![npm][webp-badge]][webp-npm]|Add WebP support for images|
 |[posthtml-favicons][favicons]|[![npm][favicons-badge]][favicons-npm]|Generate Favicons and add related tags|
 |[posthtml-inline-svg][inline-svg]|[![npm][inline-svg-badge]][inline-svg-npm]|Inline svg icons in HTML|
+|[posthtml-inline-favicon][inline-favicon]|[![npm][inline-favicon-badge]][inline-svg-npm]|Inline favicons in HTML|
 
 [img]: https://github.com/posthtml/posthtml-img-autosize
 [img-badge]: https://img.shields.io/npm/v/posthtml-img-autosize.svg
@@ -573,6 +595,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [inline-svg]: https://github.com/andrey-hohlov/posthtml-inline-svg
 [inline-svg-badge]: https://img.shields.io/npm/v/posthtml-inline-svg.svg
 [inline-svg-npm]: https://www.npmjs.com/package/posthtml-inline-svg
+
+[inline-favicon]: https://github.com/posthtml/posthtml-inline-favicon
+[inline-favicon-badge]: https://img.shields.io/npm/v/posthtml-inline-favicon.svg
+[inline-favicon-npm]: https://www.npmjs.com/package/posthtml-inline-favicon
 
 #### Accessibility
 
