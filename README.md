@@ -396,6 +396,8 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-noscript][noscript]|[![npm][noscript-badge]][noscript-npm]|Insert noscript content when JavaScript is disabled|
 |[posthtml-hash][hash]|[![npm][hash-badge]][hash-npm]|Hash static CSS/JS assets|
 |[posthtml-insert-at][insert-at]|[![npm][insert-at-badge]][insert-at-npm]|Append/prepend HTML to a selector|
+|[posthtml-plugin-remove-duplicates][plugin-remove-duplicates]|[![npm][plugin-remove-duplicates-badge]][plugin-remove-duplicates-npm]|Remove duplicated tags|
+|[posthtml-plugin-link-preload][plugin-link-preload]|[![npm][plugin-link-preload-badge]][plugin-link-preload-npm]|Add preload/prefetch tags (or return equivalent headers)|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -481,6 +483,14 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [insert-at]: https://github.com/posthtml/posthtml-insert-at
 [insert-at-badge]: https://img.shields.io/npm/v/posthtml-insert-at.svg
 [insert-at-npm]: https://npmjs.com/package/posthtml-insert-at
+
+[plugin-remove-duplicates]: https://github.com/sithmel/posthtml-plugin-remove-duplicates
+[plugin-remove-duplicates-badge]: https://img.shields.io/npm/v/posthtml-plugin-remove-duplicates.svg
+[plugin-remove-duplicates-npm]: https://npmjs.com/package/posthtml-plugin-remove-duplicates
+
+[plugin-link-preload]: https://github.com/sithmel/posthtml-plugin-link-preload
+[plugin-link-preload-badge]: https://img.shields.io/npm/v/posthtml-plugin-link-preload.svg
+[plugin-link-preload-npm]: https://npmjs.com/package/posthtml-plugin-link-preload
 
 #### CSS
 
