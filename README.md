@@ -3,6 +3,7 @@
 [![Tests][build]][build-url]
 [![Coverage][cover]][cover-url]
 [![Standard Code Style][code-style]][code-style-url]
+[![Twitter][twitter]][twitter-url]
 [![Chat][chat]][chat-url]
 
 # PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
@@ -800,6 +801,9 @@ See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs)
 
 [code-style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [code-style-url]: http://standardjs.com/
+
+[twitter]: https://img.shields.io/badge/twitter-%40PostHTML-00ACEE.svg?style=flat
+[twitter-url]: https://twitter.com/PostHTML
 
 [chat]: https://badges.gitter.im/posthtml/posthtml.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
