@@ -56,7 +56,7 @@
       "email": "scrum@list.ru"
     }
   ],
-  "homepage": "https://github.com/posthtml/posthtml",
+  "homepage": "https://posthtml.org",
   "repository": "https://github.com/posthtml/posthtml.git",
   "bugs": "https://github.com/posthtml/posthtml/issues",
   "license": "MIT",
