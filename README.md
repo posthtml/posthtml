@@ -236,10 +236,10 @@ const config = {
     ]
   },
   posthtml: (ctx) => ({
-      parser: require('posthtml-pug'),
-      plugins: [
-        require('posthtml-bem')()
-      ]
+    parser: require('posthtml-pug'),
+    plugins: [
+      require('posthtml-bem')()
+    ]
   })
 }
 
@@ -272,8 +272,8 @@ const config = {
   },
   plugins: [
     new LoaderOptionsPlugin({
-       options: {
-         posthtml(ctx) {
+      options: {
+        posthtml(ctx) {
           return {
             parser: require('posthtml-pug'),
             plugins: [
@@ -312,9 +312,9 @@ export default {
   dest: join(__dirname, 'bundle.js'),
   format: 'iife',
   plugins: [
-    posthtml({
-      parser: sugarml(),
-      plugins: [include()],
+    posthtml({
+      parser: sugarml(),
+      plugins: [include()],
       template: true  // only rollup-plugin-posthtml-template
     })
   ]

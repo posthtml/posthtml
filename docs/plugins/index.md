@@ -7,8 +7,8 @@ A PostHTML plugin is a simple function with a single argument.
 ## Synchronous
 
 ```js
-export default function postHTMLPluginName (tree) {
-    // do something for tree
+export default function postHTMLPluginName(tree) {
+  // do something for tree
   tree.match({ tag: 'img' }, (node) => {
     node = Object.assign(node, { attrs: { class: 'img-wrapped' } })
 
@@ -26,7 +26,7 @@ export default function postHTMLPluginName (tree) {
 ```js
 import request from 'request'
 
-export default function postHTMLPluginName (tree, cb) {
+export default function postHTMLPluginName(tree, cb) {
   let tasks = 0
 
   tree.match({ tag: 'a' }, (node) => {
@@ -39,14 +39,14 @@ export default function postHTMLPluginName (tree, cb) {
       if (err) return done()
 
       if (resp.statusCode >= 400) {
-        node.attrs.class += ' ' + 'Erroric'
+        node.attrs.class += ' Erroric'
       }
 
       if (resp.headers.contentType) {
         node.attrs.class += ' content-type_' + resp.headers.contentType
       }
 
-        done()
+      done()
     })
 
     tasks += 1
@@ -73,7 +73,8 @@ export default (tree) => {
     tree.match({ tag: 'user-info' }, (node) => {
       request(`/api/user-info?${node.attrs.dataUserId}`, (err, resp, body) => {
         if (!err && body) node.content = parser(body)
-          resolve(tree)
+
+        resolve(tree)
       })
     })
   })
@@ -84,15 +85,15 @@ export default (tree) => {
 > Tree messages to store and pass metadata between plugins
 
 ```js
-export default function plugin (options = {}) {
+export default function plugin(options = {}) {
   return function (tree) {
-     tree.messages.push({
-       type: 'dependency',
-       file: 'path/to/dependency.html',
-       from: tree.options.from
-     })
+    tree.messages.push({
+      type: 'dependency',
+      file: 'path/to/dependency.html',
+      from: tree.options.from
+    })
 
-     return tree
+    return tree
   }
 }
 ```
@@ -101,14 +102,15 @@ export default function plugin (options = {}) {
 > Tree method parsing string inside plugins.
 
 ```js
-export default function plugin (options = {}) {
+export default function plugin(options = {}) {
   return function (tree) {
-     tree.match({ tag: 'include' }, function(node) {
-        node.tag = false;
-        node.content = tree.parser(fs.readFileSync(node.attr.src))
-        return node
-      })
-      return tree
+    tree.match({ tag: 'include' }, function (node) {
+      node.tag = false
+      node.content = tree.parser(fs.readFileSync(node.attr.src))
+      return node
+    })
+
+    return tree
   }
 }
 ```
@@ -117,12 +119,12 @@ export default function plugin (options = {}) {
 > Tree method rendering tree to string inside plugins.
 
 ```js
-export default function plugin (options = {}) {
-    return function (tree) {
-      var outherTree = ['\n', {tag: 'div', content: ['1']}, '\n\t', {tag: 'div', content: ['2']}, '\n'];
-      var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '');
-      return tree.parser(htmlWitchoutSpaceless)
-    }
+export default function plugin(options = {}) {
+  return function (tree) {
+    var outherTree = ['\n', {tag: 'div', content: ['1']}, '\n\t', {tag: 'div', content: ['2']}, '\n']
+    var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '')
+    return tree.parser(htmlWitchoutSpaceless)
+  }
 }
 ```
 
