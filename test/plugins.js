@@ -146,6 +146,13 @@ describe('Plugins', function () {
         .should.throw(/FooBar/)
     })
 
+    it('should have api methods when plugins empty', function () {
+      const res = posthtml().process('<div></div>', { sync: true })
+      res.tree.should.have.property('walk')
+      res.tree.should.have.property('match')
+      res.tree.walk.should.be.a('function')
+    })
+
     it('should have api methods after returning new root', function () {
       posthtml()
         .use(function (tree) {
