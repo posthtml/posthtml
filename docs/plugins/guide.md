@@ -1,6 +1,6 @@
 # Plugins - Guide
 
-A PostHTML plugin is a function that receives and, usually, transforms a HTML AST from the PostHTML parser. HTML AST has the PostHTML Tree format. [Read more about PostHTML Tree](https://github.com/posthtml/posthtml/blob/master/docs/tree.md).
+A PostHTML plugin is a function that receives and, usually, transforms a HTML AST from the PostHTML parser. HTML AST has the PostHTML Tree format. [Read more about PostHTML Tree](tree.md).
 
 The rules below are mandatory for all PostHTML plugins.
 
@@ -22,7 +22,7 @@ A CI service like Travis is also recommended for testing code in different envir
 
 ## Use only the public PostHTML API
 
-PostHTML plugins must not rely on undocumented properties or methods, which may be subject to change in any minor release. The public API is described in [API docs](https://github.com/posthtml/posthtml/blob/master/docs/api.md).
+PostHTML plugins must not rely on undocumented properties or methods, which may be subject to change in any minor release. The public API is described in [API docs](api.md).
 
 ## Document in English
 
