@@ -2,7 +2,7 @@
 
 A PostHTML plugin is a simple function with a single argument.
 
-> Use [posthtml-plugin-boilerplate][plugin-boilerplate] boilerplate for create new plugin.
+> Use [posthtml-plugin-boilerplate][plugin-boilerplate] boilerplate to create a new plugin.
 
 ## Synchronous
 
