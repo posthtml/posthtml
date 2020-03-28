@@ -400,6 +400,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-plugin-remove-duplicates][plugin-remove-duplicates]|[![npm][plugin-remove-duplicates-badge]][plugin-remove-duplicates-npm]|Remove duplicated tags|
 |[posthtml-plugin-link-preload][plugin-link-preload]|[![npm][plugin-link-preload-badge]][plugin-link-preload-npm]|Add preload/prefetch tags (or return equivalent headers)|
 |[posthtml-prism][prism]|[![npm][prism-badge]][prism-npm]|Code syntax highlighting with Prism|
+|[posthtml-url-parameters][url-parameters]|[![npm][url-parameters-badge]][url-parameters-npm]|Add parameters to URLs|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -497,6 +498,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [prism]: https://github.com/posthtml/posthtml-prism
 [prism-badge]: https://img.shields.io/npm/v/posthtml-prism.svg
 [prism-npm]: https://npmjs.com/package/posthtml-prism
+
+[url-parameters]: https://github.com/posthtml/posthtml-url-parameters
+[url-parameters-badge]: https://img.shields.io/npm/v/posthtml-url-parameters.svg
+[url-parameters-npm]: https://npmjs.com/package/posthtml-url-parameters
 
 #### CSS
 
