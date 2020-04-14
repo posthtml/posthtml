@@ -1,6 +1,6 @@
 {
   "name": "posthtml",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "HTML/XML processor",
   "keywords": [
     "html",
@@ -20,22 +20,22 @@
     "lib"
   ],
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "dependencies": {
-    "posthtml-parser": "^0.4.1",
-    "posthtml-render": "^1.1.5"
+    "posthtml-parser": "^0.4.2",
+    "posthtml-render": "^1.2.1"
   },
   "devDependencies": {
     "chai": "^4.0.0",
     "chai-as-promised": "^7.1.1",
     "chai-subset": "^1.6.0",
-    "coveralls": "^3.0.6",
-    "jsdoc-to-markdown": "^5.0.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "standard": "^14.1.0",
-    "standard-version": "^7.0.0"
+    "coveralls": "^3.0.11",
+    "jsdoc-to-markdown": "^5.0.3",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1",
+    "standard": "^14.3.3",
+    "standard-version": "^7.1.0"
   },
   "scripts": {
     "lint": "standard --env mocha",
