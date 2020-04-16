@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "posthtml-parser": "^0.4.2",
-    "posthtml-render": "^1.2.1"
+    "posthtml-render": "^1.2.2"
   },
   "devDependencies": {
     "chai": "^4.0.0",
