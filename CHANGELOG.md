@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/posthtml/posthtml/compare/v0.12.3...v0.13.0) (2020-04-27)
+
+
+### Features
+
+* source in tree, close issue [#243](https://github.com/posthtml/posthtml/issues/243) ([c11ba86](https://github.com/posthtml/posthtml/commit/c11ba86d6e4aef61b2952af346509bfe62ae7c75))
+
 ### [0.12.3](https://github.com/posthtml/posthtml/compare/v0.12.2...v0.12.3) (2020-04-21)
 
 ### [0.12.2](https://github.com/posthtml/posthtml/compare/v0.12.1...v0.12.2) (2020-04-16)
