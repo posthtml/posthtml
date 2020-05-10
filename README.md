@@ -403,6 +403,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-url-parameters][url-parameters]|[![npm][url-parameters-badge]][url-parameters-npm]|Add parameters to URLs|
 |[posthtml-safe-class-names][safe-class-names]|[![npm][safe-class-names-badge]][safe-class-names-npm]|Replace escaped characters in class names and CSS selectors|
 |[posthtml-fetch][fetch]|[![npm][fetch-badge]][fetch-npm]|Fetch and render remote content|
+|[posthtml-mso][mso]|[![npm][mso-badge]][mso-npm]|Makes it easy to write Outlook conditionals in HTML emails|
+|[posthtml-postcss-merge-longhand][longhand]|[![npm][longhand-badge]][longhand-npm]|Merge longhand inline CSS into shorthand|
+|[posthtml-markdownit][markdownit]|[![npm][markdownit-badge]][markdownit-npm]|Transform Markdown using markdown-it|
+|[posthtml-extra-attributes][extra-attributes]|[![npm][extra-attributes-badge]][extra-attributes-npm]|Add new attributes to elements in your HTML|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -512,6 +516,22 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [fetch]: https://github.com/posthtml/posthtml-fetch
 [fetch-badge]: https://img.shields.io/npm/v/posthtml-fetch.svg
 [fetch-npm]: https://npmjs.com/package/posthtml-fetch
+
+[mso]: https://github.com/posthtml/posthtml-mso
+[mso-badge]: https://img.shields.io/npm/v/posthtml-mso.svg
+[mso-npm]: https://npmjs.com/package/posthtml-mso
+
+[longhand]: https://github.com/posthtml/posthtml-postcss-merge-longhand
+[longhand-badge]: https://img.shields.io/npm/v/posthtml-postcss-merge-longhand.svg
+[longhand-npm]: https://npmjs.com/package/posthtml-postcss-merge-longhand
+
+[markdownit]: https://github.com/posthtml/posthtml-markdownit
+[markdownit-badge]: https://img.shields.io/npm/v/posthtml-markdownit.svg
+[markdownit-npm]: https://npmjs.com/package/posthtml-markdownit
+
+[extra-attributes]: https://github.com/posthtml/posthtml-extra-attributes
+[extra-attributes-badge]: https://img.shields.io/npm/v/posthtml-extra-attributes.svg
+[extra-attributes-npm]: https://npmjs.com/package/posthtml-extra-attributes
 
 #### CSS
 
