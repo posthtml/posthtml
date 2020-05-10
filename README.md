@@ -405,6 +405,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-fetch][fetch]|[![npm][fetch-badge]][fetch-npm]|Fetch and render remote content|
 |[posthtml-mso][mso]|[![npm][mso-badge]][mso-npm]|Makes it easy to write Outlook conditionals in HTML emails|
 |[posthtml-postcss-merge-longhand][longhand]|[![npm][longhand-badge]][longhand-npm]|Merge longhand inline CSS into shorthand|
+|[posthtml-markdownit][markdownit]|[![npm][markdownit-badge]][markdownit-npm]|Transform Markdown using markdown-it|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -522,6 +523,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [longhand]: https://github.com/posthtml/posthtml-postcss-merge-longhand
 [longhand-badge]: https://img.shields.io/npm/v/posthtml-postcss-merge-longhand.svg
 [longhand-npm]: https://npmjs.com/package/posthtml-postcss-merge-longhand
+
+[markdownit]: https://github.com/posthtml/posthtml-markdownit
+[markdownit-badge]: https://img.shields.io/npm/v/posthtml-markdownit.svg
+[markdownit-npm]: https://npmjs.com/package/posthtml-markdownit
 
 #### CSS
 
