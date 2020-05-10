@@ -406,6 +406,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-mso][mso]|[![npm][mso-badge]][mso-npm]|Makes it easy to write Outlook conditionals in HTML emails|
 |[posthtml-postcss-merge-longhand][longhand]|[![npm][longhand-badge]][longhand-npm]|Merge longhand inline CSS into shorthand|
 |[posthtml-markdownit][markdownit]|[![npm][markdownit-badge]][markdownit-npm]|Transform Markdown using markdown-it|
+|[posthtml-extra-attributes][extra-attributes]|[![npm][extra-attributes-badge]][extra-attributes-npm]|Add new attributes to elements in your HTML|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -527,6 +528,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [markdownit]: https://github.com/posthtml/posthtml-markdownit
 [markdownit-badge]: https://img.shields.io/npm/v/posthtml-markdownit.svg
 [markdownit-npm]: https://npmjs.com/package/posthtml-markdownit
+
+[extra-attributes]: https://github.com/posthtml/posthtml-extra-attributes
+[extra-attributes-badge]: https://img.shields.io/npm/v/posthtml-extra-attributes.svg
+[extra-attributes-npm]: https://npmjs.com/package/posthtml-extra-attributes
 
 #### CSS
 
