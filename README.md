@@ -403,6 +403,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-url-parameters][url-parameters]|[![npm][url-parameters-badge]][url-parameters-npm]|Add parameters to URLs|
 |[posthtml-safe-class-names][safe-class-names]|[![npm][safe-class-names-badge]][safe-class-names-npm]|Replace escaped characters in class names and CSS selectors|
 |[posthtml-fetch][fetch]|[![npm][fetch-badge]][fetch-npm]|Fetch and render remote content|
+|[posthtml-mso][mso]|[![npm][mso-badge]][mso-npm]|Makes it easy to write Outlook conditionals in HTML emails|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -512,6 +513,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [fetch]: https://github.com/posthtml/posthtml-fetch
 [fetch-badge]: https://img.shields.io/npm/v/posthtml-fetch.svg
 [fetch-npm]: https://npmjs.com/package/posthtml-fetch
+
+[mso]: https://github.com/posthtml/posthtml-mso
+[mso-badge]: https://img.shields.io/npm/v/posthtml-mso.svg
+[mso-npm]: https://npmjs.com/package/posthtml-mso
 
 #### CSS
 
