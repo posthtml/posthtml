@@ -357,6 +357,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-lorem][lorem]|[![npm][lorem-badge]][lorem-npm]|Add lorem ipsum placeholder text to any document|
 |[posthtml-retext][text]|[![npm][text-badge]][text-npm]|Extensible system for analysing and manipulating natural language|
 |[prevent-widows][prevent-widows]|[![npm][prevent-widows-badge]][prevent-widows-npm]|Prevent widows from appearing at the end of paragraphs|
+|[posthtml-richtypo][richtypo]|[![npm][richtypo-badge]][richtypo-npm]|Process HTML node text with Richtypo|
 
 [md]: https://github.com/jonathantneal/posthtml-md
 [md-badge]: https://img.shields.io/npm/v/posthtml-md.svg
@@ -373,6 +374,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [prevent-widows]: https://github.com/bashaus/prevent-widows
 [prevent-widows-badge]: https://img.shields.io/npm/v/prevent-widows.svg
 [prevent-widows-npm]: https://npmjs.com/package/prevent-widows
+
+[richtypo]: https://github.com/Grawl/posthtml-richtypo
+[richtypo-badge]: https://img.shields.io/npm/v/posthtml-richtypo.svg
+[richtypo-npm]: https://npmjs.com/package/posthtml-richtypo
 
 #### HTML
 
