@@ -1,7 +1,7 @@
 type Maybe<T> = void | T;
 type MaybeArray<T> = T | T[];
 
-export namespace PostHTML {
+declare namespace PostHTML {
   type StringMatcher = string | RegExp;
   type AttrMatcher = Record<string, StringMatcher>;
   type ContentMatcher =
@@ -100,6 +100,8 @@ export namespace PostHTML {
   }
 }
 
-export default function posthtml<TThis, TMessage>(
+declare function PostHTML<TThis, TMessage>(
   plugins?: PostHTML.Plugin<TThis>[]
 ): PostHTML.PostHTML<TThis, TMessage>;
+
+export = PostHTML;
