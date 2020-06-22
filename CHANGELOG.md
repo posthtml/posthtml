@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.1](https://github.com/posthtml/posthtml/compare/v0.13.0...v0.13.1) (2020-06-22)
+
+
+### Bug Fixes
+
+* **types:** correctly export namespace & function ([b3ab502](https://github.com/posthtml/posthtml/commit/b3ab5026d0dbef20adb1f770cac9507054892eeb))
+
 ## [0.13.0](https://github.com/posthtml/posthtml/compare/v0.12.3...v0.13.0) (2020-04-27)
 
 
