@@ -354,6 +354,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 | Name |Status|Description|
 |:-----|:-----|:----------|
 |[posthtml-md][md]|[![npm][md-badge]][md-npm]|Easily use context-sensitive markdown within HTML|
+|[posthtml-toc][toc]|[![npm][toc-badge]][toc-npm]|Table of contents|
 |[posthtml-lorem][lorem]|[![npm][lorem-badge]][lorem-npm]|Add lorem ipsum placeholder text to any document|
 |[posthtml-retext][text]|[![npm][text-badge]][text-npm]|Extensible system for analysing and manipulating natural language|
 |[prevent-widows][prevent-widows]|[![npm][prevent-widows-badge]][prevent-widows-npm]|Prevent widows from appearing at the end of paragraphs|
@@ -362,6 +363,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [md]: https://github.com/jonathantneal/posthtml-md
 [md-badge]: https://img.shields.io/npm/v/posthtml-md.svg
 [md-npm]: https://npmjs.com/package/posthtml-md
+
+[toc]: https://github.com/posthtml/posthtml-toc
+[toc-badge]: https://img.shields.io/npm/v/posthtml-toc.svg
+[toc-npm]: https://npmjs.com/package/posthtml-toc
 
 [text]: https://github.com/voischev/posthtml-retext
 [text-badge]: https://img.shields.io/npm/v/posthtml-retext.svg
