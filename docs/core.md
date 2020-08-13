@@ -114,6 +114,7 @@ ph.process('<html>..</html>', {}).then((result) => result))
 | options.parser | <code>function</code> | use custom parser, replaces default (posthtml-parser) |
 | options.render | <code>function</code> | use custom render, replaces default (posthtml-render) |
 | options.skipParse | <code>Boolean</code> | disable parsing |
+| options.directives | <code>Array</code> | Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives). |
 
 <a name="version"></a>
 

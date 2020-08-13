@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.2](https://github.com/posthtml/posthtml/compare/v0.13.1...v0.13.2) (2020-08-13)
+
+
+### Bug Fixes
+
+* **index:** add description for directives option ([216cd18](https://github.com/posthtml/posthtml/commit/216cd1863e57a1d1e9189390ead81392a74940a2))
+* **index:** style trailing space ([9ac7212](https://github.com/posthtml/posthtml/commit/9ac7212e51f937ac29519b731dabb21324558569))
+
 ### [0.13.1](https://github.com/posthtml/posthtml/compare/v0.13.0...v0.13.1) (2020-06-22)
 
 
