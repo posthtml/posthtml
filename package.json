@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "posthtml-parser": "^0.4.2",
-    "posthtml-render": "^1.2.2"
+    "posthtml-render": "^1.2.3"
   },
   "devDependencies": {
     "chai": "^4.0.0",
@@ -32,10 +32,10 @@
     "chai-subset": "^1.6.0",
     "coveralls": "^3.0.11",
     "jsdoc-to-markdown": "^6.0.1",
-    "mocha": "^8.0.1",
+    "mocha": "^8.1.1",
     "nyc": "^15.0.1",
     "standard": "^14.3.3",
-    "standard-version": "^8.0.0"
+    "standard-version": "^8.0.2"
   },
   "scripts": {
     "lint": "standard --env mocha",
