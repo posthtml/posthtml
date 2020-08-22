@@ -1,6 +1,6 @@
 {
   "name": "posthtml",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "description": "HTML/XML processor",
   "keywords": [
     "html",
@@ -23,7 +23,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "posthtml-parser": "^0.4.2",
+    "posthtml-parser": "^0.5.0",
     "posthtml-render": "^1.2.3"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "mocha": "^8.1.1",
     "nyc": "^15.0.1",
     "standard": "^14.3.3",
-    "standard-version": "^8.0.2"
+    "standard-version": "^9.0.0"
   },
   "scripts": {
     "lint": "standard --env mocha",
