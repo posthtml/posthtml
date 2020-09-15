@@ -4,7 +4,6 @@
 [![Coverage][cover]][cover-url]
 [![Standard Code Style][code-style]][code-style-url]
 [![Twitter][twitter]][twitter-url]
-[![Chat][chat]][chat-url]
 
 # PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 
