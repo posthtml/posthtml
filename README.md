@@ -31,6 +31,12 @@ For more detailed information about PostHTML in general take a look at the [docs
 [render-badge]: https://img.shields.io/npm/v/posthtml-render.svg
 [render-npm]: https://npmjs.com/package/posthtml-render
 
+## Create to your project
+
+```bash
+npm init posthtml
+```
+
 ## Install
 
 ```bash
