@@ -863,9 +863,9 @@ See [PostHTML Guidelines](plugins/guide.md) and [CONTRIBUTING](CONTRIBUTING.md).
 [code-style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [code-style-url]: http://standardjs.com/
 
-[twitter]: https://img.shields.io/badge/twitter-%40PostHTML-00ACEE.svg?style=flat
+[twitter]: https://badgen.net/twitter/follow/posthtml
 [twitter-url]: https://twitter.com/PostHTML
 
-[chat]: https://badges.gitter.im/posthtml/posthtml.svg
+[chat]: https://badges.gitter.im/posthtml/PostHTML.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
 [docs-url]: https://github.com/posthtml/posthtml/tree/master/docs
