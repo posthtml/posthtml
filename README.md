@@ -854,8 +854,8 @@ See [PostHTML Guidelines](plugins/guide.md) and [CONTRIBUTING](CONTRIBUTING.md).
 [deps]: https://david-dm.org/posthtml/posthtml.svg
 [deps-url]: https://david-dm.org/posthtml/posthtml
 
-[build]: https://travis-ci.org/posthtml/posthtml.svg?branch=master
-[build-url]: https://travis-ci.org/posthtml/posthtml?branch=master
+[build]: https://github.com/posthtml/posthtml/workflows/Actions%20Status/badge.svg?style=flat-square
+[build-url]: https://github.com/posthtml/posthtml/actions?query=workflow%3A%22CI+tests%22
 
 [cover]: https://coveralls.io/repos/posthtml/posthtml/badge.svg?branch=master
 [cover-url]: https://coveralls.io/r/posthtml/posthtml?branch=master
