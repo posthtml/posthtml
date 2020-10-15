@@ -1,19 +1,18 @@
-var fs = require('fs')
-var path = require('path')
+const { readFileSync } = require('fs')
+const path = require('path')
 
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var parser = require('posthtml-parser')
-var render = require('posthtml-render')
+const parser = require('posthtml-parser')
+const render = require('posthtml-render')
 
-var html = fs.readFileSync(
+const html = readFileSync(
   path.resolve(__dirname, 'templates/parser.html'), 'utf8'
 )
 
-describe('Parser', function () {
-  it('parser => render', function (done) {
+describe('Parser', () => {
+  it('parser => render', done => {
     expect(html).to.eql(render(parser(html)))
     done()
   })

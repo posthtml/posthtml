@@ -1,31 +1,30 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
 function test (html, reference, done) {
   posthtml().process(html)
-    .then(function (result) {
+    .then(result => {
       expect(reference).to.eql(result.html)
       done()
     })
-    .catch(function (error) { return done(error) })
+    .catch(error => done(error))
 }
 
-describe('Parse classes', function () {
-  it('div', function (done) {
-    var html = '<div></div>'
+describe('Parse classes', () => {
+  it('div', done => {
+    const html = '<div></div>'
     test(html, html, done)
   })
 
-  it('block1', function (done) {
-    var html = '<div class="block1">text</div>'
+  it('block1', done => {
+    const html = '<div class="block1">text</div>'
     test(html, html, done)
   })
 
-  it('block1 block2', function (done) {
-    var html = '<div class="block1 block2">text</div>'
+  it('block1 block2', done => {
+    const html = '<div class="block1 block2">text</div>'
     test(html, html, done)
   })
 })

@@ -1,36 +1,33 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
-var html = '<div class="source">source</div>'
-var expected = '<div>source</div>'
+const html = '<div class="source">source</div>'
+const expected = '<div>source</div>'
 
 function test (html, done) {
   posthtml()
-    .use(function (tree) {
-      return tree.walk(node => {
-        if (node.attrs) {
-          delete node.attrs.class
-        }
+    .use(tree => tree.walk(node => {
+      if (node.attrs) {
+        delete node.attrs.class
+      }
 
-        return node
-      })
-    })
+      return node
+    }))
     .process(html)
-    .then(function (result) {
+    .then(result => {
       expect(html).to.eql(result.tree.source)
       expect(expected).to.eql(result.html)
       done()
     })
-    .catch(function (error) {
+    .catch(error => {
       done(error)
     })
 }
 
-describe('Source', function () {
-  it('Source code must not mutate', function (done) {
+describe('Source', () => {
+  it('Source code must not mutate', done => {
     test(html, done)
   })
 })
