@@ -1,27 +1,26 @@
-var fs = require('fs')
-var path = require('path')
+const { readFileSync } = require('fs')
+const path = require('path')
 
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
-var comments = fs.readFileSync(
+const comments = readFileSync(
   path.resolve(__dirname, 'templates/comments.html'), 'utf8'
 )
 
 function test (html, reference, done) {
   posthtml().process(html)
-    .then(function (result) {
+    .then(result => {
       expect(reference).to.eql(result.html)
       done()
     })
-    .catch(function (error) { return done(error) })
+    .catch(error => done(error))
 }
 
-describe('Parse comments', function () {
-  it('comments equal', function (done) {
+describe('Parse comments', () => {
+  it('comments equal', done => {
     test(comments, comments, done)
   })
 })

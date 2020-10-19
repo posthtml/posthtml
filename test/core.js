@@ -1,13 +1,12 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
-describe('core methods', function () {
-  it('tree should have methods', function () {
+describe('core methods', () => {
+  it('tree should have methods', () => {
     posthtml()
-      .use(function (tree) {
+      .use(tree => {
         tree.should.have.property('render')
         tree.should.have.property('parser')
         tree.toString.should.be.a('function')
@@ -15,13 +14,13 @@ describe('core methods', function () {
       .process('<div></div>')
   })
 
-  it('core methods parser', function (done) {
-    var html = '<import>'
-    var ref = '<div>import</div>'
+  it('core methods parser', done => {
+    const html = '<import>'
+    const ref = '<div>import</div>'
 
     posthtml()
-      .use(function (tree) {
-        tree.match({ tag: 'import' }, function (node) {
+      .use(tree => {
+        tree.match({ tag: 'import' }, node => {
           node.tag = false
           node.content = tree.parser('<div>import</div>')
           return node
@@ -29,33 +28,33 @@ describe('core methods', function () {
         return tree
       })
       .process(html)
-      .then(function (result) {
+      .then(result => {
         expect(ref).to.eql(result.html)
 
         done()
       })
-      .catch(function (error) {
+      .catch(error => {
         done(error)
       })
   })
 
-  it('core methods render', function (done) {
-    var html = '\n<div>1</div>\n\t<div>2</div>\n'
-    var ref = '<div>1</div><div>2</div>'
+  it('core methods render', done => {
+    const html = '\n<div>1</div>\n\t<div>2</div>\n'
+    const ref = '<div>1</div><div>2</div>'
 
     posthtml()
-      .use(function (tree) {
-        var outherTree = ['\n', { tag: 'div', content: ['1'] }, '\n\t', { tag: 'div', content: ['2'] }, '\n']
-        var htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '')
+      .use(tree => {
+        const outherTree = ['\n', { tag: 'div', content: ['1'] }, '\n\t', { tag: 'div', content: ['2'] }, '\n']
+        const htmlWitchoutSpaceless = tree.render(outherTree).replace(/[\n|\t]/g, '')
         return tree.parser(htmlWitchoutSpaceless)
       })
       .process(html)
-      .then(function (result) {
+      .then(result => {
         expect(ref).to.eql(result.html)
 
         done()
       })
-      .catch(function (error) {
+      .catch(error => {
         done(error)
       })
   })

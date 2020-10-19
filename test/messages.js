@@ -1,12 +1,11 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
-var html = '<div class="messages">Messages</div>'
-var expected = '<new-root><div class="messages">Messages</div></new-root>'
-var messages = [
+const html = '<div class="messages">Messages</div>'
+const expected = '<new-root><div class="messages">Messages</div></new-root>'
+const messages = [
   {
     type: 'dependency',
     file: './path/to/1.html',
@@ -21,7 +20,7 @@ var messages = [
 
 function test (html, done) {
   posthtml()
-    .use(function (tree) {
+    .use(tree => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/1.html',
@@ -29,7 +28,7 @@ function test (html, done) {
       })
       return tree
     })
-    .use(function (tree) {
+    .use(tree => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/2.html',
@@ -38,23 +37,24 @@ function test (html, done) {
 
       return tree
     })
-    .use(function (tree) {
-      return { tag: 'new-root', content: tree }
-    })
+    .use(tree => ({
+      tag: 'new-root',
+      content: tree
+    }))
     .process(html)
-    .then(function (result) {
+    .then(result => {
       expect(expected).to.eql(result.html)
       expect(messages).to.eql(result.messages)
 
       done()
     })
-    .catch(function (error) {
+    .catch(error => {
       done(error)
     })
 }
 
-describe('Messages', function () {
-  it('should expose messages via result.messages', function (done) {
+describe('Messages', () => {
+  it('should expose messages via result.messages', done => {
     test(html, done)
   })
 })

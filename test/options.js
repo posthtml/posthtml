@@ -1,59 +1,58 @@
-var it = require('mocha').it
-var expect = require('chai').expect
-var describe = require('mocha').describe
+const { it, describe } = require('mocha')
+const { expect } = require('chai')
 
-var posthtml = require('../lib')
+const posthtml = require('../lib')
 
-var input = '<div class="button"><rect /><div class="button__text">Text</div></div>'
+const input = '<div class="button"><rect /><div class="button__text">Text</div></div>'
 
 function test (html, done) {
-  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
+  const options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   posthtml()
     .process(html, options)
-    .then(function (result) {
+    .then(result => {
       expect(input).to.eql(result.html)
       done()
     })
-    .catch(function (error) { return done(error) })
+    .catch(error => done(error))
 }
 
-describe('Set options', function () {
-  it('html equal', function (done) {
+describe('Set options', () => {
+  it('html equal', done => {
     test(input, done)
   })
 })
 
-describe('Skip html parsing & ', function () {
-  var options = { skipParse: true }
+describe('Skip html parsing & ', () => {
+  const options = { skipParse: true }
 
-  it('use number tree.', function (done) {
-    var tree = 123456789
+  it('use number tree.', done => {
+    const tree = 123456789
     expect(posthtml()
       .process(tree, options)
-      .then(function (result) {
-        expect('123456789').to.eql(result.html)
+      .then(({ html }) => {
+        expect('123456789').to.eql(html)
         done()
       })
-      .catch(function (error) { return done(error) })
+      .catch(error => done(error))
     )
   })
 
-  it('use string tree.', function (done) {
-    var tree = '123456789'
+  it('use string tree.', done => {
+    const tree = '123456789'
     expect(posthtml()
       .process(tree, options)
-      .then(function (result) {
-        expect('123456789').to.eql(result.html)
+      .then(({ html }) => {
+        expect('123456789').to.eql(html)
         done()
       })
-      .catch(function (error) { return done(error) })
+      .catch(error => done(error))
     )
   })
 })
 
-describe('Skip html parsing & use tree from options.', function () {
-  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
-  var tree = [
+describe('Skip html parsing & use tree from options.', () => {
+  const options = { singleTags: ['rect'], closingSingleTag: 'slash' }
+  const tree = [
     {
       tag: 'div',
       attrs: { class: 'button' },
@@ -67,47 +66,47 @@ describe('Skip html parsing & use tree from options.', function () {
     }
   ]
 
-  it('Set use tree', function (done) {
+  it('Set use tree', done => {
     options.skipParse = true
     expect(posthtml()
       .process(tree, options)
-      .then(function (result) {
-        expect(input).to.eql(result.html)
+      .then(({ html }) => {
+        expect(input).to.eql(html)
         done()
       })
-      .catch(function (error) { return done(error) })
+      .catch(error => done(error))
     )
   })
 })
 
-describe('Set option', function () {
-  var options = { singleTags: ['rect'], closingSingleTag: 'slash' }
-  var html = '<?php echo "Hello word"; ?>'
-  var multiHTML = '<!doctype><html><body>' + html + '</body></html>'
+describe('Set option', () => {
+  const options = { singleTags: ['rect'], closingSingleTag: 'slash' }
+  const html = '<?php echo "Hello word"; ?>'
+  const multiHTML = `<!doctype><html><body>${html}</body></html>`
 
   options.directives = [
     { name: '?php', start: '<', end: '>' }
   ]
 
-  it('directive ?php', function (done) {
+  it('directive ?php', done => {
     expect(posthtml()
       .process(html, options)
-      .then(function (result) {
+      .then(result => {
         expect(html).to.eql(result.html)
         done()
       })
-      .catch(function (error) { return done(error) })
+      .catch(error => done(error))
     )
   })
 
-  it('directive ?php with multi html', function (done) {
+  it('directive ?php with multi html', done => {
     expect(posthtml()
       .process(multiHTML, options)
-      .then(function (result) {
+      .then(result => {
         expect(multiHTML).to.eql(result.html)
         done()
       })
-      .catch(function (error) { return done(error) })
+      .catch(error => done(error))
     )
   })
 })
