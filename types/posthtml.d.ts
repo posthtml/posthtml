@@ -96,6 +96,7 @@ declare namespace PostHTML {
     plugins: Plugin<TThis>[];
     messages: TMessage[];
     use<TThis>(plugins: MaybeArray<Plugin<TThis>>): this;
+    process(html: string, options?: { sync: true }&Options): Result<TMessage>;
     process(html: string, options?: Options): Promise<Result<TMessage>>;
   }
 }
