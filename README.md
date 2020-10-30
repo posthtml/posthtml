@@ -422,6 +422,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-postcss-merge-longhand][longhand]|[![npm][longhand-badge]][longhand-npm]|Merge longhand inline CSS into shorthand|
 |[posthtml-markdownit][markdownit]|[![npm][markdownit-badge]][markdownit-npm]|Transform Markdown using markdown-it|
 |[posthtml-extra-attributes][extra-attributes]|[![npm][extra-attributes-badge]][extra-attributes-npm]|Add new attributes to elements in your HTML|
+|[posthtml-sri][sri]|[![npm][sri-badge]][sri-npm]|Adds subresource integrity (SRI) attributes.|
 
 
 [cache]: https://github.com/posthtml/posthtml-cache
@@ -547,6 +548,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [extra-attributes]: https://github.com/posthtml/posthtml-extra-attributes
 [extra-attributes-badge]: https://img.shields.io/npm/v/posthtml-extra-attributes.svg
 [extra-attributes-npm]: https://npmjs.com/package/posthtml-extra-attributes
+
+[sri]: https://gitlab.com/abogical/posthtml-sri
+[sri-badge]: https://img.shields.io/npm/v/posthtml-sri.svg
+[sri-npm]: https://npmjs.com/package/posthtml-sri
 
 #### CSS
 
