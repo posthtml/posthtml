@@ -848,6 +848,12 @@ See [PostHTML Guidelines](plugins/guide.md) and [CONTRIBUTING](CONTRIBUTING.md).
 
 <a href="https://github.com/posthtml/posthtml/graphs/contributors"><img src="https://opencollective.com/posthtml/contributors.svg?width=890&button=false" /></a>
 
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/posthtml#backer)]
+
+<a href="https://opencollective.com/posthtml#backers" target="_blank"><img src="https://opencollective.com/posthtml/backers.svg?width=890&button=false"></a>
+
 ## LICENSE
 
 [MIT](LICENSE)
