@@ -1,6 +1,6 @@
 {
   "name": "posthtml",
-  "version": "0.13.4",
+  "version": "0.14.0",
   "description": "HTML/XML processor",
   "keywords": [
     "html",
@@ -23,7 +23,7 @@
     "node": ">=10.0.0"
   },
   "dependencies": {
-    "posthtml-parser": "^0.5.0",
+    "posthtml-parser": "^0.6.0",
     "posthtml-render": "^1.2.3"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^8.1.1",
     "nyc": "^15.0.1",
-    "standard": "^14.3.3",
+    "standard": "^16.0.2",
     "standard-version": "^9.0.0"
   },
   "scripts": {
