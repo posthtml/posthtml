@@ -707,6 +707,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 |[posthtml-link-noreferrer][noreferrer]|[![npm][noreferrer-badge]][noreferrer-npm]|Add `rel="noopener"` and `rel="noreferrer"` to all links that contain the attribute `target="_blank"` |
 |[posthtml-lazyload][lazyload]|[![npm][lazyload-badge]][lazyload-npm]|Add native lazyload attribute|
 |[posthtml-postcss-treeshaker][posthtml-postcss-treeshaker]|[![npm][posthtml-postcss-treeshaker-badge]][posthtml-postcss-treeshaker-npm]|Tree shake styles for classes and ids in `style` tag|
+|[posthtml-external-link][posthtml-external-link]|[![npm][posthtml-external-link-badge]][posthtml-external-link-npm]|Add `rel="external noopenner nofollow"` and `target="_blank"` to all external links|
 
 [remove]: https://github.com/princed/posthtml-remove-attributes
 [remove-badge]: https://img.shields.io/npm/v/posthtml-remove-attributes.svg
@@ -752,6 +753,9 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 [posthtml-postcss-treeshaker-badge]: https://img.shields.io/npm/v/posthtml-postcss-treeshaker.svg
 [posthtml-postcss-treeshaker-npm]: https://img.shields.io/npm/v/posthtml-postcss-treeshaker.svg
 
+[posthtml-external-link]: https://github.com/posthtml/posthtml-external-link
+[posthtml-external-link-badge]: https://img.shields.io/npm/v/posthtml-external-link.svg
+[posthtml-external-link-npm]: https://www.npmjs.com/package/posthtml-external-link
 
 #### Workflow
 
