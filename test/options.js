@@ -22,7 +22,7 @@ describe('Set options', () => {
   })
 })
 
-describe('Skip html parsing & ', () => {
+describe('Skip html parsing', () => {
   const options = { skipParse: true }
 
   it('use number tree.', done => {
@@ -49,7 +49,7 @@ describe('Skip html parsing & ', () => {
     )
   })
 
-  it.only('use string tree with plugin.', done => {
+  it('use string tree with plugin.', done => {
     const tree = '123456789'
     const plugin = function (tree) {
       tree.walk(node => node)
