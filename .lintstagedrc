@@ -1,4 +1,3 @@
 {
-  "{src,test}/**/*.js": "eslint",
-  "*.md": "eslint"
+  "*.js": "standard --env mocha"
 }
