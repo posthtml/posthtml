@@ -1,0 +1,7 @@
+{
+  "hooks": {
+    "pre-push": "npm t",
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint --extends=@commitlint/config-angular -e"
+  }
+}

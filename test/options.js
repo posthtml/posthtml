@@ -22,7 +22,7 @@ describe('Set options', () => {
   })
 })
 
-describe('Skip html parsing & ', () => {
+describe('Skip html parsing', () => {
   const options = { skipParse: true }
 
   it('use number tree.', done => {
@@ -48,9 +48,25 @@ describe('Skip html parsing & ', () => {
       .catch(error => done(error))
     )
   })
+
+  it('use string tree with plugin.', done => {
+    const tree = '123456789'
+    const plugin = function (tree) {
+      tree.walk(node => node)
+      return tree
+    }
+    expect(posthtml([plugin])
+      .process(tree, options)
+      .then(({ html }) => {
+        expect('123456789').to.eql(html)
+        done()
+      })
+      .catch(error => done(error))
+    )
+  })
 })
 
-describe('Skip html parsing & use tree from options.', () => {
+describe('Use tree from options.', () => {
   const options = { singleTags: ['rect'], closingSingleTag: 'slash' }
   const tree = [
     {
