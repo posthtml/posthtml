@@ -71,6 +71,7 @@ declare namespace PostHTML {
     TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>
   > extends NodeAPI, RawNode<TTag, TAttrs> {
     content?: Array<string | Node>;
+    options?: Options;
   }
 
   export interface Options {
