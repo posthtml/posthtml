@@ -1,5 +1,12 @@
+## <small>0.15.1 (2020-11-26)</small>
+
+* fix: types, options in tree ([8565cee](https://github.com/posthtml/posthtml/commit/8565cee))
+
+
+
 ## 0.15.0 (2020-11-24)
 
+* 0.15.0 ([2cd49f8](https://github.com/posthtml/posthtml/commit/2cd49f8))
 * build: fix settings ([0064e6c](https://github.com/posthtml/posthtml/commit/0064e6c))
 * build: update build system ([e9a8a56](https://github.com/posthtml/posthtml/commit/e9a8a56))
 * fix: wrap tree if tree string ([2faf49c](https://github.com/posthtml/posthtml/commit/2faf49c))
