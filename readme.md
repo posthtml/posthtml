@@ -350,9 +350,9 @@ posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
 
 ## [Plugins](http://maltsev.github.io/posthtml-plugins)
 
-In case you want to develop your own plugin, we recommend using [posthtml-plugin-boilerplate][plugin] to get started.
+In case you want to develop your own plugin, we recommend using [posthtml-plugin-starter][plugin] to get started.
 
-[plugin]: https://github.com/posthtml/posthtml-plugin-boilerplate
+[plugin]: https://github.com/posthtml/posthtml-plugin-starter
 
 #### TEXT
 
