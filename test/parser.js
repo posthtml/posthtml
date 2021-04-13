@@ -4,7 +4,7 @@ const path = require('path')
 const { it, describe } = require('mocha')
 const { expect } = require('chai')
 
-const parser = require('posthtml-parser')
+const { default: parser } = require('posthtml-parser')
 const render = require('posthtml-render')
 
 const html = readFileSync(
