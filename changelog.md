@@ -1,5 +1,15 @@
+## <small>0.15.2 (2021-04-13)</small>
+
+* build: update dependencies ([a7a5d59](https://github.com/posthtml/posthtml/commit/a7a5d59))
+* build(deps): bump ini from 1.3.5 to 1.3.8 ([919a412](https://github.com/posthtml/posthtml/commit/919a412))
+* build(deps): bump y18n from 4.0.0 to 4.0.1 ([0d8d16e](https://github.com/posthtml/posthtml/commit/0d8d16e))
+* chore: update readme ([d90f573](https://github.com/posthtml/posthtml/commit/d90f573))
+
+
+
 ## <small>0.15.1 (2020-11-26)</small>
 
+* 0.15.1 ([2e3f9dd](https://github.com/posthtml/posthtml/commit/2e3f9dd))
 * fix: types, options in tree ([8565cee](https://github.com/posthtml/posthtml/commit/8565cee))
 
 
