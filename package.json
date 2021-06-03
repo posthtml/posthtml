@@ -20,7 +20,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
   "dependencies": {
     "posthtml-parser": "^0.9.0",
