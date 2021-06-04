@@ -1,12 +1,19 @@
+## <small>0.16.1 (2021-06-04)</small>
+
+* build: update dep dev ([aa44587](https://github.com/posthtml/posthtml/commit/aa44587))
+
+
+
 ## 0.16.0 (2021-06-03)
 
+* 0.16.0 ([395d5cf](https://github.com/posthtml/posthtml/commit/395d5cf))
+* Update readme.md ([dc74d4f](https://github.com/posthtml/posthtml/commit/dc74d4f))
 * ci: drop support old node ([5f85311](https://github.com/posthtml/posthtml/commit/5f85311))
 * build: update depdev ([4d1a12f](https://github.com/posthtml/posthtml/commit/4d1a12f))
 * build(deps): bump handlebars from 4.7.6 to 4.7.7 ([0473fcb](https://github.com/posthtml/posthtml/commit/0473fcb))
 * build(deps): bump hosted-git-info from 2.8.8 to 2.8.9 ([c53be65](https://github.com/posthtml/posthtml/commit/c53be65))
 * build(deps): bump lodash from 4.17.20 to 4.17.21 ([3e73913](https://github.com/posthtml/posthtml/commit/3e73913))
 * test: fix match content false ([b07aa0b](https://github.com/posthtml/posthtml/commit/b07aa0b))
-* Update readme.md ([dc74d4f](https://github.com/posthtml/posthtml/commit/dc74d4f))
 
 
 
