@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "posthtml-parser": "^0.9.0",
-    "posthtml-render": "^2.0.3"
+    "posthtml-render": "^2.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
@@ -37,7 +37,7 @@
     "husky": "^6.0.0",
     "jsdoc-to-markdown": "^7.0.1",
     "lint-staged": "^11.0.0",
-    "mocha": "^8.4.0",
+    "mocha": "^9.0.0",
     "standard": "^16.0.2"
   },
   "scripts": {
