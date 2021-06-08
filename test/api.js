@@ -239,7 +239,7 @@ describe('API', () => {
 
       it('false', done => {
         const html = '<div><img><section><div></div></section></div>'
-        const reference = '<div></div>'
+        const reference = '<div><section></section></div>'
 
         test(html, reference, plugin, {}, done)
 
