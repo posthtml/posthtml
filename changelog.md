@@ -1,5 +1,13 @@
+## <small>0.16.2 (2021-06-08)</small>
+
+* build: update dep dev ([a54698a](https://github.com/posthtml/posthtml/commit/a54698a))
+* test: revert change api match boolean false ([47c1eb0](https://github.com/posthtml/posthtml/commit/47c1eb0))
+
+
+
 ## <small>0.16.1 (2021-06-04)</small>
 
+* 0.16.1 ([949ef74](https://github.com/posthtml/posthtml/commit/949ef74))
 * build: update dep dev ([aa44587](https://github.com/posthtml/posthtml/commit/aa44587))
 
 
