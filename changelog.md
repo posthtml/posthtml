@@ -1,5 +1,13 @@
+## <small>0.16.3 (2021-06-10)</small>
+
+* build: update dep dev ([a041b43](https://github.com/posthtml/posthtml/commit/a041b43))
+* build(deps): bump glob-parent from 5.1.1 to 5.1.2 ([a519a3e](https://github.com/posthtml/posthtml/commit/a519a3e))
+
+
+
 ## <small>0.16.2 (2021-06-08)</small>
 
+* 0.16.2 ([271f5ff](https://github.com/posthtml/posthtml/commit/271f5ff))
 * build: update dep dev ([a54698a](https://github.com/posthtml/posthtml/commit/a54698a))
 * test: revert change api match boolean false ([47c1eb0](https://github.com/posthtml/posthtml/commit/47c1eb0))
 
