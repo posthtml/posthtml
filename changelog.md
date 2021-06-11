@@ -1,5 +1,12 @@
+## <small>0.16.4 (2021-06-11)</small>
+
+* build: update dep dev ([93fcd85](https://github.com/posthtml/posthtml/commit/93fcd85))
+
+
+
 ## <small>0.16.3 (2021-06-10)</small>
 
+* 0.16.3 ([a432762](https://github.com/posthtml/posthtml/commit/a432762))
 * build: update dep dev ([a041b43](https://github.com/posthtml/posthtml/commit/a041b43))
 * build(deps): bump glob-parent from 5.1.1 to 5.1.2 ([a519a3e](https://github.com/posthtml/posthtml/commit/a519a3e))
 
