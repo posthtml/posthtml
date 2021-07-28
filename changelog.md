@@ -1,5 +1,14 @@
+## <small>0.16.5 (2021-07-28)</small>
+
+* perf: after dep update ([a9d0467](https://github.com/posthtml/posthtml/commit/a9d0467))
+* build: update dep dev ([500e25a](https://github.com/posthtml/posthtml/commit/500e25a))
+* build: update lock ([b7fdad0](https://github.com/posthtml/posthtml/commit/b7fdad0))
+
+
+
 ## <small>0.16.4 (2021-06-11)</small>
 
+* 0.16.4 ([70c3912](https://github.com/posthtml/posthtml/commit/70c3912))
 * build: update dep dev ([93fcd85](https://github.com/posthtml/posthtml/commit/93fcd85))
 
 
