@@ -41,6 +41,7 @@
     "standard": "^16.0.2"
   },
   "scripts": {
+    "prepare": "husky install",
     "version": "conventional-changelog -i changelog.md -s -r 0 && git add changelog.md",
     "test": "c8 mocha",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
