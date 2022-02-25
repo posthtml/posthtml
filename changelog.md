@@ -1,5 +1,16 @@
+## <small>0.16.6 (2022-02-25)</small>
+
+* build: update dep dev ([207f092](https://github.com/posthtml/posthtml/commit/207f092))
+* build(deps): bump path-parse from 1.0.6 to 1.0.7 ([d55bc10](https://github.com/posthtml/posthtml/commit/d55bc10))
+* build(deps): bump shelljs from 0.8.4 to 0.8.5 ([2ee4600](https://github.com/posthtml/posthtml/commit/2ee4600))
+* docs(plugin): fix API doc link ([28852d7](https://github.com/posthtml/posthtml/commit/28852d7))
+* Update readme.md ([c22b046](https://github.com/posthtml/posthtml/commit/c22b046))
+
+
+
 ## <small>0.16.5 (2021-07-28)</small>
 
+* 0.16.5 ([083eb19](https://github.com/posthtml/posthtml/commit/083eb19))
 * perf: after dep update ([a9d0467](https://github.com/posthtml/posthtml/commit/a9d0467))
 * build: update dep dev ([500e25a](https://github.com/posthtml/posthtml/commit/500e25a))
 * build: update lock ([b7fdad0](https://github.com/posthtml/posthtml/commit/b7fdad0))
