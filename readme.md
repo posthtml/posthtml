@@ -2,7 +2,6 @@
 [![Tests][build]][build-url]
 [![Coverage][cover]][cover-url]
 [![Standard Code Style][code-style]][code-style-url]
-[![Twitter][twitter]][twitter-url]
 
 # PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 
@@ -399,9 +398,6 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 [code-style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [code-style-url]: http://standardjs.com/
-
-[twitter]: https://badgen.net/twitter/follow/posthtml
-[twitter-url]: https://twitter.com/PostHTML
 
 [chat]: https://badges.gitter.im/posthtml/PostHTML.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
