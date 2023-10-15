@@ -1,13 +1,13 @@
-const { readFileSync } = require('fs')
-const path = require('path')
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
 
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { it, describe } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
+import posthtml from '../lib'
 
 const doctype = readFileSync(
-  path.resolve(__dirname, 'templates/doctype.html'), 'utf8'
+  resolve(__dirname, 'templates/doctype.html'), 'utf8'
 )
 
 function test (html, reference, done) {

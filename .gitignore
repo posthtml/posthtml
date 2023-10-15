@@ -10,3 +10,5 @@ npm-debug.log
 coverage
 jsdoc-api
 node_modules
+
+/lib/**/*.cjs
