@@ -2,7 +2,16 @@
     "parser": "@babel/eslint-parser",
     "rules": {
         "import/no-commonjs": "error",
-        "import/no-dynamic-require": "error"
+        "import/no-dynamic-require": "error",
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_",
+                "destructuredArrayIgnorePattern": "^_"
+            }
+        ]
     },
     "env": {
         "es6": true,
