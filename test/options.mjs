@@ -1,7 +1,7 @@
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
 
-import posthtml from '../lib'
+import posthtml from '../lib/index.mjs'
 
 const input = '<div class="button"><rect /><div class="button__text">Text</div></div>'
 

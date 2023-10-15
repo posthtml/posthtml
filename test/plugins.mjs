@@ -1,7 +1,7 @@
 import { it, describe, beforeEach } from 'mocha'
 import { expect } from 'chai'
 
-import posthtml from '../lib'
+import posthtml from '../lib/index.mjs'
 
 describe('Plugins', () => {
   const html = '<div class="button"><div class="button__text">Text</div></div>'
