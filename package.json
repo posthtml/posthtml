@@ -69,7 +69,7 @@
     "prepare": "husky install && npm run build",
     "version": "conventional-changelog -i changelog.md -s -r 0 && git add changelog.md",
     "lint": "eslint --fix lib/*.mjs test/*.mjs",
-    "test": "npm run lint && c8 mocha",
+    "test": "npm run build && npm run lint && c8 mocha",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md"
   },
