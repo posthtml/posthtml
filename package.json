@@ -48,6 +48,7 @@
     "@babel/preset-env": "^7.23.2",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-angular": "^16.2.1",
+    "babel-plugin-transform-import-meta": "^2.2.1",
     "c8": "^7.7.3",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
@@ -92,7 +93,8 @@
             ".mjs": ".cjs"
           }
         }
-      ]
+      ],
+      "babel-plugin-transform-import-meta"
     ]
   },
   "author": "Ivan Voischev <voischev.ivan@ya.ru>",
