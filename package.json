@@ -44,10 +44,12 @@
   "devDependencies": {
     "@aminya/babel-plugin-replace-import-extension": "^1.2.0",
     "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/preset-env": "^7.23.2",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-angular": "^16.2.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "babel-plugin-transform-import-meta": "^2.2.1",
     "c8": "^7.7.3",
     "chai": "^4.3.4",
@@ -94,7 +96,8 @@
           }
         }
       ],
-      "babel-plugin-transform-import-meta"
+      "babel-plugin-transform-import-meta",
+      "babel-plugin-add-module-exports"
     ]
   },
   "author": "Ivan Voischev <voischev.ivan@ya.ru>",
