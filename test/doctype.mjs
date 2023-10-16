@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs'
-import { resolve } from 'path'
 
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
@@ -7,7 +6,7 @@ import { expect } from 'chai'
 import posthtml from '../lib/index.mjs'
 
 const doctype = readFileSync(
-  resolve(__dirname, 'templates/doctype.html'), 'utf8'
+  new URL('./templates/doctype.html', import.meta.url), 'utf8'
 )
 
 function test (html, reference, done) {

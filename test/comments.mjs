@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs'
-import { resolve } from 'path'
 
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
@@ -7,8 +6,9 @@ import { expect } from 'chai'
 import posthtml from '../lib/index.mjs'
 
 const comments = readFileSync(
-  resolve(__dirname, 'templates/comments.html'), 'utf8'
-)
+    new URL('./templates/comments.html', import.meta.url),
+    'utf8'
+);
 
 function test (html, reference, done) {
   posthtml().process(html)
