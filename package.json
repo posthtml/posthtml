@@ -31,7 +31,7 @@
     "@commitlint/config-angular": "^16.2.1",
     "@vitest/coverage-v8": "^0.34.6",
     "conventional-changelog-cli": "^2.1.1",
-    "husky": "^7.0.1",
+    "husky": "^8.0.3",
     "jsdoc-to-markdown": "^7.0.1",
     "lint-staged": "^12.3.4",
     "standard": "^16.0.2",
@@ -40,7 +40,7 @@
   "scripts": {
     "prepare": "husky install",
     "version": "conventional-changelog -i changelog.md -s -r 0 && git add changelog.md",
-    "test": "vitest",
+    "test": "vitest related --run",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md"
   },
