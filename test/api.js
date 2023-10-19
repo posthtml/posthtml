@@ -1,5 +1,4 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import {  describe, expect, it } from 'vitest';
 
 const posthtml = require('../lib')
 
@@ -16,7 +15,7 @@ function test (nodes, reference, fn, options, done) {
 }
 
 describe('API', () => {
-  it('chaining', done => {
+  it('chaining', () => new Promise(done => {
     test('<a></a><a></a><a></a>', '<c></c><c></c><c></c>', plugin, {}, done)
 
     function plugin (tree) {
@@ -30,9 +29,9 @@ describe('API', () => {
           tag: 'c'
         }))
     }
-  })
+  }))
 
-  it('walk', done => {
+  it('walk', () => new Promise(done => {
     const html = '<div class="cls"><header class="test"><div class="cls test">Text</div></header></div>'
     const reference = '<div class="cls"><header class="test" id="index2"><div class="cls test" id="index3">Text</div></header></div>'
 
@@ -55,10 +54,10 @@ describe('API', () => {
         return node
       })
     }
-  })
+  }))
 
   describe('match', () => {
-    it('Wrap node', done => {
+    it('Wrap node', () => new Promise(done => {
       const html = '<div><header><div>Text</div></header></div>'
       const reference = '<div><span><header><div>Text</div></header></span></div>'
 
@@ -70,9 +69,9 @@ describe('API', () => {
           content: node
         }))
       }
-    })
+    }))
 
-    it('Object', done => {
+    it('Object', () => new Promise(done => {
       const html = '<div><header><div>Text</div></header></div>'
       const reference = '<div id="index1"><header><div id="index2">Text</div></header></div>'
 
@@ -93,9 +92,9 @@ describe('API', () => {
 
         return tree
       }
-    })
+    }))
 
-    it('String', done => {
+    it('String', () => new Promise(done => {
       const html = '<div><header><div>Text</div></header></div>'
       const reference = '<div><header><div>Other text</div></header></div>'
 
@@ -104,9 +103,9 @@ describe('API', () => {
       function plugin (tree) {
         tree.match('Text', () => 'Other text')
       }
-    })
+    }))
 
-    it('Array', done => {
+    it('Array', () => new Promise(done => {
       const html = '<div><header><div>Text</div></header></div>'
       const reference = '<span><span><span>Text</span></span></span>'
 
@@ -118,9 +117,9 @@ describe('API', () => {
           return node
         })
       }
-    })
+    }))
 
-    it('Array with multiple matches', done => {
+    it('Array with multiple matches', () => new Promise(done => {
       const html = '<div class="a b">0</div>'
       const reference = '<div class="a b">1</div>'
       const classes = [/a/, /b/].map(name => ({
@@ -135,9 +134,9 @@ describe('API', () => {
           return node
         })
       }
-    })
+    }))
 
-    it('Content', done => {
+    it('Content', () => new Promise(done => {
       const html = '<div><header><div>Text</div></header></div>'
       const reference = '<div><header><div>Other text</div></header></div>'
 
@@ -149,10 +148,10 @@ describe('API', () => {
           return node
         })
       }
-    })
+    }))
 
     describe('RegExp', () => {
-      it('String', done => {
+      it('String', () => new Promise(done => {
         const html = '<div><!-- replace this --><header><div>Text</div></header></div>'
         const reference = '<div>RegExp cool!<header><div>Text</div></header></div>'
 
@@ -161,9 +160,9 @@ describe('API', () => {
         function plugin (tree) {
           tree.match(/<!--.*-->/g, () => 'RegExp cool!')
         }
-      })
+      }))
 
-      it('Object', done => {
+      it('Object', () => new Promise(done => {
         const html = '<div><header style="color: red  border: 3px solid #000"><div>Text</div></header></div>'
         const reference = '<div><header style="border: 3px solid #000"><div>Text</div></header></div>'
 
@@ -178,11 +177,11 @@ describe('API', () => {
             return node
           })
         }
-      })
+      }))
     })
 
     describe('Boolean', () => {
-      it('true', done => {
+      it('true', () => new Promise(done => {
         const html = '<div><header><div>Text</div></header></div>'
         const reference = '<div><header>Other text</header></div>'
 
@@ -197,9 +196,9 @@ describe('API', () => {
             return node
           })
         }
-      })
+      }))
 
-      it('true with boolean attrs', done => {
+      it('true with boolean attrs', () => new Promise(done => {
         const html = '<ol reversed></ol>'
         const reference = '<ol></ol>'
 
@@ -212,9 +211,9 @@ describe('API', () => {
             return node
           })
         }
-      })
+      }))
 
-      it('true with 0 value', done => {
+      it('true with 0 value', () => new Promise(done => {
         const html = '<input type="number" value="1">'
         const reference = '<input type="number" value="0" class="matched">'
         const plugins = [
@@ -235,9 +234,9 @@ describe('API', () => {
         ]
 
         test(html, reference, plugins, {}, done)
-      })
+      }))
 
-      it('false', done => {
+      it('false', () => new Promise(done => {
         const html = '<div><img><section><div></div></section></div>'
         const reference = '<div><section></section></div>'
 
@@ -246,7 +245,7 @@ describe('API', () => {
         function plugin (tree) {
           tree.match({ content: false }, () => '')
         }
-      })
+      }))
     })
   })
 

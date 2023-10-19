@@ -1,60 +1,59 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+const posthtml = require('../lib');
 
-const html = '<div class="messages">Messages</div>'
-const expected = '<new-root><div class="messages">Messages</div></new-root>'
+const html = '<div class="messages">Messages</div>';
+const expected = '<new-root><div class="messages">Messages</div></new-root>';
 const messages = [
   {
     type: 'dependency',
     file: './path/to/1.html',
-    from: undefined
+    from: undefined,
   },
   {
     type: 'dependency',
     file: './path/to/2.html',
-    from: undefined
-  }
-]
+    from: undefined,
+  },
+];
 
-function test (html, done) {
+function test(html, done) {
   posthtml()
-    .use(tree => {
+    .use((tree) => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/1.html',
-        from: tree.options.from
-      })
-      return tree
+        from: tree.options.from,
+      });
+      return tree;
     })
-    .use(tree => {
+    .use((tree) => {
       tree.messages.push({
         type: 'dependency',
         file: './path/to/2.html',
-        from: tree.options.from
-      })
+        from: tree.options.from,
+      });
 
-      return tree
+      return tree;
     })
-    .use(tree => ({
+    .use((tree) => ({
       tag: 'new-root',
-      content: tree
+      content: tree,
     }))
     .process(html)
-    .then(result => {
-      expect(expected).to.eql(result.html)
-      expect(messages).to.eql(result.messages)
+    .then((result) => {
+      expect(expected).to.eql(result.html);
+      expect(messages).to.eql(result.messages);
 
-      done()
+      done();
     })
-    .catch(error => {
-      done(error)
-    })
+    .catch((error) => {
+      done(error);
+    });
 }
 
 describe('Messages', () => {
-  it('should expose messages via result.messages', done => {
-    test(html, done)
-  })
-})
+  it('should expose messages via result.messages', () => new Promise(done => {
+    test(html, done);
+  }));
+});

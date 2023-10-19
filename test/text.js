@@ -1,22 +1,22 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+const posthtml = require('../lib');
 
-const text = 'text'
+const text = 'text';
 
-function test (html, reference, done) {
+function test(html, reference, done) {
   posthtml()
     .process(html)
-    .then(result => {
-      expect(reference).to.eql(result.html)
-      done()
+    .then((result) => {
+      expect(reference).to.eql(result.html);
+      done();
     })
-    .catch(error => done(error))
+    .catch((error) => done(error));
 }
 
 describe('Parse text', () => {
-  it('Text equal', done => {
-    test(text, text, done)
-  })
-})
+  it('Text equal', () =>
+    new Promise((done) => {
+      test(text, text, done);
+    }));
+});

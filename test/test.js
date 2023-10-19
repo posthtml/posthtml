@@ -1,5 +1,4 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import {  describe, expect, it } from 'vitest';
 
 const posthtml = require('../lib')
 
@@ -16,7 +15,7 @@ function test (html, done) {
 }
 
 describe('Simple text', () => {
-  it('html eqval', done => {
+  it('html eqval', () => new Promise(done => {
     test(input, done)
-  })
+  }))
 })

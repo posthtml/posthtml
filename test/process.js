@@ -1,36 +1,36 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+const posthtml = require('../lib');
 
-const html = null
+const html = null;
 
-function test (html, done) {
+function test(html, done) {
   posthtml()
-    .use(tree => {
-      tree.walk(node => node)
-      tree.match(/(.+)/, node => node)
+    .use((tree) => {
+      tree.walk((node) => node);
+      tree.match(/(.+)/, (node) => node);
 
       tree.messages.push({
         type: 'warning',
-        message: 'tree is empty'
-      })
+        message: 'tree is empty',
+      });
 
-      return tree
+      return tree;
     })
     .process(html, { skipParse: true })
-    .then(result => {
-      expect('').to.eql(result.html)
+    .then((result) => {
+      expect('').to.eql(result.html);
 
-      done()
+      done();
     })
-    .catch(error => {
-      done(error)
-    })
+    .catch((error) => {
+      done(error);
+    });
 }
 
 describe('Process', () => {
-  it('should not throw on empty tree', done => {
-    test(html, done)
-  })
-})
+  it('should not throw on empty tree', () =>
+    new Promise((done) => {
+      test(html, done);
+    }));
+});

@@ -1,5 +1,4 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import {  describe, expect, it } from 'vitest';
 
 const posthtml = require('../lib')
 
@@ -17,15 +16,15 @@ function test (html, done) {
 }
 
 describe('Set options', () => {
-  it('html equal', done => {
+  it('html equal', () => new Promise(done => {
     test(input, done)
-  })
+  }))
 })
 
 describe('Skip html parsing', () => {
   const options = { skipParse: true }
 
-  it('use number tree.', done => {
+  it('use number tree.', () => new Promise(done => {
     const tree = 123456789
     expect(posthtml()
       .process(tree, options)
@@ -35,9 +34,9 @@ describe('Skip html parsing', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 
-  it('use string tree.', done => {
+  it('use string tree.', () => new Promise(done => {
     const tree = '123456789'
     expect(posthtml()
       .process(tree, options)
@@ -47,9 +46,9 @@ describe('Skip html parsing', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 
-  it('use string tree with plugin.', done => {
+  it('use string tree with plugin.', () => new Promise(done => {
     const tree = '123456789'
     const plugin = function (tree) {
       tree.walk(node => node)
@@ -63,7 +62,7 @@ describe('Skip html parsing', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 })
 
 describe('Use tree from options.', () => {
@@ -82,7 +81,7 @@ describe('Use tree from options.', () => {
     }
   ]
 
-  it('Set use tree', done => {
+  it('Set use tree', () => new Promise(done => {
     options.skipParse = true
     expect(posthtml()
       .process(tree, options)
@@ -92,7 +91,7 @@ describe('Use tree from options.', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 })
 
 describe('Set option', () => {
@@ -104,7 +103,7 @@ describe('Set option', () => {
     { name: '?php', start: '<', end: '>' }
   ]
 
-  it('directive ?php', done => {
+  it('directive ?php', () => new Promise(done => {
     expect(posthtml()
       .process(html, options)
       .then(result => {
@@ -113,9 +112,9 @@ describe('Set option', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 
-  it('directive ?php with multi html', done => {
+  it('directive ?php with multi html', () => new Promise(done => {
     expect(posthtml()
       .process(multiHTML, options)
       .then(result => {
@@ -124,5 +123,5 @@ describe('Set option', () => {
       })
       .catch(error => done(error))
     )
-  })
+  }))
 })

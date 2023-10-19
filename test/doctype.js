@@ -1,8 +1,7 @@
 const { readFileSync } = require('fs')
 const path = require('path')
 
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import {  describe, expect, it } from 'vitest';
 
 const posthtml = require('../lib')
 
@@ -20,7 +19,7 @@ function test (html, reference, done) {
 }
 
 describe('Parse Doctype', () => {
-  it('doctype equal', done => {
+  it('doctype equal', () => new Promise(done => {
     test(doctype, doctype, done)
-  })
+  }))
 })

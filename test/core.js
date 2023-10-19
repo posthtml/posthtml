@@ -1,5 +1,4 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import {  describe, expect, it } from 'vitest';
 
 const posthtml = require('../lib')
 
@@ -7,14 +6,14 @@ describe('core methods', () => {
   it('tree should have methods', () => {
     posthtml()
       .use(tree => {
-        tree.should.have.property('render')
-        tree.should.have.property('parser')
-        tree.toString.should.be.a('function')
+        expect(tree).toHaveProperty('render')
+        expect(tree).toHaveProperty('parser')
+        expect(tree.toString).toBeTypeOf('function')
       })
       .process('<div></div>')
   })
 
-  it('core methods parser', done => {
+  it('core methods parser', () => new Promise(done => {
     const html = '<import>'
     const ref = '<div>import</div>'
 
@@ -36,9 +35,9 @@ describe('core methods', () => {
       .catch(error => {
         done(error)
       })
-  })
+  }))
 
-  it('core methods render', done => {
+  it('core methods render', () => new Promise(done => {
     const html = '\n<div>1</div>\n\t<div>2</div>\n'
     const ref = '<div>1</div><div>2</div>'
 
@@ -57,5 +56,5 @@ describe('core methods', () => {
       .catch(error => {
         done(error)
       })
-  })
+  }))
 })

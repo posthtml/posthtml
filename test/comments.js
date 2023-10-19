@@ -1,26 +1,27 @@
-const { readFileSync } = require('fs')
-const path = require('path')
+const { readFileSync } = require('fs');
+const path = require('path');
 
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+const posthtml = require('../lib');
 
 const comments = readFileSync(
-  path.resolve(__dirname, 'templates/comments.html'), 'utf8'
-)
+  path.resolve(__dirname, 'templates/comments.html'),
+  'utf8'
+);
 
-function test (html, reference, done) {
-  posthtml().process(html)
-    .then(result => {
-      expect(reference).to.eql(result.html)
-      done()
+function test(html, reference, done) {
+  posthtml()
+    .process(html)
+    .then((result) => {
+      expect(reference).to.eql(result.html);
+      done();
     })
-    .catch(error => done(error))
+    .catch((error) => done(error));
 }
 
 describe('Parse comments', () => {
-  it('comments equal', done => {
-    test(comments, comments, done)
-  })
-})
+  it('comments equal', () => new Promise((done) => {
+    test(comments, comments, done);
+  }));
+});
