@@ -1,8 +1,13 @@
-const pkg = require('../package.json')
-const Api = require('./api.js')
+import fs from 'fs';
+import Api from './api.mjs'
 
-let { parser } = require('posthtml-parser')
-let { render } = require('posthtml-render')
+import { parser } from 'posthtml-parser'
+import { render, Node as RenderNode, Options as RenderOptions } from 'posthtml-render'
+import { MaybeArray, Node, Options, Parser, Plugin, Render, Result } from './types.mjs';
+
+const packageJson = JSON.parse(
+    fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')
+);
 
 /**
  * @author Ivan Voischev (@voischev),
@@ -15,16 +20,25 @@ let { render } = require('posthtml-render')
  * @constructor PostHTML
  * @param {Array} plugins - An array of PostHTML plugins
  */
-class PostHTML {
-  constructor (plugins) {
+class PostHTML<TThis, TMessage> {
+  version: string;
+  name: string;
+  plugins: Plugin<TThis>[];
+  source: string;
+  messages: TMessage[];
+  parser: Parser;
+  render: Render;
+  options: Options;
+
+  constructor (plugins?: Plugin<TThis>[]) {
   /**
    * PostHTML Instance
    *
    * @prop plugins
    * @prop options
    */
-    this.version = pkg.version
-    this.name = pkg.name
+    this.version = packageJson.version;
+    this.name = packageJson.name;
     this.plugins = typeof plugins === 'function' ? [plugins] : plugins || []
     this.source = ''
 
@@ -94,7 +108,7 @@ class PostHTML {
     this.render = render
 
     // extend api methods
-    Api.call(this)
+    Api.call(this);
   }
 
   /**
@@ -109,17 +123,20 @@ class PostHTML {
   *   .then((result) => result))
   * ```
   */
-  use (...args) {
-    this.plugins.push(...args)
-
+  use<TThis>(plugins: MaybeArray<Plugin<TThis>>): this {
+    if (!Array.isArray(plugins)) {
+      this.plugins.push(plugins)
+    } else {
+      this.plugins.push(...plugins);
+    }
     return this
   }
 
   /**
-   * @param   {String} html - Input (HTML)
-   * @param   {?Object} options - PostHTML Options
-   * @returns {Object<{html: String, tree: PostHTMLTree}>} - Sync Mode
-   * @returns {Promise<{html: String, tree: PostHTMLTree}>} - Async Mode (default)
+   * @param   {string} html - Input (HTML)
+   * @param   {Options | undefined} options - PostHTML Options
+   * @returns Sync Mode
+   * @returns Async Mode (default)
    *
    * **Usage**
    *
@@ -133,37 +150,25 @@ class PostHTML {
    * ph.process('<html>..</html>', {}).then((result) => result))
    * ```
    */
-  process (tree, options = {}) {
-    /**
-     * ## PostHTML Options
-     *
-     * @type {Object}
-     * @prop {?Boolean} options.sync - enables sync mode, plugins will run synchronously, throws an error when used with async plugins
-     * @prop {?Function} options.parser - use custom parser, replaces default (posthtml-parser)
-     * @prop {?Function} options.render - use custom render, replaces default (posthtml-render)
-     * @prop {?Boolean} options.skipParse - disable parsing
-     * @prop {?Array} options.directives - Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives).
-     */
+  process(html: string, options: Options = {}): Promise<Result<TMessage>> | Result<TMessage> {
     this.options = options
-    this.source = tree
+    this.source = html;
 
-    if (options.parser) parser = this.parser = options.parser
-    if (options.render) render = this.render = options.render
+    if (options.parser) this.parser = options.parser
+    if (options.render) this.render = options.render
 
-    tree = options.skipParse
-      ? tree || []
-      : parser(tree, options)
+    let nodeOrNodes = options.skipParse ? html || [] : this.parser(html, options);
 
-    tree = [].concat(tree)
+    let tree: Node[] = [].concat(nodeOrNodes);
 
     // sync mode
     if (options.sync === true) {
       this.plugins.forEach((plugin, index) => {
         _treeExtendApi(tree, this)
 
-        let result
+        let result: ReturnType<Plugin<TThis>> | undefined
 
-        if (plugin.length === 2 || isPromise(result = plugin(tree))) {
+        if (plugin.length === 2 || isPromise(result = plugin(tree as Node[]))) {
           throw new Error(
             `Can’t process contents in sync mode because of async plugin: ${plugin.name}`
           )
@@ -175,16 +180,16 @@ class PostHTML {
         }
 
         // return the previous tree unless result is fulfilled
-        tree = result || tree
+        tree = (result as Node[] | undefined) || tree
       })
 
-      return lazyResult(render, tree)
+      return lazyResult(this.render, tree)
     }
 
     // async mode
     let i = 0
 
-    const next = (result, cb) => {
+    const next = (result: Node[], cb: (err: string | null, tree?: Node[]) => void) => {
       _treeExtendApi(result, this)
 
       // all plugins called
@@ -194,7 +199,7 @@ class PostHTML {
       }
 
       // little helper to go to the next iteration
-      function _next (res) {
+      function _next (res: Node[]) {
         if (res && !options.skipParse) {
           res = [].concat(res)
         }
@@ -206,7 +211,8 @@ class PostHTML {
       const plugin = this.plugins[i++]
 
       if (plugin.length === 2) {
-        plugin(result, (err, res) => {
+        // @ts-ignore the following assumes plugin receives a callback as second argument
+        plugin(result, (err: string | null, res: Node[]) => {
           if (err) return cb(err)
           _next(res)
         })
@@ -237,7 +243,7 @@ class PostHTML {
     return new Promise((resolve, reject) => {
       next(tree, (err, tree) => {
         if (err) reject(err)
-        else resolve(lazyResult(render, tree))
+        else resolve(lazyResult(this.render, tree))
       })
     })
   }
@@ -246,8 +252,8 @@ class PostHTML {
 /**
  * @exports posthtml
  *
- * @param  {Array} plugins
- * @return {Function} posthtml
+ * @param  plugins
+ * @return The PostHTML instance
  *
  * **Usage**
  * ```js
@@ -257,21 +263,27 @@ class PostHTML {
  * const ph = posthtml([ plugin() ])
  * ```
  */
-module.exports = plugins => new PostHTML(plugins)
+export default function posthtml<TThis, TMessage>(
+    plugins?: Plugin<TThis>[]
+): PostHTML<TThis, TMessage> {
+  return new PostHTML(plugins)
+}
 
 /**
  * Extension of options tree
  *
  * @private
  *
- * @param   {Array}    tree
- * @param   {Object}   PostHTML
- * @returns {?*}
+ * @param   tree
+ * @param   PostHTML
  */
-function _treeExtendApi (t, _t) {
-  if (typeof t === 'object') {
-    t = Object.assign(t, _t)
-  }
+function _treeExtendApi<TThis, TMessage>(
+    tree: Node[],
+    posthtml: PostHTML<TThis, TMessage>
+) {
+    if (typeof tree === 'object') {
+        tree = Object.assign(tree, posthtml);
+    }
 }
 
 /**
@@ -279,10 +291,10 @@ function _treeExtendApi (t, _t) {
  *
  * @private
  *
- * @param   {*} promise - Target `{}` to test
- * @returns {Boolean}
+ * @param   promise - Target `{}` to test
+ * @returns {boolean}
  */
-function isPromise (promise) {
+function isPromise<T>(promise: any): promise is Promise<T> {
   return !!promise && typeof promise.then === 'function'
 }
 
@@ -291,11 +303,11 @@ function isPromise (promise) {
  *
  * @private
  *
- * @param   {Function} tryFn - try block
- * @param   {Function} catchFn - catch block
- * @returns {?*}
+ * @param   tryFn - try block
+ * @param   catchFn - catch block
+ * @returns {any}
  */
-function tryCatch (tryFn, catchFn) {
+function tryCatch (tryFn: () => any, catchFn: (e: any) => any): any {
   try {
     return tryFn()
   } catch (err) {
@@ -308,16 +320,16 @@ function tryCatch (tryFn, catchFn) {
  *
  * @private
  *
- * @param   {Function} render
- * @param   {Array}    tree
- * @returns {Object<{html: String, tree: Array}>}
+ * @param   render
+ * @param   tree
+ * @returns the result
  */
-function lazyResult (render, tree) {
+function lazyResult<TMessage>(render: Render, tree?: Node | Node[]): Result<TMessage> {
   return {
     get html () {
-      return render(tree, tree.options)
+      return render(tree as RenderNode, "options" in tree ? tree["options"] as RenderOptions : undefined);
     },
     tree,
-    messages: tree.messages
+    messages: "messages" in tree ? tree.messages as TMessage[] : []
   }
 }

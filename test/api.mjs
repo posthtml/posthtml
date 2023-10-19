@@ -1,9 +1,8 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { it, describe } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
-
-const { walk, match } = require('../lib/api')
+import posthtml from '../dist/index.mjs'
+import { walk, match } from '../dist/api.mjs'
 
 function test (nodes, reference, fn, options, done) {
   expect(posthtml([].concat(fn))

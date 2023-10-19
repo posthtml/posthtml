@@ -13,39 +13,94 @@
     "preprocessor",
     "processor"
   ],
-  "main": "lib",
-  "types": "types/posthtml.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "source": "lib/index.mts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./dist/index.mjs": {
+      "import": "./dist/index.mjs"
+    },
+    "./dist/index.cjs": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.cjs"
+    }
+  },
   "files": [
-    "types",
-    "lib"
+    "lib",
+    "dist"
   ],
   "engines": {
     "node": ">=12.0.0"
   },
   "dependencies": {
     "posthtml-parser": "^0.11.0",
-    "posthtml-render": "^3.0.0"
+    "posthtml-render": "^3.0.0",
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
+    "@aminya/babel-plugin-replace-import-extension": "^1.2.0",
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/preset-env": "^7.23.2",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-angular": "^16.2.1",
+    "@types/node": "^20.8.7",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-transform-import-meta": "^2.2.1",
     "c8": "^7.7.3",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "chai-subset": "^1.6.0",
     "conventional-changelog-cli": "^2.1.1",
+    "eslint": "^8.12.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-path-import-extension": "^0.9.0",
     "husky": "^7.0.1",
     "jsdoc-to-markdown": "^7.0.1",
     "lint-staged": "^12.3.4",
-    "mocha": "^9.0.3",
-    "standard": "^16.0.2"
+    "mocha": "^10.1.0",
+    "shx": "^0.3.4",
+    "standard": "^16.0.2",
+    "typescript": "^5.2.2"
   },
   "scripts": {
-    "prepare": "husky install",
+    "clean": "shx rm -rf dist/",
+    "build": "npm run clean && tsc --pretty -p ./tsconfig.json && babel -d dist/ dist/ --out-file-extension .cjs",
+    "prepare": "husky install && npm run build",
     "version": "conventional-changelog -i changelog.md -s -r 0 && git add changelog.md",
-    "test": "c8 mocha",
+    "lint": "eslint --fix .",
+    "test": "npm run build && npm run lint && c8 mocha",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "node": 12
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@aminya/babel-plugin-replace-import-extension",
+        {
+          "extMapping": {
+            ".mjs": ".cjs"
+          }
+        }
+      ],
+      "babel-plugin-transform-import-meta",
+      "babel-plugin-add-module-exports"
+    ]
   },
   "author": "Ivan Voischev <voischev.ivan@ya.ru>",
   "contributors": [

@@ -1,0 +1,38 @@
+{
+    "ignorePatterns": ["dist/"],
+    "parser": "@babel/eslint-parser",
+    "rules": {
+        "import/no-commonjs": "error",
+        "import/no-dynamic-require": "error",
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_",
+                "destructuredArrayIgnorePattern": "^_"
+            }
+        ]
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": false,
+        "mocha": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:path-import-extension/recommended"
+    ],
+    "plugins": [
+        "eslint-plugin-path-import-extension",
+        "eslint-plugin-import"
+    ],
+    "settings": {
+        "import/extensions": [
+            ".js",
+            ".cjs",
+            ".mjs"
+        ]
+    }
+}

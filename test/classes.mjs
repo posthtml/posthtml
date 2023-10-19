@@ -1,7 +1,7 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { it, describe } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
+import posthtml from '../dist/index.mjs'
 
 function test (html, reference, done) {
   posthtml().process(html)

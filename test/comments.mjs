@@ -1,14 +1,14 @@
-const { readFileSync } = require('fs')
-const path = require('path')
+import { readFileSync } from 'fs'
 
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { it, describe } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
+import posthtml from '../dist/index.mjs'
 
 const comments = readFileSync(
-  path.resolve(__dirname, 'templates/comments.html'), 'utf8'
-)
+    new URL('./templates/comments.html', import.meta.url),
+    'utf8'
+);
 
 function test (html, reference, done) {
   posthtml().process(html)

@@ -1,7 +1,7 @@
-const { it, describe, beforeEach } = require('mocha')
-const { expect } = require('chai')
+import { it, describe, beforeEach } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
+import posthtml from '../dist/index.mjs'
 
 describe('Plugins', () => {
   const html = '<div class="button"><div class="button__text">Text</div></div>'
@@ -34,7 +34,7 @@ describe('Plugins', () => {
       .process(html, {})
       .should.eventually.containSubset({ html }))
 
-    it('should return original for resultless plugins', () => posthtml([json => {}])
+    it('should return original for resultless plugins', () => posthtml([_json => {}])
       .process(tree, { skipParse: true })
       .should.eventually.containSubset({ tree }))
 
@@ -52,7 +52,7 @@ describe('Plugins', () => {
   describe('.use(plugin)', () => {
     it('options default', () => posthtml()
       .use(json => json)
-      .use(json => {})
+      .use(_json => {})
       .process(html, {})
       .should.eventually.containSubset({ html }))
 

@@ -1,7 +1,7 @@
-const { it, describe } = require('mocha')
-const { expect } = require('chai')
+import { it, describe } from 'mocha'
+import { expect } from 'chai'
 
-const posthtml = require('../lib')
+import posthtml from '../dist/index.mjs'
 
 const html = '<div class="messages">Messages</div>'
 const expected = '<new-root><div class="messages">Messages</div></new-root>'
