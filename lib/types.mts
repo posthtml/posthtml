@@ -1,11 +1,12 @@
 import type { parser } from 'posthtml-parser';
 import type { render } from 'posthtml-render';
+import type { match, walk } from './api.mjs';
 
 export type Maybe<T> = void | T;
 export type MaybeArray<T> = T | T[];
 
-type StringMatcher = string | RegExp;
-type AttrMatcher = Record<string, StringMatcher>;
+export type StringMatcher = string | RegExp;
+export type AttrMatcher = Record<string, StringMatcher>;
 type ContentMatcher =
   | StringMatcher[]
   | {
@@ -38,24 +39,8 @@ export type NodeCallback<
 export type NodeAttributes = Record<string, Maybe<string>>;
 
 interface NodeAPI {
-  walk: (cb: NodeCallback) => Node;
-  match: <
-    TTag extends StringMatcher,
-    TAttrs extends Maybe<AttrMatcher>,
-    TTagResult extends Maybe<string> = TTag extends string
-      ? TTag
-      : TTag extends void
-      ? Maybe<string>
-      : string,
-    TAttrResult extends Maybe<NodeAttributes> = TAttrs extends void
-      ? Maybe<NodeAttributes>
-      : {
-          [P in keyof TAttrs]: string;
-        } & NodeAttributes
-  >(
-    expression: Expression<TTag, TAttrs>,
-    cb: NodeCallback<TTagResult, TAttrResult>
-  ) => Node<TTagResult, TAttrResult>[];
+  walk: typeof walk;
+  match: typeof match;
 }
 
 export interface RawNode<
@@ -91,8 +76,6 @@ export interface Options {
   render?: Render;
   /** disable parsing */
   skipParse?: boolean;
-  /** Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives). */
-  directives;
 }
 
 export type Plugin<TThis> = (

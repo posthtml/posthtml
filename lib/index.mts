@@ -3,7 +3,7 @@ import Api from './api.mjs'
 
 import { parser } from 'posthtml-parser'
 import { render, Node as RenderNode, Options as RenderOptions } from 'posthtml-render'
-import { MaybeArray, Node, Options, Parser, Plugin, Render, Result } from './types';
+import { MaybeArray, Node, Options, Parser, Plugin, Render, Result } from './types.mjs';
 
 const packageJson = JSON.parse(
     fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')

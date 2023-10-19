@@ -1,5 +1,7 @@
 'use strict'
 
+import { AttrMatcher, Expression, Maybe, MaybeArray, Node, NodeAttributes, NodeCallback, RawNode, StringMatcher } from "./types.mjs"
+
 /**
  * # API
  *
@@ -10,7 +12,7 @@
  *
  * @namespace tree
  */
-function Api () {
+export default function Api () {
   this.walk = walk
   this.match = match
 }
@@ -20,8 +22,8 @@ function Api () {
  *
  * @memberof tree
  *
- * @param  {Function} cb  Callback
- * @return {Function}     Callback(node)
+ * @param  cb  Callback
+ * @return     Callback(node)
  *
  *@example
  * ```js
@@ -35,7 +37,7 @@ function Api () {
  * }
  * ```
  */
-function walk (cb) {
+export function walk (cb: NodeCallback): Node | Node[] {
   return traverse(this, cb)
 }
 
@@ -78,42 +80,73 @@ function walk (cb) {
  * }
  * ```
  */
-function match (expression, cb) {
+export function match<
+    TTag extends StringMatcher,
+    TAttrs extends Maybe<AttrMatcher>,
+    TTagResult extends Maybe<string> = TTag extends string
+        ? TTag
+        : TTag extends void
+        ? Maybe<string>
+        : string,
+    TAttrResult extends Maybe<NodeAttributes> = TAttrs extends void
+        ? Maybe<NodeAttributes>
+        : {
+              [P in keyof TAttrs]: string;
+          } & NodeAttributes
+>(
+    expression: Expression<TTag, TAttrs>,
+    cb: NodeCallback<TTagResult, TAttrResult>
+): Node<TTagResult, TAttrResult>[] {
   return Array.isArray(expression)
-    ? traverse(this, node => {
+    ? traverse(this, (node: Node<TTagResult, TAttrResult>) => {
         for (let i = 0; i < expression.length; i++) {
           if (compare(expression[i], node)) return cb(node)
         }
 
         return node
       })
-    : traverse(this, node => {
+    : traverse(this, (node: Node<TTagResult, TAttrResult>) => {
       if (compare(expression, node)) return cb(node)
 
       return node
     })
 }
 
-export default Api
-export { walk, match }
 
 /** @private */
-function traverse (tree, cb) {
+function traverse<
+    TTag extends Maybe<string> = Maybe<string>,
+    TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>,
+>(
+  tree: MaybeArray<Node<TTag, TAttrs>>,
+  cb: NodeCallback<TTag, TAttrs>
+): Array<Node<TTag, TAttrs>> {
   if (Array.isArray(tree)) {
     for (let i = 0; i < tree.length; i++) {
-      tree[i] = traverse(cb(tree[i]), cb)
+      tree[i] = traverse(cb(tree[i]) as MaybeArray<Node>, cb) as unknown as Node<TTag, TAttrs>;
     }
   } else if (
     tree &&
       typeof tree === 'object' &&
-      Object.prototype.hasOwnProperty.call(tree, 'content')
-  ) traverse(tree.content, cb)
+      Object.prototype.hasOwnProperty.call(tree, 'content') &&
+      'content' in tree
+  ) {
+    traverse(tree["content"] as Node[], cb)
+  }
 
-  return tree
+  return tree as Array<Node<TTag, TAttrs>>
 }
 
 /** @private */
-function compare (expected, actual) {
+function compare <
+  TTag extends StringMatcher,
+  TAttrs extends Maybe<AttrMatcher>,
+  TTagResult extends Maybe<string>,
+  TAttrResult extends Maybe<NodeAttributes>
+>(
+  expected: Expression<TTag, TAttrs>,
+  actual: Node<TTagResult, TAttrResult>
+) {
   if (expected instanceof RegExp) {
     if (typeof actual === 'object') return false
     if (typeof actual === 'string') return expected.test(actual)
@@ -121,6 +154,7 @@ function compare (expected, actual) {
 
   if (typeof expected !== typeof actual) return false
   if (typeof expected !== 'object' || expected === null) {
+    // @ts-ignore
     return expected === actual
   }
 
