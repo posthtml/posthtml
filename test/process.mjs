@@ -1,7 +1,7 @@
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
 
-import posthtml from '../lib/index.mjs'
+import posthtml from '../dist/index.mjs'
 
 const html = null
 

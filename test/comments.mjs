@@ -3,7 +3,7 @@ import { readFileSync } from 'fs'
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
 
-import posthtml from '../lib/index.mjs'
+import posthtml from '../dist/index.mjs'
 
 const comments = readFileSync(
     new URL('./templates/comments.html', import.meta.url),

@@ -3,7 +3,7 @@
 const { it, describe } = require('mocha')
 const { expect } = require('chai')
 
-const posthtml = require('../lib/index.cjs')
+const posthtml = require('../dist/index.cjs')
 
 const input = '<div class="button"><div class="button__text">Text</div></div>'
 

@@ -1,9 +1,8 @@
 import { it, describe } from 'mocha'
 import { expect } from 'chai'
 
-import posthtml from '../lib/index.mjs'
-
-import { walk, match } from '../lib/api.mjs'
+import posthtml from '../dist/index.mjs'
+import { walk, match } from '../dist/api.mjs'
 
 function test (nodes, reference, fn, options, done) {
   expect(posthtml([].concat(fn))
