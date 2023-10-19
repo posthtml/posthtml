@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    // all the checks
+    // the checks
     // "strict": true,
     // "strictNullChecks": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
     // "noImplicitAny": true,
     // "noImplicitThis": true,
-    // "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true,
     // compilation
     "incremental": true,
     "declaration": true,

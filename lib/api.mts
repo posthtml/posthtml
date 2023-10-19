@@ -1,6 +1,6 @@
 'use strict'
 
-import { AttrMatcher, Expression, Maybe, MaybeArray, Node, NodeAttributes, NodeCallback, RawNode, StringMatcher } from "./types.mjs"
+import { AttrMatcher, Expression, Maybe, MaybeArray, Node, NodeAttributes, NodeCallback, StringMatcher } from "./types.mjs"
 
 /**
  * # API
