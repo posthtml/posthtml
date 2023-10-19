@@ -1,5 +1,5 @@
 {
-    "ignorePatterns": ["lib/*.cjs"],
+    "ignorePatterns": ["dist/"],
     "parser": "@babel/eslint-parser",
     "rules": {
         "import/no-commonjs": "error",

@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    // all the checks
+    // "strict": true,
+    // "strictNullChecks": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noImplicitReturns": true,
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "noFallthroughCasesInSwitch": true,
+    // compilation
+    "incremental": true,
+    "declaration": true,
+    "preserveSymlinks": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "sourceMap": true,
+    // target
+    // this targets a modern Node, and babel handles compatibility
+    "lib": [
+      "ES2021"
+    ],
+    "target": "ES2021",
+    "module": "ESNext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist"
+  },
+  "compileOnSave": false,
+  "include": [
+    "lib",
+  ]
+}
