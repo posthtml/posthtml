@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-import posthtml from '../lib';
+import posthtml from "../lib";
 
-const text = 'text';
+const text = "text";
 
 function test(html, reference, done) {
   posthtml()
@@ -14,8 +14,8 @@ function test(html, reference, done) {
     .catch((error) => done(error));
 }
 
-describe('Parse text', () => {
-  it('Text equal', () =>
+describe("Parse text", () => {
+  it("Text equal", () =>
     new Promise((done) => {
       test(text, text, done);
     }));

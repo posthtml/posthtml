@@ -1,18 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-import posthtml from '../lib';
+import posthtml from "../lib";
 
 const html = '<div class="messages">Messages</div>';
 const expected = '<new-root><div class="messages">Messages</div></new-root>';
 const messages = [
   {
-    type: 'dependency',
-    file: './path/to/1.html',
+    type: "dependency",
+    file: "./path/to/1.html",
     from: undefined,
   },
   {
-    type: 'dependency',
-    file: './path/to/2.html',
+    type: "dependency",
+    file: "./path/to/2.html",
     from: undefined,
   },
 ];
@@ -21,23 +21,23 @@ function test(html, done) {
   posthtml()
     .use((tree) => {
       tree.messages.push({
-        type: 'dependency',
-        file: './path/to/1.html',
+        type: "dependency",
+        file: "./path/to/1.html",
         from: tree.options.from,
       });
       return tree;
     })
     .use((tree) => {
       tree.messages.push({
-        type: 'dependency',
-        file: './path/to/2.html',
+        type: "dependency",
+        file: "./path/to/2.html",
         from: tree.options.from,
       });
 
       return tree;
     })
     .use((tree) => ({
-      tag: 'new-root',
+      tag: "new-root",
       content: tree,
     }))
     .process(html)
@@ -52,8 +52,9 @@ function test(html, done) {
     });
 }
 
-describe('Messages', () => {
-  it('should expose messages via result.messages', () => new Promise(done => {
-    test(html, done);
-  }));
+describe("Messages", () => {
+  it("should expose messages via result.messages", () =>
+    new Promise((done) => {
+      test(html, done);
+    }));
 });

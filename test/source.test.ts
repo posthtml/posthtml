@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-import posthtml from '../lib';
+import posthtml from "../lib";
 
 const html = '<div class="source">source</div>';
-const expected = '<div>source</div>';
+const expected = "<div>source</div>";
 
 function test(html, done) {
   posthtml()
@@ -14,7 +14,7 @@ function test(html, done) {
         }
 
         return node;
-      })
+      }),
     )
     .process(html)
     .then((result) => {
@@ -27,8 +27,8 @@ function test(html, done) {
     });
 }
 
-describe('Source', () => {
-  it('Source code must not mutate', () =>
+describe("Source", () => {
+  it("Source code must not mutate", () =>
     new Promise((done) => {
       test(html, done);
     }));

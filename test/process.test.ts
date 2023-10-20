@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 
-import posthtml from '../lib';
+import posthtml from "../lib";
 
 const html = null;
 
@@ -11,15 +11,15 @@ function test(html, done) {
       tree.match(/(.+)/, (node) => node);
 
       tree.messages.push({
-        type: 'warning',
-        message: 'tree is empty',
+        type: "warning",
+        message: "tree is empty",
       });
 
       return tree;
     })
     .process(html, { skipParse: true })
     .then((result) => {
-      expect('').to.eql(result.html);
+      expect("").to.eql(result.html);
 
       done();
     })
@@ -28,8 +28,8 @@ function test(html, done) {
     });
 }
 
-describe('Process', () => {
-  it('should not throw on empty tree', () =>
+describe("Process", () => {
+  it("should not throw on empty tree", () =>
     new Promise((done) => {
       test(html, done);
     }));
