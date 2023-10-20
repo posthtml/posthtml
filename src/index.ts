@@ -1,8 +1,11 @@
-const pkg = require('../package.json')
-const Api = require('./api.js')
+import pkg from '../package.json'
+import Api from './api.js'
 
-let { parser } = require('posthtml-parser')
-let { render } = require('posthtml-render')
+import { parser as posthtmlParser } from 'posthtml-parser'
+import { render as posthtmlRender } from 'posthtml-render'
+
+let parser = posthtmlParser
+let render = posthtmlRender
 
 /**
  * @author Ivan Voischev (@voischev),

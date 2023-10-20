@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 
-import posthtml from "../lib";
+import posthtml from "../src";
 
-import { walk, match } from "../lib/api";
+import { walk, match } from "../src/api";
 
 function test(nodes, reference, fn, options, done) {
   expect(

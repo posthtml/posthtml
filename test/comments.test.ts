@@ -3,7 +3,7 @@ import path from "path";
 
 import { describe, expect, it } from "vitest";
 
-import posthtml from "../lib";
+import posthtml from "../src";
 
 const comments = readFileSync(path.resolve(__dirname, "templates/comments.html"), "utf8");
 

@@ -13,12 +13,15 @@
     "preprocessor",
     "processor"
   ],
-  "main": "lib",
-  "types": "types/posthtml.d.ts",
-  "files": [
-    "types",
-    "lib"
-  ],
+  "main": "./dist/index.global.js",
+  "module": "./dist/index.mjs",
+  "types": "./types/posthtml.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "engines": {
     "node": ">=12.0.0"
   },
@@ -34,9 +37,12 @@
     "jsdoc-to-markdown": "^7.0.1",
     "lint-staged": "^12.3.4",
     "standard": "^16.0.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
   "scripts": {
+    "build": "rm -rf dist && tsup src/*.ts --format esm,cjs,iife --sourcemap --minify",
     "prepare": "husky install",
     "test": "vitest run --coverage",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",

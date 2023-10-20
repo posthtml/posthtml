@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import posthtml from "../lib";
+import posthtml from "../src";
 
 const html = '<div class="messages">Messages</div>';
 const expected = '<new-root><div class="messages">Messages</div></new-root>';

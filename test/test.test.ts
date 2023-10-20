@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import posthtml from "../lib";
+import posthtml from "../src";
 
 const input = '<div class="button"><div class="button__text">Text</div></div>';
 
