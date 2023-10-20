@@ -13,8 +13,9 @@
     "preprocessor",
     "processor"
   ],
-  "main": "./dist/index.global.js",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
+  "browser": "./dist/index.global.js",
   "types": "./types/posthtml.d.ts",
   "exports": {
     ".": {
@@ -43,7 +44,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsup src/*.ts --format esm,cjs,iife --sourcemap --minify",
-    "prepare": "husky install",
+    "prepare": "husky install && npm run build",
     "test": "vitest run --coverage",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md"
