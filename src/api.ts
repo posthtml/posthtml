@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /**
  * # API
@@ -10,9 +10,9 @@
  *
  * @namespace tree
  */
-function Api () {
-  this.walk = walk
-  this.match = match
+function Api() {
+  this.walk = walk;
+  this.match = match;
 }
 
 /**
@@ -35,8 +35,8 @@ function Api () {
  * }
  * ```
  */
-function walk (cb) {
-  return traverse(this, cb)
+function walk(cb) {
+  return traverse(this, cb);
 }
 
 /**
@@ -78,68 +78,65 @@ function walk (cb) {
  * }
  * ```
  */
-function match (expression, cb) {
+function match(expression, cb) {
   return Array.isArray(expression)
-    ? traverse(this, node => {
+    ? traverse(this, (node) => {
         for (let i = 0; i < expression.length; i++) {
-          if (compare(expression[i], node)) return cb(node)
+          if (compare(expression[i], node)) return cb(node);
         }
 
-        return node
+        return node;
       })
-    : traverse(this, node => {
-      if (compare(expression, node)) return cb(node)
+    : traverse(this, (node) => {
+        if (compare(expression, node)) return cb(node);
 
-      return node
-    })
+        return node;
+      });
 }
 
-module.exports = Api
-module.exports.match = match
-module.exports.walk = walk
+module.exports = Api;
+module.exports.match = match;
+module.exports.walk = walk;
 
 /** @private */
-function traverse (tree, cb) {
+function traverse(tree, cb) {
   if (Array.isArray(tree)) {
     for (let i = 0; i < tree.length; i++) {
-      tree[i] = traverse(cb(tree[i]), cb)
+      tree[i] = traverse(cb(tree[i]), cb);
     }
-  } else if (
-    tree &&
-      typeof tree === 'object' &&
-      Object.prototype.hasOwnProperty.call(tree, 'content')
-  ) traverse(tree.content, cb)
+  } else if (tree && typeof tree === "object" && Object.prototype.hasOwnProperty.call(tree, "content"))
+    traverse(tree.content, cb);
 
-  return tree
+  return tree;
 }
 
 /** @private */
-function compare (expected, actual) {
+function compare(expected, actual) {
   if (expected instanceof RegExp) {
-    if (typeof actual === 'object') return false
-    if (typeof actual === 'string') return expected.test(actual)
+    if (typeof actual === "object") return false;
+    if (typeof actual === "string") return expected.test(actual);
   }
 
-  if (typeof expected !== typeof actual) return false
-  if (typeof expected !== 'object' || expected === null) {
-    return expected === actual
+  if (typeof expected !== typeof actual) return false;
+  if (typeof expected !== "object" || expected === null) {
+    return expected === actual;
   }
 
   if (Array.isArray(expected)) {
-    return expected.every(exp => [].some.call(actual, act => compare(exp, act)))
+    return expected.every((exp) => [].some.call(actual, (act) => compare(exp, act)));
   }
 
-  return Object.keys(expected).every(key => {
-    const ao = actual[key]
-    const eo = expected[key]
+  return Object.keys(expected).every((key) => {
+    const ao = actual[key];
+    const eo = expected[key];
 
-    if (typeof eo === 'object' && eo !== null && ao !== null) {
-      return compare(eo, ao)
+    if (typeof eo === "object" && eo !== null && ao !== null) {
+      return compare(eo, ao);
     }
-    if (typeof eo === 'boolean') {
-      return eo !== (ao == null)
+    if (typeof eo === "boolean") {
+      return eo !== (ao == null);
     }
 
-    return ao === eo
-  })
+    return ao === eo;
+  });
 }

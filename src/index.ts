@@ -1,11 +1,11 @@
-import pkg from '../package.json'
-import Api from './api.js'
+import pkg from "../package.json";
+import Api from "./api.js";
 
-import { parser as posthtmlParser } from 'posthtml-parser'
-import { render as posthtmlRender } from 'posthtml-render'
+import { parser as posthtmlParser } from "posthtml-parser";
+import { render as posthtmlRender } from "posthtml-render";
 
-let parser = posthtmlParser
-let render = posthtmlRender
+let parser = posthtmlParser;
+let render = posthtmlRender;
 
 /**
  * @author Ivan Voischev (@voischev),
@@ -19,17 +19,17 @@ let render = posthtmlRender
  * @param {Array} plugins - An array of PostHTML plugins
  */
 class PostHTML {
-  constructor (plugins) {
-  /**
-   * PostHTML Instance
-   *
-   * @prop plugins
-   * @prop options
-   */
-    this.version = pkg.version
-    this.name = pkg.name
-    this.plugins = typeof plugins === 'function' ? [plugins] : plugins || []
-    this.source = ''
+  constructor(plugins) {
+    /**
+     * PostHTML Instance
+     *
+     * @prop plugins
+     * @prop options
+     */
+    this.version = pkg.version;
+    this.name = pkg.name;
+    this.plugins = typeof plugins === "function" ? [plugins] : plugins || [];
+    this.source = "";
 
     /**
      * Tree messages to store and pass metadata between plugins
@@ -52,7 +52,7 @@ class PostHTML {
      * }
      * ```
      */
-    this.messages = []
+    this.messages = [];
 
     /**
      * Tree method parsing string inside plugins.
@@ -75,7 +75,7 @@ class PostHTML {
      * }
      * ```
      */
-    this.parser = parser
+    this.parser = parser;
 
     /**
      * Tree method rendering tree to string inside plugins.
@@ -94,28 +94,28 @@ class PostHTML {
      * }
      * ```
      */
-    this.render = render
+    this.render = render;
 
     // extend api methods
-    Api.call(this)
+    Api.call(this);
   }
 
   /**
-  * @this posthtml
-  * @param   {Function} plugin - A PostHTML plugin
-  * @returns {Constructor} - this(PostHTML)
-  *
-  * **Usage**
-  * ```js
-  * ph.use((tree) => { tag: 'div', content: tree })
-  *   .process('<html>..</html>', {})
-  *   .then((result) => result))
-  * ```
-  */
-  use (...args) {
-    this.plugins.push(...args)
+   * @this posthtml
+   * @param   {Function} plugin - A PostHTML plugin
+   * @returns {Constructor} - this(PostHTML)
+   *
+   * **Usage**
+   * ```js
+   * ph.use((tree) => { tag: 'div', content: tree })
+   *   .process('<html>..</html>', {})
+   *   .then((result) => result))
+   * ```
+   */
+  use(...args) {
+    this.plugins.push(...args);
 
-    return this
+    return this;
   }
 
   /**
@@ -136,7 +136,7 @@ class PostHTML {
    * ph.process('<html>..</html>', {}).then((result) => result))
    * ```
    */
-  process (tree, options = {}) {
+  process(tree, options = {}) {
     /**
      * ## PostHTML Options
      *
@@ -147,102 +147,101 @@ class PostHTML {
      * @prop {?Boolean} options.skipParse - disable parsing
      * @prop {?Array} options.directives - Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives).
      */
-    this.options = options
-    this.source = tree
+    this.options = options;
+    this.source = tree;
 
-    if (options.parser) parser = this.parser = options.parser
-    if (options.render) render = this.render = options.render
+    if (options.parser) parser = this.parser = options.parser;
+    if (options.render) render = this.render = options.render;
 
-    tree = options.skipParse
-      ? tree || []
-      : parser(tree, options)
+    tree = options.skipParse ? tree || [] : parser(tree, options);
 
-    tree = [].concat(tree)
+    tree = [].concat(tree);
 
     // sync mode
     if (options.sync === true) {
       this.plugins.forEach((plugin, index) => {
-        _treeExtendApi(tree, this)
+        _treeExtendApi(tree, this);
 
-        let result
+        let result;
 
-        if (plugin.length === 2 || isPromise(result = plugin(tree))) {
-          throw new Error(
-            `Can’t process contents in sync mode because of async plugin: ${plugin.name}`
-          )
+        if (plugin.length === 2 || isPromise((result = plugin(tree)))) {
+          throw new Error(`Can’t process contents in sync mode because of async plugin: ${plugin.name}`);
         }
 
         // clearing the tree of options
         if (index !== this.plugins.length - 1 && !options.skipParse) {
-          tree = [].concat(tree)
+          tree = [].concat(tree);
         }
 
         // return the previous tree unless result is fulfilled
-        tree = result || tree
-      })
+        tree = result || tree;
+      });
 
-      return lazyResult(render, tree)
+      return lazyResult(render, tree);
     }
 
     // async mode
-    let i = 0
+    let i = 0;
 
     const next = (result, cb) => {
-      _treeExtendApi(result, this)
+      _treeExtendApi(result, this);
 
       // all plugins called
       if (this.plugins.length <= i) {
-        cb(null, result)
-        return
+        cb(null, result);
+        return;
       }
 
       // little helper to go to the next iteration
-      function _next (res) {
+      function _next(res) {
         if (res && !options.skipParse) {
-          res = [].concat(res)
+          res = [].concat(res);
         }
 
-        return next(res || result, cb)
+        return next(res || result, cb);
       }
 
       // call next
-      const plugin = this.plugins[i++]
+      const plugin = this.plugins[i++];
 
       if (plugin.length === 2) {
         plugin(result, (err, res) => {
-          if (err) return cb(err)
-          _next(res)
-        })
-        return
+          if (err) return cb(err);
+          _next(res);
+        });
+        return;
       }
 
       // sync and promised plugins
-      let err = null
+      let err = null;
 
-      const res = tryCatch(() => plugin(result), e => {
-        err = e
-        return e
-      })
+      const res = tryCatch(
+        () => plugin(result),
+        (e) => {
+          err = e;
+          return e;
+        },
+      );
 
       if (err) {
-        cb(err)
-        return
+        cb(err);
+        return;
       }
 
       if (isPromise(res)) {
-        res.then(_next).catch(cb)
-        return
+        res.then(_next).catch(cb);
+        return;
       }
 
-      _next(res)
-    }
+      _next(res);
+    };
 
     return new Promise((resolve, reject) => {
       next(tree, (err, tree) => {
-        if (err) reject(err)
-        else resolve(lazyResult(render, tree))
-      })
-    })
+        if (err) reject(err);
+        else resolve(lazyResult(render, tree));
+      });
+    });
   }
 }
 
@@ -260,7 +259,7 @@ class PostHTML {
  * const ph = posthtml([ plugin() ])
  * ```
  */
-module.exports = plugins => new PostHTML(plugins)
+module.exports = (plugins) => new PostHTML(plugins);
 
 /**
  * Extension of options tree
@@ -271,9 +270,9 @@ module.exports = plugins => new PostHTML(plugins)
  * @param   {Object}   PostHTML
  * @returns {?*}
  */
-function _treeExtendApi (t, _t) {
-  if (typeof t === 'object') {
-    t = Object.assign(t, _t)
+function _treeExtendApi(t, _t) {
+  if (typeof t === "object") {
+    t = Object.assign(t, _t);
   }
 }
 
@@ -285,8 +284,8 @@ function _treeExtendApi (t, _t) {
  * @param   {*} promise - Target `{}` to test
  * @returns {Boolean}
  */
-function isPromise (promise) {
-  return !!promise && typeof promise.then === 'function'
+function isPromise(promise) {
+  return !!promise && typeof promise.then === "function";
 }
 
 /**
@@ -298,11 +297,11 @@ function isPromise (promise) {
  * @param   {Function} catchFn - catch block
  * @returns {?*}
  */
-function tryCatch (tryFn, catchFn) {
+function tryCatch(tryFn, catchFn) {
   try {
-    return tryFn()
+    return tryFn();
   } catch (err) {
-    catchFn(err)
+    catchFn(err);
   }
 }
 
@@ -315,12 +314,12 @@ function tryCatch (tryFn, catchFn) {
  * @param   {Array}    tree
  * @returns {Object<{html: String, tree: Array}>}
  */
-function lazyResult (render, tree) {
+function lazyResult(render, tree) {
   return {
-    get html () {
-      return render(tree, tree.options)
+    get html() {
+      return render(tree, tree.options);
     },
     tree,
-    messages: tree.messages
-  }
+    messages: tree.messages,
+  };
 }
