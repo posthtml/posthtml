@@ -3,8 +3,8 @@ import path from "path";
 
 import { describe, expect, it } from "vitest";
 
-const { parser } = require("posthtml-parser");
-const { render } = require("posthtml-render");
+import { parser } from "posthtml-parser";
+import { render } from "posthtml-render";
 
 const html = readFileSync(path.resolve(__dirname, "templates/parser.html"), "utf8");
 

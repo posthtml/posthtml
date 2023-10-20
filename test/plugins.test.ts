@@ -33,7 +33,7 @@ describe("Plugins", () => {
     });
 
     it.skip("should return original for resultless plugins", async () => {
-      const result = await posthtml([(json) => {}]).process(tree, {
+      const result = await posthtml([() => {}]).process(tree, {
         skipParse: true,
       });
       expect(result).toMatchObject({ tree });
@@ -58,7 +58,7 @@ describe("Plugins", () => {
     it("options default", async () => {
       const result = await posthtml()
         .use((json) => json)
-        .use((json) => {})
+        .use(() => {})
         .process(html, {});
 
       expect(result).toMatchObject({ html });

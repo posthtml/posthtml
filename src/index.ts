@@ -259,7 +259,7 @@ class PostHTML {
  * const ph = posthtml([ plugin() ])
  * ```
  */
-module.exports = (plugins) => new PostHTML(plugins);
+export default (plugins) => new PostHTML(plugins);
 
 /**
  * Extension of options tree

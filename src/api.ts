@@ -10,7 +10,7 @@
  *
  * @namespace tree
  */
-function Api() {
+export default function Api() {
   this.walk = walk;
   this.match = match;
 }
@@ -35,7 +35,7 @@ function Api() {
  * }
  * ```
  */
-function walk(cb) {
+export function walk(cb) {
   return traverse(this, cb);
 }
 
@@ -78,7 +78,7 @@ function walk(cb) {
  * }
  * ```
  */
-function match(expression, cb) {
+export function match(expression, cb) {
   return Array.isArray(expression)
     ? traverse(this, (node) => {
         for (let i = 0; i < expression.length; i++) {
@@ -93,10 +93,6 @@ function match(expression, cb) {
         return node;
       });
 }
-
-module.exports = Api;
-module.exports.match = match;
-module.exports.walk = walk;
 
 /** @private */
 function traverse(tree, cb) {

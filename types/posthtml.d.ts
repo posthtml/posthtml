@@ -76,8 +76,8 @@ declare namespace PostHTML {
 
   export interface Options {
     sync?: boolean;
-    parser?: Function;
-    render?: Function;
+    parser?: () => void;
+    render?: () => void;
     skipParse?: boolean;
   }
 
