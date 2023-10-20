@@ -1,9 +1,9 @@
-const { readFileSync } = require('fs');
-const path = require('path');
+import { readFileSync } from 'fs';
+import path from 'path';
 
 import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib');
+import posthtml from '../lib';
 
 const comments = readFileSync(
   path.resolve(__dirname, 'templates/comments.html'),

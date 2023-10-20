@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 
-const posthtml = require('../lib');
+import posthtml from '../lib';
 
 describe('Plugins', () => {
   const html = '<div class="button"><div class="button__text">Text</div></div>';

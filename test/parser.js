@@ -1,5 +1,5 @@
-const { readFileSync } = require('fs');
-const path = require('path');
+import { readFileSync } from 'fs';
+import path from 'path';
 
 import { describe, expect, it } from 'vitest';
 

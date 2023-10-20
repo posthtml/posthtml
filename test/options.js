@@ -1,6 +1,6 @@
 import {  describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+import posthtml from '../lib'
 
 const input = '<div class="button"><rect /><div class="button__text">Text</div></div>'
 

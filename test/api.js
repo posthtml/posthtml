@@ -1,8 +1,8 @@
 import {  describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib')
+import posthtml from '../lib'
 
-const { walk, match } = require('../lib/api')
+import { walk, match } from '../lib/api'
 
 function test (nodes, reference, fn, options, done) {
   expect(posthtml([].concat(fn))

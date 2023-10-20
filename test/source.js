@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-const posthtml = require('../lib');
+import posthtml from '../lib';
 
 const html = '<div class="source">source</div>';
 const expected = '<div>source</div>';
