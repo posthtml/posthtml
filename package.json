@@ -40,7 +40,7 @@
   "scripts": {
     "prepare": "husky install",
     "version": "conventional-changelog -i changelog.md -s -r 0 && git add changelog.md",
-    "test": "vitest related --run",
+    "test": "vitest",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md"
   },
