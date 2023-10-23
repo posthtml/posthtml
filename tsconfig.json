@@ -4,6 +4,7 @@
         "esModuleInterop": true,
         "moduleResolution": "Node",
         "resolveJsonModule": true,
-        "strict": true
+        "strict": true,
+        "types": ["vitest"]
     }
 }
