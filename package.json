@@ -48,7 +48,7 @@
   "scripts": {
     "build": "rm -rf dist && tsup src/*.ts --format esm,cjs,iife --sourcemap --minify",
     "prepare": "husky install && npm run build",
-    "test": "vitest run --coverage",
+    "test": "vitest",
     "docs:api": "jsdoc2md lib/api.js > docs/api.md",
     "docs:core": "jsdoc2md lib/index.js > docs/core.md",
     "lint": "eslint . --ext .ts"
