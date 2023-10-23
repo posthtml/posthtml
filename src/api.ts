@@ -1,83 +1,12 @@
-"use strict";
-
-/**
- * # API
- *
- * @author Ivan Voischev (@voischev),
- *         Anton Winogradov (@awinogradov),
- *         Alexej Yaroshevich (@zxqfox),
- *         Vasiliy (@Yeti-or)
- *
- * @namespace tree
- */
 export default function Api() {
   this.walk = walk;
   this.match = match;
 }
 
-/**
- * Walks the tree and passes all nodes via a callback
- *
- * @memberof tree
- *
- * @param  {Function} cb  Callback
- * @return {Function}     Callback(node)
- *
- *@example
- * ```js
- * export const walk = (tree) => {
- *   tree.walk((node) => {
- *     let classes = node.attrs && node.attrs.class.split(' ') || []
- *
- *     if (classes.includes(className)) return cb(node)
- *       return node
- *   })
- * }
- * ```
- */
 export function walk(cb) {
   return traverse(this, cb);
 }
 
-/**
- * Matches an expression to search for nodes in the tree
- *
- * @memberof tree
- *
- * @param  {String|RegExp|Object|Array} expression - Matcher(s) to search
- * @param  {Function} cb Callback
- *
- * @return {Function} Callback(node)
- *
- * @example
- * ```js
- * export const match = (tree) => {
- *   // Single matcher
- *   tree.match({ tag: 'custom-tag' }, (node) => {
- *     let tag = node.tag
- *
- *     Object.assign(node, { tag: 'div', attrs: {class: tag} })
- *
- *     return node
- *   })
- *   // Multiple matchers
- *   tree.match([{ tag: 'b' }, { tag: 'strong' }], (node) => {
- *     let style = 'font-weight: bold;'
- *
- *     node.tag = 'span'
- *
- *     node.attrs
- *       ? ( node.attrs.style
- *         ? ( node.attrs.style += style )
- *         : node.attrs.style = style
- *       )
- *       : node.attrs = { style: style }
- *
- *     return node
- *   })
- * }
- * ```
- */
 export function match(expression, cb) {
   return Array.isArray(expression)
     ? traverse(this, (node) => {
@@ -94,7 +23,6 @@ export function match(expression, cb) {
       });
 }
 
-/** @private */
 function traverse(tree, cb) {
   if (Array.isArray(tree)) {
     for (let i = 0; i < tree.length; i++) {
@@ -106,7 +34,6 @@ function traverse(tree, cb) {
   return tree;
 }
 
-/** @private */
 function compare(expected, actual) {
   if (expected instanceof RegExp) {
     if (typeof actual === "object") return false;
