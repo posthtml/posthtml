@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "printWidth": 120,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderCaseInsensitive": true
+}
