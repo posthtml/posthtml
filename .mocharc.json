@@ -1,0 +1,5 @@
+{
+  "inline-diffs": true,
+  "reporter": "spec",
+  "require": ["./test/init.js"]
+}

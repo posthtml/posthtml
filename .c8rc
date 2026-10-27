@@ -1,4 +1,11 @@
 {
   "reporter": ["lcov", "text"],
-  "extension": [".js"]
+  "extension": [".js"],
+  "all": true,
+  "include": ["lib/**/*.js"],
+  "check-coverage": true,
+  "statements": 100,
+  "branches": 95,
+  "functions": 100,
+  "lines": 100
 }

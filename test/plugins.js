@@ -191,21 +191,21 @@ describe('Plugins', () => {
     )
 
     it('should transform callback errors to rejects', () => {
-      posthtml()
+      return posthtml()
         .use((_, cb) => { cb(new Error('FooBar')) })
         .process(tree, { skipParse: true })
         .should.be.rejectedWith(Error, /FooBar/)
     })
 
     it('should pass other rejects', () => {
-      posthtml()
+      return posthtml()
         .use(() => Promise.reject(new Error('FooBar')))
         .process(tree, { skipParse: true })
         .should.be.rejectedWith(Error, /FooBar/)
     })
 
     it('should have api methods after returning new root', () => {
-      posthtml()
+      return posthtml()
         .use(tree => Promise.resolve({ tag: 'new-root', content: tree }))
         .use(tree => {
           tree.should.have.property('walk')

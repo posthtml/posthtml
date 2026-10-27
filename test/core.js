@@ -5,7 +5,7 @@ const posthtml = require('../lib')
 
 describe('core methods', () => {
   it('tree should have methods', () => {
-    posthtml()
+    return posthtml()
       .use(tree => {
         tree.should.have.property('render')
         tree.should.have.property('parser')

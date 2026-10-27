@@ -1,4 +1,4 @@
-# PostHTML <img align="right" width="220" height="200" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+# PostHTML <img align="right" width="220" height="200" title="PostHTML" src="https://posthtml.github.io/posthtml/logo.svg">
 
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
@@ -29,10 +29,13 @@ npm i -D posthtml
 
 ### API
 
+The examples below use ES modules. Save them as `.mjs` files or set `"type": "module"` in your project's `package.json`, and install the plugins used in each example.
+
 **Sync**
 
 ```js
 import posthtml from 'posthtml'
+import customElements from 'posthtml-custom-elements'
 
 const html = `
   <component>
@@ -42,7 +45,7 @@ const html = `
 `
 
 const result = posthtml()
-  .use(require('posthtml-custom-elements')())
+  .use(customElements())
   .process(html, { sync: true })
   .html
 
@@ -62,6 +65,8 @@ console.log(result)
 
 ```js
 import posthtml from 'posthtml'
+import toSvgTags from 'posthtml-to-svg-tags'
+import extendAttrs from 'posthtml-extend-attrs'
 
 const html = `
   <html>
@@ -73,8 +78,8 @@ const html = `
 
 posthtml(
   [
-    require('posthtml-to-svg-tags')(),
-    require('posthtml-extend-attrs')({
+    toSvgTags(),
+    extendAttrs({
       attrsTree: {
         '.wow' : {
           id: 'wow_id',
@@ -86,7 +91,7 @@ posthtml(
     })
   ])
   .process(html/*, options */)
-  .then((result) =>  console.log(result.html))
+  .then((result) => console.log(result.html))
 ```
 
 ```html
@@ -105,6 +110,7 @@ posthtml(
 
 ```js
 import posthtml from 'posthtml'
+import customElements from 'posthtml-custom-elements'
 
 const php = `
   <component>
@@ -113,16 +119,14 @@ const php = `
   </component>
 `
 
-const result = posthtml()
-  .use(require('posthtml-custom-elements')())
-  .process(html, {
+posthtml()
+  .use(customElements())
+  .process(php, {
     directives: [
       { name: '?php', start: '<', end: '>' }
     ]
   })
-  .html
-
-console.log(result)
+  .then((result) => console.log(result.html))
 ```
 
 ```html
@@ -155,18 +159,17 @@ npm i -D gulp-posthtml
 ```
 
 ```js
-import tap from 'gulp-tap'
+import gulp from 'gulp'
 import posthtml from 'gulp-posthtml'
-import { task, src, dest } from 'gulp'
+import include from 'posthtml-include'
+
+const { task, src, dest } = gulp
 
 task('html', () => {
-  let path
-
-  const plugins = [ require('posthtml-include')({ root: `${path}` }) ]
+  const plugins = [include({ root: 'src' })]
   const options = {}
 
-  src('src/**/*.html')
-    .pipe(tap((file) => path = file.path))
+  return src('src/**/*.html')
     .pipe(posthtml(plugins, options))
     .pipe(dest('build/'))
 })
@@ -213,6 +216,9 @@ npm i -D html-loader posthtml-loader
 **webpack.config.js**
 
 ```js
+import pug from 'posthtml-pug'
+import bem from 'posthtml-bem'
+
 const config = {
   module: {
     loaders: [
@@ -223,9 +229,9 @@ const config = {
     ]
   },
   posthtml: (ctx) => ({
-    parser: require('posthtml-pug'),
+    parser: pug,
     plugins: [
-      require('posthtml-bem')()
+      bem()
     ]
   })
 }
@@ -238,7 +244,11 @@ export default config
 **webpack.config.js**
 
 ```js
-import { LoaderOptionsPlugin } from 'webpack'
+import webpack from 'webpack'
+import pug from 'posthtml-pug'
+import bem from 'posthtml-bem'
+
+const { LoaderOptionsPlugin } = webpack
 
 const config = {
   module: {
@@ -262,9 +272,9 @@ const config = {
       options: {
         posthtml(ctx) {
           return {
-            parser: require('posthtml-pug'),
+            parser: pug,
             plugins: [
-              require('posthtml-bem')()
+              bem()
             ]
           }
         }
@@ -285,19 +295,19 @@ $ npm i rollup-plugin-posthtml-template -D
 ```
 
 ```js
-import { join } from 'path';
-
-import posthtml from 'rollup-plugin-posthtml-template';
+import posthtml from 'rollup-plugin-posthtml-template'
 // or
-// import posthtml from 'rollup-plugin-posthtml';
+// import posthtml from 'rollup-plugin-posthtml'
 
-import sugarml from 'posthtml-sugarml';  // npm i posthtml-sugarml -D
-import include from 'posthtml-include';  // npm i posthtml-include -D
+import sugarml from 'posthtml-sugarml'  // npm i posthtml-sugarml -D
+import include from 'posthtml-include'  // npm i posthtml-include -D
 
 export default {
-  entry: join(__dirname, 'main.js'),
-  dest: join(__dirname, 'bundle.js'),
-  format: 'iife',
+  input: 'main.js',
+  output: {
+    file: 'bundle.js',
+    format: 'iife'
+  },
   plugins: [
     posthtml({
       parser: sugarml(),
@@ -305,12 +315,13 @@ export default {
       template: true  // only rollup-plugin-posthtml-template
     })
   ]
-};
+}
 ```
 
 ## Parser
 
 ```js
+import posthtml from 'posthtml'
 import pug from 'posthtml-pug'
 
 posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
@@ -337,19 +348,19 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
   <tbody>
    <tr>
     <td align="center">
-      <img width="150 height="150"
+      <img width="150" height="150"
       src="https://avatars0.githubusercontent.com/u/2789192?s=460&v=4">
       <br />
       <a href="https://github.com/scrum">Ivan Demidov</a>
     </td>
     <td align="center">
-      <img width="150 height="150"
+      <img width="150" height="150"
       src="https://avatars.githubusercontent.com/u/1510217?v=3&s=150">
       <br />
       <a href="https://github.com/voischev">Ivan Voischev</a>
     </td>
    </tr>
-  <tbody>
+  </tbody>
 </table>
 
 ## Contributors
