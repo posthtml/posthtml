@@ -18,11 +18,11 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 	# Clone your fork of the repo into the current directory
 	git clone https://github.com/<your-username>/posthtml
 	# Navigate to the newly cloned directory
-	cd PLUGIN_NAME
+	cd posthtml
 	# Assign the original repo to a remote called "upstream"
 	git remote add upstream https://github.com/posthtml/posthtml
 	# Install the tools necessary for development
-	npm install
+	npm ci
 	```
 
 2. Create a branch for your feature or fix:
@@ -39,7 +39,11 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 	```bash
 	# Test current code
 	npm run test
+	# Check code style
+	npm run lint
 	```
+
+   Tests must return their Promise, use `async`/`await`, or call Mocha's `done` callback so that asynchronous assertions are awaited. `npm test` also checks coverage: 100% for statements, functions, and lines, and at least 95% for branches.
 
 4. Push your branch up to your fork:
 	```bash

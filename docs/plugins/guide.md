@@ -1,6 +1,6 @@
 # Plugins - Guide
 
-A PostHTML plugin is a function that receives and, usually, transforms a HTML AST from the PostHTML parser. HTML AST has the PostHTML Tree format. [Read more about PostHTML Tree](tree.md).
+A PostHTML plugin is a function that receives and, usually, transforms a HTML AST from the PostHTML parser. HTML AST has the PostHTML Tree format. [Read more about PostHTML Tree](../tree.md).
 
 The rules below are mandatory for all PostHTML plugins.
 
@@ -18,7 +18,7 @@ Do not create multitool plugins. Several small, one-purpose plugins bundled into
 
 ## Plugin must be tested
 
-A CI service like Travis is also recommended for testing code in different environments. You should test in (at least) Node.js v0.12 and stable.
+A CI service like GitHub Actions is also recommended for testing code in different environments. Test the minimum Node.js version declared in your plugin's `package.json` and currently supported LTS versions.
 
 ## Use only the public PostHTML API
 
