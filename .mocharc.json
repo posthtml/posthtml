@@ -1,5 +1,6 @@
 {
   "inline-diffs": true,
   "reporter": "spec",
-  "require": ["./test/init.js"]
+  "require": ["./test/init.js"],
+  "spec": ["test/*.js"]
 }

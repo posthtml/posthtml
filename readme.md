@@ -21,6 +21,8 @@ npm init posthtml
 
 ## Install
 
+Requires Node.js `^20.19.0 || >=22.12.0`, matching the synchronous loading requirements of `posthtml-parser` and its `htmlparser2` backend.
+
 ```bash
 npm i -D posthtml
 ```
@@ -341,6 +343,10 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 - [awesome-posthtml](https://github.com/posthtml/awesome-posthtml)
 
 [plugin]: https://github.com/posthtml/posthtml-plugin-starter
+
+## Contributing
+
+Use Node.js 24 from `.nvmrc` and run `npm run check`. See the [contributor guide](https://github.com/posthtml/posthtml/blob/master/.github/contributing.md) for commands and releases, and [AGENTS.md](https://github.com/posthtml/posthtml/blob/master/AGENTS.md) for coordinated work on PostHTML, its parser and renderer.
 
 ## Maintainers
 

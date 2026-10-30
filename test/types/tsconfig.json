@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["node"],
+    "paths": {
+      "posthtml": ["../../types/posthtml.d.ts"]
+    }
+  },
+  "include": ["*.cts", "*.mts"]
+}
