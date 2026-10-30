@@ -1,3 +1,17 @@
+## Unreleased
+
+### Breaking Changes
+
+* Upgrade `posthtml-parser` to `^0.13.0`, backed by `htmlparser2` 12.
+* Require Node.js `^20.19.0 || >=22.12.0`, following the runtime dependency chain.
+* With `decodeEntities: true`, entities in `textarea` content are decoded by the updated parser.
+
+### Development
+
+* Refresh Mocha, Chai, coverage, lint and documentation tooling; use Chai's built-in subset assertions.
+* Validate CommonJS/ESM consumers and packaged processing modes across supported Node.js runtimes.
+* Document coordinated development and releases for PostHTML, its parser and renderer in `AGENTS.md`.
+
 ## <small>0.16.7 (2025-10-07)</small>
 
 * fix: fix configure ([0c05bf1](https://github.com/posthtml/posthtml/commit/0c05bf1))
@@ -713,6 +727,5 @@
 * feat(*): changelog build ([044fd58](https://github.com/posthtml/posthtml/commit/044fd58))
 * feat(*): deep results objects #13 ([96b86c9](https://github.com/posthtml/posthtml/commit/96b86c9)), closes [#13](https://github.com/posthtml/posthtml/issues/13)
 * feat(gulp): refactor config ([2fe4ecb](https://github.com/posthtml/posthtml/commit/2fe4ecb))
-
 
 
