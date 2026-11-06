@@ -109,7 +109,6 @@
 * Add posthtml-sri in plugin section ([6837e93](https://github.com/posthtml/posthtml/commit/6837e93))
 * build: update dep dev ([70ae3e9](https://github.com/posthtml/posthtml/commit/70ae3e9))
 * style: after lint ([07f66bd](https://github.com/posthtml/posthtml/commit/07f66bd))
-* docs: add Backers ([5021653](https://github.com/posthtml/posthtml/commit/5021653))
 * docs: change test status ([0911f50](https://github.com/posthtml/posthtml/commit/0911f50))
 * test: migrate to ES6 ([897690b](https://github.com/posthtml/posthtml/commit/897690b))
 
@@ -232,8 +231,6 @@
 * fix(index): remove static method because not return class constructor ([7825559](https://github.com/posthtml/posthtml/commit/7825559))
 * perf(index): change name methos ([4f97355](https://github.com/posthtml/posthtml/commit/4f97355))
 * feat(index): tree fromString/toString, close #242 ([2647d53](https://github.com/posthtml/posthtml/commit/2647d53)), closes [#242](https://github.com/posthtml/posthtml/issues/242)
-* Added call to donate after npm install (optional) ([40c2d5d](https://github.com/posthtml/posthtml/commit/40c2d5d))
-* Added financial contributors to the README ([5fbe573](https://github.com/posthtml/posthtml/commit/5fbe573))
 
 
 
@@ -259,9 +256,6 @@
 * perf: add TypeScript typings ([89bf763](https://github.com/posthtml/posthtml/commit/89bf763)), closes [#288](https://github.com/posthtml/posthtml/issues/288)
 * Add posthtml-minify-classnames to plugins list ([9844a08](https://github.com/posthtml/posthtml/commit/9844a08))
 * Add posthtml-pseudo ([8b86f58](https://github.com/posthtml/posthtml/commit/8b86f58))
-* Create FUNDING.yml ([b43395b](https://github.com/posthtml/posthtml/commit/b43395b))
-* Update FUNDING.yml ([401de68](https://github.com/posthtml/posthtml/commit/401de68))
-* Update FUNDING.yml ([1950f58](https://github.com/posthtml/posthtml/commit/1950f58))
 * Update README.md ([1009bff](https://github.com/posthtml/posthtml/commit/1009bff))
 
 

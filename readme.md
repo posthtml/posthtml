@@ -365,13 +365,7 @@ In case you want to develop your own plugin, we recommend using [posthtml-plugin
 
 ## Contributors
 
-<a href="https://github.com/posthtml/posthtml/graphs/contributors"><img src="https://opencollective.com/posthtml/contributors.svg?width=890&button=false" /></a>
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/posthtml#backer)]
-
-<a href="https://opencollective.com/posthtml#backers" target="_blank"><img src="https://opencollective.com/posthtml/backers.svg?width=885&button=false"></a>
+[View all contributors on GitHub](https://github.com/posthtml/posthtml/graphs/contributors).
 
 [chat]: https://badges.gitter.im/posthtml/PostHTML.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
