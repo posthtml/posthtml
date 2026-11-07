@@ -1,10 +1,12 @@
-# PostHTML <img align="right" width="220" height="200" title="PostHTML" src="https://posthtml.github.io/posthtml/logo.svg">
+# PostHTML <img align="right" width="220" height="200" alt="PostHTML" src="https://raw.githubusercontent.com/posthtml/posthtml/master/logo.svg">
 
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
 All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
 
-For more detailed information about PostHTML in general take a look at the [docs](https://github.com/posthtml/posthtml/tree/master/docs).
+See the [documentation](https://github.com/posthtml/posthtml/tree/master/docs) for the processor API, tree format and plugin guides.
+
+For usage questions, visit [Discussions](https://github.com/posthtml/posthtml/discussions). Report bugs and propose features through [Issues](https://github.com/posthtml/posthtml/issues/new/choose).
 
 ### Dependencies
 
@@ -371,13 +373,7 @@ Use Node.js 24 from `.nvmrc` and run `npm run check`. See the [contributor guide
 
 ## Contributors
 
-<a href="https://github.com/posthtml/posthtml/graphs/contributors"><img src="https://opencollective.com/posthtml/contributors.svg?width=890&button=false" /></a>
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/posthtml#backer)]
-
-<a href="https://opencollective.com/posthtml#backers" target="_blank"><img src="https://opencollective.com/posthtml/backers.svg?width=885&button=false"></a>
+[View all contributors on GitHub](https://github.com/posthtml/posthtml/graphs/contributors).
 
 [chat]: https://badges.gitter.im/posthtml/PostHTML.svg
 [chat-url]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"

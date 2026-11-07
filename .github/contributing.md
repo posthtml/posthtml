@@ -1,5 +1,11 @@
 # Contributing
 
+## Reporting issues
+
+- Check [existing issues](https://github.com/posthtml/posthtml/issues) before opening a report.
+- Use the [issue templates](https://github.com/posthtml/posthtml/issues/new/choose) for bugs and feature requests. For bugs, include a reduced runnable example with the input, plugins, options and expected/actual HTML or tree output.
+- Ask usage questions in [Discussions](https://github.com/posthtml/posthtml/discussions).
+
 ## Development
 
 Use Node.js 24 from `.nvmrc`:
@@ -46,5 +52,3 @@ Checks run in CI and before npm publication. Reports and npm test artifacts are 
 Publish changed parser/renderer versions before updating or publishing core ranges that need them. Verify those versions exist in npm. Runtime minimum changes and other breaking changes in a 0.x package require the next minor release.
 
 Prepare a release PR with the package/lockfile version and dated release notes. Use `npm version <version> --no-git-tag-version` to update version files without creating a commit or tag. Run checks and commit those files together. After the release PR is merged and checked, tag the tested master commit, push the tag, and publish that checkout. The `prepublishOnly` script runs `npm run check` again.
-
-For bug reports, include a reduced reproducible example and expected/actual HTML or tree output.

@@ -24,15 +24,14 @@ This file is the cross-package guide. The sibling guides also contain standalone
 
 ```text
 htmlparser2 -> posthtml-parser -> posthtml
-                    types -> posthtml-render -> posthtml
-                              is-json -> posthtml-render
+is-json -> posthtml-render -> posthtml
 ```
 
-The renderer has its own runtime dependencies; its parser dependency is currently for development and AST declarations. Do not turn a type-only relationship into a runtime dependency.
+The renderer has its own runtime dependencies. In current renderer sources, parser is a development-only round-trip fixture and generated declarations use self-contained structural AST types. Published renderer 3.0.0 predates that declaration/tooling refresh and still references parser types; distinguish published packages from local candidates when checking consumers. Do not introduce a parser runtime dependency into the renderer.
 
 - Derive runtime Node.js requirements from actual runtime dependencies and synchronous CommonJS/ESM loading. Development tools do not determine the public runtime minimum.
 - The current integration uses published `posthtml-parser ^0.13.0` and `posthtml-render ^3.0.0`; manifests and npm metadata are authoritative when updating this baseline.
-- Use Node.js 24, selected by `.nvmrc`, for PostHTML and parser development. Renderer still has a legacy toolchain and a Node.js 12/14/16 CI matrix; follow its own guide rather than assuming identical scripts.
+- Use Node.js 24, selected by each repository's `.nvmrc`, for development in all three repositories. Renderer now uses `tsc`, ESLint, c8 and native Node.js tests, while retaining Node.js `>=12` for consumers. Its CI runs the complete packed suite on Node.js 12.0/12/14/16/18/20/22/24/26; follow each repository's own guide and scripts.
 - A parser AST or declaration change must be checked against both renderer consumption and the core pipeline. A renderer change must be checked against parser output and core rendering options.
 - Publish changed leaf packages before updating/publishing the core dependency ranges. A leaf with only contributor documentation changes needs no npm release.
 
