@@ -1,66 +1,54 @@
-You want to help? You rock! Now, take a moment to be sure your contributions make sense to everyone else.
+# Contributing
 
-## Reporting Issues
+## Reporting issues
 
-Found a problem? Want a new feature?
+- Check [existing issues](https://github.com/posthtml/posthtml/issues) before opening a report.
+- Use the [issue templates](https://github.com/posthtml/posthtml/issues/new/choose) for bugs and feature requests. For bugs, include a reduced runnable example with the input, plugins, options and expected/actual HTML or tree output.
+- Ask usage questions in [Discussions](https://github.com/posthtml/posthtml/discussions).
 
-- See if your issue or idea has [already been reported].
-- Use the [issue templates] for bug reports and feature requests. Include a [reduced test case] with the input, options, and expected/actual output for bugs.
-- Ask usage questions in [Discussions].
+## Development
 
-Remember, a bug is a _demonstrable problem_ caused by _our_ code.
+Use Node.js 24 from `.nvmrc`:
 
-## Submitting Pull Requests
+```sh
+nvm install
+nvm use
+npm ci
+npm run check
+```
 
-Pull requests are the greatest contributions, so be sure they are focused in scope, and do avoid unrelated commits.
+`npm run check` runs ESLint, current/minimum TypeScript consumer checks, the Mocha/Chai suite with coverage, and native Node.js package checks. Tests must return their Promise, use `async`/`await`, or call Mocha's `done` callback so asynchronous assertions are awaited.
 
-1. To begin, [fork this project], clone your fork, and add our upstream.
-	```bash
-	# Clone your fork of the repo into the current directory
-	git clone https://github.com/<your-username>/posthtml
-	# Navigate to the newly cloned directory
-	cd posthtml
-	# Assign the original repo to a remote called "upstream"
-	git remote add upstream https://github.com/posthtml/posthtml
-	# Install the tools necessary for development
-	npm ci
-	```
+Coverage must remain at 100% statements/functions/lines and at least 95% branches. `npm test` runs the core suite; `npm run test:package` checks public processing modes and CommonJS/ESM loading.
 
-2. Create a branch for your feature or fix:
-	```bash
-	# Move into a new branch for a feature
-	git checkout -b feature/thing
-	```
-	```bash
-	# Move into a new branch for a fix
-	git checkout -b fix/something
-	```
+The public declarations in `types/posthtml.d.ts` are maintained by hand. Add consumer fixtures in `test/types` when changing type behavior. Public JSDoc changes require reviewing generated `docs/api.md` and `docs/core.md` using `npm run docs:api` and `npm run docs:core`.
 
-3. Be sure your code follows our practices.
-	```bash
-	# Test current code
-	npm run test
-	# Check code style
-	npm run lint
-	```
+## Parser and renderer work
 
-   Tests must return their Promise, use `async`/`await`, or call Mocha's `done` callback so that asynchronous assertions are awaited. `npm test` also checks coverage: 100% for statements, functions, and lines, and at least 95% for branches.
+Read [AGENTS.md](../AGENTS.md) for the three-repository map and cross-package protocol. Inspect each repository's own instructions and Git status before editing it.
 
-4. Push your branch up to your fork:
-	```bash
-	# Push a feature branch
-	git push origin feature/thing
-	```
-	```bash
-	# Push a fix branch
-	git push origin fix/something
-	```
+The Node.js runtime minimum follows `posthtml-parser`, its `htmlparser2` backend, and `posthtml-render`, including synchronous module-loading requirements. New development tools do not by themselves raise the version required by users.
 
-5. Now [open a pull request] with a clear title and description.
+Check and pack local parser/renderer candidates first. Then test the core tarball with the relevant leaf flags:
 
-[already been reported]: https://github.com/posthtml/posthtml/issues
-[issue templates]:       https://github.com/posthtml/posthtml/issues/new/choose
-[Discussions]:           https://github.com/posthtml/posthtml/discussions
-[fork this project]:     fork
-[open a pull request]:   https://help.github.com/articles/using-pull-requests/
-[reduced test case]:     https://css-tricks.com/reduced-test-cases/
+```sh
+npm run test:packed -- /path/to/posthtml.tgz --parser /path/to/posthtml-parser.tgz --render /path/to/posthtml-render.tgz
+```
+
+Omit a leaf flag to use the published core dependency range. The helper installs the production package and test tooling separately, then runs the complete existing suite and package checks against installed code. CI repeats this on the supported runtime matrix.
+
+## Commits and pull requests
+
+- Keep commits focused and use short, imperative subjects. Prefixes such as `fix:`, `docs:`, and `build:` are optional guidance.
+- Add regression assertions for behavior changes, including intentional parser/render output differences.
+- Commit `package-lock.json` with dependency changes and maintain `Unreleased` notes in `changelog.md` by hand.
+- Run `npm run check`; for packaging/dependency changes, also run `npm run test:packed` with an actual tarball.
+- Keep generated files, archives, coverage and consumer installs out of commits.
+
+Checks run in CI and before npm publication. Reports and npm test artifacts are stored by GitHub Actions.
+
+## Releases
+
+Publish changed parser/renderer versions before updating or publishing core ranges that need them. Verify those versions exist in npm. Runtime minimum changes and other breaking changes in a 0.x package require the next minor release.
+
+Prepare a release PR with the package/lockfile version and dated release notes. Use `npm version <version> --no-git-tag-version` to update version files without creating a commit or tag. Run checks and commit those files together. After the release PR is merged and checked, tag the tested master commit, push the tag, and publish that checkout. The `prepublishOnly` script runs `npm run check` again.
