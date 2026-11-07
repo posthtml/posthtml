@@ -5,7 +5,8 @@ You want to help? You rock! Now, take a moment to be sure your contributions mak
 Found a problem? Want a new feature?
 
 - See if your issue or idea has [already been reported].
-- Provide a [reduced test case] or a [live example].
+- Use the [issue templates] for bug reports and feature requests. Include a [reduced test case] with the input, options, and expected/actual output for bugs.
+- Ask usage questions in [Discussions].
 
 Remember, a bug is a _demonstrable problem_ caused by _our_ code.
 
@@ -57,8 +58,9 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 
 5. Now [open a pull request] with a clear title and description.
 
-[already been reported]: issues
+[already been reported]: https://github.com/posthtml/posthtml/issues
+[issue templates]:       https://github.com/posthtml/posthtml/issues/new/choose
+[Discussions]:           https://github.com/posthtml/posthtml/discussions
 [fork this project]:     fork
-[live example]:          http://codepen.io/pen
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
 [reduced test case]:     https://css-tricks.com/reduced-test-cases/
