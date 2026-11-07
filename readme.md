@@ -1,10 +1,12 @@
-# PostHTML <img align="right" width="220" height="200" title="PostHTML" src="https://posthtml.github.io/posthtml/logo.svg">
+# PostHTML <img align="right" width="220" height="200" alt="PostHTML" src="https://raw.githubusercontent.com/posthtml/posthtml/master/logo.svg">
 
 PostHTML is a tool for transforming HTML/XML with JS plugins. PostHTML itself is very small. It includes only a HTML parser, a HTML node tree API and a node tree stringifier.
 
 All HTML transformations are made by plugins. And these plugins are just small plain JS functions, which receive a HTML node tree, transform it, and return a modified tree.
 
-For more detailed information about PostHTML in general take a look at the [docs](https://github.com/posthtml/posthtml/tree/master/docs).
+See the [documentation](https://github.com/posthtml/posthtml/tree/master/docs) for the processor API, tree format and plugin guides.
+
+For usage questions, visit [Discussions](https://github.com/posthtml/posthtml/discussions). Report bugs and propose features through [Issues](https://github.com/posthtml/posthtml/issues/new/choose).
 
 ### Dependencies
 
