@@ -1,3 +1,0 @@
-{
-  "*.js": "standard --env mocha"
-}
