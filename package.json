@@ -59,7 +59,7 @@
       "email": "scrum@list.ru"
     }
   ],
-  "homepage": "https://github.com/posthtml/posthtml/tree/master/docs",
+  "homepage": "https://github.com/posthtml/posthtml",
   "repository": "https://github.com/posthtml/posthtml.git",
   "bugs": "https://github.com/posthtml/posthtml/issues",
   "license": "MIT"
