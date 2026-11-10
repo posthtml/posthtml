@@ -4,11 +4,7 @@
 
 # NodeJS
 npm-debug.log
-
-.nyc_output
+node_modules
 
 coverage
-jsdoc-api
-node_modules
 artifacts
-consumer
