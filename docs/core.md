@@ -12,14 +12,6 @@
 <dd></dd>
 </dl>
 
-## Members
-
-<dl>
-<dt><a href="#version">version</a></dt>
-<dd><p>PostHTML Instance</p>
-</dd>
-</dl>
-
 <a name="module_posthtml"></a>
 
 ## posthtml ⇒ <code>function</code>
@@ -47,9 +39,10 @@ const ph = posthtml([ plugin() ])
 
 * [PostHTML](#PostHTML)
     * [new PostHTML(plugins)](#new_PostHTML_new)
+    * [.version](#PostHTML+version)
+    * [.options](#PostHTML+options) : <code>Object</code>
     * [.use(plugin)](#PostHTML+use) ⇒ <code>Constructor</code>
     * [.process(html, options)](#PostHTML+process) ⇒ <code>Object.&lt;{html: String, tree: PostHTMLTree}&gt;</code> \| <code>Promise.&lt;{html: String, tree: PostHTMLTree}&gt;</code>
-        * [~options](#PostHTML+process..options) : <code>Object</code>
 
 <a name="new_PostHTML_new"></a>
 
@@ -58,6 +51,35 @@ const ph = posthtml([ plugin() ])
 | Param | Type | Description |
 | --- | --- | --- |
 | plugins | <code>Array</code> | An array of PostHTML plugins |
+
+<a name="PostHTML+version"></a>
+
+### postHTML.version
+PostHTML Instance
+
+**Kind**: instance property of [<code>PostHTML</code>](#PostHTML)  
+**Properties**
+
+| Name |
+| --- |
+| plugins | 
+| options | 
+
+<a name="PostHTML+options"></a>
+
+### postHTML.options : <code>Object</code>
+## PostHTML Options
+
+**Kind**: instance property of [<code>PostHTML</code>](#PostHTML)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| options.sync | <code>Boolean</code> | enables sync mode, plugins will run synchronously, throws an error when used with async plugins |
+| options.parser | <code>function</code> | use custom parser, replaces default (posthtml-parser) |
+| options.render | <code>function</code> | use custom render, replaces default (posthtml-render) |
+| options.skipParse | <code>Boolean</code> | disable parsing |
+| options.directives | <code>Array</code> | Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives). |
 
 <a name="PostHTML+use"></a>
 
@@ -99,33 +121,4 @@ ph.process('<html>..</html>', {}).then((result) => result))
 | --- | --- | --- |
 | html | <code>String</code> | Input (HTML) |
 | options | <code>Object</code> | PostHTML Options |
-
-<a name="PostHTML+process..options"></a>
-
-#### process~options : <code>Object</code>
-## PostHTML Options
-
-**Kind**: inner property of [<code>process</code>](#PostHTML+process)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| options.sync | <code>Boolean</code> | enables sync mode, plugins will run synchronously, throws an error when used with async plugins |
-| options.parser | <code>function</code> | use custom parser, replaces default (posthtml-parser) |
-| options.render | <code>function</code> | use custom render, replaces default (posthtml-render) |
-| options.skipParse | <code>Boolean</code> | disable parsing |
-| options.directives | <code>Array</code> | Adds processing of custom [directives](https://github.com/posthtml/posthtml-parser#directives). |
-
-<a name="version"></a>
-
-## version
-PostHTML Instance
-
-**Kind**: global variable  
-**Properties**
-
-| Name |
-| --- |
-| plugins | 
-| options | 
 
