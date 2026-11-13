@@ -6,6 +6,10 @@
 * Require Node.js `^20.19.0 || >=22.12.0`, following the runtime dependency chain.
 * With `decodeEntities: true`, entities in `textarea` content are decoded by the updated parser.
 
+### Fixes
+
+* Type synchronous `process()` calls as returning a result directly.
+
 ### Development
 
 * Refresh Mocha, Chai, coverage, lint and documentation tooling; use Chai's built-in subset assertions.
