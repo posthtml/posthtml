@@ -1,3 +1,6 @@
+import type { Options as ParserOptions } from "posthtml-parser";
+import type { Options as RenderOptions } from "posthtml-render";
+
 type Maybe<T> = void | T;
 type MaybeArray<T> = T | T[];
 
@@ -31,7 +34,9 @@ declare namespace PostHTML {
   export type NodeCallback<
     TTag extends Maybe<string> = Maybe<string>,
     TAttrs extends Maybe<NodeAttributes> = Maybe<NodeAttributes>
-  > = (node: Node<TTag, TAttrs>) => MaybeArray<Node | RawNode>;
+  > = (
+    node: Node<TTag, TAttrs>
+  ) => MaybeArray<Node | RawNode | string> | null | undefined | false;
 
   export type NodeAttributes = Record<string, Maybe<string>>;
 
@@ -74,12 +79,18 @@ declare namespace PostHTML {
     options?: Options;
   }
 
-  export interface Options {
+  export interface Options
+    extends ParserOptions,
+      Omit<RenderOptions, "closingSingleTag"> {
     sync?: boolean;
     parser?: Function;
     render?: Function;
     skipParse?: boolean;
+    closingSingleTag?: "tag" | "slash" | "default" | "closeAs";
   }
+
+  export type SyncOptions = Options & { sync: true };
+  export type AsyncOptions = Options & { sync?: false };
 
   export type Plugin<TThis> = (
     tree: Node
@@ -97,7 +108,12 @@ declare namespace PostHTML {
     plugins: Plugin<TThis>[];
     messages: TMessage[];
     use<TThis>(plugins: MaybeArray<Plugin<TThis>>): this;
-    process(html: string, options?: Options): Promise<Result<TMessage>>;
+    process(html: string, options: SyncOptions): Result<TMessage>;
+    process(html: string, options?: AsyncOptions): Promise<Result<TMessage>>;
+    process(
+      html: string,
+      options?: Options
+    ): Result<TMessage> | Promise<Result<TMessage>>;
   }
 }
 

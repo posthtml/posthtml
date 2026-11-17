@@ -9,6 +9,9 @@
 ### Bug Fixes
 
 * Sync mode now passes render options and `messages` to the result when there are no plugins or the last plugin returns a new tree.
+* Types: `process()` with `sync: true` returns the result instead of a Promise ([#403](https://github.com/posthtml/posthtml/issues/403)).
+* Types: `Options` include `posthtml-parser` and `posthtml-render` options ([#377](https://github.com/posthtml/posthtml/issues/377)).
+* Types: `walk`/`match` callbacks may return `null`, `undefined`, `false` or a string to remove or replace a node ([#379](https://github.com/posthtml/posthtml/issues/379)).
 
 ### Development
 
