@@ -14,3 +14,42 @@ void html;
 
 // @ts-expect-error Sync mode is a boolean option.
 processor.process('<p>Hello</p>', { sync: 'yes' });
+
+// Sync mode returns the result directly (#403).
+const syncResult = processor.process('<p>Hello</p>', { sync: true });
+const syncHtml: string = syncResult.html;
+void syncHtml;
+// @ts-expect-error Sync mode does not return a Promise.
+void processor.process('<p>Hello</p>', { sync: true }).then;
+const asyncResult: Promise<posthtml.Result<unknown>> = processor.process('<p>Hello</p>', { sync: false });
+void asyncResult;
+declare const maybeSync: boolean;
+const eitherResult: posthtml.Result<unknown> | Promise<posthtml.Result<unknown>> = processor.process('<p>Hello</p>', { sync: maybeSync });
+void eitherResult;
+
+// Parser and render options are accepted (#377).
+processor.process('<image/>', {
+  xmlMode: true,
+  recognizeSelfClosing: true,
+  directives: [{ name: '?php', start: '<', end: '>' }],
+  sourceLocations: true,
+  singleTags: ['image', /^x-/],
+  closingSingleTag: 'slash',
+  quoteAllAttributes: false
+});
+// @ts-expect-error Unknown closing format.
+processor.process('<br>', { closingSingleTag: 'self' });
+
+// Callbacks may remove or replace nodes (#379).
+posthtml([
+  tree => {
+    tree.match({ tag: 'p' }, () => null);
+    tree.match({ tag: 'p' }, () => false);
+    tree.match({ tag: 'p' }, () => '');
+    tree.match({ tag: 'p' }, () => undefined);
+    tree.walk(node => (node.tag === 'script' ? 'text' : node));
+    tree.walk(node => [node, { tag: 'hr', attrs: undefined }]);
+    // @ts-expect-error Numbers are not nodes.
+    tree.walk(() => 1);
+  }
+]);
