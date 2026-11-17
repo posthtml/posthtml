@@ -15,7 +15,7 @@ void html;
 // @ts-expect-error Sync mode is a boolean option.
 processor.process('<p>Hello</p>', { sync: 'yes' });
 
-// Sync mode returns the result directly (#403).
+// Sync mode returns the result directly.
 const syncResult = processor.process('<p>Hello</p>', { sync: true });
 const syncHtml: string = syncResult.html;
 void syncHtml;
@@ -27,7 +27,7 @@ declare const maybeSync: boolean;
 const eitherResult: posthtml.Result<unknown> | Promise<posthtml.Result<unknown>> = processor.process('<p>Hello</p>', { sync: maybeSync });
 void eitherResult;
 
-// Parser and render options are accepted (#377).
+// Parser and render options are accepted.
 processor.process('<image/>', {
   xmlMode: true,
   recognizeSelfClosing: true,
@@ -40,7 +40,7 @@ processor.process('<image/>', {
 // @ts-expect-error Unknown closing format.
 processor.process('<br>', { closingSingleTag: 'self' });
 
-// Callbacks may remove or replace nodes (#379).
+// Callbacks may remove or replace nodes.
 posthtml([
   tree => {
     tree.match({ tag: 'p' }, () => null);
