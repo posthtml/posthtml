@@ -148,6 +148,23 @@ describe('Plugins', () => {
         })
         .process('<div></div>', { sync: true })
     })
+
+    it('should pass render options without plugins', () => {
+      const result = posthtml()
+        .process('<br>', { sync: true, closingSingleTag: 'slash' })
+
+      expect(result.html).to.eql('<br />')
+      expect(result.messages).to.eql([])
+    })
+
+    it('should pass render options after returning new root', () => {
+      const result = posthtml()
+        .use(() => [{ tag: 'br' }])
+        .process('<div></div>', { sync: true, closingSingleTag: 'slash' })
+
+      expect(result.html).to.eql('<br />')
+      expect(result.messages).to.eql([])
+    })
   })
 
   describe('async mode', () => {

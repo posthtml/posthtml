@@ -6,6 +6,10 @@
 * Require Node.js `^20.19.0 || >=22.12.0`, following the runtime dependency chain.
 * With `decodeEntities: true`, entities in `textarea` content are decoded by the updated parser.
 
+### Bug Fixes
+
+* Sync mode now passes render options and `messages` to the result when there are no plugins or the last plugin returns a new tree.
+
 ### Development
 
 * Refresh Mocha, Chai, coverage, lint and documentation tooling; use Chai's built-in subset assertions.
