@@ -12,7 +12,7 @@ PostHTML transforms HTML/XML with JavaScript plugins. Start with the
 ## Plugins
 
 - [Writing plugins](plugins/index.md): synchronous and asynchronous plugins,
-  messages, parsing and rendering.
+  return values, messages, parsing and rendering.
 - [Plugin guidelines](plugins/guide.md).
 - [Reserved tags and attributes](plugins/reserved.md).
 - [Plugin utilities](plugins/utils.md).
