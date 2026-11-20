@@ -62,24 +62,78 @@ export default function postHTMLPluginName(tree, cb) {
 }
 ```
 
-## Asynchronous with Promises
+## Asynchronous with async/await
+
+`walk` and `match` callbacks are synchronous: they cannot `await`. Collect the
+nodes first, then do the async work and update them. A plugin that returns a
+Promise must run in async mode (the default).
 
 ```js
-import request from 'request'
-import parser from 'posthtml-parser'
+export default function plugin() {
+  return async function (tree) {
+    const nodes = []
 
-export default (tree) => {
-  return new Promise((resolve) => {
     tree.match({ tag: 'user-info' }, (node) => {
-      request(`/api/user-info?${node.attrs.dataUserId}`, (err, resp, body) => {
-        if (!err && body) node.content = parser(body)
-
-        resolve(tree)
-      })
+      nodes.push(node)
+      return node
     })
-  })
+
+    await Promise.all(nodes.map(async (node) => {
+      const response = await fetch(`https://example.com/api/users/${node.attrs['data-user-id']}`)
+
+      node.tag = 'div'
+      node.content = tree.parser(await response.text())
+    }))
+  }
 }
 ```
+
+## Return values
+
+### From a plugin
+
+| Plugin returns | Result |
+| --- | --- |
+| nothing (`undefined`) or another falsy value | the same tree is passed on, with all changes made in place |
+| a tree (array or node) | the returned tree replaces the current one |
+| a Promise | its resolved value follows the same rules |
+
+Async callback plugins (`(tree, cb)`) follow the same rules for the value passed
+to `cb(err, result)`.
+
+Changing the tree in place and returning nothing is enough in most plugins. If a
+plugin returns a new tree, changes made to the old tree are kept only if they
+are part of the new one.
+
+### From `walk` and `match` callbacks
+
+The callback return value **always** replaces the node, so return the node even
+if it was changed in place.
+
+| Callback returns | Result |
+| --- | --- |
+| the node | the node is kept, with all changes made in place |
+| a new node or a string | replaces the node |
+| an array of nodes and strings | replaces the node with several nodes |
+| `null`, `undefined`, `false` or `''` | removes the node |
+
+A missing `return` removes the node. `walk` also visits text nodes (strings),
+so return them too:
+
+```js
+tree.walk((node) => {
+  if (node.attrs && node.attrs['data-remove'] !== undefined) {
+    return null
+  }
+
+  return node
+})
+```
+
+Returned nodes are walked again. Do not put the current node back into an
+array (`[node, extra]` or `{ tag: 'span', content: [node] }`): the callback
+would match it again forever. To wrap a node, pass it as the content directly:
+`{ tag: 'span', content: node }`.
 
 ## Messages
 > Tree messages to store and pass metadata between plugins
