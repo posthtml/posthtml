@@ -8,7 +8,3 @@ Some of the PostHTML plugins reserve custom tags and attributes. To prevent conf
 - [extends](https://github.com/posthtml/posthtml-extend)
 - [include](https://github.com/posthtml/posthtml-include)
 - [module](https://github.com/posthtml/posthtml-modules)
-
-## Attributes
-
-- [css-module](https://github.com/posthtml/posthtml-css-modules)

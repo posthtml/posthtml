@@ -15,12 +15,6 @@ For usage questions, visit [Discussions](https://github.com/posthtml/posthtml/di
 |[posthtml-parser](https://github.com/posthtml/posthtml-parser)| Parser HTML/XML to PostHTMLTree |
 |[posthtml-render](https://github.com/posthtml/posthtml-render)| Render PostHTMLTree to HTML/XML |
 
-## Create to your project
-
-```bash
-npm init posthtml
-```
-
 ## Install
 
 Requires Node.js `^20.19.0 || >=22.12.0`, matching the synchronous loading requirements of `posthtml-parser` and its `htmlparser2` backend.
@@ -39,7 +33,14 @@ The examples below use ES modules. Save them as `.mjs` files or set `"type": "mo
 
 ```js
 import posthtml from 'posthtml'
-import customElements from 'posthtml-custom-elements'
+
+const customElements = () => (tree) => {
+  tree.match({ tag: /^(component|title|text)$/ }, (node) => ({
+    tag: 'div',
+    attrs: { class: node.tag },
+    content: node.content
+  }))
+}
 
 const html = `
   <component>
@@ -69,62 +70,39 @@ console.log(result)
 
 ```js
 import posthtml from 'posthtml'
-import toSvgTags from 'posthtml-to-svg-tags'
-import extendAttrs from 'posthtml-extend-attrs'
+import include from 'posthtml-include'
+import expressions from 'posthtml-expressions'
 
 const html = `
-  <html>
-    <body>
-      <p class="wow">OMG</p>
-    </body>
-  </html>
+  <include src="header.html"></include>
+  <h1>{{ title }}</h1>
 `
 
-posthtml(
-  [
-    toSvgTags(),
-    extendAttrs({
-      attrsTree: {
-        '.wow' : {
-          id: 'wow_id',
-          fill: '#4A83B4',
-          'fill-rule': 'evenodd',
-          'font-family': 'Verdana'
-        }
-      }
-    })
-  ])
+posthtml([
+  include({ root: './src' }),
+  expressions({ locals: { title: 'Hello PostHTML' } })
+])
   .process(html/*, options */)
   .then((result) => console.log(result.html))
 ```
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg">
-  <text
-    class="wow"
-    id="wow_id"
-    fill="#4A83B4"
-    fill-rule="evenodd" font-family="Verdana">
-      OMG
-  </text>
-</svg>
+<header>Site header</header>
+<h1>Hello PostHTML</h1>
 ```
 
 **Directives**
 
 ```js
 import posthtml from 'posthtml'
-import customElements from 'posthtml-custom-elements'
+import expressions from 'posthtml-expressions'
 
 const php = `
-  <component>
-    <title><?php echo $title; ?></title>
-    <text><?php echo $article; ?></text>
-  </component>
+  <h1>{{ title }}</h1>
+  <p><?php echo $article; ?></p>
 `
 
-posthtml()
-  .use(customElements())
+posthtml([expressions({ locals: { title: 'Hello PostHTML' } })])
   .process(php, {
     directives: [
       { name: '?php', start: '<', end: '>' }
@@ -134,10 +112,8 @@ posthtml()
 ```
 
 ```html
-<div class="component">
-  <div class="title"><?php echo $title; ?></div>
-  <div class="text"><?php echo $article; ?></div>
-</div>
+<h1>Hello PostHTML</h1>
+<p><?php echo $article; ?></p>
 ```
 
 ### [CLI](https://npmjs.com/package/posthtml-cli)
@@ -179,170 +155,46 @@ task('html', () => {
 })
 ```
 
-Check [project-stub](https://github.com/posthtml/project-stub) for an example with Gulp
-
-### [Grunt](https://gruntjs.com)
-
-```bash
-npm i -D grunt-posthtml
-```
-
-```js
-posthtml: {
-  options: {
-    use: [
-      require('posthtml-doctype')({ doctype: 'HTML 5' }),
-      require('posthtml-include')({ root: './', encoding: 'utf-8' })
-    ]
-  },
-  build: {
-    files: [
-      {
-        dot: true,
-        cwd: 'html/',
-        src: ['*.html'],
-        dest: 'tmp/',
-        expand: true,
-      }
-    ]
-  }
-}
-```
-
 ### [Webpack](https://webpack.js.org)
 
 ```bash
 npm i -D html-loader posthtml-loader
 ```
 
-#### v1.x
-
 **webpack.config.js**
 
 ```js
-import pug from 'posthtml-pug'
-import bem from 'posthtml-bem'
+import include from 'posthtml-include'
 
-const config = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml'
-      }
-    ]
-  },
-  posthtml: (ctx) => ({
-    parser: pug,
-    plugins: [
-      bem()
-    ]
-  })
-}
-
-export default config
-```
-
-#### v2.x
-
-**webpack.config.js**
-
-```js
-import webpack from 'webpack'
-import pug from 'posthtml-pug'
-import bem from 'posthtml-bem'
-
-const { LoaderOptionsPlugin } = webpack
-
-const config = {
+export default {
   module: {
     rules: [
       {
         test: /\.html$/,
         use: [
+          'html-loader',
           {
-            loader: 'html-loader',
-            options: { minimize: true }
-          },
-          {
-            loader: 'posthtml-loader'
+            loader: 'posthtml-loader',
+            options: {
+              plugins: [include({ root: 'src' })]
+            }
           }
         ]
       }
     ]
-  },
-  plugins: [
-    new LoaderOptionsPlugin({
-      options: {
-        posthtml(ctx) {
-          return {
-            parser: pug,
-            plugins: [
-              bem()
-            ]
-          }
-        }
-      }
-    })
-  ]
-}
-
-export default config
-```
-
-### [Rollup](https://rollupjs.org/)
-
-```bash
-$ npm i rollup-plugin-posthtml -D
-# or
-$ npm i rollup-plugin-posthtml-template -D
-```
-
-```js
-import posthtml from 'rollup-plugin-posthtml-template'
-// or
-// import posthtml from 'rollup-plugin-posthtml'
-
-import sugarml from 'posthtml-sugarml'  // npm i posthtml-sugarml -D
-import include from 'posthtml-include'  // npm i posthtml-include -D
-
-export default {
-  input: 'main.js',
-  output: {
-    file: 'bundle.js',
-    format: 'iife'
-  },
-  plugins: [
-    posthtml({
-      parser: sugarml(),
-      plugins: [include()],
-      template: true  // only rollup-plugin-posthtml-template
-    })
-  ]
+  }
 }
 ```
 
-## Parser
+## Custom parser and renderer
 
-```js
-import posthtml from 'posthtml'
-import pug from 'posthtml-pug'
-
-posthtml().process(html, { parser: pug(options) }).then((result) => result.html)
-```
-
-| Name |Description|
-|:-----|:----------|
-|[posthtml-pug](https://github.com/posthtml/posthtml-pug)|Pug Parser|
-|[sugarml](https://github.com/posthtml/sugarml)|SugarML Parser|
-
+PostHTML uses [posthtml-parser](https://github.com/posthtml/posthtml-parser) and [posthtml-render](https://github.com/posthtml/posthtml-render) by default. Pass `parser` or `render` in the [process options](docs/core.md) to replace them.
 
 ## Plugins
 
 In case you want to develop your own plugin, we recommend using [posthtml-plugin-starter][plugin] to get started.
 
-- [posthtml-plugins](http://maltsev.github.io/posthtml-plugins)
-- [awesome-posthtml](https://github.com/posthtml/awesome-posthtml)
+See the [plugins catalog](https://posthtml.github.io/posthtml-plugins/).
 
 [plugin]: https://github.com/posthtml/posthtml-plugin-starter
 
