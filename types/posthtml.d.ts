@@ -90,7 +90,6 @@ declare namespace PostHTML {
   }
 
   export type SyncOptions = Options & { sync: true };
-  export type AsyncOptions = Options & { sync?: false };
 
   export type Plugin<TThis> = (
     tree: Node
@@ -109,11 +108,7 @@ declare namespace PostHTML {
     messages: TMessage[];
     use<TThis>(plugins: MaybeArray<Plugin<TThis>>): this;
     process(html: string, options: SyncOptions): Result<TMessage>;
-    process(html: string, options?: AsyncOptions): Promise<Result<TMessage>>;
-    process(
-      html: string,
-      options?: Options
-    ): Result<TMessage> | Promise<Result<TMessage>>;
+    process(html: string, options?: Options): Promise<Result<TMessage>>;
   }
 }
 
