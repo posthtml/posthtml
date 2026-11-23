@@ -23,9 +23,11 @@ void syncHtml;
 void processor.process('<p>Hello</p>', { sync: true }).then;
 const asyncResult: Promise<posthtml.Result<unknown>> = processor.process('<p>Hello</p>', { sync: false });
 void asyncResult;
-declare const maybeSync: boolean;
-const eitherResult: posthtml.Result<unknown> | Promise<posthtml.Result<unknown>> = processor.process('<p>Hello</p>', { sync: maybeSync });
-void eitherResult;
+// Options passed through from callers keep the Promise type unless sync is literally true.
+declare const userOptions: posthtml.Options;
+void processor.process('<p>Hello</p>', { ...userOptions, parser }).then(result => result.html);
+const forcedSync: posthtml.Result<unknown> = processor.process('<p>Hello</p>', { ...userOptions, sync: true });
+void forcedSync;
 
 // Parser and render options are accepted.
 processor.process('<image/>', {
