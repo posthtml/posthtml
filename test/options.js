@@ -126,3 +126,45 @@ describe('Set option', () => {
     )
   })
 })
+
+describe('Custom parser and render', () => {
+  const parser = input => [{ tag: 'custom', content: [input] }]
+  const render = tree => 'custom:' + tree[0].content[0]
+
+  it('apply to the call and are exposed to plugins', () => {
+    let treeParser
+    let treeRender
+    const result = posthtml([tree => {
+      treeParser = tree.parser
+      treeRender = tree.render
+    }]).process('payload', { sync: true, parser, render })
+
+    expect(result.html).to.eql('custom:payload')
+    expect(treeParser).to.equal(parser)
+    expect(treeRender).to.equal(render)
+  })
+
+  it('do not leak into other instances', () => {
+    posthtml().process('payload', { sync: true, parser, render })
+
+    expect(posthtml().process('<b>x</b>', { sync: true }).html).to.eql('<b>x</b>')
+  })
+
+  it('do not persist between calls of the same instance', () => {
+    const ph = posthtml()
+
+    ph.process('payload', { sync: true, parser, render })
+
+    expect(ph.process('<b>x</b>', { sync: true }).html).to.eql('<b>x</b>')
+  })
+
+  it('keep the render of each concurrent async call', async () => {
+    const ph = posthtml([() => new Promise(resolve => setTimeout(resolve, 5))])
+
+    const custom = ph.process('payload', { parser, render })
+    const plain = ph.process('<b>x</b>')
+
+    expect((await custom).html).to.eql('custom:payload')
+    expect((await plain).html).to.eql('<b>x</b>')
+  })
+})
