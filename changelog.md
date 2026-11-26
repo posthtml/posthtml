@@ -9,6 +9,7 @@
 ### Bug Fixes
 
 * Custom `parser` and `render` options apply only to their `process()` call. Previously they replaced the default parser and renderer for every later call in the process, including other PostHTML instances.
+* Plugins get per-call `tree.options`, `tree.source`, `tree.parser` and `tree.render`, so concurrent `process()` calls on one instance no longer see each other's settings. Only the tree API (`walk`, `match`, `parser`, `render`, `options`, `messages`, `source`, `plugins`, `version`, `name`) is copied to the tree; other properties set on the processor instance are not.
 * Sync mode now passes render options and `messages` to the result when there are no plugins or the last plugin returns a new tree.
 * Types: `process()` with `sync: true` returns the result instead of a Promise ([#403](https://github.com/posthtml/posthtml/issues/403)).
 * Types: `Options` include `posthtml-parser` and `posthtml-render` options ([#377](https://github.com/posthtml/posthtml/issues/377)).

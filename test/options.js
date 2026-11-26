@@ -186,6 +186,21 @@ describe('Custom parser and render', () => {
     expect(ph.render).to.equal(defaultRender)
   })
 
+  it('expose only the tree API to plugins, not arbitrary instance properties', () => {
+    let keys
+    const ph = posthtml([tree => {
+      keys = Object.keys(tree).filter(key => Number.isNaN(Number(key)))
+    }])
+    ph.custom = 'not for plugins'
+
+    ph.process('<p>x</p>', { sync: true })
+
+    expect(keys).to.have.members([
+      'version', 'name', 'plugins', 'messages', 'walk', 'match',
+      'options', 'source', 'parser', 'render'
+    ])
+  })
+
   it('keep the last options on the instance for compatibility', () => {
     const ph = posthtml()
     const options = { sync: true, parser, render }
