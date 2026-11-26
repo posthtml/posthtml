@@ -158,13 +158,41 @@ describe('Custom parser and render', () => {
     expect(ph.process('<b>x</b>', { sync: true }).html).to.eql('<b>x</b>')
   })
 
-  it('keep the render of each concurrent async call', async () => {
-    const ph = posthtml([() => new Promise(resolve => setTimeout(resolve, 5))])
+  it('keep options, parser and render of each concurrent async call', async () => {
+    const seen = {}
+    const ph = posthtml([
+      () => new Promise(resolve => setTimeout(resolve, 5)),
+      tree => {
+        seen[tree.options.id] = tree.parser
+      }
+    ])
 
-    const custom = ph.process('payload', { parser, render })
-    const plain = ph.process('<b>x</b>')
+    const custom = ph.process('payload', { id: 'custom', parser, render })
+    const plain = ph.process('<b>x</b>', { id: 'plain' })
 
     expect((await custom).html).to.eql('custom:payload')
     expect((await plain).html).to.eql('<b>x</b>')
+    expect(seen.custom).to.equal(parser)
+    expect(seen.plain).to.not.equal(parser)
+  })
+
+  it('leave the instance parser and render unchanged', () => {
+    const ph = posthtml()
+    const { parser: defaultParser, render: defaultRender } = ph
+
+    ph.process('payload', { sync: true, parser, render })
+
+    expect(ph.parser).to.equal(defaultParser)
+    expect(ph.render).to.equal(defaultRender)
+  })
+
+  it('keep the last options on the instance for compatibility', () => {
+    const ph = posthtml()
+    const options = { sync: true, parser, render }
+
+    ph.process('payload', options)
+
+    expect(ph.options).to.equal(options)
+    expect(ph.source).to.eql('payload')
   })
 })
